@@ -170,3 +170,7 @@ func get_grid_position(position):
 	var grid_y = floor(position.y / grid_size)
 	grid_position = Vector2(grid_x, grid_y)
 	return grid_position
+
+func get_class():
+	return "Player"
+	

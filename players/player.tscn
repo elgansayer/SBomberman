@@ -14,9 +14,19 @@
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ) ],
@@ -32,16 +42,6 @@ animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "standing_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "walk_up",
 "speed": 5.0
 } ]
 
@@ -97,7 +97,7 @@ size = 14
 font_data = ExtResource( 3 )
 
 [node name="player" type="KinematicBody2D" groups=["players"]]
-collision_layer = 8
+collision_layer = 9
 collision_mask = 7
 script = ExtResource( 1 )
 

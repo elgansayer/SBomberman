@@ -3,7 +3,7 @@ extends Node2D
 # Sprites created?
 var explosion_sprites = []
 # How far does this explosion go?
-var max_explosion_length = 2
+var max_explosion_length = 8
 var current_explosion_length = 1
 var _timer = null
 var bomb = null
@@ -110,17 +110,20 @@ func spawn_explosions():
 
 		if !result.empty():
 			var collider = result["collider"]
-			if collider.has_method("explode"):
-				collider.explode()
+			var classname = collider.get_class()
 
 			if collider is TileMap:
 				dict["max_length"] = current_explosion_length
 				continue
 			else:
-				# print("set max_length to", current_explosion_length)
-				dict["max_length"] = current_explosion_length + 1
+				if classname == "Rock":
+					# print("set max_length to", current_explosion_length)
+					dict["max_length"] = current_explosion_length
 
-			# print(result)
+			if collider.has_method("explode"):
+				collider.explode()
+
+			print(result, collider.get_class())
 			# print(collider, collider.has_method("explode"))
 
 		var sprite = get_new_explosion(new_position)
@@ -136,12 +139,11 @@ func get_new_explosion(position):
 	explosion.position = position
 	var explosion_sprite = explosion.get_node("AnimatedSprite")
 	self.add_child(explosion)
-	
+
 	explosion.bomb = self
 	explosion.from_player = self.from_player
 	explosion.player_owner = self.player_owner
 
-	
 	return explosion_sprite
 
 
@@ -176,3 +178,7 @@ func _on_Timer_timeout():
 
 func done():
 	queue_free()
+
+
+func get_class():
+	return "Explosion"

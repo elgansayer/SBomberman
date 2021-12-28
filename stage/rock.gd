@@ -18,3 +18,7 @@ master func exploded(by_who):
 master func explode():
 	# print("explode ", str(is_network_master()))
 	rpc("do_explosion")  # Re-sent to puppet rocks
+
+
+func get_class():
+	return "Rock"

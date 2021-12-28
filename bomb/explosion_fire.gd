@@ -27,5 +27,6 @@ func _on_AnimatedSprite_animation_finished():
 
 
 func _on_Fire_body_entered(body: Node):
-	if body.has_method("explode"):
-		body.explode()
+	# if body.has_method("explode"):
+	# 	body.explode()
+	pass

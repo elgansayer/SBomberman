@@ -107,3 +107,6 @@ func _on_AnimatedSprite_animation_finished():
 	# print("Finished animation ", animation)
 	if animation == "explode":
 		done()
+
+func get_class():
+	return "Bomb"
