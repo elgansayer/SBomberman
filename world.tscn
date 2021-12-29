@@ -1,9 +1,10 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://stage/battle stage background 1.png" type="Texture" id=1]
 [ext_resource path="res://stage/rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://stage/score.gd" type="Script" id=3]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://items/item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://stage/banner-336.png" type="Texture" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -445,12 +446,11 @@ animations = [ {
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 47 )
 show_collision = true
-collision_mask = 15
+collision_mask = 255
 format = 1
 tile_data = PoolIntArray( 0, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 335, 8 )
 scale = Vector2( 1.9, 3 )
 texture = ExtResource( 6 )
@@ -495,6 +495,11 @@ position = Vector2( 504, 72 )
 position = Vector2( 936, 72 )
 
 [node name="Explosions" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Node2D" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 144, 208 )
 
 [node name="Rocks" type="Node2D" parent="."]
 

@@ -15,7 +15,7 @@ config/description="A multiplayer implementation of the classical bomberman game
 One of the players should press 'host', while the other
 should type in his address and press 'play'."
 run/main_scene="res://lobby/lobby.tscn"
-config/icon="res://icon.png"
+config/icon="res://players/black bomberman/head/frame31.png"
 
 [autoload]
 
@@ -85,3 +85,18 @@ set_bomb={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_render/layer_1="tilemap"
+2d_render/layer_2="rocks"
+2d_render/layer_3="fire"
+2d_render/layer_4="bombs"
+2d_render/layer_5="items"
+2d_render/layer_6="player"
+2d_physics/layer_1="tilemap"
+2d_physics/layer_2="rocks"
+2d_physics/layer_3="fire"
+2d_physics/layer_4="bombs"
+2d_physics/layer_5="items"
+2d_physics/layer_6="player"

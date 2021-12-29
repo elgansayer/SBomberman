@@ -1,0 +1,72 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://explosion/images/big/up-01.png" type="Texture" id=1]
+[ext_resource path="res://explosion/images/medium/middle-02.png" type="Texture" id=2]
+[ext_resource path="res://explosion/images/small/middle-03.png" type="Texture" id=3]
+[ext_resource path="res://explosion/images/smaller/middle-04.png" type="Texture" id=4]
+[ext_resource path="res://explosion/images/small/horizontal-03.png" type="Texture" id=5]
+[ext_resource path="res://explosion/images/medium/horizontal-02.png" type="Texture" id=6]
+[ext_resource path="res://explosion/images/big/verticle-01.png" type="Texture" id=7]
+[ext_resource path="res://explosion/images/smaller/verticle-04.png" type="Texture" id=8]
+[ext_resource path="res://explosion/images/big/left-01.png" type="Texture" id=9]
+[ext_resource path="res://explosion/images/medium/left-02.png" type="Texture" id=10]
+[ext_resource path="res://explosion/images/medium/verticle-02.png" type="Texture" id=11]
+[ext_resource path="res://explosion/images/big/middle-01.png" type="Texture" id=12]
+[ext_resource path="res://explosion/images/small/left-03.png" type="Texture" id=13]
+[ext_resource path="res://explosion/images/smaller/horizontal-04.png" type="Texture" id=14]
+[ext_resource path="res://explosion/images/medium/up-02.png" type="Texture" id=15]
+[ext_resource path="res://explosion/images/smaller/left-04.png" type="Texture" id=16]
+[ext_resource path="res://explosion/images/small/verticle-03.png" type="Texture" id=17]
+[ext_resource path="res://explosion/explosion_fire.gd" type="Script" id=18]
+[ext_resource path="res://explosion/images/smaller/up-04.png" type="Texture" id=19]
+[ext_resource path="res://explosion/images/small/up-03.png" type="Texture" id=20]
+[ext_resource path="res://explosion/images/big/horizontal-01.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "h_middle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 19 ) ],
+"loop": false,
+"name": "v_end",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "middle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "v_middle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "h_end",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="Node2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 59
+script = ExtResource( 18 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 2 )
+animation = "middle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="." to="." method="_on_Fire_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Fire_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

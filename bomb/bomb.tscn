@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://bomb/explode-02.png" type="Texture" id=2]
-[ext_resource path="res://bomb/bomb-01.png" type="Texture" id=3]
-[ext_resource path="res://bomb/bomb-03.png" type="Texture" id=4]
-[ext_resource path="res://bomb/explode-01.png" type="Texture" id=5]
-[ext_resource path="res://bomb/bomb-02.png" type="Texture" id=6]
-[ext_resource path="res://bomb/explode-03.png" type="Texture" id=7]
+[ext_resource path="res://bomb/images/explode-02.png" type="Texture" id=2]
+[ext_resource path="res://bomb/images/bomb-01.png" type="Texture" id=3]
+[ext_resource path="res://bomb/images/bomb-03.png" type="Texture" id=4]
+[ext_resource path="res://bomb/images/explode-01.png" type="Texture" id=5]
+[ext_resource path="res://bomb/images/bomb-02.png" type="Texture" id=6]
+[ext_resource path="res://bomb/images/explode-03.png" type="Texture" id=7]
 [ext_resource path="res://bomb/bomb.gd" type="Script" id=8]
 [ext_resource path="res://sounds/bomb_plant.ogg" type="AudioStream" id=9]
 [ext_resource path="res://sounds/bomb_explosion.ogg" type="AudioStream" id=10]
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "anim_explode_now"
+"method": "explode"
 } ]
 }
 tracks/1/type = "audio"
@@ -77,21 +77,59 @@ tracks/3/keys = {
 "update": 1,
 "values": [ "default" ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( -0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Area2D/Shape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( -0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shape:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( -0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "explode"
+length = 1.6
+step = 0.5
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 1.57857 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "explode"
+"method": "queue_free"
 } ]
 }
 tracks/1/type = "audio"
@@ -137,12 +175,12 @@ tracks/4/path = NodePath("AnimatedSprite:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [  ]
+"values": [ false ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath("AnimatedSprite")
@@ -155,20 +193,43 @@ tracks/5/keys = {
 "transitions": PoolRealArray(  ),
 "values": [  ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shape:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Area2D/Shape:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 16, 16 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["bombs"]]
-collision_layer = 15
-collision_mask = 15
+collision_layer = 8
+collision_mask = 32
 script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-animation = "explode"
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -180,11 +241,11 @@ anims/explode = SubResource( 10 )
 stream = ExtResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 32
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 5 )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
-
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

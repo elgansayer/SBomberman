@@ -27,7 +27,7 @@ remotesync func setup_explosion(bomb):
 		grid_pos.x * grid_size + half_grid, grid_pos.y * grid_size + half_grid
 	)
 
-	var explosion = preload("res://bomb/explosion.tscn").instance()
+	var explosion = preload("res://explosion/explosion.tscn").instance()
 	explosion.set_name(name)  # Ensure unique name for the explosion
 
 	explosion.bomb = bomb
@@ -76,13 +76,13 @@ func get_grid_position(position):
 	return grid_position
 
 
-# Called from the animation.
-func anim_explode_now():
-	explode()
+# # Called from the animation.
+# func anim_explode_now():
+# 	explode()
 
 
 func explode():
-	# print("explode ", is_network_master())
+	print("explode bomb ", is_network_master())
 	if exploded:
 		return
 	exploded = true
@@ -95,18 +95,18 @@ func explode():
 	rpc("setup_explosion", self)
 
 
-func done():
-	queue_free()
+# func done():
+# 	queue_free()
 
+# # Use a signal so we can be done with the animation instead of guessing
+# func _on_AnimatedSprite_animation_finished():
+# 	# print(self)
+# 	var sprite = $AnimatedSprite
+# 	var animation = sprite.animation
+# 	# print("Finished animation ", animation)
+# 	if animation == "explode":
+# 		sprite.visible = false
 
-# Use a signal so we can be done with the animation instead of guessing
-func _on_AnimatedSprite_animation_finished():
-	# print(self)
-	var sprite = $AnimatedSprite
-	var animation = sprite.animation
-	# print("Finished animation ", animation)
-	if animation == "explode":
-		done()
 
 func get_class():
 	return "Bomb"

@@ -16,7 +16,7 @@ master func exploded(by_who):
 
 # Received by owner of the rock
 master func explode():
-	# print("explode ", str(is_network_master()))
+	print("explode rock ", str(is_network_master()))
 	rpc("do_explosion")  # Re-sent to puppet rocks
 
 

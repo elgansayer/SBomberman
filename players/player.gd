@@ -133,19 +133,19 @@ func get_animation_name(motion):
 	return is_new_anim
 
 
-puppet func stun():
-	self.visible = false
+puppet func killed():
+	$AnimatedSprite.play("explode")	
 	stunned = true
 
 
 master func exploded(_by_who):
 	if stunned:
 		return
-	rpc("stun")  # Stun puppets
-	stun()  # Stun master - could use sync to do both at once
+	rpc("killed")  # Stun puppets
+	killed()  # Stun master - could use sync to do both at once
 
-master func explode():
-	stun()  # Stun master - could use sync to do both at once
+master func explode():	
+	killed()  # Stun master - could use sync to do both at once
 
 	
 func set_grid_name(new_name):
