@@ -2,13 +2,26 @@ extends Node2D
 
 # Sprites created?
 var explosion_sprites = []
-# How far does this explosion go?
-var max_explosion_length = 8
+
 var current_explosion_length = 1
 var _timer = null
 var bomb = null
 var bomb_body = null
 const time = 0.02
+
+# How far does this explosion go?
+var max_explosion_length setget max_explosion_length_set, max_explosion_length_get
+
+
+func max_explosion_length_set(value):
+	for dict in explosion_positions:
+		dict["max_length"] = value
+		max_explosion_length = value
+
+
+func max_explosion_length_get():
+	return max_explosion_length  # Getter must return a value.
+
 
 var from_player
 var player_owner

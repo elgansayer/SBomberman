@@ -1,34 +1,25 @@
 extends Area2D
 
 var picked = false
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func award_player(player):
+	player.stat_power = player.stat_power + 1
+	player.stat_bombs = player.stat_bombs + 1
 
 func _on_Node2D_body_entered(body: Node):
 	if body.get_class() == "Player":
 		if picked:
 			return
-
+		
 		picked = true
-		$AnimationPlayer.play("picked_up")
 
-	pass  # Replace with function body.
+		award_player(body)
+		$AnimationPlayer.play("picked_up")
 
 
 func explode():
 	$AnimationPlayer.play("exploded")
+
 
 func get_class():
 	return "Item"

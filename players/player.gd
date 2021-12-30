@@ -18,8 +18,21 @@ var flipped_h = false
 # Current motion of the player
 var current_motion = ""
 var prev_bombing = false
+
+# Track how many bombs planted
 var bomb_index = 0
-var dead = false  # Is the player dead for good?
+# Is the player dead for good?
+var dead = false
+
+# The player's current bombs
+var active_bombs = 0
+
+# The player's current bomb power
+# var max_explosion_length = 1;
+# The player's current bomb power
+var stat_power = 3
+# Bombs that the player has
+var stat_bombs = 1
 
 # Position of the player in the world tilemap
 var grid_position = Vector2()
@@ -31,31 +44,25 @@ var collision_exceptions = []  # List of collision exceptions (typically bomb ju
 
 
 # Use sync because it will be called everywhere
-remotesync func setup_bomb(bomb_name, player, by_who):
-	var grid_size = 32
-	var position = player.position
-	var grid_x = floor(position.x / grid_size)
-	var grid_y = floor(position.y / grid_size)
-	var half_grid = grid_size / 2
-	var grid_pos = Vector2(grid_x, grid_y)
-	var bomb_pos = Vector2(grid_x * grid_size + half_grid, grid_y * grid_size + half_grid)
-
-	# Cant plant a bomb where there already is one
-	var bombs = get_tree().get_nodes_in_group("bombs")
-	for bomb in bombs:
-		if bomb.grid_position == grid_pos || bomb.position == bomb_pos:
-			return
-
+remotesync func setup_bomb(bomb_pos, bomb_name, player, by_who):
 	var bomb = preload("res://bomb/bomb.tscn").instance()
 	bomb.set_name(bomb_name)  # Ensure unique name for the bomb
 
+	bomb.stat_power = player.stat_power
 	bomb.position = bomb_pos
 	bomb.from_player = by_who
 	bomb.player_owner = player
 
-	print("Plating bomb at " + str(grid_pos))
+	# Increment the bombs active and planted
+	active_bombs = active_bombs + 1
+	bomb.connect("exploded", self, "_on_Bomb_exploded")
+
 	# No need to set network master to bomb, will be owned by server by default
 	get_node("/root/World/Bombs").add_child(bomb)
+
+
+func _on_Bomb_exploded():
+	active_bombs = active_bombs - 1
 
 
 func _physics_process(_delta):
@@ -78,9 +85,7 @@ func _physics_process(_delta):
 			motion = Vector2()
 
 		if bombing and not prev_bombing:
-			var bomb_name = String(get_name()) + str(bomb_index)
-			bomb_index += 1
-			rpc("setup_bomb", bomb_name, self, get_tree().get_network_unique_id())
+			try_plant_bomb()
 
 		prev_bombing = bombing
 
@@ -110,6 +115,29 @@ func _physics_process(_delta):
 		puppet_pos = position  # To avoid jitter
 
 
+func try_plant_bomb():
+	if active_bombs >= stat_bombs:
+		return
+
+	var grid_size = 32
+	var grid_x = floor(position.x / grid_size)
+	var grid_y = floor(position.y / grid_size)
+	var half_grid = grid_size / 2
+	var grid_pos = Vector2(grid_x, grid_y)
+	var bomb_pos = Vector2(grid_x * grid_size + half_grid, grid_y * grid_size + half_grid)
+
+	# Cant plant a bomb where there already is one
+	var bombs = get_tree().get_nodes_in_group("bombs")
+	for bomb in bombs:
+		if bomb.grid_position == grid_pos || bomb.position == bomb_pos:
+			return
+	var bomb_name = String(get_name()) + str(bomb_index)
+	bomb_index += 1
+
+	print("Plating bomb at " + str(grid_pos))
+	rpc("setup_bomb",bomb_pos, bomb_name, self, get_tree().get_network_unique_id())
+
+
 func get_animation_name(motion):
 	if motion.x != 0 || motion.y != 0:
 		current_motion = "walk"
@@ -134,7 +162,7 @@ func get_animation_name(motion):
 
 
 puppet func killed():
-	$AnimatedSprite.play("explode")	
+	$AnimatedSprite.play("explode")
 	stunned = true
 
 
@@ -144,10 +172,11 @@ master func exploded(_by_who):
 	rpc("killed")  # Stun puppets
 	killed()  # Stun master - could use sync to do both at once
 
-master func explode():	
+
+master func explode():
 	killed()  # Stun master - could use sync to do both at once
 
-	
+
 func set_grid_name(new_name):
 	get_node("grid_label").set_text(new_name)
 	$grid_label.modulate = Color(1, 1, 0, 1)
@@ -171,6 +200,6 @@ func get_grid_position(position):
 	grid_position = Vector2(grid_x, grid_y)
 	return grid_position
 
+
 func get_class():
 	return "Player"
-	

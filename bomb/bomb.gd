@@ -9,11 +9,14 @@ puppet var puppet_motion = Vector2()
 var from_player
 var player_owner
 var exploded = false
+var stat_power
 
 # Position of the bomb in the world tilemap
 var grid_position = Vector2()
 # The bombs cant colide with players that are on the same spot when they are planted
 var collision_exceptions = []
+
+signal exploded
 
 
 # Use sync because it will be called everywhere
@@ -31,10 +34,16 @@ remotesync func setup_explosion(bomb):
 	explosion.set_name(name)  # Ensure unique name for the explosion
 
 	explosion.bomb = bomb
+	explosion.max_explosion_length = bomb.stat_power
 	explosion.bomb_body = self
 	explosion.position = explosion_pos
 	explosion.from_player = bomb.from_player
 	explosion.player_owner = bomb.player_owner
+
+	emit_signal("exploded")
+
+	# print("power ", bomb.stat_power)
+	# print("max_explosion_length ", explosion.max_explosion_length)
 
 	# print("Plating explosion at " + str(grid_pos))
 	# No need to set network master to explosion, will be owned by server by default
