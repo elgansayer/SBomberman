@@ -58,4 +58,3 @@ func _draw():
 				posstry,
 				colour
 			)
-

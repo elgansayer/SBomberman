@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pickup_powerglove.ogg-b05edc1fdc7f08efbc23c4aed9a736af.oggstr"
+
+[deps]
+
+source_file="res://sounds/items/pickup_powerglove.ogg"
+dest_files=[ "res://.import/pickup_powerglove.ogg-b05edc1fdc7f08efbc23c4aed9a736af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

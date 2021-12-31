@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://items/item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://items/bomb_kicker.gd" type="Script" id=2]
+
+[node name="bomb_kicker" type="Node2D"]
+
+[node name="item" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+item_type = "bomb_kicker"
+pickup_sound = "pickup_special"

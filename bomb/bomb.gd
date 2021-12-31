@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const MOTION_SPEED = 90.0
+
 # Position of bomb in the world on the network
 puppet var puppet_pos = Vector2()
 # Motion of bomb in the world on the network
@@ -10,13 +12,34 @@ var from_player
 var player_owner
 var exploded = false
 var stat_power
+# Is the bomb being thrown
+var throwing = false
+# Is the bomb paused?
+var paused setget paused_set, paused_get
+
+
+func paused_set(value):
+	var anim = "paused"
+	# var anim = value ? "paused" : "idle"
+	if value:
+		anim = "paused"
+	else:
+		anim = "idle"
+
+	$AnimationPlayer.play(anim)
+	paused = value
+
+
+func paused_get():
+	return paused  # Getter must return a value.
+
 
 # Position of the bomb in the world tilemap
 var grid_position = Vector2()
 # The bombs cant colide with players that are on the same spot when they are planted
 var collision_exceptions = []
 
-signal exploded
+signal exploded(bomb)
 
 
 # Use sync because it will be called everywhere
@@ -40,7 +63,7 @@ remotesync func setup_explosion(bomb):
 	explosion.from_player = bomb.from_player
 	explosion.player_owner = bomb.player_owner
 
-	emit_signal("exploded")
+	emit_signal("exploded", bomb)
 
 	# print("power ", bomb.stat_power)
 	# print("max_explosion_length ", explosion.max_explosion_length)
@@ -63,11 +86,29 @@ func _ready():
 			player.add_collision_exception_with(self)
 
 
+func throw():
+	throwing = true
+
+
+func set_network_position(new_position):
+	position = new_position
+	rset("puppet_pos", new_position)
+
+
+var velocity = Vector2()
+
+const GRAVITY = 600
+
 func _physics_process(_delta):
-	if is_network_master():
-		rset("puppet_pos", position)
-	else:
-		position = puppet_pos
+	# if is_network_master():
+	# 	rset("puppet_pos", position)
+	# else:
+	# 	position = puppet_pos
+	velocity.y += _delta * GRAVITY
+	velocity.y = -5
+
+	# if throwing:
+	move_and_collide(velocity)
 
 	get_grid_position(position)
 
@@ -85,15 +126,11 @@ func get_grid_position(position):
 	return grid_position
 
 
-# # Called from the animation.
-# func anim_explode_now():
-# 	explode()
-
-
 func explode():
-	print("explode bomb ", is_network_master())
+	# print("explode bomb ", is_network_master())
 	if exploded:
 		return
+
 	exploded = true
 	$AnimationPlayer.play("explode")
 
