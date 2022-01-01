@@ -286,14 +286,14 @@ tracks/4/keys = {
 extents = Vector2( 16, 16 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["bombs"]]
-collision_layer = 0
-collision_mask = 32
+collision_layer = 8
+collision_mask = 63
 script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -306,7 +306,7 @@ anims/paused = SubResource( 11 )
 stream = ExtResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 32
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]

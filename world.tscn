@@ -449,7 +449,7 @@ animations = [ {
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 47 )
 show_collision = true
-collision_mask = 255
+collision_mask = 63
 format = 1
 tile_data = PoolIntArray( 0, 0, 0 )
 
@@ -516,7 +516,7 @@ position = Vector2( 144, 276 )
 [node name="Rocks" type="Node2D" parent="."]
 
 [node name="Rock15" parent="Rocks" instance=ExtResource( 2 )]
-position = Vector2( 208, 80 )
+position = Vector2( 304, 207 )
 
 [node name="Rock2" parent="Rocks" instance=ExtResource( 2 )]
 position = Vector2( 144, 80 )
@@ -674,5 +674,9 @@ animation = "New Anim"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 64
 
 [connection signal="pressed" from="Winner/ExitGame" to="Score" method="_on_exit_game_pressed"]

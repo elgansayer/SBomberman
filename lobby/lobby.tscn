@@ -127,10 +127,10 @@ size_flags_vertical = 2
 text = "127.0.0.1"
 
 [node name="Host" type="Button" parent="Connect"]
-margin_left = 181.0
-margin_top = 31.0
-margin_right = 246.0
-margin_bottom = 51.0
+margin_left = 181.5
+margin_top = 30.5
+margin_right = 246.5
+margin_bottom = 50.5
 size_flags_horizontal = 2
 size_flags_vertical = 2
 text = "Host"

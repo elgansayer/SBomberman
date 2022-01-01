@@ -46,11 +46,11 @@ var frozen_animation = false
 # The player's current bomb power
 var stat_power = 3
 # Bombs that the player has
-var stat_bombs = 1
+var stat_bombs = 11
 # Does the player have a powerglove powerup?
-var stat_power_glove = false
+var stat_power_glove = true
 # Does the player have a powerglove powerup?
-var stat_bomb_kicker = false
+var stat_bomb_kicker = true
 
 # Position of the player in the world tilemap
 var grid_position = Vector2()
@@ -174,29 +174,32 @@ func pglove_throw():
 
 	self.remove_child(bomb)
 	get_node("/root/World/Bombs").add_child(bomb)
-	
+
 	bomb.set_network_position(bomb_global_pos)
 	bomb.position = bomb_global_pos
 
 	# bomb.velocity = Vector2(-100, -100)
 	# bomb.move_and_collide(Vector2(-100, -100))
-	bomb.throw()
+	var target_grid_position = Vector2(grid_position.x + 2, grid_position.y)
+	bomb.throw(target_grid_position)
 
 	var animation = "pglove_pickup_" + current_direction
-	$AnimatedSprite.play(animation, true )
+	$AnimatedSprite.play(animation, true)
 	$AnimatedSprite.speed_scale = 2.0
 	power_glove_bomb = null
 	in_power_glove = false
 	frozen_movement = false
 	frozen_animation = false
 
+
 func do_power_glove():
 	if in_power_glove:
 		pglove_throw()
-
+		return
+	
 	var bomb = can_power_glove()
 	if bomb == null:
-		return
+		return		
 
 	in_power_glove = true
 	frozen_movement = true

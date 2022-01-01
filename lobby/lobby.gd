@@ -2,6 +2,8 @@ extends Control
 
 
 func _ready():
+	OS.set_window_maximized(true)
+
 	# Called every time the node is added to the scene.
 	gamestate.connect("connection_failed", self, "_on_connection_failed")
 	gamestate.connect("connection_succeeded", self, "_on_connection_success")
@@ -14,7 +16,7 @@ func _ready():
 	else:
 		var desktop_path = OS.get_system_dir(0).replace("\\", "/").split("/")
 		$Connect/Name.text = desktop_path[desktop_path.size() - 2]
-
+	_on_host_pressed()
 
 func _on_host_pressed():
 	if $Connect/Name.text == "":
@@ -27,7 +29,7 @@ func _on_host_pressed():
 
 	var player_name = $Connect/Name.text
 	gamestate.host_game(player_name)
-	refresh_lobby()
+	refresh_lobby() 
 
 
 func _on_join_pressed():
