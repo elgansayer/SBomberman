@@ -180,7 +180,15 @@ func pglove_throw():
 
 	# bomb.velocity = Vector2(-100, -100)
 	# bomb.move_and_collide(Vector2(-100, -100))
-	var target_grid_position = Vector2(grid_position.x + 2, grid_position.y)
+	var direction_table = {
+		"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
+	}
+	
+	# How far the bomb is thrown
+	var distance = 3
+	var direction_table_vec = direction_table[current_direction] * distance
+	var target_grid_position = Vector2(grid_position.x, grid_position.y) + direction_table_vec
+	print("target_grid_position: " + str(target_grid_position))
 	bomb.throw(target_grid_position)
 
 	var animation = "pglove_pickup_" + current_direction
@@ -196,10 +204,10 @@ func do_power_glove():
 	if in_power_glove:
 		pglove_throw()
 		return
-	
+
 	var bomb = can_power_glove()
 	if bomb == null:
-		return		
+		return
 
 	in_power_glove = true
 	frozen_movement = true

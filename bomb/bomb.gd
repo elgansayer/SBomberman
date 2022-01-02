@@ -17,7 +17,7 @@ var player_owner
 var exploded = false
 var stat_power
 # Is the bomb being thrown
-var throwing = false
+var flying = false
 # Is the bomb paused?
 var paused setget paused_set, paused_get
 
@@ -40,6 +40,7 @@ func paused_set(value):
 		anim = "idle"
 
 	$AnimationPlayer.play(anim)
+	$AnimationPlayer.seek(0)
 	paused = value
 
 
@@ -86,7 +87,7 @@ func _ready():
 	add_to_group("bombs")
 	puppet_pos = position
 	get_grid_position(position)
-	
+
 	var players = get_tree().get_nodes_in_group("players")
 	for player in players:
 		if player.grid_position == self.grid_position:
@@ -100,31 +101,36 @@ func bounce():
 	var target_y = (target_grid_position.y * 32) + 16
 	target_position = Vector2(target_x, target_y)
 
+	# Plays a bounce sound
+	var bounce_sound = preload("res://sounds/bounce.ogg")
+	$AudioStreamPlayer2D.stream = bounce_sound
+	$AudioStreamPlayer2D.play()
+
 	launch(target_position)
 
 
 func landed():
-	paused = false
+	paused_set(false)
 
-	var LayerTilemap = 1
-	var LayerRocks = 1 << 1
-	var LayerFire = 1 << 2
-	var LayerBombs = 1 << 3
-	var LayerItems = 1 << 4
-	var LayerPlayers = 1 << 5
-	# # | LayerItems | LayerPlayers  | LayerBombs
-	# var BounceMask = LayerTilemap | LayerRocks | LayerBombs | LayerPlayers
-	# var collision_mask = BounceMask
+	# var LayerTilemap = 1
+	# var LayerRocks = 1 << 1
+	# var LayerFire = 1 << 2
+	# var LayerBombs = 1 << 3
+	# var LayerItems = 1 << 4
+	# var LayerPlayers = 1 << 5
+	# # # | LayerItems | LayerPlayers  | LayerBombs
+	# # var BounceMask = LayerTilemap | LayerRocks | LayerBombs | LayerPlayers
+	# # var collision_mask = BounceMask
 
-	self.collision_mask = LayerBombs
-	self.collision_layer = (
-		LayerBombs
-		| LayerPlayers
-		| LayerFire
-		| LayerTilemap
-		| LayerRocks
-		| LayerItems
-	)
+	# self.collision_mask = LayerBombs
+	# self.collision_layer = (
+	# 	LayerBombs
+	# 	| LayerPlayers
+	# 	| LayerFire
+	# 	| LayerTilemap
+	# 	| LayerRocks
+	# 	| LayerItems
+	# )
 
 
 func throw(grid_target):
@@ -134,6 +140,11 @@ func throw(grid_target):
 	target_position = Vector2(target_x, target_y)
 	launch(target_position)
 
+	# Plays a go sound
+	var bounce_sound = preload("res://sounds/items/go.ogg")
+	$AudioStreamPlayer2D.stream = bounce_sound
+	$AudioStreamPlayer2D.play()
+
 
 func set_network_position(new_position):
 	position = new_position
@@ -141,7 +152,7 @@ func set_network_position(new_position):
 
 
 func calculate_arc_velocity(source_position, dest_position, arc_height, gravity):
-	var velocity = Vector2()
+	var arc_velocity = Vector2()
 	var displacement = dest_position - source_position
 
 	if displacement.y > arc_height:
@@ -149,21 +160,27 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 		var time_down = sqrt(2 * (displacement.y - arc_height) / float(gravity))
 		print("time %s" % (time_up + time_down))
 
-		velocity.y = -sqrt(-2 * gravity * arc_height)
-		velocity.x = displacement.x / float(time_up + time_down)
+		arc_velocity.y = -sqrt(-2 * gravity * arc_height)
+		arc_velocity.x = displacement.x / float(time_up + time_down)
 
-	return velocity
+	return arc_velocity
 
 
 func launch(launch_to):
-	throwing = true
+	print("launching to ", launch_to)
+	flying = true
+	paused_set(true)
+	paused = true
 
 	# Remove all conflicts
-	self.collision_mask = 0
-	self.collision_layer = 0
+	# self.collision_mask = 0
+	# self.collision_layer = 0
 
-	var direction = (launch_to - position).normalized()
+	# var direction = (launch_to - position).normalized()
 	# make_bounce_bottom(launch_to)
+	# if direction.x < 0: # left
+	#     $Sprite.rotation_degrees = -135
+	# original_rotation = $Sprite.rotation
 
 	# calculate arc_height based on distance
 	var distance = abs(launch_to.x - position.x)
@@ -174,45 +191,69 @@ func launch(launch_to):
 	print("height %s" % arc_height)
 
 	velocity = calculate_arc_velocity(global_position, launch_to, arc_height, GRAVITY)
+	print("velocity %s" % velocity)
 
 
-func make_bounce_bottom(launch_to):
-	return
-	# Create a new Shape
-	var shape = RectangleShape2D.new()
-	shape.set_extents(Vector2(128, 16))
+# func make_bounce_bottom(launch_to):
+# 	return
+# 	# Create a new Shape
+# 	var shape = RectangleShape2D.new()
+# 	shape.set_extents(Vector2(128, 16))
 
-	# Create a new collisionShape
-	var collision_shape = CollisionShape2D.new()
-	# Add the shape we created before to this collision shape
-	collision_shape.set_shape(shape)
+# 	# Create a new collisionShape
+# 	var collision_shape = CollisionShape2D.new()
+# 	# Add the shape we created before to this collision shape
+# 	collision_shape.set_shape(shape)
 
-	# Create the StaticBody2D
-	var static_body = StaticBody2D.new()
-	static_body.collision_mask = (1 << 6)
-	static_body.collision_layer = (1 << 6)
-	# Add the CollisionShape we've created as child of the StaticBody
-	static_body.add_child(collision_shape)
-	# Use the drawn line's middle as the position of our StaticBody
-	var static_body_position = Vector2(launch_to.x, launch_to.y + 32)
-	# Set the StaticBody's position to the middle of the drawn line
-	static_body.set_position(static_body_position)
-	# Add the StaticBody as a child of the StaticBody
-	# add_child(static_body)
-	get_node("/root/World/TileMap").add_child(static_body)
+# 	# Create the StaticBody2D
+# 	var static_body = StaticBody2D.new()
+# 	static_body.collision_mask = (1 << 6)
+# 	static_body.collision_layer = (1 << 6)
+# 	# Add the CollisionShape we've created as child of the StaticBody
+# 	static_body.add_child(collision_shape)
+# 	# Use the drawn line's middle as the position of our StaticBody
+# 	var static_body_position = Vector2(launch_to.x, launch_to.y + 32)
+# 	# Set the StaticBody's position to the middle of the drawn line
+# 	static_body.set_position(static_body_position)
+# 	# Add the StaticBody as a child of the StaticBody
+# 	# add_child(static_body)
+# 	get_node("/root/World/TileMap").add_child(static_body)
 
 
 func _physics_process(_delta):
-	if throwing:
+	if flying:
 		velocity.y += GRAVITY * _delta
 		var collision = move_and_collide(velocity * _delta)
 		get_grid_position(position)
 
-		position.x = clamp(position.x, 0, target_position.x)
-		position.y = clamp(position.y, 0, target_position.y)
+		# if position.y < 1000:
+			# var l = clamp(position.x, 0, target_position.x)
+			# print(" cl %s " % l, " x %s " % position.y, " tx %s " % target_position.x)
+			
+			# var ll = clamp(position.y, 0, target_position.y)
+			# print(" cl %s " % ll, " y %s " % position.y, " ty %s " % target_position.y)
+
+			# # print("min ", min(0, target_position.x))
+			# # print("min ", min(0, target_position.y))
+
+		var direction = velocity.normalized()
+		if direction.x < 0:  # left
+			position.x = clamp(position.x, target_position.x, position.x)
+
+		if direction.x > 0:  # right
+			position.x = clamp(position.x, 0, target_position.x)
+
+		if direction.y < 0:  # up
+			position.y = clamp(position.y, 0, target_position.y)
+
+		if direction.y > 0:  # down
+			position.y = clamp(position.y, 0, target_position.y)
+
+		# position.x = clamp(position.x, max(0, target_position.x), min(position.x, target_position.x))
+		# position.y = clamp(position.y, max(0, target_position.y), min(position.y, target_position.y))
 
 		if collision && collision.collider || (position == target_position):
-			throwing = false
+			flying = false
 
 			# Use global coordinates, not local to node
 			var LayerTilemap = 1
@@ -230,8 +271,6 @@ func _physics_process(_delta):
 			var result = space_state.intersect_ray(
 				self.global_position, self.global_position, [self], collision_mask, true, true
 			)
-
-			print(result)
 
 			if result && result.collider:
 				bounce()

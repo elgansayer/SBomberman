@@ -18,6 +18,7 @@ func _ready():
 		$Connect/Name.text = desktop_path[desktop_path.size() - 2]
 	_on_host_pressed()
 
+
 func _on_host_pressed():
 	if $Connect/Name.text == "":
 		$Connect/ErrorLabel.text = "Invalid name!"
@@ -29,7 +30,15 @@ func _on_host_pressed():
 
 	var player_name = $Connect/Name.text
 	gamestate.host_game(player_name)
-	refresh_lobby() 
+	refresh_lobby()
+
+
+func _physics_process(_delta):
+	if Input.is_action_pressed("restart_map"):
+		gamestate.end_game()
+		_on_host_pressed()
+		# _on_start_pressed()
+		# get_tree().reload_current_scene()
 
 
 func _on_join_pressed():
