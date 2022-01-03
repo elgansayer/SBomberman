@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://stage/battle stage background 1.png" type="Texture" id=1]
 [ext_resource path="res://stage/rock.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://items/bomb_kicker.tscn" type="PackedScene" id=8]
 [ext_resource path="res://items/bomb.tscn" type="PackedScene" id=9]
 [ext_resource path="res://stage/rock.png" type="Texture" id=10]
+[ext_resource path="res://world.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=50]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 448, 0, 448 )
@@ -519,6 +520,7 @@ animations = [ {
 } ]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 47 )

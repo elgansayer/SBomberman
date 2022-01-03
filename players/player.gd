@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 const MOTION_SPEED = 120.0
 
+## Nodes
+onready var world = get_node("/root/World")
+
 onready var screen_size = get_viewport_rect().size
 
 # Position of player in the world on the network
@@ -84,7 +87,6 @@ remotesync func setup_bomb(bomb_pos, bomb_name, player, by_who):
 
 func _on_Bomb_exploded(bomb):
 	active_bombs.erase(bomb)
-	# bombs.remove(bomb)
 
 
 func update_input():
@@ -142,7 +144,7 @@ func _physics_process(_delta):
 
 	# Update the animation
 	var is_new_anim = get_animation_name(motion)
-	grid_position = get_grid_position(position)
+	grid_position = world.get_grid_position(position)
 
 	# if stunned:
 	# 	new_anim = "stunned"
@@ -174,10 +176,12 @@ func _physics_process(_delta):
 	elif position.y > screen_size.y:
 		position.y = 0
 		return
+
+
 func can_power_glove():
 	for i in active_bombs.size():
 		var bomb = active_bombs[-i - 1]
-		if bomb.grid_position == self.get_grid_position(self.position):
+		if bomb.grid_position == world.get_grid_position(self.position):
 			return bomb
 	return null
 
@@ -187,6 +191,7 @@ func dizzy():
 	# var dizzy_sound = preload("res://sounds/dizzy.ogg")
 	# $AudioStreamPlayer2D.stream = dizzy_sound
 	# $AudioStreamPlayer2D.play()
+
 
 func pglove_throw():
 	var bomb = power_glove_bomb
@@ -208,7 +213,6 @@ func pglove_throw():
 	var distance = 3
 	var direction_table_vec = direction_table[current_direction] * distance
 	var target_grid_position = Vector2(grid_position.x, grid_position.y) + direction_table_vec
-	# print("target_grid_position: " + str(target_grid_position))
 	bomb.throw(target_grid_position)
 
 	var animation = "pglove_pickup_" + current_direction
@@ -410,22 +414,19 @@ func try_plant_bomb():
 	):
 		return
 
-	var grid_size = 32
-	var grid_x = floor(position.x / grid_size)
-	var grid_y = floor(position.y / grid_size)
-	var half_grid = grid_size / 2
-	var grid_pos = Vector2(grid_x, grid_y)
-	var bomb_pos = Vector2(grid_x * grid_size + half_grid, grid_y * grid_size + half_grid)
+	# The same as snap to grid
+	var grid_pos = world.get_grid_position(position)
+	var bomb_pos = world.get_center_position_from_grid(grid_pos)
 
 	# Cant plant a bomb where there already is one
 	var bombs = get_tree().get_nodes_in_group("bombs")
 	for bomb in bombs:
 		if bomb.grid_position == grid_pos || bomb.position == bomb_pos:
 			return
+
 	var bomb_name = String(get_name()) + str(bomb_index)
 	bomb_index += 1
 
-	# # print("Plating bomb at " + str(grid_pos))
 	rpc("setup_bomb", bomb_pos, bomb_name, self, get_tree().get_network_unique_id())
 
 
@@ -434,6 +435,10 @@ func get_animation_name(motion):
 		current_motion = "walk"
 	else:
 		current_motion = "standing"
+		if is_trapped():
+			current_anim = "trapped"
+			current_direction = "down"
+			return current_anim
 
 	if motion.y < 0:
 		current_direction = "up"
@@ -489,21 +494,26 @@ func _ready():
 	add_to_group("players")
 	stunned = false
 	puppet_pos = position
-	get_grid_position(position)
+	grid_position = world.get_grid_position(position)
 
-# func is_trapped():
-# 	var grid_position = get_grid_position(position)
 
-# 	var result = space_state.intersect_point(
-# 		self.global_position, 1, [self], collision_mask, true, true
-# 	)
+func is_trapped():
+	grid_position = world.get_grid_position(position)
+	var space_state = get_world_2d().direct_space_state
 
-func get_grid_position(position):
-	var grid_size = 32
-	var grid_x = floor(position.x / grid_size)
-	var grid_y = floor(position.y / grid_size)
-	grid_position = Vector2(grid_x, grid_y)
-	return grid_position
+	var direction_table = world.direction_table
+	var trapped = 0
+	for direction in direction_table:
+		var direction_vec = direction_table[direction]
+		var grid_pos = grid_position + direction_vec
+		var spot = world.get_center_position_from_grid(grid_pos)
+
+		var result = space_state.intersect_point(spot, 1, [self], collision_mask, true, false)
+
+		if !result.empty():
+			trapped += 1
+
+	return trapped == 4
 
 
 func get_class():

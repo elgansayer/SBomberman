@@ -1,26 +1,44 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export(int) var grid_size = 32
+export(int) var half_grid = grid_size / 2
+
+export var direction_table = {
+	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
+}
 
 # Called when the node enters the scene tree for the first time.
 var font
+
+
+func snap_position_to_grid(position_vec):
+	var grid_pos = get_center_position_from_grid(position_vec)
+	return get_position_from_grid(grid_pos)
+
+# Get a position from a grid position and add half grid to become
+# center of the grid square.
+func get_center_position_from_grid(grid_pos):
+	var pos = get_position_from_grid(grid_pos)
+	return Vector2(pos.x + half_grid, pos.y + half_grid)
+
+
+# Get a position from a grid position
+func get_position_from_grid(grid_pos):
+	return Vector2(grid_pos.x * grid_size, grid_pos.y * grid_size)
+
+
+# Get a grid position from a position
+func get_grid_position(position_vec):
+	var grid_x = floor(position_vec.x / grid_size)
+	var grid_y = floor(position_vec.y / grid_size)
+	var new_grid_position = Vector2(grid_x, grid_y)
+	return new_grid_position
 
 
 func _ready():
 	font = DynamicFont.new()
 	font.font_data = load("res://montserrat.otf")
 	font.size = 10
-	# font.modulate = Color(1, 1, 1, 1)
-	# font.outline_color = Color(1, 0, 0, 1)
-	# font.color = Color(1, 1, 1, 1)
-	# font.weight = FontWeight.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _draw():
