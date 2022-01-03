@@ -1,6 +1,8 @@
 extends KinematicBody2D
 
-const MOTION_SPEED = 90.0
+const MOTION_SPEED = 120.0
+
+onready var screen_size = get_viewport_rect().size
 
 # Position of player in the world on the network
 puppet var puppet_pos = Vector2()
@@ -44,9 +46,9 @@ var frozen_animation = false
 # The player's current bomb power
 # var max_explosion_length = 1;
 # The player's current bomb power
-var stat_power = 3
+var stat_power = 1
 # Bombs that the player has
-var stat_bombs = 11
+var stat_bombs = 21
 # Does the player have a powerglove powerup?
 var stat_power_glove = true
 # Does the player have a powerglove powerup?
@@ -159,7 +161,19 @@ func _physics_process(_delta):
 	if not is_network_master():
 		puppet_pos = position  # To avoid jitter
 
+	if position.x < 0:
+		position.x = screen_size.x
+		return
+	elif position.x > screen_size.x:
+		position.x = 0
+		return
 
+	if position.y < 0:
+		position.y = screen_size.y
+		return
+	elif position.y > screen_size.y:
+		position.y = 0
+		return
 func can_power_glove():
 	for i in active_bombs.size():
 		var bomb = active_bombs[-i - 1]
@@ -167,6 +181,12 @@ func can_power_glove():
 			return bomb
 	return null
 
+
+func dizzy():
+	$AnimationPlayer.play("dizzy")
+	# var dizzy_sound = preload("res://sounds/dizzy.ogg")
+	# $AudioStreamPlayer2D.stream = dizzy_sound
+	# $AudioStreamPlayer2D.play()
 
 func pglove_throw():
 	var bomb = power_glove_bomb
@@ -183,12 +203,12 @@ func pglove_throw():
 	var direction_table = {
 		"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 	}
-	
+
 	# How far the bomb is thrown
 	var distance = 3
 	var direction_table_vec = direction_table[current_direction] * distance
 	var target_grid_position = Vector2(grid_position.x, grid_position.y) + direction_table_vec
-	print("target_grid_position: " + str(target_grid_position))
+	# print("target_grid_position: " + str(target_grid_position))
 	bomb.throw(target_grid_position)
 
 	var animation = "pglove_pickup_" + current_direction
@@ -340,10 +360,10 @@ func _on_PGlove_frame_changed():
 	var bomb_position = bomb_dict["pos"]
 	# var bomb_scale = bomb_dict["scale"]
 
-	# print(current_direction)
-	# print(frame)
-	# print(bomb_position)
-	# print(power_glove_bomb.z_index)
+	# # print(current_direction)
+	# # print(frame)
+	# # print(bomb_position)
+	# # print(power_glove_bomb.z_index)
 
 	# if current_direction == "up":
 	# 	power_glove_bomb.z_index = -1
@@ -405,7 +425,7 @@ func try_plant_bomb():
 	var bomb_name = String(get_name()) + str(bomb_index)
 	bomb_index += 1
 
-	# print("Plating bomb at " + str(grid_pos))
+	# # print("Plating bomb at " + str(grid_pos))
 	rpc("setup_bomb", bomb_pos, bomb_name, self, get_tree().get_network_unique_id())
 
 
@@ -440,6 +460,9 @@ puppet func killed():
 	stunned = true
 	dead = true
 
+	if in_power_glove:
+		pglove_throw()
+
 
 master func exploded(_by_who):
 	if stunned:
@@ -468,6 +491,12 @@ func _ready():
 	puppet_pos = position
 	get_grid_position(position)
 
+# func is_trapped():
+# 	var grid_position = get_grid_position(position)
+
+# 	var result = space_state.intersect_point(
+# 		self.global_position, 1, [self], collision_mask, true, true
+# 	)
 
 func get_grid_position(position):
 	var grid_size = 32

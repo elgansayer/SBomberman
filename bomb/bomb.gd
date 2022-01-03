@@ -24,7 +24,8 @@ var paused setget paused_set, paused_get
 var target_grid_position = Vector2.ZERO
 var target_position = Vector2.ZERO
 var velocity = Vector2.ZERO
-
+var launch_direction = Vector2.ZERO
+var str_direction = ""
 # Position of the bomb in the world tilemap
 var grid_position = Vector2()
 # The bombs cant colide with players that are on the same spot when they are planted
@@ -74,10 +75,10 @@ remotesync func setup_explosion(bomb):
 
 	emit_signal("exploded", bomb)
 
-	# print("power ", bomb.stat_power)
-	# print("max_explosion_length ", explosion.max_explosion_length)
+	# # # print("power ", bomb.stat_power)
+	# # # print("max_explosion_length ", explosion.max_explosion_length)
 
-	# print("Plating explosion at " + str(grid_pos))
+	# # # print("Plating explosion at " + str(grid_pos))
 	# No need to set network master to explosion, will be owned by server by default
 	# self.add_child(explosion)
 	get_node("/root/World/Explosions").add_child(explosion)
@@ -86,7 +87,7 @@ remotesync func setup_explosion(bomb):
 func _ready():
 	add_to_group("bombs")
 	puppet_pos = position
-	get_grid_position(position)
+	update_grid_position(position)
 
 	var players = get_tree().get_nodes_in_group("players")
 	for player in players:
@@ -96,53 +97,60 @@ func _ready():
 
 
 func bounce():
-	target_grid_position = Vector2(self.grid_position.x + 1, self.grid_position.y)
+	# get_grid_position(position)
+
+	# var direction_table = {
+	# 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
+	# }
+
+	# var abs_x = abs(launch_direction.x)
+	# var abs_y = abs(launch_direction.y)
+	# var direction = max(abs_x, abs_y)
+
+	# if direction == abs_x:
+	# 	str_direction = "right"
+	# 	if launch_direction.x < 0:
+	# 		str_direction = "left"
+	# else:
+	# 	str_direction = "up"
+	# 	if launch_direction.y > 0:
+	# 		str_direction = "down"
+
+	# How far the bomb is thrown
+	# var distance = 1
+	# var direction_table_vec = direction_table[str_direction] * distance
+	# target_grid_position = Vector2(grid_position.x, grid_position.y) + direction_table_vec
+
+	# target_grid_position = Vector2(self.grid_position.x + 1, self.grid_position.y)
+	# target_grid_position += Vector2(1, 0)
+
+	target_grid_position += launch_direction
 	var target_x = (target_grid_position.x * 32) + 16
 	var target_y = (target_grid_position.y * 32) + 16
 	target_position = Vector2(target_x, target_y)
 
+	# # print(direction, " ", str_direction, " ", launch_direction)
+	# # print("target_grid_position ", target_grid_position)
+	# # print("grid_position ", grid_position)
 	# Plays a bounce sound
 	var bounce_sound = preload("res://sounds/bounce.ogg")
 	$AudioStreamPlayer2D.stream = bounce_sound
 	$AudioStreamPlayer2D.play()
+	launch(target_grid_position)
 
-	launch(target_position)
+	# launch(Vector2(position.x + 32, position.y))
 
 
 func landed():
 	paused_set(false)
 
-	# var LayerTilemap = 1
-	# var LayerRocks = 1 << 1
-	# var LayerFire = 1 << 2
-	# var LayerBombs = 1 << 3
-	# var LayerItems = 1 << 4
-	# var LayerPlayers = 1 << 5
-	# # # | LayerItems | LayerPlayers  | LayerBombs
-	# # var BounceMask = LayerTilemap | LayerRocks | LayerBombs | LayerPlayers
-	# # var collision_mask = BounceMask
-
-	# self.collision_mask = LayerBombs
-	# self.collision_layer = (
-	# 	LayerBombs
-	# 	| LayerPlayers
-	# 	| LayerFire
-	# 	| LayerTilemap
-	# 	| LayerRocks
-	# 	| LayerItems
-	# )
-
 
 func throw(grid_target):
-	target_grid_position = grid_target
-	var target_x = (target_grid_position.x * 32) + 16
-	var target_y = (target_grid_position.y * 32) + 16
-	target_position = Vector2(target_x, target_y)
-	launch(target_position)
+	launch(grid_target)
 
 	# Plays a go sound
-	var bounce_sound = preload("res://sounds/items/go.ogg")
-	$AudioStreamPlayer2D.stream = bounce_sound
+	var throw_sound = preload("res://sounds/items/go.ogg")
+	$AudioStreamPlayer2D.stream = throw_sound
 	$AudioStreamPlayer2D.play()
 
 
@@ -158,7 +166,7 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 	if displacement.y > arc_height:
 		var time_up = sqrt(-2 * arc_height / float(gravity))
 		var time_down = sqrt(2 * (displacement.y - arc_height) / float(gravity))
-		print("time %s" % (time_up + time_down))
+		# # print("time %s" % (time_up + time_down))
 
 		arc_velocity.y = -sqrt(-2 * gravity * arc_height)
 		arc_velocity.x = displacement.x / float(time_up + time_down)
@@ -166,91 +174,107 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 	return arc_velocity
 
 
-func launch(launch_to):
-	print("launching to ", launch_to)
+func launch(grid_target):
+	# THe position on the grid we want to reach
+	target_grid_position = grid_target
+
+	# THe coords we want to reach
+	var target_x = (target_grid_position.x * 32) + 16
+	var target_y = (target_grid_position.y * 32) + 16
+	target_position = Vector2(target_x, target_y)
+
+	print("target_grid_position %s" % target_grid_position)
+	print("target_position %s" % target_position)
+	print("position %s" % position)
+	print("global_position %s" % global_position)
+	print("grid_position %s" % grid_position)
+
+	# Setup animations
 	flying = true
 	paused_set(true)
 	paused = true
 
-	# Remove all conflicts
-	# self.collision_mask = 0
-	# self.collision_layer = 0
+	launch_direction = (Vector2(int(target_position.x), int(target_position.y)) - Vector2(int(global_position.x), int(global_position.y))).normalized()
 
-	# var direction = (launch_to - position).normalized()
-	# make_bounce_bottom(launch_to)
-	# if direction.x < 0: # left
-	#     $Sprite.rotation_degrees = -135
-	# original_rotation = $Sprite.rotation
+	print("launch_direction %s" % launch_direction)
+
+	var direction_table = {
+		"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
+	}
+
+	var abs_x = abs(launch_direction.x)
+	var abs_y = abs(launch_direction.y)
+	var direction = max(abs_x, abs_y)
+
+	if direction == abs_x:
+		str_direction = "right"
+		if launch_direction.x < 0:
+			str_direction = "left"
+	else:
+		str_direction = "up"
+		if launch_direction.y > 0:
+			str_direction = "down"
+
+	# How far the bomb is thrown
+	# var distance = 1
+	# var direction_table_vec = direction_table[str_direction] * distance
+	launch_direction = direction_table[str_direction]
 
 	# calculate arc_height based on distance
-	var distance = abs(launch_to.x - position.x)
+	var distance = abs(target_position.x - position.x)
 	var max_height = (distance / screen_size.x) * screen_size.y * 0.4
+	# - max_height * 0.5
+	var arc_height = target_position.y - global_position.y * 1.1
 
-	var arc_height = launch_to.y - global_position.y - max_height
+	print("max_height %s " % max_height)
+	print("arc_height %s " % arc_height)
 	arc_height = min(arc_height, -max_height)
-	print("height %s" % arc_height)
+	print("height %s " % arc_height)
 
-	velocity = calculate_arc_velocity(global_position, launch_to, arc_height, GRAVITY)
+	var launch_velocity = calculate_arc_velocity(
+		global_position, target_position, arc_height, GRAVITY
+	)
+
+	velocity = launch_velocity
 	print("velocity %s" % velocity)
-
-
-# func make_bounce_bottom(launch_to):
-# 	return
-# 	# Create a new Shape
-# 	var shape = RectangleShape2D.new()
-# 	shape.set_extents(Vector2(128, 16))
-
-# 	# Create a new collisionShape
-# 	var collision_shape = CollisionShape2D.new()
-# 	# Add the shape we created before to this collision shape
-# 	collision_shape.set_shape(shape)
-
-# 	# Create the StaticBody2D
-# 	var static_body = StaticBody2D.new()
-# 	static_body.collision_mask = (1 << 6)
-# 	static_body.collision_layer = (1 << 6)
-# 	# Add the CollisionShape we've created as child of the StaticBody
-# 	static_body.add_child(collision_shape)
-# 	# Use the drawn line's middle as the position of our StaticBody
-# 	var static_body_position = Vector2(launch_to.x, launch_to.y + 32)
-# 	# Set the StaticBody's position to the middle of the drawn line
-# 	static_body.set_position(static_body_position)
-# 	# Add the StaticBody as a child of the StaticBody
-# 	# add_child(static_body)
-# 	get_node("/root/World/TileMap").add_child(static_body)
 
 
 func _physics_process(_delta):
 	if flying:
 		velocity.y += GRAVITY * _delta
 		var collision = move_and_collide(velocity * _delta)
-		get_grid_position(position)
 
-		# if position.y < 1000:
-			# var l = clamp(position.x, 0, target_position.x)
-			# print(" cl %s " % l, " x %s " % position.y, " tx %s " % target_position.x)
-			
-			# var ll = clamp(position.y, 0, target_position.y)
-			# print(" cl %s " % ll, " y %s " % position.y, " ty %s " % target_position.y)
+		if position.x < 0:
+			position.x = screen_size.x
+			target_position.x = screen_size.x - 16
+			target_grid_position = get_grid_position_for(target_position)
+		elif position.x > screen_size.x:
+			position.x = 0
+			target_position.x = 16
+			target_grid_position = get_grid_position_for(target_position)
 
-			# # print("min ", min(0, target_position.x))
-			# # print("min ", min(0, target_position.y))
+		if position.y < 0:
+			position.y = screen_size.y
+			target_position.y = screen_size.y - 16
+			target_grid_position = get_grid_position_for(target_position)
+		elif position.y > screen_size.y:
+			target_position.y = 16
+			target_grid_position = get_grid_position_for(target_position)
+			position.y = 0
 
-		var direction = velocity.normalized()
-		if direction.x < 0:  # left
+		if velocity.x < 0:  # left
 			position.x = clamp(position.x, target_position.x, position.x)
 
-		if direction.x > 0:  # right
+		if velocity.x > 0:  # right
 			position.x = clamp(position.x, 0, target_position.x)
 
-		if direction.y < 0:  # up
+		# if velocity.y < 0:  # up
+		# 	position.y = clamp(position.y, 0, target_position.y)
+
+		if velocity.y > 0:  # down
 			position.y = clamp(position.y, 0, target_position.y)
 
-		if direction.y > 0:  # down
-			position.y = clamp(position.y, 0, target_position.y)
-
-		# position.x = clamp(position.x, max(0, target_position.x), min(position.x, target_position.x))
-		# position.y = clamp(position.y, max(0, target_position.y), min(position.y, target_position.y))
+		update_grid_position(position)
 
 		if collision && collision.collider || (position == target_position):
 			flying = false
@@ -268,11 +292,15 @@ func _physics_process(_delta):
 			# var last_global_position = Vector2(new_global_position.x - 16, new_global_position.y - 16)
 			var space_state = get_world_2d().direct_space_state
 
-			var result = space_state.intersect_ray(
-				self.global_position, self.global_position, [self], collision_mask, true, true
+			var result = space_state.intersect_point(
+				self.global_position, 1, [self], collision_mask, true, true
 			)
 
-			if result && result.collider:
+			if !result.empty():
+				var collider = result[0].collider
+				if collider && collider.has_method("dizzy"):
+					collider.dizzy()
+									
 				bounce()
 			else:
 				landed()
@@ -283,16 +311,21 @@ func _physics_process(_delta):
 			collision_exceptions.erase(player)
 
 
-func get_grid_position(position):
+func get_grid_position_for(position):
 	var grid_size = 32
 	var grid_x = floor(position.x / grid_size)
 	var grid_y = floor(position.y / grid_size)
-	grid_position = Vector2(grid_x, grid_y)
+	var new_grid_position = Vector2(grid_x, grid_y)
+	return new_grid_position
+
+
+func update_grid_position(position):
+	grid_position = get_grid_position_for(position)
 	return grid_position
 
 
 func explode():
-	# print("explode bomb ", is_network_master())
+	# # # print("explode bomb ", is_network_master())
 	if exploded:
 		return
 
@@ -311,10 +344,10 @@ func explode():
 
 # # Use a signal so we can be done with the animation instead of guessing
 # func _on_AnimatedSprite_animation_finished():
-# 	# print(self)
+# 	# # # print(self)
 # 	var sprite = $AnimatedSprite
 # 	var animation = sprite.animation
-# 	# print("Finished animation ", animation)
+# 	# # # print("Finished animation ", animation)
 # 	if animation == "explode":
 # 		sprite.visible = false
 
