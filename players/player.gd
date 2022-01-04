@@ -52,6 +52,8 @@ var frozen_animation = false
 
 # The player's current bomb power
 # var max_explosion_length = 1;
+# The player's current rollerskates
+var stat_skates = 1
 # The player's current bomb power
 var stat_power = 1
 # Bombs that the player has

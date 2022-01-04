@@ -1,6 +1,6 @@
 extends Area2D
 
-export(String, "power", "power_glove", "bomb", "bomb_kicker") var item_type
+export(String, "power", "power_glove", "bomb", "bomb_kicker", "rollerskate") var item_type
 export(String, "pickup_special", "pickup", "pickup_powerglove") var pickup_sound
 
 var picked = false
