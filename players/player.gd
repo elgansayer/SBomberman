@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const MOTION_SPEED = 200.0
-
+const time_has_virus = 5.0
 ## Nodes
 onready var world = get_node("/root/World")
 
@@ -52,6 +52,7 @@ var frozen_animation = false
 
 # The player's current bomb power
 # var max_explosion_length = 1;
+var stat_virus = false
 # The player's current rollerskates
 var stat_skates = 1
 # The player's current bomb power
@@ -499,3 +500,27 @@ func is_trapped():
 
 func get_class():
 	return "Player"
+
+
+func _on_FlashTimer_timeout():
+	if dead:
+		return
+	print("self.self_modulate", self.self_modulate)
+	if $AnimatedSprite.self_modulate == Color(0, 0, 0):
+		$AnimatedSprite.self_modulate = Color(1, 1, 1)
+	else:
+		$AnimatedSprite.self_modulate = Color(0, 0, 0)
+
+func _on_endVirusTimer_timeout():
+	self.stat_virus = false
+	$Timer.stop()
+	$FlashTimer.stop()
+	$AnimatedSprite.self_modulate = Color(1, 1, 1)
+
+func got_virus():
+	$FlashTimer.start()
+	self.stat_virus = true
+	$Timer.connect("timeout", self, "_on_endVirusTimer_timeout")
+	$Timer.set_wait_time(time_has_virus)
+	$Timer.set_one_shot(true)  # Make sure it loops
+	$Timer.start()
