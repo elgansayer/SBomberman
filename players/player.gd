@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-const MOTION_SPEED = 120.0
+const MOTION_SPEED = 200.0
 
 ## Nodes
 onready var world = get_node("/root/World")
 
-onready var screen_size = get_viewport_rect().size
+#
+# onready var screen_size = get_viewport_rect().size
 
 # Position of player in the world on the network
 puppet var puppet_pos = Vector2()
@@ -18,21 +19,24 @@ export var stunned = false
 var current_anim = "standing_down"
 # What is the current direction of the player?
 var current_direction = "down"
+
 # Is the animation flipped?
-var flipped_h = false
-# Current motion of the player
+# var flipped_h = false
+
+# Current motion description of the player
 var current_motion = ""
+
+# Previously bombing
 var prev_bombing = false
+# Previously doing an action
 var prev_action = false
+# Are we using power glove, Do we have a bomb?
 var power_glove_bomb = null
 
 # Track how many bombs planted
 var bomb_index = 0
 # Is the player dead for good?
 var dead = false
-
-var state_machine
-var run_speed = 80
 
 # The player's current bombs
 # var active_bombs = 0
@@ -59,11 +63,8 @@ var stat_bomb_kicker = true
 
 # Position of the player in the world tilemap
 var grid_position = Vector2()
-
-var collision_exceptions = []  # List of collision exceptions (typically bomb just dropped)
-
-# func _ready():
-# 	add_to_group("players")
+# List of collision exceptions (typically bomb just dropped)
+var collision_exceptions = []
 
 
 # Use sync because it will be called everywhere
@@ -146,9 +147,6 @@ func _physics_process(_delta):
 	var is_new_anim = get_animation_name(motion)
 	grid_position = world.get_grid_position(position)
 
-	# if stunned:
-	# 	new_anim = "stunned"
-
 	# Debugging purposes
 	set_player_name(str(str(floor(position.x)) + " " + str(floor(position.y))))
 	set_grid_name(str(str(grid_position.x) + " " + str(grid_position.y)))
@@ -163,20 +161,6 @@ func _physics_process(_delta):
 	if not is_network_master():
 		puppet_pos = position  # To avoid jitter
 
-	if position.x < 0:
-		position.x = screen_size.x
-		return
-	elif position.x > screen_size.x:
-		position.x = 0
-		return
-
-	if position.y < 0:
-		position.y = screen_size.y
-		return
-	elif position.y > screen_size.y:
-		position.y = 0
-		return
-
 
 func can_power_glove():
 	for i in active_bombs.size():
@@ -187,6 +171,8 @@ func can_power_glove():
 
 
 func dizzy():
+	frozen_movement = true
+	frozen_animation = true
 	$AnimationPlayer.play("dizzy")
 	# var dizzy_sound = preload("res://sounds/dizzy.ogg")
 	# $AudioStreamPlayer2D.stream = dizzy_sound
@@ -203,11 +189,7 @@ func pglove_throw():
 	bomb.set_network_position(bomb_global_pos)
 	bomb.position = bomb_global_pos
 
-	# bomb.velocity = Vector2(-100, -100)
-	# bomb.move_and_collide(Vector2(-100, -100))
-	var direction_table = {
-		"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
-	}
+	var direction_table = world.direction_table
 
 	# How far the bomb is thrown
 	var distance = 3
@@ -271,12 +253,6 @@ func update_z_index():
 		"right": 0,
 	}
 
-	# if current_direction == "up":
-	# 	power_glove_bomb.z_index = -1
-	# 	power_glove_bomb.z_as_relative = false
-
-	# power_glove_bomb.z_index = 0
-	# power_glove_bomb.z_as_relative = false
 	self.z_index = z_index_table[current_direction]
 
 
@@ -435,6 +411,8 @@ func get_animation_name(motion):
 		current_motion = "walk"
 	else:
 		current_motion = "standing"
+
+		# Check if we are trapped
 		if is_trapped():
 			current_anim = "trapped"
 			current_direction = "down"
@@ -490,13 +468,13 @@ func set_player_name(new_name):
 
 
 func _ready():
-	state_machine = $AnimationTree.get("parameters/playback")
 	add_to_group("players")
 	stunned = false
 	puppet_pos = position
 	grid_position = world.get_grid_position(position)
 
 
+# Is the player trapped?
 func is_trapped():
 	grid_position = world.get_grid_position(position)
 	var space_state = get_world_2d().direct_space_state
@@ -513,6 +491,7 @@ func is_trapped():
 		if !result.empty():
 			trapped += 1
 
+	# Trapped on all 4 sides
 	return trapped == 4
 
 

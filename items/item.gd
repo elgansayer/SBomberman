@@ -14,6 +14,10 @@ func _ready():
 	correct_sound = load(sound_path)
 
 
+func _on_Timer_timeout():
+	$AnimationPlayer.play("spin")
+
+
 func play_sound():
 	if !$AudioStreamPlayer2D.is_playing():
 		$AudioStreamPlayer2D.stream = correct_sound

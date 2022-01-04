@@ -26,10 +26,15 @@ var flying = false
 # Is the bomb paused?
 var paused setget paused_set, paused_get
 
+# Target grid to move to vector
 var target_grid_position = Vector2.ZERO
+# Target move to vector
 var target_position = Vector2.ZERO
+# Vector of actual direction
 var velocity = Vector2.ZERO
+# Vector of direction
 var launch_direction = Vector2.ZERO
+# Description of direction
 var str_direction = ""
 # Position of the bomb in the world tilemap
 var grid_position = Vector2()
@@ -73,12 +78,7 @@ remotesync func setup_explosion(bomb):
 
 	emit_signal("exploded", bomb)
 
-	# # # print("power ", bomb.stat_power)
-	# # # print("max_explosion_length ", explosion.max_explosion_length)
-
-	# # # print("Plating explosion at " + str(grid_pos))
 	# No need to set network master to explosion, will be owned by server by default
-	# self.add_child(explosion)
 	get_node("/root/World/Explosions").add_child(explosion)
 
 
@@ -267,19 +267,6 @@ func explode():
 		return
 
 	rpc("setup_explosion", self)
-
-
-# func done():
-# 	queue_free()
-
-# # Use a signal so we can be done with the animation instead of guessing
-# func _on_AnimatedSprite_animation_finished():
-# 	# # # print(self)
-# 	var sprite = $AnimatedSprite
-# 	var animation = sprite.animation
-# 	# # # print("Finished animation ", animation)
-# 	if animation == "explode":
-# 		sprite.visible = false
 
 
 func get_class():
