@@ -3,6 +3,12 @@ extends Node2D
 export(int) var grid_size = 32
 export(int) var half_grid = grid_size / 2
 
+# Time the map lasts for
+export(int) var time = 60 * 3
+
+# Time the map lasts for
+export(int) var time_left = time
+
 export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }
@@ -14,6 +20,7 @@ var font
 func snap_position_to_grid(position_vec):
 	var grid_pos = get_center_position_from_grid(position_vec)
 	return get_position_from_grid(grid_pos)
+
 
 # Get a position from a grid position and add half grid to become
 # center of the grid square.
@@ -76,3 +83,22 @@ func _draw():
 				posstry,
 				colour
 			)
+
+
+func _on_ClockTimer_timeout():
+	time_left = time_left - 1
+
+	# if time_left <= 0:
+	# 	get_node("/root/Game").visible = False
+	# 	get_node("/root/Game").enabled = False
+	# 	get_node("/root/Game").call("_end_game")
+
+	var minutes = time_left / 60
+	var seconds = time_left % 60
+
+	if minutes < 10:
+		minutes = "0" + str(minutes)
+	if seconds < 10:
+		seconds = "0" + str(seconds)
+
+	$InfoBoard.get_node("ClockLabel").set_text(str(minutes) + ":" + str(seconds))
