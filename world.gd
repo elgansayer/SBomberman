@@ -13,8 +13,19 @@ export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }
 
+export var group_players = "players"
+export var group_bombs = "bombs"
+export var group_tirras = "tirras"
+
 # Called when the node enters the scene tree for the first time.
 var font
+
+
+func get_group_node_at(grid_position, group):
+	var nodes = get_tree().get_nodes_in_group(group)
+	for node in nodes:
+		if node.grid_position == grid_position:
+			return node
 
 
 func snap_position_to_grid(position_vec):

@@ -1,7 +1,7 @@
 extends Area2D
 
-export(String, "power", "power_glove", "bomb", "bomb_kicker", "rollerskate", "virus") var item_type
-export(String, "pickup_special", "pickup", "pickup_powerglove", "got_virus") var pickup_sound
+export(String, "power", "power_glove", "bomb", "bomb_kicker", "rollerskate", "virus", "egg") var item_type
+export(String, "pickup_special", "pickup", "pickup_powerglove", "got_virus", "pickup_egg") var pickup_sound
 
 var picked = false
 var correct_sound
@@ -24,12 +24,14 @@ func play_sound():
 		$AudioStreamPlayer2D.play()
 
 
-func award_player(player):
-	player.stat_power = player.stat_power + 1
-	player.stat_bombs = player.stat_bombs + 1
+func award_player(_player):
+	pass
+	# player.stat_power = player.stat_power + 1
+	# player.stat_bombs = player.stat_bombs + 1
 
 
 func _on_Node2D_body_entered(body: Node):
+
 	if body.get_class() == "Player":
 		if picked:
 			return

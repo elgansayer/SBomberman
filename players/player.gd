@@ -1,30 +1,34 @@
-extends KinematicBody2D
+extends "res://scripts/throwable.gd"
 
 const MOTION_SPEED = 200.0
 const time_has_virus = 5.0
 ## Nodes
-onready var world = get_node("/root/World")
 
 #
 # onready var screen_size = get_viewport_rect().size
 
 # Position of player in the world on the network
-puppet var puppet_pos = Vector2()
+# puppet var puppet_pos = Vector2()
 # Motion of player in the world on the network
-puppet var puppet_motion = Vector2()
+# puppet var puppet_motion = Vector2()
 
 export var stunned = false
 
 # What is the current animationm
-var current_anim = "standing_down"
+var current_animation = "standing_down"
+# The animation to play on the tirra
+# var current_tirra_animation = "standing_down"
 # What is the current direction of the player?
-var current_direction = "down"
-
-# Is the animation flipped?
-# var flipped_h = false
-
+var current_animation_direction = "down"
 # Current motion description of the player
-var current_motion = ""
+var current_animation_motion = "walk"
+
+# The tirra we are riding
+var current_tirra
+var riding = false
+
+var process_got_egg = false
+var egg_position = Vector2.ZERO
 
 # Previously bombing
 var prev_bombing = false
@@ -65,7 +69,7 @@ var stat_power_glove = true
 var stat_bomb_kicker = true
 
 # Position of the player in the world tilemap
-var grid_position = Vector2()
+# var grid_position = Vector2()
 # List of collision exceptions (typically bomb just dropped)
 var collision_exceptions = []
 
@@ -109,10 +113,10 @@ func update_input():
 		var bombing = Input.is_action_pressed("set_bomb")
 		var action = Input.is_action_pressed("action")
 
-		if stunned:
-			action = false
-			bombing = false
-			motion = Vector2()
+		# if stunned:
+		# 	action = false
+		# 	bombing = false
+		# 	motion = Vector2()
 
 		if bombing:
 			try_plant_bomb()
@@ -134,35 +138,72 @@ func update_input():
 
 
 func _physics_process(_delta):
+	# print("_physics_process player")
+
 	var motion = Vector2()
 
 	update_z_index()
-
-	# Can we move?
-	if !frozen_movement:
-		motion = update_input()
-
-	# If we cannot update the animation
-	if frozen_animation:
-		return
-
-	# Update the animation
-	var is_new_anim = get_animation_name(motion)
-	grid_position = world.get_grid_position(position)
 
 	# Debugging purposes
 	set_player_name(str(str(floor(position.x)) + " " + str(floor(position.y))))
 	set_grid_name(str(str(grid_position.x) + " " + str(grid_position.y)))
 
-	if is_new_anim:
-		var animatedSprite = get_node("AnimatedSprite")
-		# animatedSprite.flip_h = flipped_h
-		animatedSprite.play(current_anim)
+	if process_got_egg:
+		handle_got_egg()
 
-	# Use move_and_slide
-	move_and_slide(motion * MOTION_SPEED)
-	if not is_network_master():
-		puppet_pos = position  # To avoid jitter
+	# Can we move?
+	if !frozen_movement:
+		motion = update_input()
+
+		# Use move_and_slide
+		move_and_slide(motion * MOTION_SPEED)
+		if not is_network_master():
+			puppet_pos = position  # To avoid jitter
+
+		# Update the grid position
+		grid_position = world.get_grid_position(position)
+
+	# If we cannot update the animation
+	if !frozen_animation:
+		update_animation(motion)
+
+
+func update_animation(motion):
+	# Update the animation
+	var anim_data = get_animation_dictionary(motion)
+	var player_animtion = anim_data["animation"]
+
+	var is_new_anim = player_animtion != current_animation
+
+	# This is a new animation
+	current_animation = player_animtion
+	current_animation_direction = anim_data["direction"]
+	current_animation_motion = anim_data["motion"]
+	# current_tirra_animation = anim_data["animation"]
+
+	# If we have a tirra update it's animation
+	if current_tirra:
+		var tirra_animation = anim_data["tirra"]
+		current_tirra.update_animation(tirra_animation)
+		update_position_on_tirra()
+
+	if !is_new_anim:
+		return
+
+	# Animate the sprite
+	var animatedSprite = get_node("AnimatedSprite")
+	animatedSprite.play(current_animation)
+
+
+func update_position_on_tirra():
+	if current_animation_direction == "up":
+		$AnimatedSprite.position = Vector2(0, -20)
+	elif current_animation_direction == "down":
+		$AnimatedSprite.position = Vector2(0, -20)
+	elif current_animation_direction == "left":
+		$AnimatedSprite.position = Vector2(13, -20)
+	elif current_animation_direction == "right":
+		$AnimatedSprite.position = Vector2(-13, -20)
 
 
 func can_power_glove():
@@ -196,11 +237,11 @@ func pglove_throw():
 
 	# How far the bomb is thrown
 	var distance = 3
-	var direction_table_vec = direction_table[current_direction] * distance
+	var direction_table_vec = direction_table[current_animation_direction] * distance
 	var target_grid_position = Vector2(grid_position.x, grid_position.y) + direction_table_vec
 	bomb.throw(target_grid_position)
 
-	var animation = "pglove_pickup_" + current_direction
+	var animation = "pglove_pickup_" + current_animation_direction
 	$AnimatedSprite.play(animation, true)
 	$AnimatedSprite.speed_scale = 2.0
 	power_glove_bomb = null
@@ -224,7 +265,7 @@ func do_power_glove():
 
 	# Stop the bomb from epxloding, change its animation
 	bomb.paused = true
-	var animation = "pglove_pickup_" + current_direction
+	var animation = "pglove_pickup_" + current_animation_direction
 
 	# Move the bomb per frame
 	$AnimatedSprite.connect("frame_changed", self, "_on_PGlove_frame_changed")
@@ -249,6 +290,18 @@ func _on_PGlove_animation_finished():
 
 
 func update_z_index():
+	if riding:
+		var z_index_table = {
+			"up": 1,
+			"down": 0,
+			"left": 1,
+			"right": 1,
+		}
+
+		self.z_index = z_index_table[current_animation_direction]
+		return
+
+	# For powerglove
 	var z_index_table = {
 		"up": 1,
 		"down": 0,
@@ -256,7 +309,7 @@ func update_z_index():
 		"right": 0,
 	}
 
-	self.z_index = z_index_table[current_direction]
+	self.z_index = z_index_table[current_animation_direction]
 
 
 func _on_PGlove_frame_changed():
@@ -339,16 +392,16 @@ func _on_PGlove_frame_changed():
 	}
 
 	var frame = $AnimatedSprite.frame
-	var bomb_dict = bomb_position_table[current_direction][frame]
+	var bomb_dict = bomb_position_table[current_animation_direction][frame]
 	var bomb_position = bomb_dict["pos"]
 	# var bomb_scale = bomb_dict["scale"]
 
-	# # print(current_direction)
+	# # print(current_animation_direction)
 	# # print(frame)
 	# # print(bomb_position)
 	# # print(power_glove_bomb.z_index)
 
-	# if current_direction == "up":
+	# if current_animation_direction == "up":
 	# 	power_glove_bomb.z_index = -1
 	power_glove_bomb.z_as_relative = false
 
@@ -370,8 +423,12 @@ func _on_PGlove_frame_changed():
 # Try and do an action
 # return true if the player should not move
 func try_action():
+	if riding && current_tirra:
+		current_tirra.action(self)
+		return false
+
 	if prev_action:
-		return
+		return false
 
 	if stat_power_glove:
 		return do_power_glove()
@@ -409,35 +466,89 @@ func try_plant_bomb():
 	rpc("setup_bomb", bomb_pos, bomb_name, self, get_tree().get_network_unique_id())
 
 
-func get_animation_name(motion):
-	if motion.x != 0 || motion.y != 0:
-		current_motion = "walk"
-	else:
-		current_motion = "standing"
+func get_animation_dictionary(motion):
+	var animation_motion = get_animation_motion(motion)
+	var animation_direction = get_animation_direction(motion)
+	var anim_prefix = get_animation_prefix()
+	var animation_override = ""
 
-		# Check if we are trapped
-		if is_trapped():
-			current_anim = "trapped"
-			current_direction = "down"
-			return current_anim
+	if animation_direction == "":
+		animation_direction = current_animation_direction
+
+	if flying:
+		animation_override = "flying"
+		anim_prefix = ""
+	elif riding:
+		animation_override = "ride"
+		anim_prefix = ""
+	# Check if we are trapped
+	elif is_trapped():
+		animation_override = "trapped"
+		animation_direction = ""
+		anim_prefix = ""
+
+	# var new_anim = ""
+	# if animation_override != "":
+
+	# else:
+	# 	new_anim = anim_prefix + animation_motion + "_" + animation_direction
+	var final_animation = animation_motion
+	if animation_override != "":
+		final_animation = animation_override
+
+	var splitter = ""
+	if animation_direction != "":
+		splitter = "_"
+
+	var new_animation = anim_prefix + final_animation + splitter + animation_direction
+	var tirra_animation = anim_prefix + animation_motion + splitter + animation_direction
+
+	# var new_anim = anim_prefix + animation_motion + "_" + animation_direction
+	# var is_new_anim = current_animation != new_anim
+
+	return {
+		"animation": new_animation,
+		"tirra": tirra_animation,
+		"direction": animation_direction,
+		"motion": animation_motion,
+		# current_tirra_animation = current_animation,
+	}
+
+	# current_animation = new_anim
+	# current_animation_direction = animation_direction
+	# current_animation_motion = animation_motion
+	# current_tirra_animation = current_animation
+
+	# return is_new_anim
+
+
+func get_animation_motion(motion):
+	if motion.x != 0 || motion.y != 0:
+		return "walk"
+	else:
+		return "standing"
+
+
+func get_animation_prefix():
+	if in_power_glove:
+		return "pglove_"
+
+	return ""
+
+
+func get_animation_direction(motion):
+	var direction = ""
 
 	if motion.y < 0:
-		current_direction = "up"
+		direction = "up"
 	elif motion.y > 0:
-		current_direction = "down"
+		direction = "down"
 	elif motion.x < 0:
-		current_direction = "left"
+		direction = "left"
 	elif motion.x > 0:
-		current_direction = "right"
+		direction = "right"
 
-	var animn_prefix = ""
-	if in_power_glove:
-		animn_prefix = "pglove_"
-
-	var new_anim = animn_prefix + current_motion + "_" + current_direction
-	var is_new_anim = current_anim != new_anim
-	current_anim = new_anim
-	return is_new_anim
+	return direction
 
 
 puppet func killed():
@@ -505,17 +616,19 @@ func get_class():
 func _on_FlashTimer_timeout():
 	if dead:
 		return
-	print("self.self_modulate", self.self_modulate)
+	# print("self.self_modulate", self.self_modulate)
 	if $AnimatedSprite.self_modulate == Color(0, 0, 0):
 		$AnimatedSprite.self_modulate = Color(1, 1, 1)
 	else:
 		$AnimatedSprite.self_modulate = Color(0, 0, 0)
+
 
 func _on_endVirusTimer_timeout():
 	self.stat_virus = false
 	$Timer.stop()
 	$FlashTimer.stop()
 	$AnimatedSprite.self_modulate = Color(1, 1, 1)
+
 
 func got_virus():
 	$FlashTimer.start()
@@ -524,3 +637,58 @@ func got_virus():
 	$Timer.set_wait_time(time_has_virus)
 	$Timer.set_one_shot(true)  # Make sure it loops
 	$Timer.start()
+
+
+func got_egg(egg_grid_position):
+	process_got_egg = true
+	egg_position = egg_grid_position
+	
+	current_tirra = world.get_group_node_at(egg_grid_position, world.group_tirras)
+
+func handle_got_egg():
+	process_got_egg = false
+	$shape.disabled = true
+
+	frozen_movement = true
+
+	var jump_gravity = 1000
+	var custom_height = 1.15
+	self.launch(egg_position, custom_height, jump_gravity)
+
+
+func landed():
+
+	# landed from got flying
+	frozen_movement = false
+	frozen_animation = false
+
+	$shape.disabled = false
+
+	if !current_tirra:
+		return
+	
+	# player physics is disabled as we use the tirra physics
+	# $shape.set_deferred("disabled", false)
+
+	attach_to_tirra()
+
+
+func attach_to_tirra():
+	
+	riding = true
+
+	# tirra.set_name(tirra_name)  # Ensure unique name for the tirra
+
+	# tirra.stat_power = player.stat_power
+	# tirra.position = tirra_pos
+	# tirra.from_player = by_who
+	# tirra.player_owner = player
+	# player.active_tirras.append(tirra)
+
+	current_tirra.z_as_relative = false
+	current_tirra.visibility = false
+	var new_parent = current_tirra.get_parent()
+	new_parent.remove_child(current_tirra)
+
+	# No need to set network master to bomb, will be owned by server by default
+	# self.add_child(current_tirra)

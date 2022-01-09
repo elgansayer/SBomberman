@@ -11,7 +11,7 @@ const MAX_PEERS = 12
 var peer = null
 
 # Name for my player.
-var player_name = "The Warrior"
+var player_name = "Bomerman"
 
 # Names for remote players in id:name format.
 var players = {}
@@ -61,8 +61,6 @@ func _connected_fail():
 
 
 # Lobby management functions.
-
-
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
 	print(id)
