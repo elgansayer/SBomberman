@@ -4,8 +4,9 @@ export(String, "pickup_egg") var pickup_sound
 
 var picked = false
 var correct_sound
-
+var current_sprite
 var current_animation = "idle"
+var current_tirra_level = 1
 
 ## Nodes
 onready var world = get_node("/root/World")
@@ -23,10 +24,39 @@ func grid_position_get():
 
 
 func _ready():
-	# $AnimatedSprite.play(item_type)
+	## Set up the tirra as a baby
+	current_sprite = $AnimatedSprite1
+
+	# current_sprite.play(item_type)
 
 	var sound_path = "res://sounds/items/" + pickup_sound + ".ogg"
 	correct_sound = load(sound_path)
+
+
+func upgrade_tirra():
+	if current_tirra_level >= 3:
+		return
+
+	current_tirra_level = current_tirra_level + 1
+
+	if current_tirra_level == 1:
+		## Set up the tirra as a baby
+		current_sprite = $AnimatedSprite1
+		$AnimatedSprite1.visible = true
+		$AnimatedSprite2.visible = false
+		$AnimatedSprite3.visible = false
+	elif current_tirra_level == 2:
+		## Set up the tirra as a teen
+		current_sprite = $AnimatedSprite2
+		$AnimatedSprite1.visible = false
+		$AnimatedSprite2.visible = true
+		$AnimatedSprite3.visible = false
+	else:
+		## Set up the tirra as a monster
+		current_sprite = $AnimatedSprite3
+		$AnimatedSprite1.visible = false
+		$AnimatedSprite2.visible = false
+		$AnimatedSprite3.visible = true
 
 
 func kick_bomb(player):
@@ -45,8 +75,8 @@ func kick_bomb(player):
 func action(player):
 	var animation = "action_" + player.current_animation_direction
 	# update_animation(animation)
-	$AnimatedSprite.frame = 0
-	$AnimatedSprite.play(animation)
+	current_sprite.frame = 0
+	current_sprite.play(animation)
 	kick_bomb(player)
 
 
@@ -55,12 +85,15 @@ func update_animation(animation_name):
 		return
 
 	current_animation = animation_name
-	# if !$AnimatedSprite.is_playing():
-	$AnimatedSprite.play(animation_name)
+	# if !current_sprite.is_playing():
+	current_sprite.play(animation_name)
 
 
 func award_player(player):
-	player.got_egg(grid_position)
+	# if player.riding:
+	# 	return
+	var tirra_grid_position = self.grid_position
+	player.got_egg(tirra_grid_position)
 
 
 # func _ond_Tirasdra_body_entered(body: Node):

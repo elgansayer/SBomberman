@@ -640,10 +640,16 @@ func got_virus():
 
 
 func got_egg(egg_grid_position):
+	# Just upgreade if we are already riding
+	if riding && current_tirra:
+		current_tirra.upgrade_tirra()
+		return
+
 	process_got_egg = true
 	egg_position = egg_grid_position
-	
+
 	current_tirra = world.get_group_node_at(egg_grid_position, world.group_tirras)
+
 
 func handle_got_egg():
 	process_got_egg = false
@@ -657,7 +663,6 @@ func handle_got_egg():
 
 
 func landed():
-
 	# landed from got flying
 	frozen_movement = false
 	frozen_animation = false
@@ -666,7 +671,7 @@ func landed():
 
 	if !current_tirra:
 		return
-	
+
 	# player physics is disabled as we use the tirra physics
 	# $shape.set_deferred("disabled", false)
 
@@ -674,7 +679,6 @@ func landed():
 
 
 func attach_to_tirra():
-	
 	riding = true
 
 	# tirra.set_name(tirra_name)  # Ensure unique name for the tirra
@@ -684,11 +688,11 @@ func attach_to_tirra():
 	# tirra.from_player = by_who
 	# tirra.player_owner = player
 	# player.active_tirras.append(tirra)
-
+	current_tirra.position = Vector2(0, 0)
 	current_tirra.z_as_relative = false
-	current_tirra.visibility = false
+	# current_tirra.visibility = false
 	var new_parent = current_tirra.get_parent()
 	new_parent.remove_child(current_tirra)
 
 	# No need to set network master to bomb, will be owned by server by default
-	# self.add_child(current_tirra)
+	self.add_child(current_tirra)
