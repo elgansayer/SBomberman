@@ -11,7 +11,7 @@
 [ext_resource path="res://items/bomb.tscn" type="PackedScene" id=9]
 [ext_resource path="res://stage/rock.png" type="Texture" id=10]
 [ext_resource path="res://world.gd" type="Script" id=11]
-[ext_resource path="res://tirra/tirra.tscn" type="PackedScene" id=12]
+[ext_resource path="res://tirra/blue_tirra_0.tscn" type="PackedScene" id=12]
 [ext_resource path="res://items/virus.tscn" type="PackedScene" id=13]
 [ext_resource path="res://items/egg.tscn" type="PackedScene" id=14]
 [ext_resource path="res://players/black bomberman/head/frame31.png" type="Texture" id=20]

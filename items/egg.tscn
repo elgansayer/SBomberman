@@ -22,9 +22,9 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "explode",
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "wobble",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -32,9 +32,9 @@ animations = [ {
 "name": "egg",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "wobble",
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "explode",
 "speed": 5.0
 } ]
 
@@ -202,7 +202,7 @@ tracks/3/path = NodePath("CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -322,8 +322,7 @@ visible = false
 position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-animation = "egg"
-playing = true
+animation = "explode"
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -342,12 +341,9 @@ anims/spawn = SubResource( 3 )
 anims/spin = SubResource( 7 )
 
 [node name="ExplodeSmoke" type="AnimatedSprite" parent="."]
-visible = false
-position = Vector2( 0, -30 )
+position = Vector2( 0, -20 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 5 )
-frame = 4
-playing = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

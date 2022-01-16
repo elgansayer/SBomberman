@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://tirra/blue/middle/left/2-walk-left-02.png" type="Texture" id=1]
 [ext_resource path="res://tirra/blue/middle/idle/2-idle-left-02.png" type="Texture" id=2]
@@ -23,7 +23,6 @@
 [ext_resource path="res://tirra/blue/middle/idle/2-stood-idle-01.png" type="Texture" id=21]
 [ext_resource path="res://tirra/tirra.gd" type="Script" id=22]
 [ext_resource path="res://tirra/blue/middle/idle/btr-2-stood-idle-01.png" type="Texture" id=23]
-[ext_resource path="res://tirra/blue/middle/kick down/2-kick-down-01.png" type="Texture" id=24]
 [ext_resource path="res://tirra/blue/middle/idle/2-idle-right-02.png" type="Texture" id=25]
 [ext_resource path="res://sounds/items/pickup_egg.ogg" type="AudioStream" id=26]
 [ext_resource path="res://tirra/blue/middle/kick down/2-kick-down-02.png" type="Texture" id=27]
@@ -60,6 +59,10 @@
 [ext_resource path="res://tirra/blue/small/celebrate/1-celebrate-02.png" type="Texture" id=58]
 [ext_resource path="res://tirra/blue/small/celebrate/1-celebrate-01.png" type="Texture" id=59]
 [ext_resource path="res://tirra/blue/small/celebrate/1-celebrate-03.png" type="Texture" id=60]
+[ext_resource path="res://tirra/blue/small/right/1-walk-right-02.png" type="Texture" id=61]
+[ext_resource path="res://tirra/blue/small/left/1-walk-left-02.png" type="Texture" id=62]
+[ext_resource path="res://tirra/blue/small/right/1-walk-right-01.png" type="Texture" id=63]
+[ext_resource path="res://tirra/blue/small/left/1-walk-left-01.png" type="Texture" id=64]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -69,7 +72,7 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 50 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ) ],
-"loop": true,
+"loop": false,
 "name": "explode",
 "speed": 5.0
 }, {
@@ -78,13 +81,13 @@ animations = [ {
 "name": "celebrate",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 64 ), ExtResource( 62 ) ],
 "loop": true,
-"name": "New Anim",
+"name": "walk_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 53 ) ],
-"loop": true,
+"loop": false,
 "name": "standing_right",
 "speed": 5.0
 }, {
@@ -113,24 +116,29 @@ animations = [ {
 "name": "standing_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 40 ) ],
-"loop": true,
+"frames": [ ExtResource( 40 ), ExtResource( 51 ) ],
+"loop": false,
 "name": "action_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 39 ) ],
-"loop": true,
+"frames": [ ExtResource( 39 ), ExtResource( 52 ) ],
+"loop": false,
 "name": "action_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 38 ) ],
-"loop": true,
+"frames": [ ExtResource( 38 ), ExtResource( 61 ) ],
+"loop": false,
 "name": "action_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 37 ) ],
-"loop": true,
+"frames": [ ExtResource( 37 ), ExtResource( 42 ) ],
+"loop": false,
 "name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 53 ), ExtResource( 63 ) ],
+"loop": true,
+"name": "walk_right",
 "speed": 5.0
 } ]
 
@@ -145,7 +153,7 @@ animations = [ {
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 34 ), ExtResource( 14 ), ExtResource( 29 ) ],
-"loop": true,
+"loop": false,
 "name": "explode",
 "speed": 5.0
 }, {
@@ -162,11 +170,6 @@ animations = [ {
 "frames": [ ExtResource( 20 ) ],
 "loop": false,
 "name": "standing_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 8 ) ],
@@ -189,24 +192,29 @@ animations = [ {
 "name": "standing_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 10 ) ],
 "loop": false,
 "name": "action_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 35 ) ],
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 20 ) ],
 "loop": false,
 "name": "action_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 13 ), ExtResource( 16 ) ],
 "loop": false,
 "name": "action_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "walk_right",
 "speed": 5.0
 } ]
 
@@ -218,19 +226,115 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=5]
+resource_name = "explode"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite1:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "explode" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite1:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite1:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite1:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "explode" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite1:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
+
 [node name="Tirra" type="Area2D" groups=["tirras"]]
+position = Vector2( 0, -22 )
 collision_layer = 16
 collision_mask = 44
 script = ExtResource( 22 )
-pickup_sound = "pickup_egg"
 
 [node name="AnimatedSprite1" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -5 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "New Anim"
+animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 6 )
 shape = SubResource( 2 )
 
@@ -239,11 +343,13 @@ wait_time = 5.0
 autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource( 26 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 visible = false
-scale = Vector2( 4, 4 )
+position = Vector2( 0, -13 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "idle"
 frame = 4
@@ -253,8 +359,17 @@ playing = true
 visible = false
 scale = Vector2( 16, 16 )
 frames = SubResource( 4 )
-animation = "idle"
-frame = 6
 playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="AnimatedSprite3"]
+visible = false
+scale = Vector2( 16, 16 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/explode = SubResource( 5 )
+anims/idle = SubResource( 6 )
 
 [connection signal="body_entered" from="." to="." method="_on_Tirra_body_entered"]

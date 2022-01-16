@@ -94,7 +94,7 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 		global_position, target_position, arc_height, GRAVITY
 	)
 
-	print("launch_velocity %s" % launch_velocity)
+	#print("launch_velocity %s" % launch_velocity)
 
 	velocity = launch_velocity
 
