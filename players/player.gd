@@ -33,9 +33,7 @@ func immortal_set(value):
 	immortal = value
 	if value:
 		$FlashTimer.start()
-		$ImmortalTimer.connect("timeout", self, "_on_endImmortalTimer_timeout")
 		$ImmortalTimer.set_wait_time(time_has_immortal)
-		$ImmortalTimer.set_one_shot(true)  # Make sure it loops
 		$ImmortalTimer.start()
 	else:
 		$FlashTimer.stop()
@@ -703,9 +701,7 @@ func _on_endVirusTimer_timeout():
 func got_virus():
 	$FlashTimer.start()
 	self.stat_virus = true
-	$VirusTimer.connect("timeout", self, "_on_endVirusTimer_timeout")
 	$VirusTimer.set_wait_time(time_has_virus)
-	$VirusTimer.set_one_shot(true)  # Make sure it loops
 	$VirusTimer.start()
 
 

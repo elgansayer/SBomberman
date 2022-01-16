@@ -43,6 +43,7 @@ func _on_Node2D_body_entered(body: Node):
 
 
 func explode():
+	picked = true
 	$AnimationPlayer.play("explode")
 
 

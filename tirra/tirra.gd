@@ -139,4 +139,3 @@ func update_rider_position_on_tirra_teen(player):
 		sprite.position = Vector2(13, -25)
 	elif current_animation_direction == "right":
 		sprite.position = Vector2(-13, -25)
-

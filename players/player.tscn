@@ -88,79 +88,24 @@ shader_param/white_progress = 0.0
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ ExtResource( 43 ), ExtResource( 42 ) ],
+"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
 "loop": true,
-"name": "pglove_walk_right",
+"name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 62 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "ride_left",
+"name": "standing_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 54 ) ],
+"frames": [ ExtResource( 56 ) ],
 "loop": false,
-"name": "flying_down",
+"name": "flying_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "pglove_walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 57 ) ],
+"frames": [ ExtResource( 61 ) ],
 "loop": false,
-"name": "flying_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 64 ) ],
-"loop": false,
-"name": "ride_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ) ],
-"loop": false,
-"name": "ride_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "pglove_standing_up",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": false,
-"name": "pglove_standing_down",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 59 ) ],
-"loop": true,
-"name": "ride_win",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 63 ) ],
-"loop": true,
-"name": "ride_sad",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 55 ) ],
-"loop": false,
-"name": "flying_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 39 ), ExtResource( 40 ) ],
-"loop": false,
-"name": "pglove_pickup_right",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "pglove_pickup_up",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "pglove_walk_down",
+"name": "ride_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ), ExtResource( 37 ), ExtResource( 36 ) ],
@@ -168,20 +113,70 @@ animations = [ {
 "name": "pglove_pickup_left",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 54 ) ],
 "loop": false,
-"name": "explode",
-"speed": 24.0
+"name": "flying_down",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 56 ) ],
+"frames": [ ExtResource( 64 ) ],
 "loop": false,
-"name": "flying_left",
+"name": "ride_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 59 ) ],
+"loop": true,
+"name": "ride_win",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "pglove_pickup_down",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "standing_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 38 ) ],
 "loop": false,
 "name": "pglove_standing_right",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "pglove_walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "pglove_pickup_up",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ) ],
+"loop": false,
+"name": "flying_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 63 ) ],
+"loop": true,
+"name": "ride_sad",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "pglove_standing_left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "explode",
+"speed": 24.0
 }, {
 "frames": [ ExtResource( 48 ), ExtResource( 50 ), ExtResource( 47 ), ExtResource( 49 ) ],
 "loop": true,
@@ -193,49 +188,9 @@ animations = [ {
 "name": "trapped",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ), ExtResource( 29 ), ExtResource( 21 ) ],
-"loop": false,
-"name": "pglove_pickup_down",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 44 ) ],
-"loop": true,
-"name": "standing_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "standing_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "standing_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 33 ), ExtResource( 35 ) ],
@@ -243,15 +198,60 @@ animations = [ {
 "name": "pglove_walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 25 ) ],
+"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "pglove_walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "pglove_walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 39 ), ExtResource( 40 ) ],
 "loop": false,
-"name": "pglove_standing_left",
+"name": "pglove_pickup_right",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 61 ) ],
+"frames": [ ExtResource( 60 ) ],
 "loop": false,
-"name": "ride_right",
+"name": "ride_down",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": false,
+"name": "flying_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ) ],
+"loop": true,
+"name": "ride_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "pglove_standing_up",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "pglove_standing_down",
+"speed": 2.0
 } ]
 
 [sub_resource type="CircleShape2D" id=12]
@@ -435,7 +435,12 @@ parameters/playback = SubResource( 15 )
 wait_time = 0.2
 
 [node name="VirusTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [node name="ImmortalTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="FlashTimer" to="." method="_on_FlashTimer_timeout"]
+[connection signal="timeout" from="VirusTimer" to="." method="_on_endVirusTimer_timeout"]
+[connection signal="timeout" from="ImmortalTimer" to="." method="_on_endImmortalTimer_timeout"]

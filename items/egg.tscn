@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://items/egg/wobble/egg-wobble-02.png" type="Texture" id=1]
 [ext_resource path="res://items/egg/wobble/egg-wobble-01.png" type="Texture" id=2]
@@ -14,6 +14,12 @@
 [ext_resource path="res://items/explode/itemsmoke-02.png" type="Texture" id=12]
 [ext_resource path="res://items/explode/itemsmoke-03.png" type="Texture" id=13]
 [ext_resource path="res://items/explode/itemsmoke-05.png" type="Texture" id=14]
+[ext_resource path="res://items/egg/open/egg-open-05.png" type="Texture" id=15]
+[ext_resource path="res://items/egg/open/egg-open-06.png" type="Texture" id=16]
+[ext_resource path="res://items/egg/open/egg-open-01.png" type="Texture" id=17]
+[ext_resource path="res://items/egg/open/egg-open-03.png" type="Texture" id=18]
+[ext_resource path="res://items/egg/open/egg-open-02.png" type="Texture" id=19]
+[ext_resource path="res://items/egg/open/egg-open-04.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,9 +28,9 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "wobble",
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "explode",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -32,9 +38,14 @@ animations = [ {
 "name": "egg",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": false,
-"name": "explode",
+"name": "picked_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "wobble",
 "speed": 5.0
 } ]
 
@@ -42,7 +53,7 @@ animations = [ {
 extents = Vector2( 16, 16 )
 
 [sub_resource type="Animation" id=6]
-resource_name = "exploded"
+resource_name = "explode"
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("ExplodeSmoke:visible")
@@ -81,48 +92,36 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, -30 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("ExplodeSmoke:frame")
+tracks/3/path = NodePath("AnimatedSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 2.6 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 1.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -130,25 +129,25 @@ tracks/6/keys = {
 "method": "queue_free"
 } ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath(".:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("AnimatedSprite:animation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("AnimatedSprite:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -157,12 +156,13 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "picked_up"
+length = 1.1
 tracks/0/type = "audio"
 tracks/0/path = NodePath("AudioStreamPlayer2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -178,7 +178,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.557113 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -186,7 +186,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath(".:visible")
+tracks/2/path = NodePath("AnimatedSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -195,19 +195,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ "picked_up" ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -324,8 +312,6 @@ scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "explode"
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 disabled = true
@@ -335,7 +321,7 @@ stream = ExtResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/exploded = SubResource( 6 )
+anims/explode = SubResource( 6 )
 anims/picked_up = SubResource( 4 )
 anims/spawn = SubResource( 3 )
 anims/spin = SubResource( 7 )
