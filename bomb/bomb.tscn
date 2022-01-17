@@ -159,19 +159,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AnimationPlayer:current_animation")
+tracks/2/path = NodePath("AnimatedSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 2,
-"values": [ "idle", "explode" ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimatedSprite:animation")
+tracks/3/path = NodePath("AnimatedSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -180,10 +180,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "default" ]
+"values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite:visible")
+tracks/4/path = NodePath("Area2D/Shape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -192,10 +192,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Area2D/Shape:disabled")
+tracks/5/path = NodePath("Shape:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -207,7 +207,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Shape:disabled")
+tracks/6/path = NodePath(".:collision_layer")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -216,27 +216,15 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 8 ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath(".:collision_layer")
+tracks/7/path = NodePath(".:collision_mask")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 8 ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath(".:collision_mask")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -323,15 +311,13 @@ tracks/5/keys = {
 extents = Vector2( 16, 16 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["bombs"]]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 8
+collision_mask = 63
 script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-visible = false
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-animation = "explode"
 frame = 2
 playing = true
 
@@ -351,8 +337,6 @@ collision_mask = 32
 
 [node name="Shape" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 5 )
-disabled = true
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
-disabled = true

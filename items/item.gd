@@ -27,8 +27,6 @@ func play_sound():
 
 func award_player(_player):
 	print("award_player item")
-	pass
-
 
 func _on_Node2D_body_entered(body: Node):
 	if picked:

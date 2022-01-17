@@ -85,7 +85,7 @@ var stat_virus = false
 # The player's current rollerskates
 var stat_skates = 1
 # The player's current bomb power
-var stat_power = 1
+var stat_power = 3
 # Bombs that the player has
 var stat_bombs = 21
 # Does the player have a powerglove powerup?
@@ -112,7 +112,7 @@ remotesync func setup_bomb(bomb_pos, bomb_name, player, by_who):
 
 	# Increment the bombs active and planted
 	# active_bombs = active_bombs + 1
-	bomb.connect("exploded", self, "_on_Bomb_exploded")
+	bomb.connect("on_explode", self, "_on_Bomb_exploded")
 
 	# No need to set network master to bomb, will be owned by server by default
 	get_node("/root/World/Bombs").add_child(bomb)
@@ -599,21 +599,7 @@ puppet func killed():
 	dead = true
 
 
-# 	# Throw the bomb if we are carrying one
-# 	if in_power_glove:
-# 		pglove_throw()
-
-# master func exploded(_by_who):
-# 	$shape.disabled = true
-# 	if stunned:
-# 		return
-# 	rpc("killed")  # Stun puppets
-# 	killed()  # Stun master - could use sync to do both at once
-
-
 master func explode():
-	# $shape.call_deferred("set", "disabled", true)
-	# killed()  # Stun master - could use sync to do both at once
 	call_deferred("killed")
 
 
@@ -761,7 +747,7 @@ func handle_got_egg():
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	print("launching")
 	frozen_movement = true
-	# $shape.call_deferred("set", "disabled", true)
+
 	$shape.disabled = true
 	.launch(grid_target, height_scale, gravity_scale)
 
@@ -773,13 +759,9 @@ func landed():
 	self.frozen_animation = false
 
 	$shape.disabled = false
-	# $shape.call_deferred("set", "disabled", false)
 
 	if current_tirra:
 		attach_to_tirra()
-
-	# player physics is disabled as we use the tirra physics
-	# $shape.set_deferred("disabled", false)
 
 
 func reset_sprite_position():

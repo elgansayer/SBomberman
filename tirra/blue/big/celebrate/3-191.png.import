@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/btr-2-walk-left-01.png-f3d1d179c990410265272eee3fead0ef.stex"
+path="res://.import/3-191.png-66c63720184f508b88303743e66cd37c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tirra/blue/middle/left/btr-2-walk-left-01.png"
-dest_files=[ "res://.import/btr-2-walk-left-01.png-f3d1d179c990410265272eee3fead0ef.stex" ]
+source_file="res://tirra/blue/big/celebrate/3-191.png"
+dest_files=[ "res://.import/3-191.png-66c63720184f508b88303743e66cd37c.stex" ]
 
 [params]
 

@@ -1,5 +1,8 @@
 extends Node2D
 
+## Nodes
+onready var world = get_node("/root/World")
+
 # Sprites created?
 var explosion_sprites = []
 
@@ -26,7 +29,7 @@ func max_explosion_length_get():
 var from_player
 var player_owner
 
-const animation_table = {
+const animation_swap_table = {
 	"middle": "middle",
 	"h_end": "h_middle",
 	"v_end": "v_middle",
@@ -85,7 +88,7 @@ var explosion_positions = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spawn_explosions()
+	spawn_explosion_fire()
 	_timer = Timer.new()
 	add_child(_timer)
 
@@ -95,7 +98,10 @@ func _ready():
 	_timer.start()
 
 
-func spawn_explosions():
+func spawn_fire_sprites():
+	var space_state = get_world_2d().direct_space_state
+	var distance = world.grid_size * current_explosion_length
+
 	for dict in explosion_positions:
 		var direction_max_length = dict["max_length"]
 		if current_explosion_length >= direction_max_length:
@@ -107,7 +113,6 @@ func spawn_explosions():
 		var flip_h = dict["flip_h"]
 		var name = dict["name"]
 
-		var distance = 32 * current_explosion_length
 		var new_x = distance * vector[0]
 		var new_y = distance * vector[1]
 
@@ -115,17 +120,11 @@ func spawn_explosions():
 		var new_global_position = Vector2(
 			self.global_position.x + new_x, self.global_position.y + new_y
 		)
-		# var last_global_position = Vector2(new_global_position.x - 16, new_global_position.y - 16)
-		var space_state = get_world_2d().direct_space_state
 
 		# use global coordinates, not local to node
 		var LayerTilemap = 1
 		var LayerRocks = 1 << 1
-		# var LayerFire = 1 << 2
-		# var LayerBombs = 1 << 3
-		# var LayerItems = 1 << 4
-		# var LayerPlayers = 1 << 5
-		# | LayerItems | LayerPlayers  | LayerBombs
+
 		var ExplosionMask = LayerTilemap | LayerRocks
 		var collision_mask = ExplosionMask
 
@@ -135,30 +134,15 @@ func spawn_explosions():
 
 		if !result.empty():
 			var collider = result["collider"]
-			# var classname = collider.get_class()
 
 			dict["max_length"] = current_explosion_length
 
 			if collider is TileMap:
 				continue
 
-			# if collider is Bomb:
-			# 	continue
-
 			print(collider.get_class() + " ", result)
 
-			# if classname == "Rock" || classname == "Bomb":
-			# 	# print("set max_length to", current_explosion_length)
-			# 	dict["max_length"] = current_explosion_length
-
-			# The fire itself needs to explode it, when it hits it
-			# if collider.has_method("explode"):
-			# 	collider.explode()
-
-			# print(result, collider.get_class())
-			# print(collider, collider.has_method("explode"))
-
-		var sprite = get_new_explosion(new_position)
+		var sprite = get_new_fire(new_position)
 		sprite.animation = animation
 		sprite.flip_v = flip_v
 		sprite.flip_h = flip_h
@@ -166,27 +150,22 @@ func spawn_explosions():
 		explosion_sprites.append(sprite)
 
 
-func get_new_explosion(position):
-	var explosion = preload("res://explosion/explosion_fire.tscn").instance()
-	explosion.position = position
-	var explosion_sprite = explosion.get_node("AnimatedSprite")
-	self.add_child(explosion)
+func get_new_fire(position):
+	var fire = preload("res://explosion/explosion_fire.tscn").instance()
+	fire.position = position
+	var explosion_sprite = fire.get_node("AnimatedSprite")
+	self.add_child(fire)
 
-	explosion.bomb = self
-	explosion.from_player = self.from_player
-	explosion.player_owner = self.player_owner
+	fire.bomb = self
+	fire.from_player = self.from_player
+	fire.player_owner = self.player_owner
 
 	return explosion_sprite
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func update_existing_explosion_sprites():
+func update_existing_fire_sprites():
 	for sprite in explosion_sprites:
-		var new_animation = animation_table[sprite.animation]
+		var new_animation = animation_swap_table[sprite.animation]
 		sprite.animation = new_animation
 
 
@@ -203,13 +182,14 @@ func _on_Timer_timeout():
 		_timer = null
 		return
 
-	update_existing_explosion_sprites()
-	spawn_explosions()
+	spawn_explosion_fire()
+
+
+func spawn_explosion_fire():
+	print("Explosion length: ", current_explosion_length)
+	update_existing_fire_sprites()
+	spawn_fire_sprites()
 	current_explosion_length += 1
-
-
-func done():
-	queue_free()
 
 
 func get_class():
