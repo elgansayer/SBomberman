@@ -28,6 +28,11 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "picked_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "explode",
@@ -36,11 +41,6 @@ animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "egg",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": false,
-"name": "picked_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],

@@ -20,6 +20,7 @@ func award_player(_player):
 	# No need to set network master to tirra, will be owned by server by default
 	var world_map = get_node("/root/World")	
 	world_map.add_child(tirra)
+	
 	var old_parent = self.get_parent()
 	old_parent.remove_child(self)
 	world_map.add_child(self)

@@ -792,6 +792,9 @@ root_node = NodePath("../AnimatedSprite")
 collision_layer = 64
 collision_mask = 64
 
+[node name="Egg" parent="." instance=ExtResource( 14 )]
+position = Vector2( 336, 338 )
+
 [node name="Node2D" parent="." instance=ExtResource( 12 )]
 position = Vector2( 144, 360 )
 

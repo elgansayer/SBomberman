@@ -110,7 +110,7 @@ func update_position_on_tirra(player):
 	elif current_tirra_level == 1:
 		self.update_rider_position_on_tirra_teen(player)
 	else:
-		self.update_rider_position_on_tirra_teen(player)
+		self.update_rider_position_on_tirra_adult(player)
 
 
 func update_rider_position_on_tirra_baby(player):
@@ -139,3 +139,17 @@ func update_rider_position_on_tirra_teen(player):
 		sprite.position = Vector2(13, -25)
 	elif current_animation_direction == "right":
 		sprite.position = Vector2(-13, -25)
+
+func update_rider_position_on_tirra_adult(player):
+	var current_animation_direction = player.current_animation_direction
+	var sprite = player.get_node("AnimatedSprite")
+
+	if current_animation_direction == "up":
+		sprite.position = Vector2(0, -45)
+	elif current_animation_direction == "down":
+		sprite.position = Vector2(0, -45)
+	elif current_animation_direction == "left":
+		sprite.position = Vector2(13, -45)
+	elif current_animation_direction == "right":
+		sprite.position = Vector2(-13, -45)
+		
