@@ -85,9 +85,9 @@ var stat_virus = false
 # The player's current rollerskates
 var stat_skates = 1
 # The player's current bomb power
-var stat_power = 3
+var stat_power = 0
 # Bombs that the player has
-var stat_bombs = 21
+var stat_bombs = 99
 # Does the player have a powerglove powerup?
 var stat_power_glove = true
 # Does the player have a powerglove powerup?
@@ -150,8 +150,8 @@ func update_input():
 			if try_action():
 				motion = Vector2()
 
-		prev_bombing = bombing
 		prev_action = action
+		prev_bombing = bombing
 
 		rset("puppet_motion", motion)
 		rset("puppet_pos", position)
@@ -166,8 +166,6 @@ func _physics_process(_delta):
 	# print("_physics_process player")
 
 	var motion = Vector2()
-
-	update_z_index()
 
 	# Debugging purposes
 	set_player_name(str(str(floor(position.x)) + " " + str(floor(position.y))))
@@ -191,6 +189,8 @@ func _physics_process(_delta):
 	# If we cannot update the animation
 	if !frozen_animation:
 		update_animation(motion)
+
+		update_z_index()
 
 
 func update_animation(motion):
@@ -450,11 +450,13 @@ func _on_PGlove_frame_changed():
 # Try and do an action
 # return true if the player should not move
 func try_action():
-	if riding && current_tirra:
-		current_tirra.action(self)
+	if prev_action:
 		return false
 
-	if prev_action:
+	# prev_action = true
+
+	if riding && current_tirra:
+		current_tirra.action(self)
 		return false
 
 	if stat_power_glove:
@@ -590,8 +592,8 @@ puppet func killed():
 
 	# If we are riding a tirra, we need to jump off of it
 	if riding:
-		# self.call_deferred("detach_from_tirra")
-		detach_from_tirra()
+		# self.call_deferred("kill_tirra")
+		kill_tirra()
 		return
 
 	$AnimatedSprite.play("explode")
@@ -713,6 +715,7 @@ func upgrade_tirra(egg_grid_position):
 	get_node("/root/World").add_child(tirra)
 
 	current_tirra = tirra
+	current_tirra.rider = self
 
 	# self.immortal = true
 	var jump_gravity = 1000
@@ -753,6 +756,7 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 
 
 func landed():
+	.landed()
 	print("landed")
 	# landed from got flying
 	self.frozen_movement = false
@@ -768,10 +772,10 @@ func reset_sprite_position():
 	$AnimatedSprite.position = Vector2(0, -12)
 
 
-func detach_from_tirra():
+func kill_tirra():
 	self.immortal = true
 
-	print("detach_from_tirra")
+	print("kill_tirra")
 	self.riding = false
 
 	print("jump_from_tirra")
@@ -796,6 +800,9 @@ func attach_to_tirra():
 	riding = true
 	current_tirra.position = Vector2(0, 0)
 	current_tirra.z_as_relative = false
+
+	# Let the tirra know we are riding
+	current_tirra.rider = self
 
 	var new_parent = current_tirra.get_parent()
 	new_parent.remove_child(current_tirra)

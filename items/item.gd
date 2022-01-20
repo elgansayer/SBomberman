@@ -35,6 +35,7 @@ func _on_Node2D_body_entered(body: Node):
 	if body.get_class() == ("Player"):
 		picked_up(body)
 
+
 func picked_up(player):
 	picked = true
 	$Timer.stop()
@@ -43,6 +44,7 @@ func picked_up(player):
 	call_deferred("award_player", player)
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("picked_up")
+
 
 func explode():
 	picked = true

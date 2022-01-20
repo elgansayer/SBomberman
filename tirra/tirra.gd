@@ -1,12 +1,16 @@
 extends Area2D
 # extends "res://items/item.gd"
 # export(String, "pickup_egg") var pickup_sound
+# enum states { STATE_IDLE, STATE_DEAD, STATE_ACTION, STATE_MOVING, STATE_NONE }
+# var state = states.STATE_NONE
 
 var picked = false
 var correct_sound
 var current_animation = "idle"
 export(String, "blue", "red") var colour
-export(int, "Baby", "Teen", "Adult") var current_tirra_level
+export(int, "small", "middle", "big") var current_tirra_level
+# The riding player
+var rider
 
 ## Nodes
 onready var world = get_node("/root/World")
@@ -24,7 +28,7 @@ func grid_position_get():
 
 
 func _ready():
-	# Set up the tirra as a baby
+	# Set up the tirra as a small
 	$AnimatedSprite.play("standing_down")
 
 	# var sound_path = "res://sounds/items/" + pickup_sound + ".ogg"
@@ -39,8 +43,9 @@ func _ready():
 
 
 func action(player):
+	# state = states.STATE_ACTION
+
 	var animation = "action_" + player.current_animation_direction
-	# update_animation(animation)
 	$AnimatedSprite.frame = 0
 	$AnimatedSprite.play(animation)
 
@@ -50,7 +55,6 @@ func update_animation(animation_name):
 		return
 
 	current_animation = animation_name
-	# if !$AnimatedSprite.is_playing():
 	$AnimatedSprite.play(animation_name)
 
 
@@ -66,6 +70,7 @@ func award_player(player):
 
 func _on_Timer_timeout():
 	$AnimationPlayer.play("spin")
+	# state = states.STATE_IDLE
 
 
 func play_sound():
@@ -75,7 +80,9 @@ func play_sound():
 
 
 func explode():
+	$AnimationPlayer.stop()
 	$AnimationPlayer.play("explode")
+	# state = states.STATE_DEAD
 
 
 func get_class():
@@ -96,60 +103,53 @@ func _on_Tirra_body_entered(body: Node):
 
 
 func get_next_tirra_path():
-	print(self.current_tirra_level)
-	print(int(self.current_tirra_level))
 	var int_c = int(self.current_tirra_level)
 	var next_level = int_c + 1
-
 	return "res://tirra/" + self.colour + "_tirra_" + str(next_level) + ".tscn"
 
 
 func update_position_on_tirra(player):
-	if current_tirra_level <= 0:
-		self.update_rider_position_on_tirra_baby(player)
-	elif current_tirra_level == 1:
-		self.update_rider_position_on_tirra_teen(player)
-	else:
-		self.update_rider_position_on_tirra_adult(player)
-
-
-func update_rider_position_on_tirra_baby(player):
-	var current_animation_direction = player.current_animation_direction
+	var player_animation_direction = player.current_animation_direction
 	var sprite = player.get_node("AnimatedSprite")
+	
+	# print("current_animation_direction ", player_animation_direction)
 
-	if current_animation_direction == "up":
+	if current_tirra_level <= 0:
+		self.update_rider_position_on_tirra_small(sprite, player_animation_direction)
+	elif current_tirra_level == 1:
+		self.update_rider_position_on_tirra_middle(sprite, player_animation_direction)
+	else:
+		self.update_rider_position_on_tirra_big(sprite, player_animation_direction)
+
+
+func update_rider_position_on_tirra_small(sprite, player_animation_direction):
+	if player_animation_direction == "up":
 		sprite.position = Vector2(0, -20)
-	elif current_animation_direction == "down":
+	elif player_animation_direction == "down":
 		sprite.position = Vector2(0, -20)
-	elif current_animation_direction == "left":
+	elif player_animation_direction == "left":
 		sprite.position = Vector2(13, -20)
-	elif current_animation_direction == "right":
+	elif player_animation_direction == "right":
 		sprite.position = Vector2(-13, -20)
 
 
-func update_rider_position_on_tirra_teen(player):
-	var current_animation_direction = player.current_animation_direction
-	var sprite = player.get_node("AnimatedSprite")
-
-	if current_animation_direction == "up":
+func update_rider_position_on_tirra_middle(sprite, player_animation_direction):
+	if player_animation_direction == "up":
 		sprite.position = Vector2(0, -25)
-	elif current_animation_direction == "down":
+	elif player_animation_direction == "down":
 		sprite.position = Vector2(0, -25)
-	elif current_animation_direction == "left":
+	elif player_animation_direction == "left":
 		sprite.position = Vector2(13, -25)
-	elif current_animation_direction == "right":
+	elif player_animation_direction == "right":
 		sprite.position = Vector2(-13, -25)
 
-func update_rider_position_on_tirra_adult(player):
-	var current_animation_direction = player.current_animation_direction
-	var sprite = player.get_node("AnimatedSprite")
 
-	if current_animation_direction == "up":
+func update_rider_position_on_tirra_big(sprite, player_animation_direction):
+	if player_animation_direction == "up":
 		sprite.position = Vector2(0, -45)
-	elif current_animation_direction == "down":
+	elif player_animation_direction == "down":
 		sprite.position = Vector2(0, -45)
-	elif current_animation_direction == "left":
+	elif player_animation_direction == "left":
 		sprite.position = Vector2(13, -45)
-	elif current_animation_direction == "right":
+	elif player_animation_direction == "right":
 		sprite.position = Vector2(-13, -45)
-		

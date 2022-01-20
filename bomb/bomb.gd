@@ -75,11 +75,14 @@ func _ready():
 
 
 func landed():
+	.landed()
 	paused_set(false)
 
 
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	self.paused = true
+
+	print("bomb launching ", grid_target)
 	.launch(grid_target, height_scale, gravity_scale)
 
 
@@ -98,13 +101,15 @@ func set_network_position(new_position):
 
 
 func _physics_process(_delta):
+	#print("bomb throwable ", flying)
+
 	for player in collision_exceptions:
 		if player.grid_position != self.grid_position && !$Area2D.overlaps_body(player):
 			player.remove_collision_exception_with(self)
 			collision_exceptions.erase(player)
 
 
-func explode():	
+func explode():
 	if exploded:
 		return
 

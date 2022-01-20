@@ -32,6 +32,9 @@ var str_direction = ""
 # Position of the bomb in the world tilemap
 var grid_position = Vector2()
 
+var og_collision_layer = 0
+var og_collision_mask = 0
+
 
 func calculate_arc_velocity(source_position, dest_position, arc_height, gravity):
 	var arc_velocity = Vector2()
@@ -49,6 +52,8 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 
 
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
+	if flying || velocity.x != 0 || velocity.y != 0:
+		return
 
 	# THe position on the grid we want to reach
 	target_grid_position = grid_target
@@ -56,13 +61,8 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	# Set a custom gravity
 	GRAVITY = gravity_scale
 
-	# THe coords we want to reach
+	# The coords we want to reach
 	target_position = world.get_center_position_from_grid(target_grid_position)
-
-	# Setup animations
-	flying = true
-	# paused_set(true)
-	# paused = true
 
 	launch_direction = (Vector2(int(target_position.x), int(target_position.y)) - Vector2(int(global_position.x), int(global_position.y))).normalized()
 
@@ -94,14 +94,26 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 		global_position, target_position, arc_height, GRAVITY
 	)
 
-	#print("launch_velocity %s" % launch_velocity)
+	print("launch_velocity %s" % launch_velocity)
 
 	velocity = launch_velocity
 
+	# Setup animations
+	flying = true
+
+	og_collision_mask = self.collision_mask
+	og_collision_layer = self.collision_layer
+	self.collision_mask = 0
+	self.collision_layer = 0
+
 
 func _physics_process(_delta):
-	# print("_physics_process throwable")
-	
+	# if get_class() == "Bomb":
+	# print("_physics_process throwable bomb ", flying, " ", velocity)
+
+	# if velocity.x != 0 && velocity.y != 0:
+	# print("throwable velocity %s" % velocity)
+
 	if flying:
 		velocity.y += GRAVITY * _delta
 		var collision = move_and_collide(velocity * _delta)
@@ -140,6 +152,12 @@ func _physics_process(_delta):
 
 		if collision && collision.collider || (position == target_position):
 			flying = false
+			velocity = Vector2.ZERO
+			print("at position %s", position)
+			print("at target_position %s", target_position)
+			print("at position %s", position == target_position)
+			if collision && collision.collider:
+				print("collision %s", collision.collider)
 
 			# Use global coordinates, not local to node
 			var LayerTilemap = 1
@@ -169,7 +187,8 @@ func _physics_process(_delta):
 
 
 func landed():
-	pass
+	self.collision_mask = og_collision_mask
+	self.collision_layer = og_collision_layer
 
 
 func _ready():
