@@ -7,7 +7,7 @@ extends Area2D
 var picked = false
 var correct_sound
 var current_animation = "idle"
-export(String, "blue", "red") var colour
+export(String, "blue", "pink") var colour
 export(int, "small", "middle", "big") var current_tirra_level
 # The riding player
 var rider
@@ -51,10 +51,9 @@ func action(player):
 
 
 func update_animation(animation_name):
-	if current_animation == animation_name:
+	if animation_name == $AnimatedSprite.animation:
 		return
 
-	current_animation = animation_name
 	$AnimatedSprite.play(animation_name)
 
 
@@ -111,7 +110,7 @@ func get_next_tirra_path():
 func update_position_on_tirra(player):
 	var player_animation_direction = player.current_animation_direction
 	var sprite = player.get_node("AnimatedSprite")
-	
+
 	# print("current_animation_direction ", player_animation_direction)
 
 	if current_tirra_level <= 0:

@@ -26,7 +26,7 @@ func award_player(_player):
 	world_map.add_child(self)
 
 
-func get_class():
+func get_sub_class():
 	return "Egg"
 
 

@@ -35,7 +35,9 @@ func _on_Node2D_body_entered(body: Node):
 	if body.get_class() == ("Player"):
 		picked_up(body)
 
-
+func dizzy():
+	queue_free()
+	
 func picked_up(player):
 	picked = true
 	$Timer.stop()

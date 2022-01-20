@@ -28,6 +28,8 @@ var current_animation_motion = "walk"
 
 var immortal setget immortal_set, immortal_get
 
+var motion = Vector2.ZERO
+
 
 func immortal_set(value):
 	immortal = value
@@ -123,17 +125,17 @@ func _on_Bomb_exploded(bomb):
 
 
 func update_input():
-	var motion = Vector2()
+	var input_motion = Vector2()
 
 	if is_network_master():
 		if Input.is_action_pressed("move_left"):
-			motion += Vector2(-1, 0)
+			input_motion += Vector2(-1, 0)
 		if Input.is_action_pressed("move_right"):
-			motion += Vector2(1, 0)
+			input_motion += Vector2(1, 0)
 		if Input.is_action_pressed("move_up"):
-			motion += Vector2(0, -1)
+			input_motion += Vector2(0, -1)
 		if Input.is_action_pressed("move_down"):
-			motion += Vector2(0, 1)
+			input_motion += Vector2(0, 1)
 
 		var bombing = Input.is_action_pressed("set_bomb")
 		var action = Input.is_action_pressed("action")
@@ -141,31 +143,33 @@ func update_input():
 		# if stunned:
 		# 	action = false
 		# 	bombing = false
-		# 	motion = Vector2()
+		# 	input_motion = Vector2()
 
 		if bombing:
 			try_plant_bomb()
 
 		if action:
 			if try_action():
-				motion = Vector2()
+				input_motion = Vector2()
 
 		prev_action = action
 		prev_bombing = bombing
 
-		rset("puppet_motion", motion)
-		rset("puppet_pos", position)
-	else:
-		position = puppet_pos
-		motion = puppet_motion
-
-	return motion
+	return input_motion
 
 
 func _physics_process(_delta):
-	# print("_physics_process player")
+	# # print("_physics_process player")
 
-	var motion = Vector2()
+	# motion = Vector2.ZERO
+
+	if is_network_master():
+		motion = update_input()
+		# rset("puppet_motion", motion)
+		# rset("puppet_pos", position)
+	else:
+		position = puppet_pos
+		motion = puppet_motion
 
 	# Debugging purposes
 	set_player_name(str(str(floor(position.x)) + " " + str(floor(position.y))))
@@ -176,8 +180,6 @@ func _physics_process(_delta):
 
 	# Can we move?
 	if !frozen_movement:
-		motion = update_input()
-
 		# Use move_and_slide
 		move_and_slide(motion * MOTION_SPEED)
 		if not is_network_master():
@@ -189,13 +191,19 @@ func _physics_process(_delta):
 	# If we cannot update the animation
 	if !frozen_animation:
 		update_animation(motion)
-
 		update_z_index()
 
+	if is_network_master():
+		rset("puppet_motion", motion)
+		rset("puppet_pos", position)
+	else:
+		position = puppet_pos
+		motion = puppet_motion
 
-func update_animation(motion):
+
+func update_animation(anim_motion):
 	# Update the animation
-	var anim_data = get_animation_dictionary(motion)
+	var anim_data = get_animation_dictionary(anim_motion)
 	var player_animtion = anim_data["animation"]
 
 	var is_new_anim = player_animtion != current_animation
@@ -423,10 +431,10 @@ func _on_PGlove_frame_changed():
 	var bomb_position = bomb_dict["pos"]
 	# var bomb_scale = bomb_dict["scale"]
 
-	# # print(current_animation_direction)
-	# # print(frame)
-	# # print(bomb_position)
-	# # print(power_glove_bomb.z_index)
+	# # # print(current_animation_direction)
+	# # # print(frame)
+	# # # print(bomb_position)
+	# # # print(power_glove_bomb.z_index)
 
 	# if current_animation_direction == "up":
 	# 	power_glove_bomb.z_index = -1
@@ -495,9 +503,9 @@ func try_plant_bomb():
 	rpc("setup_bomb", bomb_pos, bomb_name, self, get_tree().get_network_unique_id())
 
 
-func get_animation_dictionary(motion):
-	var animation_motion = get_animation_motion(motion)
-	var animation_direction = get_animation_direction(motion)
+func get_animation_dictionary(anim_motion):
+	var animation_motion = get_animation_motion(anim_motion)
+	var animation_direction = get_animation_direction(anim_motion)
 	var anim_prefix = get_animation_prefix()
 	var animation_override = ""
 
@@ -513,7 +521,7 @@ func get_animation_dictionary(motion):
 	# Check if we are trapped
 	elif is_trapped():
 		animation_override = "trapped"
-		animation_direction = ""
+		animation_direction = "down"
 		anim_prefix = ""
 
 	# var new_anim = ""
@@ -551,8 +559,8 @@ func get_animation_dictionary(motion):
 	# return is_new_anim
 
 
-func get_animation_motion(motion):
-	if motion.x != 0 || motion.y != 0:
+func get_animation_motion(anim_motion):
+	if anim_motion.x != 0 || anim_motion.y != 0:
 		return "walk"
 	else:
 		return "standing"
@@ -565,16 +573,16 @@ func get_animation_prefix():
 	return ""
 
 
-func get_animation_direction(motion):
+func get_animation_direction(anim_motion):
 	var direction = ""
 
-	if motion.y < 0:
+	if anim_motion.y < 0:
 		direction = "up"
-	elif motion.y > 0:
+	elif anim_motion.y > 0:
 		direction = "down"
-	elif motion.x < 0:
+	elif anim_motion.x < 0:
 		direction = "left"
-	elif motion.x > 0:
+	elif anim_motion.x > 0:
 		direction = "right"
 
 	return direction
@@ -582,7 +590,7 @@ func get_animation_direction(motion):
 
 puppet func killed():
 	# set_physics_process(false)
-	print("killed")
+	# print("killed")
 
 	if immortal:
 		return
@@ -633,11 +641,14 @@ func is_trapped():
 		var grid_pos = grid_position + direction_vec
 		var spot = world.get_center_position_from_grid(grid_pos)
 
-		var result = space_state.intersect_point(spot, 1, [self], collision_mask, true, false)
+		var blockingMask = world.blockingMask
+		var result = space_state.intersect_point(spot, 1, [self], blockingMask, true, false)
 		blocking_table[direction] = result
 
-		if !result.empty():
-			trapped += 1
+		if result.empty():
+			return false
+
+		trapped += 1
 
 	# Trapped on all 4 sides
 	return trapped == 4
@@ -666,7 +677,7 @@ func _on_FlashTimer_timeout():
 		self.white_shader = !self.white_shader
 		return
 
-		# print("self.self_modulate", self.self_modulate)
+		# # print("self.self_modulate", self.self_modulate)
 	var change_color = Color(1, 1, 1)
 
 	if $AnimatedSprite.self_modulate == Color(0, 0, 0):
@@ -748,10 +759,10 @@ func handle_got_egg():
 
 
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
-	print("launching")
-	frozen_movement = true
+	# print("launching")
+	self.frozen_movement = true
 
-	$shape.disabled = true
+	# $shape.disabled = true
 	.launch(grid_target, height_scale, gravity_scale)
 
 
@@ -762,7 +773,7 @@ func landed():
 	self.frozen_movement = false
 	self.frozen_animation = false
 
-	$shape.disabled = false
+	# $shape.disabled = false
 
 	if current_tirra:
 		attach_to_tirra()
@@ -775,10 +786,10 @@ func reset_sprite_position():
 func kill_tirra():
 	self.immortal = true
 
-	print("kill_tirra")
+	# print("kill_tirra")
 	self.riding = false
 
-	print("jump_from_tirra")
+	# print("jump_from_tirra")
 	reset_sprite_position()
 
 	var jump_gravity = 1000
@@ -809,3 +820,6 @@ func attach_to_tirra():
 
 	# No need to set network master to bomb, will be owned by server by default
 	self.add_child(current_tirra)
+
+	# Update tirra animation
+	update_animation(motion)

@@ -23,6 +23,9 @@ var paused setget paused_set, paused_get
 # The bombs cant colide with players that are on the same spot when they are planted
 var collision_exceptions = []
 
+## Nodes
+# onready var world = get_node("/root/World")
+
 
 func paused_set(value):
 	var anim = "paused"
@@ -76,7 +79,22 @@ func _ready():
 
 func landed():
 	.landed()
+	check_landed_on_item()
 	paused_set(false)
+
+
+func check_landed_on_item():
+	var collision_mask = world.layers.LAYER_ITEMS
+	var space_state = get_world_2d().direct_space_state
+
+	var result = space_state.intersect_point(
+		self.global_position, 1, [self], collision_mask, true, true
+	)
+
+	if !result.empty():
+		var collider = result[0].collider
+		if collider && collider.has_method("dizzy"):
+			collider.dizzy()
 
 
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):

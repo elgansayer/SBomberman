@@ -43,7 +43,7 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 	if displacement.y > arc_height:
 		var time_up = sqrt(-2 * arc_height / float(gravity))
 		var time_down = sqrt(2 * (displacement.y - arc_height) / float(gravity))
-		# # print("time %s" % (time_up + time_down))
+		# # # print("time %s" % (time_up + time_down))
 
 		arc_velocity.y = -sqrt(-2 * gravity * arc_height)
 		arc_velocity.x = displacement.x / float(time_up + time_down)
@@ -52,17 +52,23 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 
 
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
+	target_position = world.get_center_position_from_grid(grid_target)
+	launch_to(target_position, height_scale, gravity_scale)
+
+
+func launch_to(target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	if flying || velocity.x != 0 || velocity.y != 0:
 		return
 
 	# THe position on the grid we want to reach
-	target_grid_position = grid_target
+	target_grid_position = world.get_grid_position(target)
+	target_position = target
 
 	# Set a custom gravity
 	GRAVITY = gravity_scale
 
-	# The coords we want to reach
-	target_position = world.get_center_position_from_grid(target_grid_position)
+	# # The coords we want to reach
+	# target_position = world.get_center_position_from_grid(target_grid_position)
 
 	launch_direction = (Vector2(int(target_position.x), int(target_position.y)) - Vector2(int(global_position.x), int(global_position.y))).normalized()
 
@@ -94,12 +100,18 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 		global_position, target_position, arc_height, GRAVITY
 	)
 
-	print("launch_velocity %s" % launch_velocity)
+	# print("launch_velocity %s" % launch_velocity)
 
 	velocity = launch_velocity
 
 	# Setup animations
 	flying = true
+
+	if self.collision_mask != 0:
+		og_collision_mask = self.collision_mask
+
+	if self.collision_layer != 0:
+		og_collision_layer = self.collision_layer
 
 	og_collision_mask = self.collision_mask
 	og_collision_layer = self.collision_layer
@@ -109,10 +121,10 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 
 func _physics_process(_delta):
 	# if get_class() == "Bomb":
-	# print("_physics_process throwable bomb ", flying, " ", velocity)
+	# # print("_physics_process throwable bomb ", flying, " ", velocity)
 
 	# if velocity.x != 0 && velocity.y != 0:
-	# print("throwable velocity %s" % velocity)
+	# # print("throwable velocity %s" % velocity)
 
 	if flying:
 		velocity.y += GRAVITY * _delta
@@ -153,27 +165,18 @@ func _physics_process(_delta):
 		if collision && collision.collider || (position == target_position):
 			flying = false
 			velocity = Vector2.ZERO
-			print("at position %s", position)
-			print("at target_position %s", target_position)
-			print("at position %s", position == target_position)
-			if collision && collision.collider:
-				print("collision %s", collision.collider)
+			# print("at position %s", position)
+			# print("at target_position %s", target_position)
+			# print("at position %s", position == target_position)
+			# if collision && collision.collider:
+			# print("collision %s", collision.collider)
 
 			# Use global coordinates, not local to node
-			var LayerTilemap = 1
-			var LayerRocks = 1 << 1
-			# var LayerFire = 1 << 2
-			var LayerBombs = 1 << 3
-			# var LayerItems = 1 << 4
-			var LayerPlayers = 1 << 5
-			# | LayerItems | LayerPlayers  | LayerBombs
-			var BounceMask = LayerTilemap | LayerRocks | LayerBombs | LayerPlayers
-			var collision_mask = BounceMask
-			# var last_global_position = Vector2(new_global_position.x - 16, new_global_position.y - 16)
+
 			var space_state = get_world_2d().direct_space_state
 
 			var result = space_state.intersect_point(
-				self.global_position, 1, [self], collision_mask, true, true
+				self.global_position, 1, [self], world.bounceMask, true, true
 			)
 
 			if !result.empty():
@@ -187,6 +190,9 @@ func _physics_process(_delta):
 
 
 func landed():
+	if og_collision_mask == 0:
+		print("Landed on a bomb and og_collision_mask = 0")
+
 	self.collision_mask = og_collision_mask
 	self.collision_layer = og_collision_layer
 
@@ -197,6 +203,9 @@ func _ready():
 
 
 func bounce():
+	self.collision_mask = og_collision_mask
+	self.collision_layer = og_collision_layer
+
 	target_grid_position += launch_direction
 	target_position = world.get_center_position_from_grid(target_grid_position)
 

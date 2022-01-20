@@ -13,6 +13,28 @@ export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }
 
+enum layers {
+	LAYER_TILEMAP = 1,
+	LAYER_ROCKS = 1 << 1,
+	LAYER_FIRE = 1 << 2,
+	LAYER_BOMBS = 1 << 3,
+	LAYER_ITEMS = 1 << 4,
+	LAYER_PLAYERS = 1 << 5,
+}
+
+var blockingMask = (
+	layers.LAYER_TILEMAP
+	| layers.LAYER_ROCKS
+	| layers.LAYER_BOMBS
+)
+
+var bounceMask = (
+	layers.LAYER_TILEMAP
+	| layers.LAYER_ROCKS
+	| layers.LAYER_BOMBS
+	| layers.LAYER_PLAYERS
+)
+
 export var group_players = "players"
 export var group_bombs = "bombs"
 export var group_tirras = "tirras"
