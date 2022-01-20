@@ -45,9 +45,49 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 15 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "action_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ) ],
@@ -70,49 +110,9 @@ animations = [ {
 "name": "standing_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "action_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "explode",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "action_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "action_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 36 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 37 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 9 ) ],
-"loop": false,
-"name": "action_up",
 "speed": 5.0
 } ]
 
@@ -274,7 +274,7 @@ position = Vector2( 0, -22 )
 collision_layer = 16
 collision_mask = 44
 script = ExtResource( 1 )
-colour = "red"
+colour = "pink"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -5 )
