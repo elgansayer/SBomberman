@@ -41,6 +41,46 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 53 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 59 ), ExtResource( 58 ), ExtResource( 60 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 52 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 61 ) ],
+"loop": false,
+"name": "action_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 62 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 42 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 53 ), ExtResource( 63 ) ],
 "loop": true,
 "name": "walk_right",
@@ -51,9 +91,9 @@ animations = [ {
 "name": "walk_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 38 ), ExtResource( 61 ) ],
+"frames": [ ExtResource( 52 ) ],
 "loop": false,
-"name": "action_right",
+"name": "standing_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 40 ), ExtResource( 51 ) ],
@@ -61,54 +101,14 @@ animations = [ {
 "name": "action_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 59 ), ExtResource( 58 ), ExtResource( 60 ) ],
+"frames": [ ExtResource( 56 ), ExtResource( 57 ) ],
 "loop": true,
-"name": "celebrate",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 51 ) ],
-"loop": false,
-"name": "standing_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 37 ), ExtResource( 42 ) ],
-"loop": false,
-"name": "action_down",
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 50 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 48 ) ],
 "loop": false,
 "name": "explode",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 52 ) ],
-"loop": false,
-"name": "action_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 52 ) ],
-"loop": false,
-"name": "standing_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 64 ), ExtResource( 62 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 53 ) ],
-"loop": false,
-"name": "standing_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 56 ), ExtResource( 57 ) ],
-"loop": true,
-"name": "walk_up",
 "speed": 5.0
 } ]
 
@@ -265,7 +265,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[node name="Tirra" type="Area2D" groups=["tirras"]]
+[node name="BlueTirraSmall" type="Area2D" groups=["tirras"]]
 position = Vector2( 0, -22 )
 collision_layer = 16
 collision_mask = 44
@@ -276,8 +276,7 @@ colour = "blue"
 position = Vector2( 0, -5 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "explode"
-frame = 3
+animation = "idle"
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]

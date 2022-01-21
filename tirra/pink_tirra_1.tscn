@@ -46,16 +46,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ) ],
-"loop": false,
-"name": "standing_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 27 ) ],
 "loop": false,
 "name": "standing_right",
@@ -66,34 +56,9 @@ animations = [ {
 "name": "celebrate",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "standing_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 13 ) ],
 "loop": false,
 "name": "action_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "explode",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 35 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "action_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 2 ) ],
@@ -101,9 +66,24 @@ animations = [ {
 "name": "action_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 33 ) ],
+"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ) ],
+"loop": false,
+"name": "standing_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 32 ), ExtResource( 37 ) ],
@@ -111,9 +91,29 @@ animations = [ {
 "name": "walk_right",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 36 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ), ExtResource( 9 ) ],
 "loop": false,
 "name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "explode",
 "speed": 5.0
 } ]
 
@@ -162,10 +162,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 1.7 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ), Vector2( 0, -5 ), Vector2( 0, -128 ) ]
+"values": [ Vector2( 0, -128 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AnimatedSprite:scale")
@@ -243,7 +243,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, -15 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimatedSprite:scale")
@@ -270,7 +270,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[node name="PinkTirraBaby" type="Area2D" groups=["tirras"]]
+[node name="PinkTirraMiddle" type="Area2D" groups=["tirras"]]
 position = Vector2( 0, -22 )
 collision_layer = 16
 collision_mask = 44
@@ -282,8 +282,8 @@ current_tirra_level = 1
 position = Vector2( 0, -5 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "action_down"
-frame = 1
+animation = "idle"
+frame = 3
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]

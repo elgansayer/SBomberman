@@ -707,6 +707,8 @@ func got_virus():
 func upgrade_tirra(egg_grid_position):
 	# current_tirra.upgrade_tirra()
 	# jump_from_tirra()
+	if current_tirra.current_tirra_level >= 3:
+		return
 
 	riding = false
 	reset_sprite_position()
