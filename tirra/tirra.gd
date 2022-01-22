@@ -59,17 +59,12 @@ func update_animation(animation_name):
 
 func award_player(player):
 	var tirra_grid_position = self.grid_position
-	$Timer.stop()
 
 	var got_egg = player.got_egg(tirra_grid_position)
 	if !got_egg:
 		# $AnimationPlayer.play("picked_up")
 		queue_free()
 
-
-func _on_Timer_timeout():
-	$AnimationPlayer.play("spin")
-	# state = states.STATE_IDLE
 
 
 func play_sound():

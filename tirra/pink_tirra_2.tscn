@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://tirra/pink_tirra.gd" type="Script" id=1]
 [ext_resource path="res://tirra/pink/big/action down/frame166.png" type="Texture" id=2]
@@ -35,13 +35,31 @@
 [ext_resource path="res://tirra/pink/big/left/frame153.png" type="Texture" id=33]
 [ext_resource path="res://tirra/pink/big/up/frame150.png" type="Texture" id=34]
 [ext_resource path="res://tirra/pink/big/idle/frame202.png" type="Texture" id=35]
+[ext_resource path="res://tirra/animations/tirra_2_load.tres" type="Animation" id=36]
+[ext_resource path="res://tirra/animations/idle.tres" type="Animation" id=37]
 [ext_resource path="res://tirra/pink/big/explode/frame208.png" type="Texture" id=38]
+[ext_resource path="res://tirra/animations/explode.tres" type="Animation" id=39]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 35 ), ExtResource( 32 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 35 ), ExtResource( 32 ), ExtResource( 19 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "action_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
@@ -49,14 +67,9 @@ animations = [ {
 "name": "standing_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "celebrate",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": false,
-"name": "action_left",
+"name": "standing_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 6 ) ],
@@ -69,24 +82,9 @@ animations = [ {
 "name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 29 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 16 ) ],
 "loop": false,
-"name": "standing_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "action_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "walk_right",
+"name": "explode",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
@@ -94,24 +92,29 @@ animations = [ {
 "name": "walk_down",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 2 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 30 ) ],
 "loop": false,
 "name": "standing_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 9 ) ],
-"loop": false,
-"name": "action_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
 "loop": true,
 "name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 38 ), ExtResource( 16 ) ],
-"loop": false,
-"name": "explode",
 "speed": 5.0
 } ]
 
@@ -138,136 +141,6 @@ frame_2/delay_sec = 0.0
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "explode"
-length = 1.7
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "explode" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1.7 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -128 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimatedSprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1, 1.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 0, 0 ) ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 1.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite/Particles2D:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "idle"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 6 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "idle" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "explode" ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AnimatedSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -20 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AnimatedSprite:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite/Particles2D:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
 [node name="PinkTirraBig" type="Area2D" groups=["tirras"]]
 position = Vector2( 0, -22 )
 collision_layer = 16
@@ -280,7 +153,7 @@ current_tirra_level = 2
 position = Vector2( 0, -20 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "idle"
+animation = "standing_down"
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]
@@ -302,8 +175,9 @@ visible = false
 stream = ExtResource( 26 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-anims/explode = SubResource( 5 )
-anims/idle = SubResource( 6 )
+autoplay = "tirra_2_load"
+anims/explode = ExtResource( 39 )
+anims/idle = ExtResource( 37 )
+anims/tirra_2_load = ExtResource( 36 )
 
 [connection signal="body_entered" from="." to="." method="_on_Tirra_body_entered"]
