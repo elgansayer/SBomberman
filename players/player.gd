@@ -15,6 +15,9 @@ const time_has_immortal = 3.0
 
 export var stunned = false
 
+var forced_motion = Vector2.ZERO
+var forced_move = false
+
 var blocking_table = {"up": null, "down": null, "left": null, "right": null}
 
 # What is the current animationm
@@ -29,6 +32,8 @@ var current_animation_motion = "walk"
 var immortal setget immortal_set, immortal_get
 
 var motion = Vector2.ZERO
+
+signal on_collision(collision)
 
 
 func immortal_set(value):
@@ -87,7 +92,7 @@ var stat_virus = false
 # The player's current rollerskates
 var stat_skates = 1
 # The player's current bomb power
-var stat_power = 0
+var stat_power = 3
 # Bombs that the player has
 var stat_bombs = 99
 # Does the player have a powerglove powerup?
@@ -155,7 +160,20 @@ func update_input():
 		prev_action = action
 		prev_bombing = bombing
 
+	if forced_motion:
+		return forced_motion
+
+	if forced_move:
+		if input_motion.x != 0 || input_motion.y != 0:
+			return input_motion
+		else:
+			return world.direction_table[self.current_animation_direction]
+
 	return input_motion
+
+
+func force_direction(direction):
+	forced_motion = world.direction_table[direction]
 
 
 func _physics_process(_delta):
@@ -181,7 +199,22 @@ func _physics_process(_delta):
 	# Can we move?
 	if !frozen_movement:
 		# Use move_and_slide
+
+		# move_and_collide(motion)
+		# var collision = move_and_collide(motion * MOTION_SPEED)
+		# var collision = move_and_collide(motion * MOTION_SPEED, false)
+		# if collision:
+		# 	print ("am i walling? ", self.is_on_wall())
+		# 	print("collision ", collision.collider)	
+		# 	velocity = velocity.slide(collision.normal)
+		# 	velocity = move_and_slide(velocity)
+		# 	emit_signal("on_collision", collision)
+
 		move_and_slide(motion * MOTION_SPEED)
+		# if collision:
+		# 	print(collision.collider)
+		# 	emit_signal("on_collision", collision)
+
 		if not is_network_master():
 			puppet_pos = position  # To avoid jitter
 
@@ -707,7 +740,7 @@ func got_virus():
 func upgrade_tirra(egg_grid_position):
 	# current_tirra.upgrade_tirra()
 	# jump_from_tirra()
-	if current_tirra.current_tirra_level >= 3:
+	if current_tirra.current_tirra_level >= 2:
 		return
 
 	riding = false

@@ -22,11 +22,7 @@ enum layers {
 	LAYER_PLAYERS = 1 << 5,
 }
 
-var blockingMask = (
-	layers.LAYER_TILEMAP
-	| layers.LAYER_ROCKS
-	| layers.LAYER_BOMBS
-)
+var blockingMask = layers.LAYER_TILEMAP | layers.LAYER_ROCKS | layers.LAYER_BOMBS
 
 var bounceMask = (
 	layers.LAYER_TILEMAP

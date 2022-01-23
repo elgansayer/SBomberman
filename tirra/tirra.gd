@@ -7,7 +7,7 @@ extends Area2D
 var picked = false
 var correct_sound
 var current_animation = "idle"
-export(String, "blue", "pink") var colour
+export(String, "blue", "pink", "yellow", "green") var colour
 export(int, "small", "middle", "big") var current_tirra_level
 # The riding player
 var rider

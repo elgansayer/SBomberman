@@ -4,6 +4,12 @@ extends "res://items/item.gd"
 onready var world = get_node("/root/World")
 
 
+func picked_up(player):
+	if player.current_tirra && player.current_tirra.current_tirra_level >= 2:
+		return
+	
+	.picked_up(player)
+
 func award_player(_player):
 	print("award_player egg")
 	# THe coords we want to reach
