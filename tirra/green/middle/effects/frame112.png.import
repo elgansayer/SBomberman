@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green_._01.png-4986b520c8dac09acc1b157b2b230be8.stex"
+path="res://.import/frame112.png-eb5119e997f11772565f8b04cdac21ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tirra/green/green_._01.png"
-dest_files=[ "res://.import/green_._01.png-4986b520c8dac09acc1b157b2b230be8.stex" ]
+source_file="res://tirra/green/middle/effects/frame112.png"
+dest_files=[ "res://.import/frame112.png-eb5119e997f11772565f8b04cdac21ba.stex" ]
 
 [params]
 

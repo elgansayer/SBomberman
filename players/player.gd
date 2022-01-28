@@ -15,6 +15,7 @@ const time_has_immortal = 3.0
 
 export var stunned = false
 
+var pressed_direction
 var forced_motion = Vector2.ZERO
 var forced_move = false
 
@@ -33,7 +34,8 @@ var immortal setget immortal_set, immortal_get
 
 var motion = Vector2.ZERO
 
-signal on_collision(collision)
+# signal on_collision(collision)
+var extra_speed = 0
 
 
 func immortal_set(value):
@@ -134,13 +136,13 @@ func update_input():
 
 	if is_network_master():
 		if Input.is_action_pressed("move_left"):
-			input_motion += Vector2(-1, 0)
+			input_motion = Vector2(-1, 0)
 		if Input.is_action_pressed("move_right"):
-			input_motion += Vector2(1, 0)
+			input_motion = Vector2(1, 0)
 		if Input.is_action_pressed("move_up"):
-			input_motion += Vector2(0, -1)
+			input_motion = Vector2(0, -1)
 		if Input.is_action_pressed("move_down"):
-			input_motion += Vector2(0, 1)
+			input_motion = Vector2(0, 1)
 
 		var bombing = Input.is_action_pressed("set_bomb")
 		var action = Input.is_action_pressed("action")
@@ -159,6 +161,8 @@ func update_input():
 
 		prev_action = action
 		prev_bombing = bombing
+
+	pressed_direction = world.vec_direction_table[input_motion]
 
 	if forced_motion:
 		return forced_motion
@@ -205,12 +209,12 @@ func _physics_process(_delta):
 		# var collision = move_and_collide(motion * MOTION_SPEED, false)
 		# if collision:
 		# 	print ("am i walling? ", self.is_on_wall())
-		# 	print("collision ", collision.collider)	
+		# 	print("collision ", collision.collider)
 		# 	velocity = velocity.slide(collision.normal)
 		# 	velocity = move_and_slide(velocity)
 		# 	emit_signal("on_collision", collision)
-
-		move_and_slide(motion * MOTION_SPEED)
+		var speed = MOTION_SPEED + extra_speed
+		move_and_slide(motion * speed)
 		# if collision:
 		# 	print(collision.collider)
 		# 	emit_signal("on_collision", collision)
@@ -606,19 +610,8 @@ func get_animation_prefix():
 	return ""
 
 
-func get_animation_direction(anim_motion):
-	var direction = ""
-
-	if anim_motion.y < 0:
-		direction = "up"
-	elif anim_motion.y > 0:
-		direction = "down"
-	elif anim_motion.x < 0:
-		direction = "left"
-	elif anim_motion.x > 0:
-		direction = "right"
-
-	return direction
+func get_animation_direction(anim_motion):	
+	return world.vec_direction_table[anim_motion]
 
 
 puppet func killed():
