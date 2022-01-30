@@ -5,13 +5,13 @@ onready var world = get_node("/root/World")
 
 
 func picked_up(player):
-	if player.current_tirra && player.current_tirra.current_tirra_level >= 2:
-		return
-	
+	# if player.tirra && player.tirra.tirra_level >= 2:
+	# 	return
+
 	.picked_up(player)
 
+
 func award_player(_player):
-	print("award_player egg")
 	# THe coords we want to reach
 	var grid_position = world.get_grid_position(self.position)
 
@@ -20,13 +20,12 @@ func award_player(_player):
 	tirra.position = world.get_center_position_from_grid(grid_position)
 	tirra.add_to_group(world.group_tirras)
 
-	# tirra.z_as_relative = true
-	# tirra.z_index = self.z_index - 1
-
-	# No need to set network master to tirra, will be owned by server by default
+	# No need to set network master to tirra,
+	# will be owned by server by default
 	var world_map = get_node("/root/World")
 	world_map.add_child(tirra)
 
+	# Put the egg above for the open animation
 	var old_parent = self.get_parent()
 	old_parent.remove_child(self)
 	world_map.add_child(self)

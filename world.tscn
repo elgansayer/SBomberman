@@ -16,7 +16,7 @@
 [ext_resource path="res://items/egg.tscn" type="PackedScene" id=14]
 [ext_resource path="res://tirra/pink_tirra_0.tscn" type="PackedScene" id=15]
 [ext_resource path="res://tirra/green_tirra_0.tscn" type="PackedScene" id=16]
-[ext_resource path="res://players/black bomberman/head/frame31.png" type="Texture" id=20]
+[ext_resource path="res://players/assets/black_bomberman/head/frame31.png" type="Texture" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=50]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 448, 0, 448 )
@@ -731,6 +731,7 @@ position = Vector2( 464, 144 )
 [node name="Bombs" type="Node2D" parent="."]
 
 [node name="Players" type="Node2D" parent="."]
+position = Vector2( 1, 1 )
 
 [node name="Score" type="HBoxContainer" parent="."]
 margin_left = 16.0

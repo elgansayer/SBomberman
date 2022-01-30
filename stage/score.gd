@@ -32,7 +32,7 @@ func add_player(id, new_player_name):
 
 	var font = DynamicFont.new()
 	font.set_size(8)
-	font.set_font_data(preload("res://fonts/BOMBERMA.TTF"))
+	font.set_font_data(preload("res://fonts/bomberman.ttf"))
 	l.add_font_override("font", font)
 	add_child(l)
 

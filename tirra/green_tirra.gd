@@ -3,47 +3,56 @@ extends "res://tirra/tirra.gd"
 enum states { STATE_IDLE, STATE_ACTION, STATE_SKIDDING }
 var state = states.STATE_IDLE
 var last_position = Vector2.ZERO
-var started_action_position = Vector2.ZERO
 
 
-func action(player):
+func perform_action():
 	if state == states.STATE_ACTION:
 		return
 
 	state = states.STATE_ACTION
-	started_action_position = player.position
 
 	force_rider_motion()
 	force_rider_speed()
 
-	var animation = "action_" + player.current_animation_direction
-	$AnimationPlayer.play(animation)
+	$Animator.action = true
+	.perform_action()
 
-func update_animation(animation_name):
-	if animation_name == $AnimatedSprite.animation:
-		return
-
-	$AnimatedSprite.play(animation_name)
 
 func reset_rider_speed():
-	rider.extra_speed = 0
+	$Mover.extra_speed = 0
+
+
+func reset_rider_motion():
+	$Mover.forced_direction = false
 
 
 func force_rider_speed():
-	rider.extra_speed = 100
-
-
-func release_rider_motion():
-	rider.forced_motion = Vector2.ZERO
+	$Mover.extra_speed = 1000
 
 
 func force_rider_motion():
-	rider.forced_motion = world.direction_table[rider.current_animation_direction]
+	$Mover.forced_direction = $Animator.facing_direction
 
 
 func hit_wall():
-	release_rider_motion()
+	state = states.STATE_IDLE
+
+	reset_rider_motion()
 	reset_rider_speed()
+
+	# Stop the action animations
+	$AnimationPlayer.stop()
+
+	# Stop playing the action animation
+	$Animator.action = false
+
+	# Disable the input
+	$Mover.enabled = false
+	$Animator.enabled = false
+
+	var animation = "hit_wall_" + $Animator.facing_direction
+	$AnimatedSprite.connect("animation_finished", self, "_on_animation_finished")
+	$AnimationPlayer.play(animation)
 
 
 func same_spot():
@@ -51,8 +60,6 @@ func same_spot():
 	if collision && collision.collider:
 		state = states.STATE_IDLE
 		hit_wall()
-
-	reset_rider_speed()
 
 
 func _physics_process(_delta):
@@ -67,8 +74,18 @@ func _physics_process(_delta):
 
 func check_rider_stopped():
 	# We are int he same place
-	if last_position == rider.position || rider.motion.x == 0 && rider.motion.y == 0:
+	if last_position == rider.position:
 		same_spot()
 
 	# Set the last position
 	last_position = rider.position
+
+
+func _on_animation_finished():
+	# Enable the movement
+	$Mover.enabled = true
+	$Animator.enabled = true
+
+	$AnimatedSprite.disconnect("animation_finished", self, "_on_animation_finished")
+	reset_rider_motion()
+	reset_rider_speed()

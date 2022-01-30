@@ -15,7 +15,7 @@ config/description="A multiplayer implementation of the classical bomberman game
 One of the players should press 'host', while the other
 should type in his address and press 'play'."
 run/main_scene="res://lobby/lobby.tscn"
-config/icon="res://players/black bomberman/head/frame31.png"
+config/icon="res://players/assets/black_bomberman/head/frame31.png"
 
 [autoload]
 

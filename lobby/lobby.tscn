@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://lobby/lobby.gd" type="Script" id=1]
-[ext_resource path="res://lobby/Main Menu Background.png" type="Texture" id=2]
+[ext_resource path="res://lobby/assets/main_menu_bg.png" type="Texture" id=2]
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0

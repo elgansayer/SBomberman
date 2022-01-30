@@ -12,7 +12,7 @@ var state = states.STATE_NONE
 
 
 func _ready():
-	current_tirra_level = 2
+	tirra_level = 2
 
 
 func action(player):
@@ -25,16 +25,16 @@ func action(player):
 	player.frozen_movement = true
 	player.frozen_animation = true
 
-	var animation = "action_" + player.current_animation_direction
+	var animation = "action_" + player.facing_direction
 	$AnimationPlayer.play(animation)
 
 
 func _on_AnimatedSprite_animation_finished():
-	self.update_position_on_tirra(rider)
+	self.update_position_on_tirra()
 
 	# Freeze the player while the tirra is performing an action
 	rider.frozen_movement = false
-	rider.frozen_animation = false
+	$Animator.enabled = false
 
 	state = states.STATE_NONE
 
@@ -69,4 +69,4 @@ func play_rider_animation(new_direction):
 	var sprite = rider.get_node("AnimatedSprite")
 	var animation_override = "ride_" + new_direction
 	sprite.play(animation_override)
-	rider.current_animation = animation_override  #"ride_" + rider.current_animation_direction
+	rider.current_animation = animation_override  #"ride_" + rider.facing_direction
