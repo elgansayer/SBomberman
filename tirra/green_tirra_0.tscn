@@ -75,16 +75,6 @@ animations = [ {
 "name": "standing_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 33 ) ],
-"loop": false,
-"name": "action_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": false,
 "name": "standing_left",
@@ -115,6 +105,26 @@ animations = [ {
 "name": "action_right",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "hit_wall_left",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 43 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 45 ), ExtResource( 42 ), ExtResource( 45 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "hit_wall_right",
@@ -125,39 +135,29 @@ animations = [ {
 "name": "hit_wall_up",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 33 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 54 ), ExtResource( 53 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 51 ), ExtResource( 53 ), ExtResource( 17 ) ],
 "loop": false,
 "name": "hit_wall_down",
 "speed": 4.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": false,
-"name": "standing_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "hit_wall_left",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ) ],
-"loop": false,
-"name": "explode",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 27 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "celebrate",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 28 ) ],
 "loop": false,
 "name": "action_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "walk_down",
 "speed": 5.0
 } ]
 
@@ -198,7 +198,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 2, 2 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "action_down"
@@ -221,6 +221,18 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -322,6 +334,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "hit_wall_left"
@@ -360,6 +384,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -400,6 +436,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "hit_wall_up"
@@ -414,6 +462,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "hit_wall_up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -539,7 +599,8 @@ colour = "green"
 position = Vector2( 0, -5 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "standing_down"
+animation = "hit_wall_left"
+frame = 6
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]
@@ -550,13 +611,11 @@ process_material = SubResource( 8 )
 texture = SubResource( 9 )
 
 [node name="WHSpriteLeft" type="Sprite" parent="AnimatedSprite"]
-visible = false
 position = Vector2( -12, -4.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 55 )
 
 [node name="WHSpriteRight" type="Sprite" parent="AnimatedSprite"]
-visible = false
 position = Vector2( 12, -4.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 55 )

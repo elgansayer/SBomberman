@@ -75,6 +75,10 @@ func perform_action():
 
 func award_player(player):
 	var tirra_grid_position = self.grid_position
+	print(tirra_grid_position, ", ", player.grid_position)
+	if tirra_grid_position != player.grid_position:
+		return
+
 	var jump_gravity = 1000
 	var custom_height = 1.15
 	player.launch(tirra_grid_position, custom_height, jump_gravity)

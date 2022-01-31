@@ -22,4 +22,3 @@ func set_animation(anim_data):
 
 	if tirra_animation != animatedSprite.animation:
 		animatedSprite.play(tirra_animation)
-

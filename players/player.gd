@@ -175,8 +175,8 @@ func got_virus():
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	# print("launching")
 	$Mover.enabled = false
-	var launch_vec = (grid_target - grid_position).normalized()
-	var direction = world.vec_direction_table[launch_vec]
+	var launch_vec = grid_target - grid_position
+	var direction = world.vec_direction_table[launch_vec.normalized()]
 	var animation = "flying_" + direction
 	$AnimationPlayer.play(animation)
 

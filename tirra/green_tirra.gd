@@ -35,6 +35,7 @@ func force_rider_motion():
 
 
 func hit_wall():
+	print("hit_wall")
 	state = states.STATE_IDLE
 
 	reset_rider_motion()
@@ -43,15 +44,16 @@ func hit_wall():
 	# Stop the action animations
 	$AnimationPlayer.stop()
 
-	# Stop playing the action animation
-	$Animator.action = false
-
 	# Disable the input
 	$Mover.enabled = false
 	$Animator.enabled = false
 
+	# Stop playing the action animation
+	$Animator.action = false
+
 	var animation = "hit_wall_" + $Animator.facing_direction
 	$AnimatedSprite.connect("animation_finished", self, "_on_animation_finished")
+	print("playing animation: " + animation)
 	$AnimationPlayer.play(animation)
 
 
@@ -82,6 +84,7 @@ func check_rider_stopped():
 
 
 func _on_animation_finished():
+	print("_on_animation_finished")
 	# Enable the movement
 	$Mover.enabled = true
 	$Animator.enabled = true

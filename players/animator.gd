@@ -16,7 +16,20 @@ var animatedSprite
 onready var world = get_node("/root/World")
 
 # Allow the animator to process
-export(bool) var enabled = true
+export(bool) var enabled setget enabled_set, enabled_get
+
+
+# Set the animator enabled and stop if disabled
+func enabled_set(value):
+	enabled = value
+	if !value && animatedSprite:
+		animatedSprite.stop()
+
+
+# Is the animator enabled
+func enabled_get():
+	return enabled
+
 
 # The direction description we are facing
 var facing_direction = "down"
@@ -79,7 +92,8 @@ func set_animation(anim_data):
 
 	if !is_new_anim:
 		return
-
+	
+	print("actor_animation = ", actor_animation)
 	# This is a new animation
 	last_action_time = OS.get_ticks_msec()
 	animatedSprite.play(actor_animation)
