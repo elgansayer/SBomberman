@@ -11,7 +11,42 @@ func picked_up(player):
 	.picked_up(player)
 
 
-func award_player(_player):
+# func upgrade_tirra(player):
+# 	if player.tirra && player.tirra.tirra_level >= player.tirra.TIRRA_LEVEL.big:
+# 		return
+
+# 	# Delete the old tirra and make a new one!
+# 	var old_tirra = player.tirra
+
+# 	var next_level = old_tirra.tirra_level + 1
+# 	var tirra_path = (
+# 		"res://tirra/tirra_"
+# 		+ str(old_tirra.colour)
+# 		+ "_"
+# 		+ old_tirra.tirra_levels[next_level]
+# 		+ ".tscn"
+# 	)
+
+# 	var tirra = load(tirra_path).instance()
+# 	tirra.position = old_tirra.position
+# 	tirra.add_to_group(world.group_tirras)
+
+# 	# Remove the old tirra
+# 	old_tirra.queue_free()
+
+# 	# Set the new tirra
+# 	tirra.attach_rider_to_tirra(player)
+
+
+func award_player(player):
+	# If the player has a tirra. Upgrade it.
+	if player.tirra:
+		player.tirra.upgrade_tirra(player)
+	else:
+		new_tirra()
+
+
+func new_tirra():
 	# THe coords we want to reach
 	var grid_position = world.get_grid_position(self.position)
 
@@ -36,5 +71,5 @@ func get_sub_class():
 
 
 func pick_random_tirra():
-	var colour = "blue"
-	return "res://tirra/" + colour + "_tirra_0.tscn"
+	var colour = "green"
+	return "res://tirra/tirra_" + colour + "_small.tscn"

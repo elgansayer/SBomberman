@@ -1,0 +1,426 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://tirra/assets/blue/big/down/3-156.png" type="Texture" id=1]
+[ext_resource path="res://tirra/assets/blue/big/down/3-155.png" type="Texture" id=2]
+[ext_resource path="res://tirra/assets/blue/big/right/3-159.png" type="Texture" id=3]
+[ext_resource path="res://tirra/assets/blue/big/right/3-158.png" type="Texture" id=4]
+[ext_resource path="res://tirra/assets/blue/big/up/3-150.png" type="Texture" id=5]
+[ext_resource path="res://tirra/assets/blue/big/up/3-149.png" type="Texture" id=6]
+[ext_resource path="res://tirra/assets/blue/big/down/3-157.png" type="Texture" id=7]
+[ext_resource path="res://tirra/assets/blue/big/left/3-160.png" type="Texture" id=8]
+[ext_resource path="res://tirra/assets/blue/big/right/3-160.png" type="Texture" id=9]
+[ext_resource path="res://tirra/assets/blue/big/up/3-151.png" type="Texture" id=10]
+[ext_resource path="res://tirra/assets/blue/big/left/3-158.png" type="Texture" id=11]
+[ext_resource path="res://tirra/assets/blue/big/left/3-159.png" type="Texture" id=12]
+[ext_resource path="res://tirra/assets/blue/big/explode/3-207.png" type="Texture" id=13]
+[ext_resource path="res://tirra/assets/blue/big/explode/3-208.png" type="Texture" id=14]
+[ext_resource path="res://tirra/assets/blue/big/explode/3-216.png" type="Texture" id=15]
+[ext_resource path="res://tirra/assets/blue/big/explode/3-205.png" type="Texture" id=16]
+[ext_resource path="res://tirra/assets/blue/big/explode/3-206.png" type="Texture" id=17]
+[ext_resource path="res://tirra/scripts/tirra_blue_big.gd" type="Script" id=18]
+[ext_resource path="res://tirra/animations/load_big.tres" type="Animation" id=19]
+[ext_resource path="res://tirra/animations/idle.tres" type="Animation" id=20]
+[ext_resource path="res://tirra/assets/blue/big/idle/2.png" type="Texture" id=21]
+[ext_resource path="res://tirra/assets/blue/big/idle/1.png" type="Texture" id=22]
+[ext_resource path="res://tirra/assets/blue/big/idle/3.png" type="Texture" id=23]
+[ext_resource path="res://tirra/animations/explode.tres" type="Animation" id=24]
+[ext_resource path="res://sounds/items/pickup_egg.ogg" type="AudioStream" id=25]
+[ext_resource path="res://tirra/assets/sparkle_1.png" type="Texture" id=36]
+[ext_resource path="res://tirra/assets/sparkle_0.png" type="Texture" id=37]
+[ext_resource path="res://tirra/assets/sparkle_3.png" type="Texture" id=38]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 22 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "action_right",
+"speed": 5.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 8, 0 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="AnimatedTexture" id=9]
+flags = 4
+frames = 3
+frame_0/texture = ExtResource( 37 )
+frame_1/texture = ExtResource( 36 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 38 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "action_down"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "action_down" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.401, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_rider_face_left"
+}, {
+"args": [  ],
+"method": "kick_bomb"
+}, {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "update_rider_face_left"
+}, {
+"args": [  ],
+"method": "_on_AnimatedSprite_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "action_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "action_left" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.401, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "kick_bomb"
+}, {
+"args": [  ],
+"method": "update_rider_face_right"
+}, {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "_on_AnimatedSprite_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "action_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "action_right" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.401, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "kick_bomb"
+}, {
+"args": [  ],
+"method": "update_rider_face_left"
+}, {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "_on_AnimatedSprite_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "action_up"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "action_up" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.401, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_rider_face_right"
+}, {
+"args": [  ],
+"method": "update_rider_face_down"
+}, {
+"args": [  ],
+"method": "kick_bomb"
+}, {
+"args": [  ],
+"method": "update_rider_face_right"
+}, {
+"args": [  ],
+"method": "_on_AnimatedSprite_animation_finished"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="BlieTirraBig" type="Area2D" groups=["tirras"]]
+position = Vector2( 0, -22 )
+collision_layer = 16
+collision_mask = 44
+script = ExtResource( 18 )
+current_tirra_level = 2
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -20 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "standing_down"
+
+[node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]
+material = SubResource( 7 )
+emitting = false
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 6 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 25 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "tirra_2_load"
+method_call_mode = 1
+anims/action_down = SubResource( 12 )
+anims/action_left = SubResource( 15 )
+anims/action_right = SubResource( 14 )
+anims/action_up = SubResource( 13 )
+anims/explode = ExtResource( 24 )
+anims/idle = ExtResource( 20 )
+anims/tirra_2_load = ExtResource( 19 )
+
+[connection signal="body_entered" from="." to="." method="_on_Tirra_body_entered"]

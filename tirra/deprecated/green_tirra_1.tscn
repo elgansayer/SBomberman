@@ -1,0 +1,282 @@
+[gd_scene load_steps=68 format=2]
+
+[ext_resource path="res://tirra/scripts/tirra_green_medium.gd" type="Script" id=1]
+[ext_resource path="res://tirra/assets/green/middle/skid down/frame123.png" type="Texture" id=2]
+[ext_resource path="res://tirra/assets/sparkle_1.png" type="Texture" id=3]
+[ext_resource path="res://tirra/assets/sparkle_0.png" type="Texture" id=4]
+[ext_resource path="res://tirra/assets/sparkle_3.png" type="Texture" id=5]
+[ext_resource path="res://tirra/animations/idle.tres" type="Animation" id=6]
+[ext_resource path="res://tirra/animations/green/medium/explode.tres" type="Animation" id=7]
+[ext_resource path="res://tirra/assets/green/middle/right/green_frame89.png" type="Texture" id=8]
+[ext_resource path="res://tirra/assets/green/middle/left/green_frame84.png" type="Texture" id=9]
+[ext_resource path="res://tirra/assets/green/middle/explode/green_frame147.png" type="Texture" id=10]
+[ext_resource path="res://tirra/assets/green/middle/right/green_frame90.png" type="Texture" id=11]
+[ext_resource path="res://tirra/assets/green/middle/up/green_frame80.png" type="Texture" id=12]
+[ext_resource path="res://tirra/assets/green/middle/left/green_frame83.png" type="Texture" id=13]
+[ext_resource path="res://tirra/assets/green/middle/down/green_frame86.png" type="Texture" id=14]
+[ext_resource path="res://tirra/assets/green/middle/explode/green_frame148.png" type="Texture" id=15]
+[ext_resource path="res://tirra/assets/green/middle/down/green_frame88.png" type="Texture" id=16]
+[ext_resource path="res://tirra/assets/green/middle/explode/green_frame146.png" type="Texture" id=17]
+[ext_resource path="res://tirra/assets/green/middle/down/green_frame87.png" type="Texture" id=18]
+[ext_resource path="res://tirra/assets/green/middle/up/green_frame82.png" type="Texture" id=19]
+[ext_resource path="res://tirra/assets/green/middle/explode/green_frame145.png" type="Texture" id=20]
+[ext_resource path="res://tirra/assets/green/middle/celebrate/green_frame128.png" type="Texture" id=21]
+[ext_resource path="res://tirra/assets/green/middle/celebrate/green_frame129.png" type="Texture" id=22]
+[ext_resource path="res://tirra/assets/green/middle/celebrate/green_frame130.png" type="Texture" id=23]
+[ext_resource path="res://tirra/assets/green/middle/celebrate/green_frame127.png" type="Texture" id=24]
+[ext_resource path="res://tirra/assets/green/middle/action up/green_frame108.png" type="Texture" id=25]
+[ext_resource path="res://sounds/items/pickup_egg.ogg" type="AudioStream" id=26]
+[ext_resource path="res://tirra/assets/green/middle/action up/green_frame110.png" type="Texture" id=27]
+[ext_resource path="res://tirra/assets/green/middle/action up/green_frame109.png" type="Texture" id=28]
+[ext_resource path="res://tirra/assets/green/middle/action right/green_frame118.png" type="Texture" id=29]
+[ext_resource path="res://tirra/assets/green/middle/action left/green_frame111.png" type="Texture" id=30]
+[ext_resource path="res://tirra/assets/green/middle/action down/green_frame116.png" type="Texture" id=31]
+[ext_resource path="res://tirra/assets/green/middle/action down/green_frame115.png" type="Texture" id=32]
+[ext_resource path="res://tirra/assets/green/middle/action down/green_frame117.png" type="Texture" id=33]
+[ext_resource path="res://tirra/assets/green/middle/idle/green_frame140.png" type="Texture" id=34]
+[ext_resource path="res://tirra/assets/green/middle/idle/green_frame144.png" type="Texture" id=35]
+[ext_resource path="res://tirra/assets/green/middle/idle/green_frame142.png" type="Texture" id=36]
+[ext_resource path="res://tirra/assets/green/middle/idle/green_frame141.png" type="Texture" id=37]
+[ext_resource path="res://tirra/assets/green/middle/idle/green_frame143.png" type="Texture" id=38]
+[ext_resource path="res://tirra/assets/green/middle/effects/frame114.png" type="Texture" id=39]
+[ext_resource path="res://tirra/assets/green/middle/effects/frame113.png" type="Texture" id=40]
+[ext_resource path="res://tirra/assets/green/middle/effects/frame112.png" type="Texture" id=41]
+[ext_resource path="res://tirra/assets/green/middle/skid right/frame125.png" type="Texture" id=42]
+[ext_resource path="res://tirra/assets/green/middle/skid left/frame120.png" type="Texture" id=43]
+[ext_resource path="res://tirra/assets/green/middle/skid up/frame119.png" type="Texture" id=44]
+[ext_resource path="res://tirra/animations/green/medium/hit_wall_down.tres" type="Animation" id=45]
+[ext_resource path="res://tirra/animations/green/medium/action_left.tres" type="Animation" id=46]
+[ext_resource path="res://tirra/animations/green/medium/action_down.tres" type="Animation" id=47]
+[ext_resource path="res://tirra/animations/green/medium/action_up.tres" type="Animation" id=48]
+[ext_resource path="res://tirra/animations/green/medium/action_right.tres" type="Animation" id=49]
+[ext_resource path="res://tirra/animations/green/medium/hit_wall_left.tres" type="Animation" id=50]
+[ext_resource path="res://tirra/animations/green/medium/hit_wall_right.tres" type="Animation" id=51]
+[ext_resource path="res://tirra/animations/green/medium/hit_wall_up.tres" type="Animation" id=52]
+[ext_resource path="res://tirra/animations/green/medium/load.tres" type="Animation" id=53]
+[ext_resource path="res://tirra/animations/green/medium/skid_down.tres" type="Animation" id=54]
+[ext_resource path="res://tirra/animations/green/medium/skid_right.tres" type="Animation" id=55]
+[ext_resource path="res://tirra/assets/green/middle/up/green_frame81.png" type="Texture" id=56]
+[ext_resource path="res://tirra/assets/green/middle/left/green_frame85.png" type="Texture" id=57]
+[ext_resource path="res://tirra/assets/green/middle/right/green_frame91.png" type="Texture" id=58]
+[ext_resource path="res://tirra/animations/green/medium/skid_left.tres" type="Animation" id=59]
+[ext_resource path="res://tirra/animations/green/medium/skid_up.tres" type="Animation" id=60]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 34 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 34 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 28 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ) ],
+"loop": true,
+"name": "skid_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": false,
+"name": "hit_wall_down",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "skid_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 58 ) ],
+"loop": false,
+"name": "hit_wall_right",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "skid_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": false,
+"name": "hit_wall_left",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ) ],
+"loop": true,
+"name": "skid_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": false,
+"name": "hit_wall_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "action_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 58 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=7]
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 8, 0 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="AnimatedTexture" id=9]
+flags = 4
+frames = 3
+frame_0/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 3 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 5 )
+frame_2/delay_sec = 0.0
+
+[sub_resource type="SpriteFrames" id=18]
+animations = [ {
+"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ ExtResource( 41 ), ExtResource( 40 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[node name="GreenTirraMiddle" type="Area2D" groups=["tirras"]]
+position = Vector2( 0, -22 )
+collision_layer = 16
+collision_mask = 44
+script = ExtResource( 1 )
+colour = "green"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -15 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+animation = "standing_down"
+playing = true
+
+[node name="Particles2D" type="Particles2D" parent="AnimatedSprite"]
+visible = false
+material = SubResource( 7 )
+emitting = false
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+
+[node name="LeftFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( 8.5, 9 )
+frames = SubResource( 18 )
+playing = true
+
+[node name="RightFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( -7.5, 9 )
+frames = SubResource( 19 )
+frame = 2
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource( 26 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "load"
+anims/action_down = ExtResource( 47 )
+anims/action_left = ExtResource( 46 )
+anims/action_right = ExtResource( 49 )
+anims/action_up = ExtResource( 48 )
+anims/explode = ExtResource( 7 )
+anims/hit_wall_down = ExtResource( 45 )
+anims/hit_wall_left = ExtResource( 50 )
+anims/hit_wall_right = ExtResource( 51 )
+anims/hit_wall_up = ExtResource( 52 )
+anims/idle = ExtResource( 6 )
+anims/load = ExtResource( 53 )
+anims/skid_down = ExtResource( 54 )
+anims/skid_left = ExtResource( 59 )
+anims/skid_right = ExtResource( 55 )
+anims/skid_up = ExtResource( 60 )
+
+[connection signal="body_entered" from="." to="." method="_on_Tirra_body_entered"]

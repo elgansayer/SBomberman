@@ -14,7 +14,11 @@ export var direction_table = {
 }
 
 export var vec_direction_table = {
-	Vector2(0, 0): "" ,Vector2(0, -1): "up" , Vector2(0, 1): "down", Vector2(-1, 0): "left", Vector2(1, 0): "right"
+	Vector2(0, 0): "",
+	Vector2(0, -1): "up",
+	Vector2(0, 1): "down",
+	Vector2(-1, 0): "left",
+	Vector2(1, 0): "right"
 }
 
 enum layers {

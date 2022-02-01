@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" load_steps=31 format=2]
+
+[ext_resource path="res://tirra/assets/green/big/down/green_frame155.png" type="Texture" id=1]
+[ext_resource path="res://tirra/assets/green/big/idle/green_frame202.png" type="Texture" id=2]
+[ext_resource path="res://tirra/assets/green/big/action up/green_frame177.png" type="Texture" id=3]
+[ext_resource path="res://tirra/assets/green/big/right/green_frame158.png" type="Texture" id=4]
+[ext_resource path="res://tirra/assets/green/big/idle/green_frame204.png" type="Texture" id=5]
+[ext_resource path="res://tirra/assets/green/big/explode/green_frame206.png" type="Texture" id=6]
+[ext_resource path="res://tirra/assets/green/big/action left/green_frame179.png" type="Texture" id=7]
+[ext_resource path="res://tirra/assets/green/big/celebrate/green_frame189.png" type="Texture" id=8]
+[ext_resource path="res://tirra/assets/green/big/action down/green_frame180.png" type="Texture" id=9]
+[ext_resource path="res://tirra/assets/green/big/left/green_frame153.png" type="Texture" id=10]
+[ext_resource path="res://tirra/assets/green/big/explode/green_frame207.png" type="Texture" id=11]
+[ext_resource path="res://tirra/assets/green/big/action right/green_frame182.png" type="Texture" id=12]
+[ext_resource path="res://tirra/assets/green/big/down/green_frame156.png" type="Texture" id=13]
+[ext_resource path="res://tirra/assets/green/big/idle/green_frame203.png" type="Texture" id=14]
+[ext_resource path="res://tirra/assets/green/big/action left/green_frame178.png" type="Texture" id=15]
+[ext_resource path="res://tirra/assets/green/big/celebrate/green_frame190.png" type="Texture" id=16]
+[ext_resource path="res://tirra/assets/green/big/left/green_frame154.png" type="Texture" id=17]
+[ext_resource path="res://tirra/assets/green/big/explode/green_frame205.png" type="Texture" id=18]
+[ext_resource path="res://tirra/assets/green/big/celebrate/green_frame191.png" type="Texture" id=19]
+[ext_resource path="res://tirra/assets/green/big/up/green_frame149.png" type="Texture" id=20]
+[ext_resource path="res://tirra/assets/green/big/right/green_frame160.png" type="Texture" id=21]
+[ext_resource path="res://tirra/assets/green/big/action down/green_frame181.png" type="Texture" id=22]
+[ext_resource path="res://tirra/assets/green/big/left/green_frame152.png" type="Texture" id=23]
+[ext_resource path="res://tirra/assets/green/big/up/green_frame150.png" type="Texture" id=24]
+[ext_resource path="res://tirra/assets/green/big/action up/green_frame176.png" type="Texture" id=25]
+[ext_resource path="res://tirra/assets/green/big/right/green_frame159.png" type="Texture" id=26]
+[ext_resource path="res://tirra/assets/green/big/action right/green_frame183.png" type="Texture" id=27]
+[ext_resource path="res://tirra/assets/green/big/up/green_frame151.png" type="Texture" id=28]
+[ext_resource path="res://tirra/assets/green/big/explode/green_frame208.png" type="Texture" id=29]
+[ext_resource path="res://tirra/assets/green/big/down/green_frame157.png" type="Texture" id=30]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "hit_wall_left",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "action_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "hit_wall_down",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "hit_wall_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "hit_wall_right",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+} ]
