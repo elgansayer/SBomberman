@@ -92,8 +92,7 @@ func set_animation(anim_data):
 
 	if !is_new_anim:
 		return
-	
-	print("actor_animation = ", actor_animation)
+
 	# This is a new animation
 	last_action_time = OS.get_ticks_msec()
 	animatedSprite.play(actor_animation)

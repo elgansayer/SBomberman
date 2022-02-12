@@ -273,7 +273,6 @@ tirra_level = 2
 position = Vector2( 0, -20 )
 frames = ExtResource( 3 )
 animation = "action_up"
-frame = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = true

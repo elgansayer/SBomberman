@@ -7,25 +7,23 @@ var z_index_table = {
 	"right": 1,
 }
 
-enum states { STATE_IDLE, STATE_DEAD, STATE_ACTION, STATE_MOVING, STATE_NONE }
-var state = states.STATE_NONE
-
 
 func _ready():
 	tirra_level = 2
 
 
-func action(player):
+func perform_action():
 	if state == states.STATE_ACTION:
 		return
 
 	state = states.STATE_ACTION
 
+	
 	# Freeze the player while the tirra is performing an action
-	player.frozen_movement = true
-	player.frozen_animation = true
+	$Mover.enabled = false
+	$Animator.enabled = false
 
-	var animation = "action_" + player.facing_direction
+	var animation = "action_" + $Animator.facing_direction
 	$AnimationPlayer.play(animation)
 
 
@@ -33,8 +31,8 @@ func _on_AnimatedSprite_animation_finished():
 	self.update_position_on_tirra()
 
 	# Freeze the player while the tirra is performing an action
-	rider.frozen_movement = false
-	$Animator.enabled = false
+	$Mover.enabled = true
+	$Animator.enabled = true
 
 	state = states.STATE_NONE
 
@@ -59,14 +57,14 @@ func update_rider(direction):
 	if !rider:
 		return
 
-	var sprite = rider.get_node("AnimatedSprite")
-	update_rider_position_on_tirra_big(sprite, direction)
+	# var sprite = rider.get_node("AnimatedSprite")
+	# update_rider_position_on_tirra_big(sprite, direction)
 	play_rider_animation(direction)
 	rider.z_index = z_index_table[direction]
 
 
 func play_rider_animation(new_direction):
-	var sprite = rider.get_node("AnimatedSprite")
+	# var sprite = rider.get_node("AnimatedSprite")
 	var animation_override = "ride_" + new_direction
-	sprite.play(animation_override)
-	rider.current_animation = animation_override  #"ride_" + rider.facing_direction
+	riderAnimationSprite.play(animation_override)
+	# riderAnimationSprite = animation_override  #"ride_" + rider.facing_direction

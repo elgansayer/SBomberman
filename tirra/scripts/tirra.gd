@@ -79,7 +79,6 @@ func award_player(player):
 	if rider:
 		return
 
-	print("award player")
 	rider = player
 	var tirra_grid_position = self.grid_position
 
