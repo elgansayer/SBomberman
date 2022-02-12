@@ -18,7 +18,6 @@ func perform_action():
 
 	state = states.STATE_ACTION
 
-	
 	# Freeze the player while the tirra is performing an action
 	$Mover.enabled = false
 	$Animator.enabled = false
