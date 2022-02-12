@@ -1,6 +1,23 @@
 extends Node2D
 
-const MOTION_SPEED = 10000.0
+var animator_node
+
+# What is the mover direction
+var facing_direction setget facing_direction_set, facing_direction_get
+
+
+# What is the mover direction
+func facing_direction_set(value):
+	facing_direction = value
+
+
+# What is the mover direction
+func facing_direction_get():
+	return animator_node.facing_direction
+
+
+const SPEED_DEFAULT = 10000.0
+var speed = 10000.0
 
 ## Nodes
 onready var world = get_node("/root/World")
@@ -20,7 +37,6 @@ var motion = Vector2.ZERO
 
 # The direction which was pressed as inpout
 var pressed_direction
-var extra_speed = 0
 
 # Force movement in a direction
 var forced_direction setget forced_direction_set, forced_direction_get
@@ -40,8 +56,9 @@ func forced_direction_get():
 
 
 # Set up the mover node
-func construct(mover):
+func construct(mover, node):
 	actor = mover
+	animator_node = node
 
 
 func _ready():
@@ -56,7 +73,6 @@ func process(delta):
 	if is_network_master():
 		motion = update_input()
 
-	var speed = MOTION_SPEED + extra_speed
 	var move_motion = (motion.normalized() * speed) * delta
 	actor.move_and_slide(move_motion)
 

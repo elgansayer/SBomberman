@@ -50,7 +50,7 @@ func facing_direction_get():
 # When the player first spawns
 func _ready():
 	add_to_group(world.group_players)
-	$Mover.construct(self)
+	$Mover.construct(self, $Animator)
 	$Animator.construct($Mover, $AnimatedSprite)
 
 

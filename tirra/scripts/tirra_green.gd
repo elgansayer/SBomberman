@@ -19,7 +19,7 @@ func perform_action():
 
 
 func reset_rider_speed():
-	$Mover.extra_speed = 0
+	$Mover.speed = $Mover.SPEED_DEFAULT
 
 
 func reset_rider_motion():
@@ -27,7 +27,7 @@ func reset_rider_motion():
 
 
 func force_rider_speed():
-	$Mover.extra_speed = 1000
+	$Mover.speed += 5000
 
 
 func force_rider_motion():
@@ -83,7 +83,6 @@ func check_rider_stopped():
 
 
 func _on_animation_finished():
-	print("_on_animation_finished")
 	# Enable the movement
 	$Mover.enabled = true
 	$Animator.enabled = true

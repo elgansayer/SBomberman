@@ -4,7 +4,7 @@
 resource_name = "explode"
 length = 1.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("../AnimatedSprite2:animation")
+tracks/0/path = NodePath("../AnimatedSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ "explode" ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../AnimatedSprite2:position")
+tracks/1/path = NodePath("../AnimatedSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -5 ), Vector2( 0, -128 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../AnimatedSprite2:scale")
+tracks/2/path = NodePath("../AnimatedSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

@@ -38,49 +38,14 @@ animations = [ {
 "name": "idle",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 17 ) ],
-"loop": false,
-"name": "hit_wall_left",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 27 ) ],
-"loop": false,
-"name": "action_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "standing_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "action_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 24 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ) ],
-"loop": false,
-"name": "hit_wall_down",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 29 ) ],
-"loop": false,
-"name": "explode",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "celebrate",
+"name": "action_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 30 ) ],
@@ -88,10 +53,35 @@ animations = [ {
 "name": "hit_wall_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "action_down",
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "standing_down",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "hit_wall_down",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "hit_wall_left",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "hit_wall_right",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 10 ) ],
 "loop": true,
@@ -103,14 +93,19 @@ animations = [ {
 "name": "standing_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": false,
-"name": "hit_wall_right",
-"speed": 4.0
+"frames": [ ExtResource( 12 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "action_right",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 30 ) ],
+"frames": [ ExtResource( 18 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 29 ) ],
 "loop": false,
-"name": "standing_down",
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "action_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ) ],
@@ -118,13 +113,18 @@ animations = [ {
 "name": "standing_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "action_left",
+"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "action_up",
 "speed": 5.0
 } ]

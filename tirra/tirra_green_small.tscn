@@ -19,7 +19,7 @@
 [ext_resource path="res://tirra/assets/green/small/effects/nose_bonk.png" type="Texture" id=17]
 [ext_resource path="res://tirra/assets/green/small/effects/frame36.png" type="Texture" id=18]
 [ext_resource path="res://tirra/assets/green/small/effects/frame37.png" type="Texture" id=19]
-[ext_resource path="res://tirra/scripts/tirra_green_small.gd" type="Script" id=20]
+[ext_resource path="res://tirra/scripts/tirra_green.gd" type="Script" id=20]
 [ext_resource path="res://tirra/scripts/green_animator.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -63,13 +63,12 @@ flip_h = true
 visible = false
 position = Vector2( 1.5, 9 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="DownFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="4"]
 position = Vector2( -0.5, 7.5 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" parent="." index="3"]

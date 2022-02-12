@@ -149,6 +149,7 @@ func upgrade_tirra(player):
 		+ ".tscn"
 	)
 
+	print("Loading tirra %s", tirra_path)
 	var tirra = load(tirra_path).instance()
 	tirra.position = old_tirra.position
 	tirra.add_to_group(world.group_tirras)
@@ -178,7 +179,7 @@ func attach_rider_to_tirra(player):
 	rider = player
 
 	if $Mover:
-		$Mover.construct(rider)
+		$Mover.construct(rider, $Animator)
 
 	if $Animator:
 		$Animator.setup($Mover, $AnimatedSprite, $AnimationPlayer, riderAnimationSprite)
