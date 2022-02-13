@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://tirra/tirra_base_medium.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tirra/scenes/tirra_base_medium.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tirra/assets/green/middle/effects/frame112.png" type="Texture" id=2]
 [ext_resource path="res://tirra/assets/green/middle/effects/frame114.png" type="Texture" id=3]
 [ext_resource path="res://tirra/assets/green/middle/effects/frame113.png" type="Texture" id=4]
@@ -19,9 +19,9 @@
 [ext_resource path="res://tirra/animations/green/medium/action_down.tres" type="Animation" id=17]
 [ext_resource path="res://tirra/animations/green/medium/load.tres" type="Animation" id=18]
 [ext_resource path="res://tirra/animations/green/medium/explode.tres" type="Animation" id=19]
-[ext_resource path="res://tirra/scripts/tirra_green_medium.gd" type="Script" id=20]
-[ext_resource path="res://tirra/scripts/green_medium_animator.gd" type="Script" id=21]
-[ext_resource path="res://tirra/scripts/green_medium_mover.gd" type="Script" id=22]
+[ext_resource path="res://tirra/scripts/green/green_medium.gd" type="Script" id=20]
+[ext_resource path="res://tirra/scripts/green/medium_animator.gd" type="Script" id=21]
+[ext_resource path="res://tirra/scripts/green/medium_mover.gd" type="Script" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -44,7 +44,6 @@ script = ExtResource( 20 )
 colour = "green"
 
 [node name="AnimatedSprite" parent="." index="0"]
-position = Vector2( 0, -15 )
 frames = ExtResource( 5 )
 animation = "standing_down"
 frame = 0
@@ -53,13 +52,14 @@ frame = 0
 visible = false
 position = Vector2( 8.5, 9 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="RightFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="2"]
 visible = false
 position = Vector2( -7.5, 9 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 

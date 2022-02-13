@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://tirra/tirra_base_small.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tirra/scenes/tirra_base_small.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tirra/tres/green/green_small.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://tirra/animations/green/small/hit_wall_up.tres" type="Animation" id=3]
 [ext_resource path="res://tirra/animations/green/small/action_down.tres" type="Animation" id=4]
@@ -19,8 +19,8 @@
 [ext_resource path="res://tirra/assets/green/small/effects/nose_bonk.png" type="Texture" id=17]
 [ext_resource path="res://tirra/assets/green/small/effects/frame36.png" type="Texture" id=18]
 [ext_resource path="res://tirra/assets/green/small/effects/frame37.png" type="Texture" id=19]
-[ext_resource path="res://tirra/scripts/tirra_green.gd" type="Script" id=20]
-[ext_resource path="res://tirra/scripts/green_animator.gd" type="Script" id=21]
+[ext_resource path="res://tirra/scripts/green/tirra_green.gd" type="Script" id=20]
+[ext_resource path="res://tirra/scripts/green/green_animator.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -63,12 +63,13 @@ flip_h = true
 visible = false
 position = Vector2( 1.5, 9 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="DownFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="4"]
 position = Vector2( -0.5, 7.5 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" parent="." index="3"]

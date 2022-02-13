@@ -138,11 +138,14 @@ func upgrade_tirra(player):
 
 	# Delete the old tirra and make a new one!
 	var old_tirra = player.tirra
+	var colour_name = str(old_tirra.colour)
 
 	var next_level = old_tirra.tirra_level + 1
 	var tirra_path = (
-		"res://tirra/tirra_"
-		+ str(old_tirra.colour)
+		"res://tirra/scenes/"
+		+ colour_name
+		+ "/tirra_"
+		+ colour_name
 		+ "_"
 		+ old_tirra.tirra_levels[next_level]
 		+ ".tscn"

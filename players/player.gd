@@ -1,5 +1,7 @@
 extends "res://scripts/throwable.gd"
 
+signal landed;
+
 # The player's current bomb power
 # var max_explosion_length = 1;
 var stat_virus = false
@@ -189,9 +191,13 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 # The player landed from being thrown
 func landed():
 	.landed()
+	emit_signal("landed")
+	
 	# landed from got flying
 	# self.frozen_movement = false
 	# self.frozen_animation = false
+	# $Animator.enabled = true
+	# $Mover.enabled = true
 
 	# $shape.disabled = false
 

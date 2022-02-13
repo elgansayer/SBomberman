@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/green_animator.gd"
+extends "res://tirra/scripts/green/green_animator.gd"
 
 # Are we skidding?
 var skidding = false
