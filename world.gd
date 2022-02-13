@@ -9,6 +9,18 @@ export(int) var time = 60 * 3
 # Time the map lasts for
 export(int) var time_left = time
 
+enum orientation {
+	Vertical,
+	Horizontal,
+}
+
+export var direction_orientation = {
+	"up": orientation.Vertical,
+	"down": orientation.Vertical,
+	"left": orientation.Horizontal,
+	"right": orientation.Horizontal
+}
+
 export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }

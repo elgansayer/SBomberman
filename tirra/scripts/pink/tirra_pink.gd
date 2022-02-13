@@ -1,5 +1,8 @@
 extends "res://tirra/scripts/tirra.gd"
 
+var jumping = false
+var shadow
+
 
 func attach_rider_to_tirra(player):
 	.attach_rider_to_tirra(player)
@@ -7,10 +10,19 @@ func attach_rider_to_tirra(player):
 
 
 func perform_action():
-	# if player.flying:
-	# 	return
+	if jumping || rider.flying:
+		return
+
+	jumping = true
 	$Animator.enabled = false
 	$Mover.enabled = false
+
+	var shadow_move_dir = world.direction_orientation[$Animator.facing_direction]
+
+	shadow = load("res://scenes/shadow.tscn").instance()
+	world.add_child(shadow)
+	shadow.position = rider.position
+	shadow.constructor(rider, shadow_move_dir)
 
 	.perform_action()
 	jump()
@@ -55,6 +67,7 @@ func jump():
 func _on_rider_landed():
 	$Animator.enabled = true
 	$Mover.enabled = true
+	jumping = false
 
 
 func get_sub_class():

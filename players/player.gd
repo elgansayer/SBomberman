@@ -1,6 +1,6 @@
 extends "res://scripts/throwable.gd"
 
-signal landed;
+signal landed
 
 # The player's current bomb power
 # var max_explosion_length = 1;
@@ -175,8 +175,8 @@ func got_virus():
 
 # Throw player through the air
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
-	# print("launching")
 	$Mover.enabled = false
+
 	var launch_vec = grid_target - grid_position
 	var direction = world.vec_direction_table[launch_vec.normalized()]
 	if direction == "":
@@ -185,6 +185,11 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	var animation = "flying_" + direction
 	$AnimationPlayer.play(animation)
 
+	var shadow = load("res://scenes/shadow.tscn").instance()
+	world.add_child(shadow)
+	var shadow_move_dir = world.direction_orientation[direction]
+	shadow.constructor(self, shadow_move_dir)
+
 	.launch(grid_target, height_scale, gravity_scale)
 
 
@@ -192,7 +197,7 @@ func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 func landed():
 	.landed()
 	emit_signal("landed")
-	
+
 	# landed from got flying
 	# self.frozen_movement = false
 	# self.frozen_animation = false
