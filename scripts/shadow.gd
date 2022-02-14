@@ -4,8 +4,9 @@ onready var world = get_node("/root/World")
 
 var been_used: bool = false
 var follow_node
-var going_direction 
+var going_direction
 var start_location
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,12 +16,13 @@ func _ready():
 func constructor(node_to_follow, direction):
 	self.global_position = node_to_follow.global_position
 	self.follow_node = node_to_follow
-	self.set_physics_process(true)
 	self.going_direction = direction
 	start_location = self.global_position
+	self.set_physics_process(true)
 
 	if self.going_direction != world.orientation.Horizontal:
 		destroy()
+
 
 func destroy():
 	self.set_physics_process(false)
@@ -51,8 +53,6 @@ func _physics_process(_delta_time: float):
 	scale = max(scale, 0)
 
 	self.scale = Vector2(scale, scale)
-
-	print(distance," ", scale)
 
 	if distance <= 0 && been_used:
 		self.destroy()

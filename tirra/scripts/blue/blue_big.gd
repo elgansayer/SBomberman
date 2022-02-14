@@ -9,7 +9,7 @@ var z_index_table = {
 
 
 func _ready():
-	tirra_level = 2
+	tirra_level = TIRRA_LEVEL.big
 
 
 func perform_action():

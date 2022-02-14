@@ -42,6 +42,7 @@ animations = [ {
 position = Vector2( 0, -23 )
 script = ExtResource( 20 )
 colour = "green"
+tirra_level = 1
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 2 )
@@ -63,13 +64,13 @@ flip_h = true
 visible = false
 position = Vector2( 1.5, 9 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="DownFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="4"]
+visible = false
 position = Vector2( -0.5, 7.5 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" parent="." index="3"]

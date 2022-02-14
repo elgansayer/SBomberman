@@ -10,10 +10,10 @@ var riderAnimationPlayer
 var riderAnimationSprite
 
 var correct_sound
-enum TIRRA_LEVEL { small, middle, big }
-const tirra_levels = ["small", "medium", "big"]
-export(String, "blue", "pink", "yellow", "green") var colour
-export(TIRRA_LEVEL) var tirra_level = TIRRA_LEVEL.small
+enum TIRRA_LEVEL { none, small, medium, big }
+const tirra_levels = ["none", "small", "medium", "big"]
+export(String, "none", "blue", "pink", "yellow", "green") var colour = "none"
+export(TIRRA_LEVEL) var tirra_level = TIRRA_LEVEL.none
 
 ## Nodes
 onready var world = get_node("/root/World")
@@ -140,6 +140,7 @@ func upgrade_tirra(player):
 	var old_tirra = player.tirra
 	var colour_name = str(old_tirra.colour)
 
+	print("tirra_level %s", old_tirra.tirra_level)
 	var next_level = old_tirra.tirra_level + 1
 	var tirra_path = (
 		"res://tirra/scenes/"

@@ -42,24 +42,22 @@ animations = [ {
 [node name="TirraGreenMedium" instance=ExtResource( 1 )]
 script = ExtResource( 20 )
 colour = "green"
+tirra_level = 2
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 5 )
-animation = "standing_down"
-frame = 0
 
 [node name="LeftFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="1"]
 visible = false
 position = Vector2( 8.5, 9 )
 frames = SubResource( 1 )
-frame = 2
 playing = true
 
 [node name="RightFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="2"]
 visible = false
 position = Vector2( -7.5, 9 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 

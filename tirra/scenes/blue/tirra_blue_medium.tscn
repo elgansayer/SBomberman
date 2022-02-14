@@ -1,292 +1,32 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://tirra/scenes/tirra_base_small.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tirra/scenes/tirra_base_medium.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tirra/animations/blue/medium/action_down.tres" type="Animation" id=2]
 [ext_resource path="res://tirra/tres/blue/blue_medium.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://tirra/assets/blue/middle/effects/spark.png" type="Texture" id=4]
+[ext_resource path="res://tirra/animations/blue/medium/action_up.tres" type="Animation" id=5]
+[ext_resource path="res://tirra/animations/blue/medium/action_left.tres" type="Animation" id=6]
+[ext_resource path="res://tirra/animations/blue/medium/action_right.tres" type="Animation" id=7]
+[ext_resource path="res://tirra/scripts/blue/blue_medium.gd" type="Script" id=8]
 
-[sub_resource type="Animation" id=1]
-resource_name = "action_down"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "action_down" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SparkSprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SparkSprite:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -7, -15 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("SparkSprite:z_index")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "action_left"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "action_left" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SparkSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -30, -5 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SparkSprite:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "action_right"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "action_right" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SparkSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 30, -5 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SparkSprite:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "action_up"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "action_up" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SparkSprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SparkSprite:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -7, -15 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("SparkSprite:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "load"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("../AnimatedSprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "standing_down" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../AnimatedSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, -15 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../AnimatedSprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:current_animation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 5.9 ),
-"transitions": PoolRealArray( 1 ),
-"update": 2,
-"values": [ "idle" ]
-}
-
-[node name="TirraBlueMedium" instance=ExtResource( 1 )]
-tirra_level = 1
+[node name="TirraBaseMedium" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+tirra_level = 2
 
 [node name="SparkSprite" type="Sprite" parent="." index="0"]
+visible = false
 position = Vector2( -7, -15 )
 scale = Vector2( 2, 2 )
+z_index = 1
 texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" parent="." index="1"]
-position = Vector2( 0, -15 )
 frames = ExtResource( 3 )
+animation = "action_down"
+frame = 2
 
 [node name="AnimationPlayer" parent="." index="4"]
-anims/action_down = SubResource( 1 )
-anims/action_left = SubResource( 2 )
-anims/action_right = SubResource( 3 )
-anims/action_up = SubResource( 4 )
-anims/load = SubResource( 5 )
+anims/action_down = ExtResource( 2 )
+anims/action_left = ExtResource( 6 )
+anims/action_right = ExtResource( 7 )
+anims/action_up = ExtResource( 5 )

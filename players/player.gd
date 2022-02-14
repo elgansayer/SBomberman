@@ -177,13 +177,12 @@ func got_virus():
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	$Mover.enabled = false
 
-	var launch_vec = grid_target - grid_position
-	var direction = world.vec_direction_table[launch_vec.normalized()]
-	if direction == "":
-		direction = "down"
+	var direction = $Animator.facing_direction
+	# if direction == "":
+	# 	direction = "down"
 
-	var animation = "flying_" + direction
-	$AnimationPlayer.play(animation)
+	# var animation = "flying_" + direction
+	# $AnimationPlayer.play(animation)
 
 	var shadow = load("res://scenes/shadow.tscn").instance()
 	world.add_child(shadow)

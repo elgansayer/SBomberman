@@ -301,16 +301,16 @@ tracks/5/keys = {
 }
 
 [node name="TirraBlueSmall" instance=ExtResource( 1 )]
+tirra_level = 1
 
 [node name="SparkSprite" type="Sprite" parent="." index="0"]
+visible = false
 position = Vector2( -9, -3 )
 z_index = 1
 texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = ExtResource( 2 )
-animation = "action_down"
-frame = 1
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/action_down = SubResource( 1 )
