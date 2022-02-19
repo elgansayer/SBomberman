@@ -19,7 +19,7 @@ func kick_bomb():
 	var player_grid_pos = rider.grid_position
 	var forward_vec = direction_table[$Animator.facing_direction]
 	var forward_grid_position = player_grid_pos + forward_vec
-	var bombs = get_tree().get_nodes_in_group("bombs")
+	var bombs = get_tree().get_nodes_in_group(world.group_bombs)
 
 	var distance = 3 + tirra_level
 	var target = player_grid_pos + (forward_vec * distance)

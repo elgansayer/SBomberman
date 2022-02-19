@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tirra/scenes/tirra_base_small.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tirra/animations/yellow/small/action_down.tres" type="Animation" id=2]
+[ext_resource path="res://tirra/scripts/yellow/tirra_yellow.gd" type="Script" id=3]
+[ext_resource path="res://tirra/animations/yellow/small/action_right.tres" type="Animation" id=4]
+[ext_resource path="res://tirra/animations/yellow/small/action_up.tres" type="Animation" id=5]
+[ext_resource path="res://tirra/animations/yellow/small/action_left.tres" type="Animation" id=6]
 [ext_resource path="res://tirra/tres/yellow/tirra_yellow_small.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://tirra/assets/yellow/small/effects/bu-horzontal.png" type="Texture" id=11]
 [ext_resource path="res://tirra/assets/yellow/small/effects/bu-vertical.png" type="Texture" id=12]
@@ -19,19 +23,36 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 16 )
+
 [node name="TirraBaseSmall" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+colour = "yellow"
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 10 )
+animation = "action_up"
+frame = 1
+playing = false
 
 [node name="AnimationPlayer" parent="." index="3"]
-autoplay = "action_down"
 anims/action_down = ExtResource( 2 )
+anims/action_left = ExtResource( 6 )
+anims/action_right = ExtResource( 4 )
+anims/action_up = ExtResource( 5 )
 
 [node name="NoiseAnimatedSprite" type="AnimatedSprite" parent="." index="6"]
-position = Vector2( 0, 22 )
-scale = Vector2( 0.31583, 0.757993 )
+position = Vector2( 0, -22 )
+rotation = 3.14159
+scale = Vector2( 2.4, 2.4 )
 frames = SubResource( 1 )
 animation = "vertical"
 centered = false
 offset = Vector2( -8, 0 )
+
+[node name="Area2D" type="Area2D" parent="NoiseAnimatedSprite" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoiseAnimatedSprite/Area2D" index="0"]
+position = Vector2( 0, 18 )
+shape = SubResource( 3 )

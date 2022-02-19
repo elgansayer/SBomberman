@@ -113,6 +113,7 @@ collision_layer = 16
 collision_mask = 44
 script = ExtResource( 1 )
 colour = "blue"
+tirra_level = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -5 )

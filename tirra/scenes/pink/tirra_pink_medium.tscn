@@ -7,7 +7,8 @@
 [node name="TirraPinkMedium" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 colour = "pink"
-tirra_level = 2
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 4 )
+animation = "action_down"
+frame = 1

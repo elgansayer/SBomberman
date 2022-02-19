@@ -11,8 +11,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "idle", "standing_down" ]
+"values": [ "standing_down" ]
 }

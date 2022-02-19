@@ -15,35 +15,15 @@ func perform_action():
 
 
 func scream():
-	var direction_table = world.direction_table
-	var player_grid_pos = rider.grid_position
-	var forward_vec = direction_table[$Animator.facing_direction]
-	var forward_grid_position = player_grid_pos + forward_vec
-	var bombs = get_tree().get_nodes_in_group("bombs")
+	var animation = "action_" + $Animator.facing_direction
+	$AnimationPlayer.play(animation)
 
-	var distance = 3 + tirra_level
-	var target = player_grid_pos + (forward_vec * distance)
-	for bomb in bombs:
-		if bomb.grid_position == forward_grid_position:
-			var animation = "action_" + $Animator.facing_direction
-			$AnimatedSprite.connect("animation_finished", self, "_on_animation_finished")
-			$AnimatedSprite.play(animation)
-			$AnimationPlayer.play(animation)
-			bomb.launch(target)
-			return
 
+func on_scream_animation_finished():
 	state = states.STATE_IDLE
 	$Mover.enabled = true
 	$Animator.enabled = true
-
-
-func _on_animation_finished():
-	print("_on_animation_finished")
-	state = states.STATE_IDLE
-	$Mover.enabled = true
-	$Animator.enabled = true
-	# $AnimatedSprite.disconnect("animation_finished", self, "_on_animation_finished")
 
 
 func get_class():
-	return "BlueTirra"
+	return "YellowTirra"
