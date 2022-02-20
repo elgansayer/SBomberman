@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 ## Nodes
 onready var abilities = self.get_parent()

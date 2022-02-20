@@ -30,7 +30,13 @@ var launch_direction = Vector2.ZERO
 # Description of direction
 var str_direction = ""
 # Position of the bomb in the world tilemap
-var grid_position = Vector2()
+var grid_position setget , grid_position_get
+
+
+# Getter must return a value.
+func grid_position_get():
+	grid_position = world.get_grid_position(position)
+
 
 var og_collision_layer = 0
 var og_collision_mask = 0
@@ -43,7 +49,7 @@ func calculate_arc_velocity(source_position, dest_position, arc_height, gravity)
 	if displacement.y > arc_height:
 		var time_up = sqrt(-2 * arc_height / float(gravity))
 		var time_down = sqrt(2 * (displacement.y - arc_height) / float(gravity))
-		# # # print("time %s" % (time_up + time_down))
+		# # # #print("time %s" % (time_up + time_down))
 
 		arc_velocity.y = -sqrt(-2 * gravity * arc_height)
 		arc_velocity.x = displacement.x / float(time_up + time_down)
@@ -70,7 +76,9 @@ func launch_to(target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	# # The coords we want to reach
 	# target_position = world.get_center_position_from_grid(target_grid_position)
 
-	launch_direction = (Vector2(int(target_position.x), int(target_position.y)) - Vector2(int(global_position.x), int(global_position.y))).normalized()
+	var target_int = Vector2(int(target_position.x), int(target_position.y))
+	var global_int = Vector2(int(global_position.x), int(global_position.y))
+	launch_direction = (target_int - global_int).normalized()
 
 	var direction_table = world.direction_table
 	var abs_x = abs(launch_direction.x)
@@ -100,7 +108,7 @@ func launch_to(target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 		global_position, target_position, arc_height, GRAVITY
 	)
 
-	# print("launch_velocity %s" % launch_velocity)
+	# #print("launch_velocity %s" % launch_velocity)
 
 	velocity = launch_velocity
 
@@ -121,10 +129,10 @@ func launch_to(target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 
 func _physics_process(_delta):
 	# if get_class() == "Bomb":
-	# # print("_physics_process throwable bomb ", flying, " ", velocity)
+	# # #print("_physics_process throwable bomb ", flying, " ", velocity)
 
 	# if velocity.x != 0 && velocity.y != 0:
-	# # print("throwable velocity %s" % velocity)
+	# # #print("throwable velocity %s" % velocity)
 
 	if flying:
 		velocity.y += GRAVITY * _delta
@@ -165,11 +173,11 @@ func _physics_process(_delta):
 		if collision && collision.collider || (position == target_position):
 			flying = false
 			velocity = Vector2.ZERO
-			# print("at position %s", position)
-			# print("at target_position %s", target_position)
-			# print("at position %s", position == target_position)
+			# #print("at position %s", position)
+			# #print("at target_position %s", target_position)
+			# #print("at position %s", position == target_position)
 			# if collision && collision.collider:
-			# print("collision %s", collision.collider)
+			# #print("collision %s", collision.collider)
 
 			# Use global coordinates, not local to node
 

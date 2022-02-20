@@ -1,5 +1,10 @@
 extends "res://scripts/throwable.gd"
+signal on_explode(bomb)
 
+export(Resource) var explosion_scene
+export(Resource) var throw_sound
+
+# res://explosion/explosion.tscn
 ### Variables ###
 
 # Gravity of the bomb for bouncing and throwing
@@ -18,7 +23,7 @@ var player_owner
 var exploded = false
 var stat_power
 # Is the bomb paused?
-var paused setget paused_set, paused_get
+var paused setget paused_set
 
 # The bombs cant colide with players that are on the same spot when they are planted
 var collision_exceptions = []
@@ -39,25 +44,18 @@ func paused_set(value):
 	paused = value
 
 
-func paused_get():
-	return paused  # Getter must return a value.
-
-
-signal on_explode(bomb)
-
-
 # Use sync because it will be called everywhere
 remotesync func setup_explosion(bomb):
-	print("setup_explosion")
+	#//#print("setup_explosion")
 	var name = String(get_name()) + "_explosion"
 
-	var explosion = preload("res://explosion/explosion.tscn").instance()
+	var explosion = explosion_scene.instance()
 	explosion.set_name(name)  # Ensure unique name for the explosion
 
 	explosion.bomb = bomb
 	explosion.max_explosion_length = bomb.stat_power
 	explosion.bomb_body = self
-	explosion.position = world.get_center_position_from_grid(bomb.grid_position)
+	explosion.position = world.snap_position_to_grid(bomb.position)
 	explosion.from_player = bomb.from_player
 	explosion.player_owner = bomb.player_owner
 
@@ -71,10 +69,10 @@ func _ready():
 	add_to_group("bombs")
 	# puppet_pos = position
 	# grid_position = world.get_grid_position(position)
-	var player = world.get_group_node_at(self.grid_position, world.group_players)
-	if player:
-		collision_exceptions.append(player)
-		player.add_collision_exception_with(self)
+	# var player = world.get_group_node_at(self.grid_position, world.group_players)
+	# if player:
+	# 	collision_exceptions.append(player)
+	# 	player.add_collision_exception_with(self)
 
 
 func landed():
@@ -100,7 +98,7 @@ func check_landed_on_item():
 func launch(grid_target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	self.paused = true
 
-	print("bomb launching ", grid_target)
+	#//#print("bomb launching ", grid_target)
 	.launch(grid_target, height_scale, gravity_scale)
 
 
@@ -108,9 +106,9 @@ func throw(grid_target):
 	self.launch(grid_target)
 
 	# Plays a go sound
-	var throw_sound = preload("res://sounds/items/go.ogg")
-	$AudioStreamPlayer2D.stream = throw_sound
-	$AudioStreamPlayer2D.play()
+	# var ThrowSound = preload(throw_sound)
+	# $AudioStreamPlayer2D.stream = ThrowSound
+	# $AudioStreamPlayer2D.play()
 
 
 func set_network_position(new_position):
@@ -118,22 +116,32 @@ func set_network_position(new_position):
 	rset("puppet_pos", new_position)
 
 
-func _physics_process(_delta):
-	#print("bomb throwable ", flying)
+func _physics_process(delta):
+	##//#print("bomb throwable ", flying)
+	$Mover.process(delta)
 
-	for player in collision_exceptions:
-		if player.grid_position != self.grid_position && !$Area2D.overlaps_body(player):
-			player.remove_collision_exception_with(self)
-			collision_exceptions.erase(player)
+	# for player in collision_exceptions:
+	# 	var distance_sq = (player.position - self.position).length_squared()
+	# 	print("distance_sq", distance_sq)
+	# 	var distance = abs(distance_sq)
+	# 	if distance > 7:
+	# 		player.remove_collision_exception_with(self)
+	# 		collision_exceptions.erase(player)
+
+
+# Physcs update function
 
 
 func explode():
 	if exploded:
 		return
 
-	print("Bomb exploded")
+	#//#print("Bomb exploded")
 	exploded = true
 	$AnimationPlayer.play("explode")
+
+	# Stop the bomb travelling
+	$Mover.enabled = false
 
 	if not is_network_master():
 		# Explode only on master.
@@ -144,3 +152,31 @@ func explode():
 
 func get_class():
 	return "Bomb"
+
+
+func kick_bomb(player: Node):
+	var animator = player.get_node("Animator")
+
+	$Mover.speed += 5000
+	$Mover.construct(self, animator)
+	$Mover.enabled = true
+	$Mover.forced_direction = animator.facing_direction
+	# $Mover.forced_move = true
+
+
+func _on_Area2D_body_entered(body: Node):
+	if body.get_class() != "Player":
+		return
+
+	for player in collision_exceptions:
+		if player == body:
+			return
+
+	if body.stat_bomb_kicker:
+		kick_bomb(body)
+
+
+func _on_Area2D_area_entered(area: Area2D):
+	print("bomb_hit_area")
+	if area.has_method("bomb_hit"):
+		area.bomb_hit()

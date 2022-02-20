@@ -45,7 +45,7 @@ func process_action():
 
 # Use sync because it will be called everywhere
 remotesync func setup_bomb(bomb_pos):
-	var bomb_name = String(get_name()) + str(bomb_index)
+	var bomb_name = String("Bomb") + str(bomb_index)
 	bomb_index += 1
 
 	# Ensure unique name for the bomb

@@ -140,7 +140,7 @@ func spawn_fire_sprites():
 			if collider is TileMap:
 				continue
 
-			print(collider.get_class() + " ", result)
+			##print(collider.get_class() + " ", result)
 
 		var sprite = get_new_fire(new_position)
 		sprite.animation = animation
@@ -186,7 +186,7 @@ func _on_Timer_timeout():
 
 
 func spawn_explosion_fire():
-	print("Explosion length: ", current_explosion_length)
+	##print("Explosion length: ", current_explosion_length)
 	update_existing_fire_sprites()
 	spawn_fire_sprites()
 	current_explosion_length += 1

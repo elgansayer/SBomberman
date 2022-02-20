@@ -13,7 +13,7 @@ func _ready():
 	if actor.immortal:
 		return
 
-	print("Flashable ready")
+	#print("Flashable ready")
 	flashable = load("res://players/behaviours/white_flashable.tscn").instance()
 	actor.add_child(flashable)
 	flashable.connect("finshed", self, "finshed")

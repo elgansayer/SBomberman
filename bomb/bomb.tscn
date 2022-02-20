@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
+[ext_resource path="res://scripts/no_input_mover.gd" type="Script" id=1]
 [ext_resource path="res://bomb/assets/explode-02.png" type="Texture" id=2]
 [ext_resource path="res://bomb/assets/bomb-01.png" type="Texture" id=3]
 [ext_resource path="res://bomb/assets/bomb-03.png" type="Texture" id=4]
@@ -9,6 +10,9 @@
 [ext_resource path="res://bomb/bomb.gd" type="Script" id=8]
 [ext_resource path="res://sounds/bomb_plant.ogg" type="AudioStream" id=9]
 [ext_resource path="res://sounds/bomb_explosion.ogg" type="AudioStream" id=10]
+[ext_resource path="res://explosion/explosion.tscn" type="PackedScene" id=11]
+[ext_resource path="res://bomb/CollisionShapeinner.tres" type="Shape2D" id=12]
+[ext_resource path="res://bomb/CollisionShapeOuter.tres" type="Shape2D" id=13]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -103,24 +107,12 @@ tracks/5/keys = {
 "values": [  ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Shape:disabled")
+tracks/6/path = NodePath("HardBodyShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Area2D/Shape:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -183,11 +175,11 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Area2D/Shape:disabled")
+tracks/4/path = NodePath("HardBodyShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -195,36 +187,24 @@ tracks/4/keys = {
 "values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Shape:disabled")
+tracks/5/path = NodePath(".:collision_layer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath(".:collision_layer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = false
-tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 8 ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath(".:collision_mask")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = false
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -259,11 +239,11 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Area2D/Shape:disabled")
+tracks/2/path = NodePath("HardBodyShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -271,19 +251,19 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Shape:disabled")
+tracks/3/path = NodePath(".:collision_layer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath(".:collision_layer")
+tracks/4/path = NodePath(".:collision_mask")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -294,30 +274,24 @@ tracks/4/keys = {
 "update": 1,
 "values": [ 0 ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:collision_mask")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 4, 4 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 16, 16 )
+extents = Vector2( 15.9, 15.9 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["bombs"]]
+[node name="Bomb" type="KinematicBody2D" groups=["bombs"]]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 63
 script = ExtResource( 8 )
+explosion_scene = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
+animation = "explode"
+frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -331,11 +305,68 @@ anims/paused = SubResource( 11 )
 stream = ExtResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
-collision_mask = 32
+collision_mask = 16
 
-[node name="Shape" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 5 )
+[node name="TriggerShape" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource( 12 )
+one_way_collision = true
 
-[node name="Shape" type="CollisionShape2D" parent="."]
+[node name="HardBodyShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
+disabled = true
+
+[node name="Mover" type="Node2D" parent="."]
+script = ExtResource( 1 )
+enabled = false
+
+[node name="CollisionShapeInnerLeft" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = ExtResource( 12 )
+one_way_collision = true
+
+[node name="CollisionShapeinnerRight" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = ExtResource( 12 )
+one_way_collision = true
+
+[node name="CollisionShapeInnerUp" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 3.14159
+shape = ExtResource( 12 )
+one_way_collision = true
+
+[node name="CollisionShapeinnerDown" type="CollisionShape2D" parent="."]
+visible = false
+shape = ExtResource( 12 )
+one_way_collision = true
+
+[node name="CollisionShapeOuterLeft" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = ExtResource( 13 )
+one_way_collision = true
+
+[node name="CollisionShapeOuterRight" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = ExtResource( 13 )
+one_way_collision = true
+
+[node name="CollisionShapeOuterUp" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 3.14159
+shape = ExtResource( 13 )
+one_way_collision = true
+
+[node name="CollisionShapeOuterDown" type="CollisionShape2D" parent="."]
+visible = false
+shape = ExtResource( 13 )
+one_way_collision = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

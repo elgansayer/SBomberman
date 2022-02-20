@@ -1,6 +1,8 @@
 extends "res://scripts/throwable.gd"
 
 signal landed
+#"res://players/behaviours/immortal.tscn"
+export(Resource) var immortal_scene
 
 # The player's current bomb power
 # var max_explosion_length = 1;
@@ -14,29 +16,24 @@ var stat_bombs = 99
 # Does the player have a powerglove powerup?
 var stat_power_glove = true
 # Does the player have a powerglove powerup?
-var stat_bomb_kicker = true
+var stat_bomb_kicker = false
 
 # The tirra we are riding
 var tirra
 
 # Is the player immune to damage?
-var immortal setget immortal_set, immortal_get
+var immortal setget immortal_set
 
 
 func immortal_set(value):
 	if value:
-		var immortalVirus = load("res://players/behaviours/immortal.tscn").instance()
-		self.add_child(immortalVirus)
+		var immortal_virus = immortal_scene.instance()
+		self.add_child(immortal_virus)
 	immortal = value
 
 
-# Getter must return a value.
-func immortal_get():
-	return immortal
-
-
 # What is the mover direction
-var facing_direction setget facing_direction_set, facing_direction_get
+var facing_direction setget , facing_direction_get
 
 
 # What is the mover direction
@@ -92,8 +89,7 @@ func is_trapped():
 		var grid_pos = grid_position + direction_vec
 		var spot = world.get_center_position_from_grid(grid_pos)
 
-		var blockingMask = world.blockingMask
-		var result = space_state.intersect_point(spot, 1, [self], blockingMask, true, false)
+		var result = space_state.intersect_point(spot, 1, [self], world.blockingMask, true, false)
 		blocking_table[direction] = result
 
 		if result.empty():
@@ -144,7 +140,7 @@ func update_z_index():
 
 puppet func killed():
 	# set_physics_process(false)
-	# print("killed")
+	# #print("killed")
 
 	# if immortal:
 	# 	return

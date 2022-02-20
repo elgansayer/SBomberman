@@ -25,7 +25,8 @@ func play_sound():
 
 
 func award_player(_player):
-	print("award_player item")
+	#print("award_player item")
+	pass
 
 
 func _on_Node2D_body_entered(body: Node):
@@ -35,9 +36,11 @@ func _on_Node2D_body_entered(body: Node):
 	if body.get_class() == ("Player"):
 		picked_up(body)
 
+
 func dizzy():
 	queue_free()
-	
+
+
 func picked_up(player):
 	picked = true
 	$Timer.stop()
@@ -46,6 +49,10 @@ func picked_up(player):
 	call_deferred("award_player", player)
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("picked_up")
+
+# A bomb kicked or bounced and hit here
+func bomb_hit():
+	queue_free()
 
 
 func explode():

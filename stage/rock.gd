@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 # Sent to everyone else
 remotesync func do_explosion():
-	# print("do explosion")
+	# #print("do explosion")
 	$"AnimationPlayer".play("explode")
 
 
@@ -16,7 +16,7 @@ master func exploded(by_who):
 
 # Received by owner of the rock
 master func explode():
-	print("explode rock ", str(is_network_master()))
+	#print("explode rock ", str(is_network_master()))
 	rpc("do_explosion")  # Re-sent to puppet rocks
 
 

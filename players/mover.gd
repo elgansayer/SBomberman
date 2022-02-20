@@ -1,9 +1,33 @@
 extends Node2D
+const SPEED_DEFAULT = 10000.0
+
+# Allow the animator to process
+export(bool) var enabled = true setget enabled_set, enabled_get
+
+# The actor is the node that is moving
+var actor
 
 var animator_node
 
 # What is the mover direction
 var facing_direction setget facing_direction_set, facing_direction_get
+
+# Force continuous movement in any direction
+var forced_move = false
+
+# The motion
+var motion = Vector2.ZERO
+
+# The direction which was pressed as inpout
+var pressed_direction
+
+# Force movement in a direction
+var forced_direction setget forced_direction_set, forced_direction_get
+
+var speed = 10000.0
+
+## Nodes
+onready var world = get_node("/root/World")
 
 
 # What is the mover direction
@@ -13,33 +37,20 @@ func facing_direction_set(value):
 
 # What is the mover direction
 func facing_direction_get():
+	if !animator_node:
+		print(actor)
+
 	return animator_node.facing_direction
 
 
-const SPEED_DEFAULT = 10000.0
-var speed = 10000.0
+# Force movement in a direction
+func enabled_set(value):
+	enabled = value
 
-## Nodes
-onready var world = get_node("/root/World")
-# onready var actor = self.get_parent()
-
-# The actor is the node that is moving
-var actor
-
-# Allow the animator to process
-export(bool) var enabled = true
-
-# Force continuous movement in any direction
-var forced_move = false
-
-# THe motion
-var motion = Vector2.ZERO
-
-# The direction which was pressed as inpout
-var pressed_direction
 
 # Force movement in a direction
-var forced_direction setget forced_direction_set, forced_direction_get
+func enabled_get():
+	return enabled
 
 
 # Force movement in a direction
@@ -56,9 +67,9 @@ func forced_direction_get():
 
 
 # Set up the mover node
-func construct(mover, node):
+func construct(mover, animation_node):
 	actor = mover
-	animator_node = node
+	animator_node = animation_node
 
 
 func _ready():

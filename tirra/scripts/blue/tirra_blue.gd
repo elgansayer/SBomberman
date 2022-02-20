@@ -38,7 +38,7 @@ func kick_bomb():
 
 
 func _on_animation_finished():
-	print("_on_animation_finished")
+	#print("_on_animation_finished")
 	state = states.STATE_IDLE
 	$Mover.enabled = true
 	$Animator.enabled = true

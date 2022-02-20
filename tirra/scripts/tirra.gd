@@ -30,7 +30,7 @@ func _ready():
 	add_to_group(world.group_tirras)
 
 	# $Animator.construct($Mover, $AnimatedSprite)
-	# print_tree()
+	# #print_tree()
 
 
 func query_input():
@@ -140,7 +140,7 @@ func upgrade_tirra(player):
 	var old_tirra = player.tirra
 	var colour_name = str(old_tirra.colour)
 
-	print("tirra_level %s", old_tirra.tirra_level)
+	#print("tirra_level %s", old_tirra.tirra_level)
 	var next_level = old_tirra.tirra_level + 1
 	var tirra_path = (
 		"res://tirra/scenes/"
@@ -152,7 +152,7 @@ func upgrade_tirra(player):
 		+ ".tscn"
 	)
 
-	print("Loading tirra %s", tirra_path)
+	#print("Loading tirra %s", tirra_path)
 	var tirra = load(tirra_path).instance()
 	tirra.position = old_tirra.position
 	tirra.add_to_group(world.group_tirras)
@@ -256,6 +256,7 @@ func update_rider_position_on_tirra_big():
 	elif direction == "right":
 		riderAnimationSprite.position = Vector2(-13, -45)
 
+
 # func update_animation():
 # 	# Update the animation
 # 	var anim_motion = $Mover.motion
@@ -296,3 +297,8 @@ func update_rider_position_on_tirra_big():
 # 	# We can only update the rider animation if we are riding (landed_on_tirra)
 # 	if rider_animation != riderAnimationSprite.animation:
 # 		riderAnimationSprite.play(rider_animation)
+
+
+# A bomb kicked or bounced and hit here
+func bomb_hit():
+	queue_free()
