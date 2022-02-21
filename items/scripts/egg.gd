@@ -2,6 +2,7 @@ extends "res://items/item.gd"
 
 ## Nodes
 onready var world = get_node("/root/World")
+export(Array, Resource) var tirras
 
 
 func picked_up(player):
@@ -50,8 +51,8 @@ func new_tirra():
 	# THe coords we want to reach
 	var grid_position = world.get_grid_position(self.position)
 
-	var tirra_path = pick_random_tirra()
-	var tirra = load(tirra_path).instance()
+	var tirra_resource = pick_random_tirra()
+	var tirra = tirra_resource.instance()
 	tirra.position = world.get_center_position_from_grid(grid_position)
 	tirra.add_to_group(world.group_tirras)
 
@@ -71,5 +72,5 @@ func get_sub_class():
 
 
 func pick_random_tirra():
-	var colour = "green"
-	return "res://tirra/tirra_" + colour + "_small.tscn"
+	var rand_index:int = randi() % tirras.size()	
+	return tirras[rand_index]

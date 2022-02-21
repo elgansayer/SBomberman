@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://items/assets/egg/wobble/egg-wobble-02.png" type="Texture" id=1]
 [ext_resource path="res://items/assets/egg/wobble/egg-wobble-01.png" type="Texture" id=2]
@@ -20,6 +20,10 @@
 [ext_resource path="res://items/assets/egg/open/egg-open-03.png" type="Texture" id=18]
 [ext_resource path="res://items/assets/egg/open/egg-open-02.png" type="Texture" id=19]
 [ext_resource path="res://items/assets/egg/open/egg-open-04.png" type="Texture" id=20]
+[ext_resource path="res://tirra/scenes/green/tirra_green_small.tscn" type="PackedScene" id=21]
+[ext_resource path="res://tirra/scenes/pink/tirra_pink_small.tscn" type="PackedScene" id=22]
+[ext_resource path="res://tirra/scenes/blue/tirra_blue_small.tscn" type="PackedScene" id=23]
+[ext_resource path="res://tirra/scenes/yellow/tirra_yellow_small.tscn" type="PackedScene" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -316,6 +320,7 @@ collision_mask = 44
 script = ExtResource( 8 )
 item_type = "egg"
 pickup_sound = "pickup_egg"
+tirras = [ ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 24 ) ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -6 )
