@@ -1,24 +1,33 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://stage/battle stage background 1.png" type="Texture" id=1]
 [ext_resource path="res://stage/rock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://stage/score.gd" type="Script" id=3]
 [ext_resource path="res://montserrat.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://items/power_glove.tscn" type="PackedScene" id=5]
+[ext_resource path="res://items/scenes/power_glove.tscn" type="PackedScene" id=5]
 [ext_resource path="res://stage/banner-336.png" type="Texture" id=6]
-[ext_resource path="res://items/power.tscn" type="PackedScene" id=7]
-[ext_resource path="res://items/bomb_kicker.tscn" type="PackedScene" id=8]
-[ext_resource path="res://items/bomb.tscn" type="PackedScene" id=9]
+[ext_resource path="res://items/scenes/power.tscn" type="PackedScene" id=7]
+[ext_resource path="res://items/scenes/bomb_kicker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://items/scenes/rollerskate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://stage/rock.png" type="Texture" id=10]
 [ext_resource path="res://world.gd" type="Script" id=11]
 [ext_resource path="res://tirra/scenes/blue/tirra_blue_small.tscn" type="PackedScene" id=12]
-[ext_resource path="res://items/virus.tscn" type="PackedScene" id=13]
-[ext_resource path="res://items/egg.tscn" type="PackedScene" id=14]
+[ext_resource path="res://items/scenes/virus.tscn" type="PackedScene" id=13]
+[ext_resource path="res://items/scenes/egg.tscn" type="PackedScene" id=14]
 [ext_resource path="res://tirra/scenes/pink/tirra_pink_small.tscn" type="PackedScene" id=15]
 [ext_resource path="res://tirra/scenes/green/tirra_green_small.tscn" type="PackedScene" id=16]
 [ext_resource path="res://tirra/scenes/yellow/tirra_yellow_small.tscn" type="PackedScene" id=17]
 [ext_resource path="res://tirra/scenes/yellow/tirra_yellow_medium.tscn" type="PackedScene" id=18]
+[ext_resource path="res://items/scenes/rubber_bomb.tscn" type="PackedScene" id=19]
 [ext_resource path="res://players/assets/black_bomberman/head/frame31.png" type="Texture" id=20]
+[ext_resource path="res://items/scenes/sandals.tscn" type="PackedScene" id=21]
+[ext_resource path="res://items/scenes/power_bomb.tscn" type="PackedScene" id=22]
+[ext_resource path="res://items/scenes/bomb.tscn" type="PackedScene" id=23]
+[ext_resource path="res://items/scenes/marble_bomb.tscn" type="PackedScene" id=24]
+[ext_resource path="res://items/scenes/line_bomb.tscn" type="PackedScene" id=25]
+[ext_resource path="res://items/scenes/devil.tscn" type="PackedScene" id=26]
+[ext_resource path="res://items/scenes/merger.tscn" type="PackedScene" id=27]
+[ext_resource path="res://items/scenes/mushroom.tscn" type="PackedScene" id=28]
 
 [sub_resource type="ConvexPolygonShape2D" id=50]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 448, 0, 448 )
@@ -609,23 +618,6 @@ position = Vector2( 504, 72 )
 [node name="11" type="Position2D" parent="SpawnPoints"]
 position = Vector2( 936, 72 )
 
-[node name="Items" type="Node2D" parent="."]
-
-[node name="Item" parent="Items" instance=ExtResource( 7 )]
-position = Vector2( 144, 211 )
-
-[node name="Item2" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 208, 211 )
-
-[node name="bomb" parent="Items" instance=ExtResource( 9 )]
-position = Vector2( 208, 264 )
-
-[node name="bomb_kicker" parent="Items" instance=ExtResource( 8 )]
-position = Vector2( 144, 276 )
-
-[node name="virus" parent="Items" instance=ExtResource( 13 )]
-position = Vector2( 272, 281 )
-
 [node name="Rocks" type="Node2D" parent="."]
 
 [node name="Rock15" parent="Rocks" instance=ExtResource( 2 )]
@@ -727,6 +719,7 @@ position = Vector2( 464, 144 )
 [node name="Explosions" type="Node2D" parent="."]
 
 [node name="Bombs" type="Node2D" parent="."]
+position = Vector2( -1, 1 )
 
 [node name="Players" type="Node2D" parent="."]
 position = Vector2( 1, 1 )
@@ -807,7 +800,53 @@ position = Vector2( 274, 335 )
 position = Vector2( 83, 334 )
 
 [node name="TirraBaseMedium" parent="." instance=ExtResource( 18 )]
+visible = false
 position = Vector2( 337, 200 )
+
+[node name="Items" type="Node2D" parent="."]
+position = Vector2( -2, 0 )
+
+[node name="Devil" parent="Items" instance=ExtResource( 26 )]
+position = Vector2( 466, 207 )
+
+[node name="Power" parent="Items" instance=ExtResource( 7 )]
+position = Vector2( 530, 272 )
+
+[node name="PowerBomb" parent="Items" instance=ExtResource( 22 )]
+position = Vector2( 594, 272 )
+
+[node name="PowerGlove" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 594, 336 )
+
+[node name="Rollerskate" parent="Items" instance=ExtResource( 9 )]
+position = Vector2( 530, 336 )
+
+[node name="LineBomb" parent="Items" instance=ExtResource( 25 )]
+position = Vector2( 466, 272 )
+
+[node name="virus" parent="Items" instance=ExtResource( 13 )]
+position = Vector2( 528, 208 )
+
+[node name="RubberBomb" parent="Items" instance=ExtResource( 19 )]
+position = Vector2( 592, 208 )
+
+[node name="Bomb" parent="Items" instance=ExtResource( 23 )]
+position = Vector2( 530, 400 )
+
+[node name="bomb_kicker" parent="Items" instance=ExtResource( 8 )]
+position = Vector2( 594, 400 )
+
+[node name="Sandals" parent="Items" instance=ExtResource( 21 )]
+position = Vector2( 466, 400 )
+
+[node name="Merger" parent="Items" instance=ExtResource( 27 )]
+position = Vector2( 402, 208 )
+
+[node name="MarbleBomb" parent="Items" instance=ExtResource( 24 )]
+position = Vector2( 466, 337 )
+
+[node name="Mushroom" parent="Items" instance=ExtResource( 28 )]
+position = Vector2( 402, 272 )
 
 [connection signal="timeout" from="InfoBoard/ClockLabel/ClockTimer" to="." method="_on_ClockTimer_timeout"]
 [connection signal="pressed" from="Winner/ExitGame" to="Score" method="_on_exit_game_pressed"]

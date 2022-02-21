@@ -98,6 +98,86 @@ animations = [ {
 "name": "walk_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 48 ), ExtResource( 50 ), ExtResource( 47 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "dizzy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "pglove_standing_up",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "pglove_walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ) ],
+"loop": false,
+"name": "ride_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "pglove_pickup_up",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 46 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 57 ) ],
+"loop": false,
+"name": "flying_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 63 ) ],
+"loop": true,
+"name": "ride_sad",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "pglove_walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ) ],
+"loop": false,
+"name": "ride_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ) ],
+"loop": true,
+"name": "ride_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "pglove_standing_down",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "pglove_standing_left",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 56 ) ],
+"loop": false,
+"name": "flying_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 55 ) ],
+"loop": false,
+"name": "flying_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 61 ) ],
 "loop": false,
 "name": "ride_right",
@@ -173,90 +253,10 @@ animations = [ {
 "name": "standing_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "pglove_standing_up",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 48 ), ExtResource( 50 ), ExtResource( 47 ), ExtResource( 49 ) ],
-"loop": true,
-"name": "dizzy",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": false,
 "name": "explode",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 32 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "pglove_walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 64 ) ],
-"loop": false,
-"name": "ride_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 23 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "pglove_pickup_up",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 45 ), ExtResource( 46 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 57 ) ],
-"loop": false,
-"name": "flying_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 63 ) ],
-"loop": true,
-"name": "ride_sad",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 31 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "pglove_walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 60 ) ],
-"loop": false,
-"name": "ride_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 62 ) ],
-"loop": true,
-"name": "ride_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": false,
-"name": "pglove_standing_down",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 25 ) ],
-"loop": false,
-"name": "pglove_standing_left",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 56 ) ],
-"loop": false,
-"name": "flying_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 55 ) ],
-"loop": false,
-"name": "flying_up",
-"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=25]

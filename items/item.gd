@@ -8,7 +8,7 @@ var correct_sound
 
 
 func _ready():
-	$AnimatedSprite.play(item_type)
+	# $AnimatedSprite.play(item_type)
 
 	var sound_path = "res://sounds/items/" + pickup_sound + ".ogg"
 	correct_sound = load(sound_path)
