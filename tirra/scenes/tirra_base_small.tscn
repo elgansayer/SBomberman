@@ -2,9 +2,9 @@
 
 [ext_resource path="res://tirra/scripts/blue/tirra_blue.gd" type="Script" id=1]
 [ext_resource path="res://tirra/animations/load_small.tres" type="Animation" id=2]
-[ext_resource path="res://tirra/assets/sparkle_1.png" type="Texture" id=3]
-[ext_resource path="res://tirra/assets/sparkle_0.png" type="Texture" id=4]
-[ext_resource path="res://tirra/assets/sparkle_3.png" type="Texture" id=5]
+[ext_resource path="res://tirra/assets/effects/sparkle_1.png" type="Texture" id=3]
+[ext_resource path="res://tirra/assets/effects/sparkle_0.png" type="Texture" id=4]
+[ext_resource path="res://tirra/assets/effects/sparkle_3.png" type="Texture" id=5]
 [ext_resource path="res://tirra/animations/idle.tres" type="Animation" id=6]
 [ext_resource path="res://tirra/animations/explode.tres" type="Animation" id=7]
 [ext_resource path="res://players/mover.gd" type="Script" id=8]
