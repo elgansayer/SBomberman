@@ -18,6 +18,10 @@ func kick_bomb():
 	var direction_table = world.direction_table
 	var player_grid_pos = rider.grid_position
 	var forward_vec = direction_table[$Animator.facing_direction]
+	if !forward_vec:
+		print("Tried to kick a bomb with no direction")
+		return
+
 	var forward_grid_position = player_grid_pos + forward_vec
 	var bombs = get_tree().get_nodes_in_group(world.group_bombs)
 

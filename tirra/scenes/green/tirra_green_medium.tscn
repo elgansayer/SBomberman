@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://tirra/scenes/tirra_base_medium.tscn" type="PackedScene" id=1]
-[ext_resource path="res://tirra/assets/green/middle/effects/frame112.png" type="Texture" id=2]
-[ext_resource path="res://tirra/assets/green/middle/effects/frame114.png" type="Texture" id=3]
-[ext_resource path="res://tirra/assets/green/middle/effects/frame113.png" type="Texture" id=4]
+[ext_resource path="res://tirra/assets/green/middle/effects/feet_1.png" type="Texture" id=2]
+[ext_resource path="res://tirra/assets/green/middle/effects/feet_3.png" type="Texture" id=3]
+[ext_resource path="res://tirra/assets/green/middle/effects/feet_2.png" type="Texture" id=4]
 [ext_resource path="res://tirra/tres/green/green_medium.tres" type="SpriteFrames" id=5]
 [ext_resource path="res://tirra/animations/green/medium/hit_wall_up.tres" type="Animation" id=6]
 [ext_resource path="res://tirra/animations/green/medium/skid_up.tres" type="Animation" id=7]
