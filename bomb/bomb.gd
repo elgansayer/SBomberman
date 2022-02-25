@@ -31,6 +31,9 @@ var collision_exceptions = []
 ## Nodes
 # onready var world = get_node("/root/World")
 
+# Make the bomb explode when it hits something
+var explode_on_impact = false
+
 
 func paused_set(value):
 	var anim = "paused"
@@ -120,6 +123,14 @@ func _physics_process(delta):
 	##//#print("bomb throwable ", flying)
 	$Mover.process(delta)
 
+	if explode_on_impact:
+		for i in self.get_slide_count():
+			var collision = self.get_slide_collision(i)
+			var collider = collision.collider
+
+			if collider:
+				explode()
+
 	# for player in collision_exceptions:
 	# 	var distance_sq = (player.position - self.position).length_squared()
 	# 	print("distance_sq", distance_sq)
@@ -136,8 +147,15 @@ func explode():
 	if exploded:
 		return
 
-	#//#print("Bomb exploded")
 	exploded = true
+
+	# Turn off physics
+	self.set_physics_process(false)
+
+	# Stop any emitting motion blur
+	$MotionBlurParticles.emitting = false
+
+	#//#print("Bomb
 	$AnimationPlayer.play("explode")
 
 	# Stop the bomb travelling
@@ -164,19 +182,48 @@ func kick_bomb(player: Node):
 	# $Mover.forced_move = true
 
 
-func _on_Area2D_body_entered(body: Node):
-	if body.get_class() != "Player":
-		return
+func fire_marble_bomb(player: Node):
+	var animator = player.get_node("Animator")
 
-	for player in collision_exceptions:
-		if player == body:
-			return
+	collision_exceptions.append(player)
+	player.add_collision_exception_with(self)
 
-	if body.stat_bomb_kicker:
-		kick_bomb(body)
+	explode_on_impact = true
+	$MotionBlurParticles.emitting = true
+	$Mover.speed += 15000
+	$Mover.construct(self, animator)
+	$Mover.enabled = true
+	$Mover.forced_direction = animator.facing_direction
+	# $Mover.forced_move = true
+	enable_moving_bodies()
+
+
+func enable_moving_bodies():
+	# Disable all the bodies and use the moving one
+	$MovingBodyShape.disabled = false
+	# Now all the normal bodies
+	$CollisionShapeInnerLeft.disabled = true
+	$CollisionShapeinnerRight.disabled = true
+	$CollisionShapeInnerUp.disabled = true
+	$CollisionShapeinnerDown.disabled = true
+	$CollisionShapeOuterLeft.disabled = true
+	$CollisionShapeOuterRight.disabled = true
+	$CollisionShapeOuterUp.disabled = true
+	$CollisionShapeOuterDown.disabled = true
+
+
+# func _on_Area2D_body_entered(body: Node):
+# 	if body.get_class() != "Player":
+# 		return
+
+# 	for player in collision_exceptions:
+# 		if player == body:
+# 			return
+
+# 	if body.stat_bomb_kicker:
+# 		kick_bomb(body)
 
 
 func _on_Area2D_area_entered(area: Area2D):
-	print("bomb_hit_area")
 	if area.has_method("bomb_hit"):
 		area.bomb_hit()

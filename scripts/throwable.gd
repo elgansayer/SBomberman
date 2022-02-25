@@ -36,6 +36,7 @@ var grid_position setget , grid_position_get
 # Getter must return a value.
 func grid_position_get():
 	grid_position = world.get_grid_position(position)
+	return grid_position
 
 
 var og_collision_layer = 0

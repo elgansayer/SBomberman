@@ -14,7 +14,7 @@
 offsets = PoolRealArray( 0, 0.374194, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=10]
+[sub_resource type="GradientTexture" id=14]
 gradient = SubResource( 11 )
 
 [sub_resource type="ParticlesMaterial" id=12]
@@ -24,14 +24,13 @@ gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-color_ramp = SubResource( 10 )
+color_ramp = SubResource( 14 )
 
 [sub_resource type="AnimatedTexture" id=13]
 
 [node name="TirraBreenBig" instance=ExtResource( 1 )]
 script = ExtResource( 9 )
 colour = "green"
-tirra_level = 3
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 3 )

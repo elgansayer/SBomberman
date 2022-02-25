@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/no_input_mover.gd" type="Script" id=1]
 [ext_resource path="res://bomb/assets/explode-02.png" type="Texture" id=2]
@@ -107,7 +107,7 @@ tracks/5/keys = {
 "values": [  ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("HardBodyShape:disabled")
+tracks/6/path = NodePath("MovingBodyShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -175,7 +175,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HardBodyShape:disabled")
+tracks/4/path = NodePath("MovingBodyShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -239,7 +239,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("HardBodyShape:disabled")
+tracks/2/path = NodePath("MovingBodyShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -279,7 +279,22 @@ tracks/4/keys = {
 extents = Vector2( 4, 4 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 15.9, 15.9 )
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.374194, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+color_ramp = SubResource( 14 )
 
 [node name="Bomb" type="KinematicBody2D" groups=["bombs"]]
 collision_layer = 8
@@ -290,8 +305,6 @@ explosion_scene = ExtResource( 11 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-animation = "explode"
-frame = 2
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -314,7 +327,7 @@ rotation = 1.5708
 shape = SubResource( 12 )
 one_way_collision = true
 
-[node name="HardBodyShape" type="CollisionShape2D" parent="."]
+[node name="MovingBodyShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
 disabled = true
 
@@ -368,5 +381,15 @@ visible = false
 shape = ExtResource( 13 )
 one_way_collision = true
 
+[node name="MotionBlurParticles" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
+scale = Vector2( 1e-05, 1e-05 )
+emitting = false
+amount = 2
+lifetime = 0.5
+speed_scale = 2.0
+local_coords = false
+process_material = SubResource( 15 )
+texture = ExtResource( 4 )
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

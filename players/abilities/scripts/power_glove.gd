@@ -1,4 +1,4 @@
-extends "res://players/abilities/ability.gd"
+extends "res://players/abilities/scripts/ability.gd"
 
 # Nodes
 onready var plantBombAbility = abilities.get_node("PlantBomb")

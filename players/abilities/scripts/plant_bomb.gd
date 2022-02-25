@@ -1,4 +1,4 @@
-extends "res://players/abilities/ability.gd"
+extends "res://players/abilities/scripts/ability.gd"
 
 # Track how many bombs planted
 var bomb_index = 0
@@ -40,6 +40,10 @@ func process_action():
 		if bomb.grid_position == grid_pos || bomb.position == bomb_pos:
 			return
 
+	plant_bomb(bomb_pos)
+
+
+func plant_bomb(bomb_pos):
 	rpc("setup_bomb", bomb_pos)
 
 

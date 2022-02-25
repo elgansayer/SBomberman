@@ -79,8 +79,9 @@ func get_group_node_at(grid_position, group):
 
 
 func snap_position_to_grid(position_vec):
-	var grid_pos = get_center_position_from_grid(position_vec)
-	return get_position_from_grid(grid_pos)
+	var grid_pos = get_grid_position(position_vec)
+	var grid_center_pos = get_center_position_from_grid(grid_pos)
+	return grid_center_pos
 
 
 # Get a position from a grid position and add half grid to become
