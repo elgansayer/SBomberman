@@ -172,14 +172,20 @@ func get_class():
 	return "Bomb"
 
 
+func bounce_moving_bomb():
+	enable_moving_bodies()
+	$Mover.speed = 5000
+	$Mover.enabled = true
+	$Mover.forced_direction = world.vec_direction_table_rev[$Mover.forced_direction]
+
+
 func kick_bomb(player: Node):
 	var animator = player.get_node("Animator")
 
-	$Mover.speed += 5000
+	$Mover.speed = 5000
 	$Mover.construct(self, animator)
 	$Mover.enabled = true
 	$Mover.forced_direction = animator.facing_direction
-	# $Mover.forced_move = true
 
 
 func fire_marble_bomb(player: Node):

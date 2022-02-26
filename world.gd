@@ -21,6 +21,8 @@ export var direction_orientation = {
 	"right": orientation.Horizontal
 }
 
+export var direction_bounce_table = {"up": "down", "down": "up", "left": "right", "right": "left"}
+
 export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }

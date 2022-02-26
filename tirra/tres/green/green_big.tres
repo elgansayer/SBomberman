@@ -53,11 +53,6 @@ animations = [ {
 "name": "walk_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 30 ) ],
-"loop": false,
-"name": "hit_wall_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 17 ) ],
 "loop": false,
 "name": "standing_left",
@@ -73,34 +68,14 @@ animations = [ {
 "name": "walk_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ) ],
-"loop": false,
-"name": "hit_wall_right",
-"speed": 4.0
-}, {
 "frames": [ ExtResource( 23 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "action_left",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 21 ) ],
 "loop": false,
 "name": "standing_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "action_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "action_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 20 ), ExtResource( 24 ) ],
@@ -110,12 +85,37 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 30 ) ],
 "loop": false,
+"name": "hit_wall_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "hit_wall_right",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
 "name": "hit_wall_down",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "action_down",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "celebrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "action_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 27 ) ],

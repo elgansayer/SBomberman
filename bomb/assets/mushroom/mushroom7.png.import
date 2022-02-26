@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explode-02.png-dea57f128eb6698414db593031696218.stex"
+path="res://.import/mushroom7.png-c7da5419ca62f02d9a6e46af16628e27.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bomb/assets/explode-02.png"
-dest_files=[ "res://.import/explode-02.png-dea57f128eb6698414db593031696218.stex" ]
+source_file="res://bomb/assets/mushroom/mushroom7.png"
+dest_files=[ "res://.import/mushroom7.png-c7da5419ca62f02d9a6e46af16628e27.stex" ]
 
 [params]
 

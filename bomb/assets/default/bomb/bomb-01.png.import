@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bomb-03.png-c0b02c23af735290744cf14d91dc28fb.stex"
+path="res://.import/bomb-01.png-8042122b783c663930144f8c1ce844aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bomb/assets/bomb-03.png"
-dest_files=[ "res://.import/bomb-03.png-c0b02c23af735290744cf14d91dc28fb.stex" ]
+source_file="res://bomb/assets/default/bomb/bomb-01.png"
+dest_files=[ "res://.import/bomb-01.png-8042122b783c663930144f8c1ce844aa.stex" ]
 
 [params]
 

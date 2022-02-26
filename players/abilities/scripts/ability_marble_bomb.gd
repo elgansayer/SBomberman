@@ -100,7 +100,7 @@ func _process(delta):
 func process_action():
 	pass
 	# if bomb:
-		# bomb.fire_marble_bomb(actor)
+	# bomb.fire_marble_bomb(actor)
 
 
 func _on_FlashTimer_timeout():
@@ -127,6 +127,7 @@ func reset_bomb():
 		bomb.position = world.snap_position_to_grid(actor.position)
 		bomb.paused = false
 		bomb.set_physics_process(true)
+
 
 func reset():
 	reset_colour()

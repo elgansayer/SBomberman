@@ -1,5 +1,8 @@
 extends "res://players/abilities/scripts/ability.gd"
 
+# "res://bomb/bomb.tscn"
+export(Resource) var BombScene;
+
 # Track how many bombs planted
 var bomb_index = 0
 # The player's current bombs
@@ -53,7 +56,7 @@ remotesync func setup_bomb(bomb_pos):
 	bomb_index += 1
 
 	# Ensure unique name for the bomb
-	var bomb = preload("res://bomb/bomb.tscn").instance()
+	var bomb = BombScene.instance()
 	bomb.set_name(bomb_name)
 
 	bomb.stat_power = actor.stat_power

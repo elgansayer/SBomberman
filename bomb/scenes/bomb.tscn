@@ -1,24 +1,29 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/no_input_mover.gd" type="Script" id=1]
-[ext_resource path="res://bomb/assets/explode-02.png" type="Texture" id=2]
-[ext_resource path="res://bomb/assets/bomb-01.png" type="Texture" id=3]
-[ext_resource path="res://bomb/assets/bomb-03.png" type="Texture" id=4]
-[ext_resource path="res://bomb/assets/explode-01.png" type="Texture" id=5]
-[ext_resource path="res://bomb/assets/bomb-02.png" type="Texture" id=6]
-[ext_resource path="res://bomb/assets/explode-03.png" type="Texture" id=7]
-[ext_resource path="res://bomb/bomb.gd" type="Script" id=8]
+[ext_resource path="res://bomb/assets/default/explode/explode-02.png" type="Texture" id=2]
+[ext_resource path="res://bomb/assets/default/bomb/bomb-01.png" type="Texture" id=3]
+[ext_resource path="res://bomb/assets/default/bomb/bomb-03.png" type="Texture" id=4]
+[ext_resource path="res://bomb/assets/default/explode/explode-01.png" type="Texture" id=5]
+[ext_resource path="res://bomb/assets/default/bomb/bomb-02.png" type="Texture" id=6]
+[ext_resource path="res://bomb/assets/default/explode/explode-03.png" type="Texture" id=7]
+[ext_resource path="res://bomb/scripts/bomb.gd" type="Script" id=8]
 [ext_resource path="res://sounds/bomb_plant.ogg" type="AudioStream" id=9]
 [ext_resource path="res://sounds/bomb_explosion.ogg" type="AudioStream" id=10]
 [ext_resource path="res://explosion/explosion.tscn" type="PackedScene" id=11]
-[ext_resource path="res://bomb/CollisionShapeinner.tres" type="Shape2D" id=12]
-[ext_resource path="res://bomb/CollisionShapeOuter.tres" type="Shape2D" id=13]
+[ext_resource path="res://bomb/tres/CollisionShapeinner.tres" type="Shape2D" id=12]
+[ext_resource path="res://bomb/tres/CollisionShapeOuter.tres" type="Shape2D" id=13]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "New Anim",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 7 ) ],
@@ -305,6 +310,7 @@ explosion_scene = ExtResource( 11 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
+animation = "New Anim"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
