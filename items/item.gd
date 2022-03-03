@@ -42,13 +42,25 @@ func dizzy():
 
 
 func picked_up(player):
-	picked = true
-	$Timer.stop()
+	if picked:
+		return
 
-	play_sound()
-	call_deferred("award_player", player)
-	$AnimationPlayer.stop()
+	picked = true
+	
+	$Timer.stop()
 	$AnimationPlayer.play("picked_up")
+	play_sound()
+
+	rpc("picked_up_by", player)
+
+
+puppet func picked_up_by(player):
+	if picked:
+		return
+
+	picked = true
+	call_deferred("award_player", player)
+
 
 # A bomb kicked or bounced and hit here
 func bomb_hit():

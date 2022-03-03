@@ -1,8 +1,7 @@
 extends Area2D
 
 var bomb
-var from_player
-var player_owner
+var actor_owner
 
 
 func _on_AnimatedSprite_animation_finished():

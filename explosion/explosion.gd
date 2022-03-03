@@ -26,8 +26,7 @@ func max_explosion_length_get():
 	return max_explosion_length  # Getter must return a value.
 
 
-var from_player
-var player_owner
+var actor_owner
 
 const animation_swap_table = {
 	"middle": "middle",
@@ -157,8 +156,7 @@ func get_new_fire(position):
 	self.add_child(fire)
 
 	fire.bomb = self
-	fire.from_player = self.from_player
-	fire.player_owner = self.player_owner
+	fire.actor_owner = self.actor_owner
 
 	return explosion_sprite
 

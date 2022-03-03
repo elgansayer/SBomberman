@@ -1,7 +1,7 @@
 extends "res://players/abilities/scripts/ability.gd"
 
 # "res://bomb/bomb.tscn"
-export(Resource) var BombScene;
+export(Resource) var BombScene
 
 # Track how many bombs planted
 var bomb_index = 0
@@ -47,11 +47,21 @@ func process_action():
 
 
 func plant_bomb(bomb_pos):
-	rpc("setup_bomb", bomb_pos)
+	var actor_id = actor.get_tree().get_network_unique_id()
+	var stat_power = actor.stat_power
+
+	# Remote
+	rpc("setup_bomb", bomb_pos, actor_id, stat_power)
+
+	# Locally
+	var bomb = setup_bomb(bomb_pos, actor_id, stat_power)
+
+	# Track the bomb in the active bombs list
+	track_bomb(bomb)
 
 
 # Use sync because it will be called everywhere
-remotesync func setup_bomb(bomb_pos):
+puppet func setup_bomb(bomb_pos, actor_id, stat_power):
 	var bomb_name = String("Bomb") + str(bomb_index)
 	bomb_index += 1
 
@@ -59,16 +69,14 @@ remotesync func setup_bomb(bomb_pos):
 	var bomb = BombScene.instance()
 	bomb.set_name(bomb_name)
 
-	bomb.stat_power = actor.stat_power
+	bomb.stat_power = stat_power
 	bomb.position = bomb_pos
-	bomb.from_player = actor
-	bomb.player_owner = actor
-
-	# Track the bomb in the active bombs list
-	track_bomb(bomb)
+	bomb.actor_owner = actor_id
 
 	# No need to set network master to bomb, will be owned by server by default
 	get_node("/root/World/Bombs").add_child(bomb)
+
+	return bomb
 
 
 func track_bomb(bomb):

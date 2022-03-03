@@ -29,6 +29,14 @@ var speed = 10000.0
 ## Nodes
 onready var world = get_node("/root/World")
 
+var puppet_pos = Vector2()
+var puppet_motion = Vector2()
+
+
+puppet func _update_state(p_pos, p_motion):
+	puppet_pos = p_pos
+	puppet_motion = p_motion
+
 
 # What is the mover direction
 func facing_direction_set(value):
@@ -86,6 +94,15 @@ func process(delta):
 
 	var move_motion = (motion.normalized() * speed) * delta
 	actor.move_and_slide(move_motion)
+
+	if is_network_master():
+		rpc_unreliable("_update_state", actor.position, motion)
+	else:
+		actor.position = puppet_pos
+		motion = puppet_motion
+
+	# if not is_network_master():
+	# 	puppet_pos = position  # To avoid jitter
 
 	# if is_network_master():
 	# 	rset("puppet_motion", motion)

@@ -18,8 +18,7 @@ export(Resource) var throw_sound
 # Motion of bomb in the world on the network
 # puppet var puppet_motion = Vector2()
 
-var from_player
-var player_owner
+var actor_owner
 var exploded = false
 var stat_power
 # Is the bomb paused?
@@ -48,21 +47,22 @@ func paused_set(value):
 
 
 # Use sync because it will be called everywhere
-remotesync func setup_explosion(bomb):
-	#//#print("setup_explosion")
+# @rpc(unreliable)
+func setup_explosion():
 	var name = String(get_name()) + "_explosion"
 
 	var explosion = explosion_scene.instance()
 	explosion.set_name(name)  # Ensure unique name for the explosion
 
-	explosion.bomb = bomb
-	explosion.max_explosion_length = bomb.stat_power
-	explosion.bomb_body = self
-	explosion.position = world.snap_position_to_grid(bomb.position)
-	explosion.from_player = bomb.from_player
-	explosion.player_owner = bomb.player_owner
+	# var bomb_uid = get_tree().get_network_unique_id()
 
-	emit_signal("on_explode", bomb)
+	explosion.bomb = self
+	explosion.max_explosion_length = stat_power
+	explosion.bomb_body = self
+	explosion.position = world.snap_position_to_grid(self.position)
+	explosion.actor_owner = actor_owner
+
+	emit_signal("on_explode", self)
 
 	# No need to set network master to explosion, will be owned by server by default
 	get_node("/root/World/Explosions").add_child(explosion)
@@ -161,11 +161,15 @@ func explode():
 	# Stop the bomb travelling
 	$Mover.enabled = false
 
-	if not is_network_master():
-		# Explode only on master.
-		return
+	# if not is_network_master():
+	# 	# Explode only on master.
+	# 	return
 
-	rpc("setup_explosion", self)
+	# var bomb_uid = get_tree().get_network_unique_id()
+
+	# rpc("setup_explosion", self)
+
+	setup_explosion()
 
 
 func get_class():
