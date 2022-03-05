@@ -12,11 +12,11 @@ var riderAnimationSprite
 var correct_sound
 enum TIRRA_LEVEL { none, small, medium, big }
 const tirra_levels = ["none", "small", "medium", "big"]
-export(String, "none", "blue", "pink", "yellow", "green") var colour = "none"
-export(TIRRA_LEVEL) var tirra_level = TIRRA_LEVEL.none
+@export(String, "none", "blue", "pink", "yellow", "green") var colour = "none"
+@export(TIRRA_LEVEL) var tirra_level = TIRRA_LEVEL.none
 
 ## Nodes
-onready var world = get_node("/root/World")
+@onready var world = get_node("/root/World")
 
 var grid_position setget grid_position_set, grid_position_get
 

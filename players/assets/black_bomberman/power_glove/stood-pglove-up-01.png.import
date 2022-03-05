@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/stood-pglove-up-01.png-90cbae543a0111b126dac52ce292b14c.stex"
+type="StreamTexture2D"
+uid="uid://ccgmpsikaoqw0"
+path="res://.godot/imported/stood-pglove-up-01.png-90cbae543a0111b126dac52ce292b14c.stex"
 metadata={
 "vram_texture": false
 }
@@ -10,26 +11,24 @@ metadata={
 [deps]
 
 source_file="res://players/assets/black_bomberman/power_glove/stood-pglove-up-01.png"
-dest_files=[ "res://.import/stood-pglove-up-01.png-90cbae543a0111b126dac52ce292b14c.stex" ]
+dest_files=["res://.godot/imported/stood-pglove-up-01.png-90cbae543a0111b126dac52ce292b14c.stex"]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+compress/streamed=false
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/HDR_as_SRGB=false
+process/size_limit=0
+detect_3d/compress_to=1

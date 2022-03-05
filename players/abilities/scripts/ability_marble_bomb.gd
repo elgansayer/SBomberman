@@ -1,18 +1,18 @@
 extends Node2D
 
 ## Nodes
-onready var abilities = self.get_parent()
-onready var actor = abilities.get_parent()
-onready var world = get_node("/root/World")
-onready var animatedSprite = actor.get_node("AnimatedSprite")
-onready var animatedSpriteMaterial = animatedSprite.get_material()
-onready var plantBombAbility = abilities.get_node("PlantBomb")
+@onready var abilities = self.get_parent()
+@onready var actor = abilities.get_parent()
+@onready var world = get_node("/root/World")
+@onready var animatedSprite = actor.get_node("AnimatedSprite")
+@onready var animatedSpriteMaterial = animatedSprite.get_material()
+@onready var plantBombAbility = abilities.get_node("PlantBomb")
 
-export(float) var flashIntensity = 0.9
-export(Vector3) var flashColour = Vector3(1, 1, 0)
+@export(float) var flashIntensity = 0.9
+@export(Vector3) var flashColour = Vector3(1, 1, 0)
 
 # Action to check input for
-export var input_action = "set_bomb"
+@export var input_action = "set_bomb"
 # Is the node performing an action?
 var action = false
 # Is the ability enabled

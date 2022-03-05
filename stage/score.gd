@@ -45,4 +45,5 @@ func _ready():
 
 
 func _on_exit_game_pressed():
-	gamestate.end_game()
+	pass
+	# gamestate.end_game()

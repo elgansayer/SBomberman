@@ -1,9 +1,9 @@
 extends Node2D
 
 ## Nodes
-onready var abilities = self.get_parent()
-onready var actor = abilities.get_parent()
-onready var world = get_node("/root/World")
+@onready var abilities = self.get_parent()
+@onready var actor = abilities.get_parent()
+@onready var world = get_node("/root/World")
 
 var enabled = true setget enabled_set
 

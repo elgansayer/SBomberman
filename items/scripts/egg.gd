@@ -1,8 +1,8 @@
 extends "res://items/item.gd"
 
 ## Nodes
-onready var world = get_node("/root/World")
-export(Array, Resource) var tirras
+@onready var world = get_node("/root/World")
+@export(Array, Resource) var tirras
 
 
 func picked_up(player):

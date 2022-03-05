@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/bomb_plant.ogg-c4e3358378c05a10e5d27043ed86cd41.oggstr"
+uid="uid://d1r7o8iqvtj23"
+path="res://.godot/imported/bomb_plant.ogg-c4e3358378c05a10e5d27043ed86cd41.oggvorbisstr"
 
 [deps]
 
 source_file="res://sounds/bomb_plant.ogg"
-dest_files=[ "res://.import/bomb_plant.ogg-c4e3358378c05a10e5d27043ed86cd41.oggstr" ]
+dest_files=["res://.godot/imported/bomb_plant.ogg-c4e3358378c05a10e5d27043ed86cd41.oggvorbisstr"]
 
 [params]
 

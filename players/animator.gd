@@ -1,8 +1,8 @@
 extends Node2D
 
 ## Nodes
-# onready var actor = self.get_parent()
-# onready var animatedSprite = actor.get_node("AnimatedSprite")
+# @onready var actor = self.get_parent()
+# @onready var animatedSprite = actor.get_node("AnimatedSprite")
 
 # The actor is the parent node
 # var actor
@@ -12,11 +12,11 @@ var mover
 # The animated sprite is the animated sprite that is animating
 var animatedSprite
 
-# onready var mover = actor.get_node("Mover")
-onready var world = get_node("/root/World")
+# @onready var mover = actor.get_node("Mover")
+@onready var world = get_node("/root/World")
 
 # Allow the animator to process
-export(bool) var enabled setget enabled_set, enabled_get
+@export(bool) var enabled setget enabled_set, enabled_get
 
 
 # Set the animator enabled and stop if disabled

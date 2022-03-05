@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://c48c36alfjshb"]
+
+[ext_resource type="Texture2D" uid="uid://cex2v6susl04a" path="res://brickfloor.png" id="1_snx8u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_owsoy"]
+texture = ExtResource( "1_snx8u" )
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+5:2/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+6:2/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+8:0/0 = 0
+8:1/0 = 0
+8:2/0 = 0
+9:0/0 = 0
+9:1/0 = 0
+9:2/0 = 0
+10:0/0 = 0
+10:1/0 = 0
+10:2/0 = 0
+11:0/0 = 0
+11:1/0 = 0
+11:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dd32p"]
+sources/0 = SubResource( "TileSetAtlasSource_owsoy" )
+
+[node name="Nod2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( "TileSet_dd32p" )
+format = 2
+layer_0/tile_data = PackedInt32Array(-131072, 0, 0)
