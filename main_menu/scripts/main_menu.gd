@@ -1,6 +1,12 @@
 extends Control
 
-@export var loading_scene = null
+@export var loading_scene: Resource = null
+
+
+func _ready() -> void:
+	pass
+	#OS.set_window_maximized(true)
+
 
 func add_myself():
 	var my_network_id = get_tree().get_network_unique_id()

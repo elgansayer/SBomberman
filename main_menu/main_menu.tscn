@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://ui/assets/front_page/fire/top.png" id="21"]
 [ext_resource type="Texture2D" uid="uid://b1a67y6xkipfq" path="res://tirra/assets/pink/small/down/walking_down_1.png" id="22"]
 [ext_resource type="Texture2D" uid="uid://cr3sa7lhdv85y" path="res://tirra/assets/pink/small/down/standing_down.png" id="23"]
-[ext_resource type="ButtonGroup" path="res://main_menu/btn_groups/button_group.tres" id="23_rlb23"]
 [ext_resource type="Script" path="res://main_menu/scripts/menu_animations.gd" id="24"]
 [ext_resource type="Texture2D" uid="uid://cr2o1obofci5i" path="res://tirra/assets/pink/small/up/walking_up_1.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://ckf6ka4vs3m5m" path="res://tirra/assets/pink/small/up/walking_up_2.png" id="26"]
@@ -151,26 +150,22 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "22" ), ExtResource( "12" )],
-"loop": true,
-"name": &"walk_down",
-"speed": 5.0
-}, {
 "frames": [ExtResource( "25" ), ExtResource( "26" )],
 "loop": true,
 "name": &"walk_up",
 "speed": 5.0
+}, {
+"frames": [ExtResource( "22" ), ExtResource( "12" )],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
 }]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Node2D"]
 script = ExtResource( "1" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 loading_scene = ExtResource( "28" )
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-position = Vector2(74, 0)
 texture = ExtResource( "2" )
 centered = false
 
@@ -182,21 +177,18 @@ anims/load = SubResource( "3" )
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 2
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 2
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 2
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -234,21 +226,14 @@ scale = Vector2(2, 2)
 texture = ExtResource( "21" )
 
 [node name="Menu" type="Control" parent="."]
-offset_left = 74.0
-offset_right = 74.0
 script = ExtResource( "24" )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BtnHostGame" type="Button" parent="Menu"]
-offset_left = 264.0
-offset_top = 344.0
-offset_right = 366.0
-offset_bottom = 375.0
 focus_next = NodePath("../BtnJoinGame")
 focus_previous = NodePath("../BtnOptionsGame")
-button_group = ExtResource( "23_rlb23" )
 text = "HOST GAME"
 flat = true
 __meta__ = {
@@ -259,13 +244,8 @@ __meta__ = {
 position = Vector2(-24, 8)
 
 [node name="BtnJoinGame" type="Button" parent="Menu"]
-offset_left = 267.0
-offset_top = 366.0
-offset_right = 362.0
-offset_bottom = 397.0
 focus_next = NodePath("../BtnOptionsGame")
 focus_previous = NodePath("../BtnHostGame")
-button_group = ExtResource( "23_rlb23" )
 text = "JOIN GAME"
 flat = true
 __meta__ = {
@@ -276,13 +256,8 @@ __meta__ = {
 position = Vector2(-24, 8)
 
 [node name="BtnOptionsGame" type="Button" parent="Menu"]
-offset_left = 271.0
-offset_top = 389.0
-offset_right = 351.0
-offset_bottom = 420.0
 focus_next = NodePath("../BtnHostGame")
 focus_previous = NodePath("../BtnJoinGame")
-button_group = ExtResource( "23_rlb23" )
 text = "OPTIONS"
 flat = true
 __meta__ = {
@@ -298,4 +273,10 @@ scale = Vector2(2, 2)
 frames = SubResource( "7" )
 playing = true
 
-[connection signal="pressed" from="Menu/BtnHostGame" to="." method="_on_btn_host_game_pressed"]
+[node name="TirraTween" type="Node" parent="Menu"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+
+[connection signal="pressed" from="Menu/BtnHostGame" to="." method="_on_btn_host_pressed"]

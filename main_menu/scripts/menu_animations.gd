@@ -79,7 +79,3 @@ func swap_position():
 
 func _on_tween_completed(_object: Object, _key: NodePath):
 	$TirraSprite.play("default")
-
-
-func _on_btn_host_game_pressed():
-	pass # Replace with function body.
