@@ -2,7 +2,7 @@ extends Node2D
 const SPEED_DEFAULT = 10000.0
 
 # Allow the animator to process
-export(bool) var enabled = true setget enabled_set, enabled_get
+@export(bool) var enabled = true setget enabled_set, enabled_get
 
 # The actor is the node that is moving
 var actor
@@ -27,7 +27,7 @@ var forced_direction setget forced_direction_set, forced_direction_get
 var speed = 10000.0
 
 ## Nodes
-onready var world = get_node("/root/World")
+@onready var world = get_node("/root/World")
 
 var puppet_pos = Vector2()
 var puppet_motion = Vector2()
@@ -89,6 +89,9 @@ func process(delta):
 	if !enabled:
 		return
 
+	if !is_instance_valid(world):
+		return	
+
 	if is_network_master():
 		motion = update_input()
 
@@ -115,15 +118,14 @@ func process(delta):
 func update_input():
 	var input_motion = Vector2()
 
-	if is_network_master():
-		if Input.is_action_pressed("move_left"):
-			input_motion = Vector2(-1, 0)
-		if Input.is_action_pressed("move_right"):
-			input_motion = Vector2(1, 0)
-		if Input.is_action_pressed("move_up"):
-			input_motion = Vector2(0, -1)
-		if Input.is_action_pressed("move_down"):
-			input_motion = Vector2(0, 1)
+	if Input.is_action_pressed("move_left"):
+		input_motion = Vector2(-1, 0)
+	if Input.is_action_pressed("move_right"):
+		input_motion = Vector2(1, 0)
+	if Input.is_action_pressed("move_up"):
+		input_motion = Vector2(0, -1)
+	if Input.is_action_pressed("move_down"):
+		input_motion = Vector2(0, 1)
 
 	pressed_direction = world.vec_direction_table[input_motion]
 

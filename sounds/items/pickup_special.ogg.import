@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/pickup_special.ogg-834d54e8b8b63855df94a595ba8fd1a5.oggstr"
+uid="uid://crtxqrkr0wwh8"
+path="res://.godot/imported/pickup_special.ogg-834d54e8b8b63855df94a595ba8fd1a5.oggvorbisstr"
 
 [deps]
 
 source_file="res://sounds/items/pickup_special.ogg"
-dest_files=[ "res://.import/pickup_special.ogg-834d54e8b8b63855df94a595ba8fd1a5.oggstr" ]
+dest_files=["res://.godot/imported/pickup_special.ogg-834d54e8b8b63855df94a595ba8fd1a5.oggvorbisstr"]
 
 [params]
 

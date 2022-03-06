@@ -1,6 +1,6 @@
 extends Sprite
 ## Nodes
-onready var world = get_node("/root/World")
+@onready var world = get_node("/root/World")
 
 var been_used: bool = false
 var follow_node

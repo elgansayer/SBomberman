@@ -1,0 +1,301 @@
+[gd_scene load_steps=36 format=3 uid="uid://bek3xt5d024w"]
+
+[ext_resource type="Script" path="res://main_menu/scripts/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c4vn874epe3q5" path="res://lobby/assets/main_menu_bg.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cex1dxwlu4ksy" path="res://ui/assets/front_page/tirra_man/tirra_man_3.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c466e7kjpypi5" path="res://ui/assets/front_page/tirra_man/tirra_man_2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bvtnrf2oyf3u1" path="res://ui/assets/front_page/tirra_man/tirra_man_1.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dhh1v4kicjn6k" path="res://ui/assets/front_page/whopper/whopper_3.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://og2c4bxkjdyf" path="res://ui/assets/front_page/whopper/whopper_1.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://3fp04htdtwh7" path="res://ui/assets/front_page/whopper/whopper_2.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bemhd03ysxjil" path="res://ui/assets/front_page/bomberman/bomberman_2.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cdy0cw4c758ar" path="res://ui/assets/front_page/bomberman/bomberman_3.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://oq6g48gc48m1" path="res://ui/assets/front_page/bomberman/bomberman_1.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://vidgxsawtunl" path="res://tirra/assets/pink/small/down/walking_down_2.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://buylsuvkj2d7v" path="res://ui/assets/front_page/title/title_2.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bstgnmv3fugxd" path="res://ui/assets/front_page/title/title_1.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bmh5am4qh0aj5" path="res://ui/assets/front_page/bomb/bomb_1.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://b5okij4ke31ji" path="res://ui/assets/front_page/spark/spark_2.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bvstw21o7dxfo" path="res://ui/assets/front_page/spark/spark_3.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://iseh32c0ur8l" path="res://ui/assets/front_page/spark/spark_1.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://ipvtougdnxtm" path="res://ui/assets/front_page/saturn/saturn.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://bpadgvkv8m7rj" path="res://ui/assets/front_page/fire/bottom.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://ui/assets/front_page/fire/top.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://b1a67y6xkipfq" path="res://tirra/assets/pink/small/down/walking_down_1.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://cr3sa7lhdv85y" path="res://tirra/assets/pink/small/down/standing_down.png" id="23"]
+[ext_resource type="ButtonGroup" path="res://main_menu/btn_groups/button_group.tres" id="23_rlb23"]
+[ext_resource type="Script" path="res://main_menu/scripts/menu_animations.gd" id="24"]
+[ext_resource type="Texture2D" uid="uid://cr2o1obofci5i" path="res://tirra/assets/pink/small/up/walking_up_1.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://ckf6ka4vs3m5m" path="res://tirra/assets/pink/small/up/walking_up_2.png" id="26"]
+[ext_resource type="PackedScene" path="res://loading.tscn" id="28"]
+
+[sub_resource type="Animation" id="3"]
+resource_name = "load"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TirrraManAnim:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TirrraManAnim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WhopperAnim:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WhopperAnim:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DancingBomberman:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DancingBomberman:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [ExtResource( "3" ), ExtResource( "4" ), ExtResource( "5" ), ExtResource( "4" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [ExtResource( "7" ), ExtResource( "8" ), ExtResource( "6" ), ExtResource( "8" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="4"]
+animations = [{
+"frames": [ExtResource( "11" ), ExtResource( "9" ), ExtResource( "10" ), ExtResource( "9" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="5"]
+animations = [{
+"frames": [ExtResource( "14" ), ExtResource( "13" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [ExtResource( "18" ), ExtResource( "16" ), ExtResource( "17" )],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [ExtResource( "23" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "22" ), ExtResource( "12" )],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "25" ), ExtResource( "26" )],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+script = ExtResource( "1" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+loading_scene = ExtResource( "28" )
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(74, 0)
+texture = ExtResource( "2" )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundSprite"]
+autoplay = "load"
+anims/load = SubResource( "3" )
+
+[node name="TirrraManAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
+position = Vector2(544, 350.933)
+scale = Vector2(2, 2)
+frames = SubResource( "1" )
+frame = 2
+playing = true
+
+[node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
+position = Vector2(496, 388.266)
+scale = Vector2(2, 2)
+frames = SubResource( "2" )
+frame = 2
+playing = true
+
+[node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
+position = Vector2(72, 388.266)
+scale = Vector2(2, 2)
+frames = SubResource( "4" )
+frame = 2
+playing = true
+
+[node name="Title" type="Node2D" parent="BackgroundSprite"]
+
+[node name="TitleSprite" type="AnimatedSprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(264, 160)
+scale = Vector2(2, 2)
+frames = SubResource( "5" )
+playing = true
+
+[node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(216, 56)
+scale = Vector2(2, 2)
+texture = ExtResource( "19" )
+
+[node name="BombSparks" type="AnimatedSprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(224, 72)
+scale = Vector2(2, 2)
+frames = SubResource( "6" )
+playing = true
+
+[node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(208, 128)
+scale = Vector2(2, 2)
+texture = ExtResource( "15" )
+
+[node name="BottomFireSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(472, 208)
+scale = Vector2(2, 2)
+texture = ExtResource( "20" )
+
+[node name="TopFireSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
+position = Vector2(544, 80)
+scale = Vector2(2, 2)
+texture = ExtResource( "21" )
+
+[node name="Menu" type="Control" parent="."]
+offset_left = 74.0
+offset_right = 74.0
+script = ExtResource( "24" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnHostGame" type="Button" parent="Menu"]
+offset_left = 264.0
+offset_top = 344.0
+offset_right = 366.0
+offset_bottom = 375.0
+focus_next = NodePath("../BtnJoinGame")
+focus_previous = NodePath("../BtnOptionsGame")
+button_group = ExtResource( "23_rlb23" )
+text = "HOST GAME"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BtnHostGame"]
+position = Vector2(-24, 8)
+
+[node name="BtnJoinGame" type="Button" parent="Menu"]
+offset_left = 267.0
+offset_top = 366.0
+offset_right = 362.0
+offset_bottom = 397.0
+focus_next = NodePath("../BtnOptionsGame")
+focus_previous = NodePath("../BtnHostGame")
+button_group = ExtResource( "23_rlb23" )
+text = "JOIN GAME"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BtnJoinGame"]
+position = Vector2(-24, 8)
+
+[node name="BtnOptionsGame" type="Button" parent="Menu"]
+offset_left = 271.0
+offset_top = 389.0
+offset_right = 351.0
+offset_bottom = 420.0
+focus_next = NodePath("../BtnHostGame")
+focus_previous = NodePath("../BtnJoinGame")
+button_group = ExtResource( "23_rlb23" )
+text = "OPTIONS"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BtnOptionsGame"]
+position = Vector2(-24, 8)
+
+[node name="TirraSprite" type="AnimatedSprite2D" parent="Menu"]
+position = Vector2(240, 350)
+scale = Vector2(2, 2)
+frames = SubResource( "7" )
+playing = true
+
+[connection signal="pressed" from="Menu/BtnHostGame" to="." method="_on_btn_host_game_pressed"]

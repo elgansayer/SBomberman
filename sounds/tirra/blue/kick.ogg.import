@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/kick.ogg-e73a8ed1b169c703f23052587fd7ab8a.oggstr"
+uid="uid://on431lpg15fp"
+path="res://.godot/imported/kick.ogg-e73a8ed1b169c703f23052587fd7ab8a.oggvorbisstr"
 
 [deps]
 
 source_file="res://sounds/tirra/blue/kick.ogg"
-dest_files=[ "res://.import/kick.ogg-e73a8ed1b169c703f23052587fd7ab8a.oggstr" ]
+dest_files=["res://.godot/imported/kick.ogg-e73a8ed1b169c703f23052587fd7ab8a.oggvorbisstr"]
 
 [params]
 

@@ -1,0 +1,7 @@
+Control
+Node2D
+TileMap
+CollisionShape2D
+RigidDynamicBody2D
+Sprite2D
+Camera2D

@@ -1,7 +1,7 @@
 extends Node2D
 
 ## Nodes
-onready var world = get_node("/root/World")
+@onready var world = get_node("/root/World")
 
 # Sprites created?
 var explosion_sprites = []

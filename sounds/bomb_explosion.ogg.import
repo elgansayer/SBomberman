@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/bomb_explosion.ogg-ed281cceeebee312c6ee3feb12e529a1.oggstr"
+uid="uid://biahcs5a10ck1"
+path="res://.godot/imported/bomb_explosion.ogg-ed281cceeebee312c6ee3feb12e529a1.oggvorbisstr"
 
 [deps]
 
 source_file="res://sounds/bomb_explosion.ogg"
-dest_files=[ "res://.import/bomb_explosion.ogg-ed281cceeebee312c6ee3feb12e529a1.oggstr" ]
+dest_files=["res://.godot/imported/bomb_explosion.ogg-ed281cceeebee312c6ee3feb12e529a1.oggvorbisstr"]
 
 [params]
 

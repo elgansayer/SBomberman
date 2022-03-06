@@ -1,11 +1,11 @@
 extends Node2D
 
 ## Nodes
-onready var actor = self.get_parent()
-onready var animatedSprite = actor.get_node("AnimatedSprite")
-onready var world = get_node("/root/World")
+@onready var actor = self.get_parent()
+@onready var animatedSprite = actor.get_node("AnimatedSprite")
+@onready var world = get_node("/root/World")
 
-export var flashColour = Color(0, 0, 0)
+@export var flashColour = Color(0, 0, 0)
 
 
 func _on_FlashTimer_timeout():

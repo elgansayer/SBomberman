@@ -1,7 +1,7 @@
 extends "res://players/abilities/scripts/ability.gd"
 
 # "res://bomb/bomb.tscn"
-export(Resource) var BombScene
+@export(Resource) var BombScene
 
 # Track how many bombs planted
 var bomb_index = 0

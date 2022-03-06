@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 # Gravity of the object for bouncing and throwing
-export(int) var GRAVITY_DEFAULT = 3000
+@export(int) var GRAVITY_DEFAULT = 3000
 var GRAVITY = 3000
-# export(int) var GRAVITY = 3000
+# @export(int) var GRAVITY = 3000
 
 ## Nodes
-onready var world = get_node("/root/World")
+@onready var world = get_node("/root/World")
 
 # Position of object in the world on the network
 puppet var puppet_pos = Vector2()
@@ -14,7 +14,7 @@ puppet var puppet_pos = Vector2()
 puppet var puppet_motion = Vector2()
 
 # Screen size for bouncing out of the screen
-onready var screen_size = get_viewport_rect().size
+@onready var screen_size = get_viewport_rect().size
 
 # Is the bomb being thrown
 var flying = false
@@ -128,7 +128,7 @@ func launch_to(target, height_scale = 1.1, gravity_scale = GRAVITY_DEFAULT):
 	self.collision_layer = 0
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# if get_class() == "Bomb":
 	# # #print("_physics_process throwable bomb ", flying, " ", velocity)
 
@@ -136,8 +136,8 @@ func _physics_process(_delta):
 	# # #print("throwable velocity %s" % velocity)
 
 	if flying:
-		velocity.y += GRAVITY * _delta
-		var collision = move_and_collide(velocity * _delta)
+		velocity.y += GRAVITY * delta
+		var collision = move_and_collide(velocity * delta)
 
 		if position.x < 0:
 			position.x = screen_size.x

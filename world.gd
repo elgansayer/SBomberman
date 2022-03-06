@@ -1,37 +1,37 @@
 extends Node2D
 
-export(int) var grid_size = 32
-export(int) var half_grid = grid_size / 2
+@export(int) var grid_size = 32
+@export(int) var half_grid = grid_size / 2
 
 # Time the map lasts for
-export(int) var time = 60 * 3
+@export(int) var time = 60 * 3
 
 # Time the map lasts for
-export(int) var time_left = time
+@export(int) var time_left = time
 
 enum orientation {
 	Vertical,
 	Horizontal,
 }
 
-export var direction_orientation = {
+@export var direction_orientation = {
 	"up": orientation.Vertical,
 	"down": orientation.Vertical,
 	"left": orientation.Horizontal,
 	"right": orientation.Horizontal
 }
 
-export var direction_bounce_table = {"up": "down", "down": "up", "left": "right", "right": "left"}
+@export var direction_bounce_table = {"up": "down", "down": "up", "left": "right", "right": "left"}
 
-export var direction_table = {
+@export var direction_table = {
 	"up": Vector2(0, -1), "down": Vector2(0, 1), "left": Vector2(-1, 0), "right": Vector2(1, 0)
 }
 
-export var direction_table_rev = {
+@export var direction_table_rev = {
 	"down": Vector2(0, -1), "up": Vector2(0, 1), "right": Vector2(-1, 0), "left": Vector2(1, 0)
 }
 
-export var vec_direction_table = {
+@export var vec_direction_table = {
 	Vector2(0, 0): "",
 	Vector2(0, -1): "up",
 	Vector2(0, 1): "down",
@@ -39,7 +39,7 @@ export var vec_direction_table = {
 	Vector2(1, 0): "right"
 }
 
-export var vec_direction_table_rev = {
+@export var vec_direction_table_rev = {
 	Vector2(0, 0): "",
 	Vector2(0, -1): "down",
 	Vector2(0, 1): "up",
@@ -65,9 +65,9 @@ var bounceMask = (
 	| layers.LAYER_PLAYERS
 )
 
-export var group_players = "players"
-export var group_bombs = "bombs"
-export var group_tirras = "tirras"
+@export var group_players = "players"
+@export var group_bombs = "bombs"
+@export var group_tirras = "tirras"
 
 # Called when the node enters the scene tree for the first time.
 var font

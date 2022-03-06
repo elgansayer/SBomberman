@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var actor = self.get_parent()
+@onready var actor = self.get_parent()
 
 # Keep track of the flashable behavior
 var flashable

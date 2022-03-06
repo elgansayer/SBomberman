@@ -1,12 +1,12 @@
 extends Node2D
 
 ## Nodes
-onready var abilities = self.get_parent()
-onready var actor = abilities.get_parent()
-onready var world = get_node("/root/World")
+@onready var abilities = self.get_parent()
+@onready var actor = abilities.get_parent()
+@onready var world = get_node("/root/World")
 
 # Action to check input for
-export var input_action = "action"
+@export var input_action = "action"
 # Is the node performing an action?
 var action = false
 # Is the ability enabled
@@ -23,8 +23,7 @@ func _ready():
 
 
 func query_input(event):
-	if is_network_master():
-		action = event.is_action_pressed(input_action)
+	action = event.is_action_pressed(input_action)
 
 func _input(event):
 	var time_between = OS.get_ticks_msec() - last_action_time

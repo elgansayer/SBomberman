@@ -1,13 +1,14 @@
 [remap]
 
-importer="ogg_vorbis"
+importer="oggvorbisstr"
 type="AudioStreamOGGVorbis"
-path="res://.import/got_virus.ogg-5edcb3b02dc3cc09b9596d67e5ecb4ba.oggstr"
+uid="uid://c1bxvxkuymr1u"
+path="res://.godot/imported/got_virus.ogg-5edcb3b02dc3cc09b9596d67e5ecb4ba.oggvorbisstr"
 
 [deps]
 
 source_file="res://sounds/items/got_virus.ogg"
-dest_files=[ "res://.import/got_virus.ogg-5edcb3b02dc3cc09b9596d67e5ecb4ba.oggstr" ]
+dest_files=["res://.godot/imported/got_virus.ogg-5edcb3b02dc3cc09b9596d67e5ecb4ba.oggvorbisstr"]
 
 [params]
 

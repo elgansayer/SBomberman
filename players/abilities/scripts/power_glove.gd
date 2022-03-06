@@ -1,9 +1,9 @@
 extends "res://players/abilities/scripts/ability.gd"
 
 # Nodes
-onready var plantBombAbility = abilities.get_node("PlantBomb")
-onready var animationPlayer = actor.get_node("AnimationPlayer")
-# onready var animator = actor.get_node("Animator")
+@onready var plantBombAbility = abilities.get_node("PlantBomb")
+@onready var animationPlayer = actor.get_node("AnimationPlayer")
+# @onready var animator = actor.get_node("Animator")
 
 # We are performing the ability
 var in_power_glove = false

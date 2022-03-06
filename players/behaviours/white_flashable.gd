@@ -1,13 +1,13 @@
 extends Node2D
 
 ## Nodes
-onready var actor = self.get_parent()
-onready var animatedSprite = actor.get_node("AnimatedSprite")
+@onready var actor = self.get_parent()
+@onready var animatedSprite = actor.get_node("AnimatedSprite")
 
 ## Nodes
-onready var animatedSpriteMaterial = animatedSprite.get_material()
-export(float) var intensity = 0.7
-export(Vector3) var colour = Vector3(1, 1, 1)
+@onready var animatedSpriteMaterial = animatedSprite.get_material()
+@export(float) var intensity = 0.7
+@export(Vector3) var colour = Vector3(1, 1, 1)
 
 # Are we flashing
 var flash = false

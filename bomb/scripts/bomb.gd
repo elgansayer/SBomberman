@@ -1,17 +1,17 @@
 extends "res://scripts/throwable.gd"
 signal on_explode(bomb)
 
-export(Resource) var explosion_scene
-export(Resource) var throw_sound
+@export(Resource) var explosion_scene
+@export(Resource) var throw_sound
 
 # res://explosion/explosion.tscn
 ### Variables ###
 
 # Gravity of the bomb for bouncing and throwing
-# export(int) var GRAVITY = 3000
+# @export(int) var GRAVITY = 3000
 
 ## Nodes
-# onready var world = get_node("/root/World")
+# @onready var world = get_node("/root/World")
 
 # Position of bomb in the world on the network
 # puppet var puppet_pos = Vector2()
@@ -28,7 +28,7 @@ var paused setget paused_set
 var collision_exceptions = []
 
 ## Nodes
-# onready var world = get_node("/root/World")
+# @onready var world = get_node("/root/World")
 
 # Make the bomb explode when it hits something
 var explode_on_impact = false
