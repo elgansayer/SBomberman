@@ -291,14 +291,14 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "25" ), ExtResource( "26" )],
-"loop": true,
-"name": &"walk_up",
-"speed": 5.0
-}, {
 "frames": [ExtResource( "22" ), ExtResource( "12" )],
 "loop": true,
 "name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [ExtResource( "25" ), ExtResource( "26" )],
+"loop": true,
+"name": &"walk_up",
 "speed": 5.0
 }]
 
@@ -328,21 +328,21 @@ anims/load = SubResource( "3" )
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
