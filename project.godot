@@ -10,18 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Multiplayer Bomber"
-config/description="A multiplayer implementation of the classical bomberman game.
-One of the players should press 'host', while the other
-should type in his address and press 'play'."
 run/main_scene="res://main_menu/main_menu.tscn"
-config/icon="res://players/assets/black_bomberman/head/head.png"
 config/features=PackedStringArray("4.0")
 
 [autoload]
 
 Game="*res://game.gd"
 Server="*res://server/server.tscn"
+
+[config]
+
+description="A multiplayer implementation of the classical bomberman game.
+One of the players should press 'host', while the other
+should type in his address and press 'play'."
+icon="res://players/assets/black_bomberman/head/head.png"
+features=PackedStringArray("4.0")
 
 [debug]
 
@@ -35,6 +38,10 @@ window/stretch/mode="viewport"
 window/size/width=640
 window/size/height=480
 window/vsync/use_vsync=false
+
+[flobb[application]
+
+"config]name"="Multiplayer Bomber"
 
 [gdnative]
 
@@ -112,3 +119,7 @@ restart_map={
 2d_physics/layer_4="bombs"
 2d_physics/layer_5="items"
 2d_physics/layer_6="player"
+
+[run]
+
+main_scene="res://main_menu/main_menu.tscn"

@@ -1,7 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://bek3xt5d024w"]
+[gd_scene load_steps=76 format=3 uid="uid://bw0df664sp04g"]
 
 [ext_resource type="Script" path="res://main_menu/scripts/main_menu.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c4vn874epe3q5" path="res://lobby/assets/main_menu_bg.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c4vn874epe3q5" path="res://1lobby/assets/main_menu_bg.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cex1dxwlu4ksy" path="res://ui/assets/front_page/tirra_man/tirra_man_3.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://c466e7kjpypi5" path="res://ui/assets/front_page/tirra_man/tirra_man_2.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bvtnrf2oyf3u1" path="res://ui/assets/front_page/tirra_man/tirra_man_1.png" id="5"]
@@ -23,10 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://ui/assets/front_page/fire/top.png" id="21"]
 [ext_resource type="Texture2D" uid="uid://b1a67y6xkipfq" path="res://tirra/assets/pink/small/down/walking_down_1.png" id="22"]
 [ext_resource type="Texture2D" uid="uid://cr3sa7lhdv85y" path="res://tirra/assets/pink/small/down/standing_down.png" id="23"]
+[ext_resource type="Material" uid="uid://b0yg5exatdt6w" path="res://fonts/material/gradient.tres" id="23_xm05u"]
 [ext_resource type="Script" path="res://main_menu/scripts/menu_animations.gd" id="24"]
+[ext_resource type="FontData" uid="uid://cc85eusvhx70l" path="res://fonts/bmp/equipment-pro.fnt" id="24_yx3ol"]
 [ext_resource type="Texture2D" uid="uid://cr2o1obofci5i" path="res://tirra/assets/pink/small/up/walking_up_1.png" id="25"]
+[ext_resource type="ButtonGroup" path="res://main_menu/btn_groups/button_group.tres" id="25_laalq"]
 [ext_resource type="Texture2D" uid="uid://ckf6ka4vs3m5m" path="res://tirra/assets/pink/small/up/walking_up_2.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://bhaneoowkv7g" path="res://fonts/gradient.png" id="26_vrrc0"]
 [ext_resource type="PackedScene" path="res://loading.tscn" id="28"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpow5"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="3"]
 resource_name = "load"
@@ -143,6 +150,135 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Font" id="Font_ifcni"]
+data/0 = ExtResource( "24_yx3ol" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpynw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1toe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kt77v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8udb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uimc7"]
+
+[sub_resource type="Shader" id="Shader_itm1j"]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient; // is a variable that holds a texture 
+
+uniform float white_value : hint_range(0,1) = 0.0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+    return start + (end - start) * delta;
+}
+
+void fragment(){ 
+	vec4 col = texture(gradient, vec2(0, UV.y));	 // read the colour of the pixel at coords (m, UV.y)
+	
+	if (white_value > 0.0f) {
+	    COLOR.rgb = interpolate_vec3(COLOR.rgb, vec3(1,1,1), white_value);
+	    COLOR.a = COLOR.a;					
+	} else {	
+		COLOR = texture(TEXTURE,UV) * COLOR * col; // mix the colours of the original texture (TEXTURE) at uv (coords) witht he colour we got from the gradient 
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_me7pb"]
+shader = SubResource( "Shader_itm1j" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "26_vrrc0" )
+
+[sub_resource type="Font" id="Font_x0wj7"]
+data/0 = ExtResource( "24_yx3ol" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1r0ht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfnw0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_graxf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u11ir"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_km8cs"]
+
+[sub_resource type="Shader" id="Shader_yfdu7"]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient; // is a variable that holds a texture 
+
+uniform float white_value : hint_range(0,1) = 0.0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+    return start + (end - start) * delta;
+}
+
+void fragment(){ 
+	vec4 col = texture(gradient, vec2(0, UV.y));	 // read the colour of the pixel at coords (m, UV.y)
+	
+	if (white_value > 0.0f) {
+	    COLOR.rgb = interpolate_vec3(COLOR.rgb, vec3(1,1,1), white_value);
+	    COLOR.a = COLOR.a;					
+	} else {	
+		COLOR = texture(TEXTURE,UV) * COLOR * col; // mix the colours of the original texture (TEXTURE) at uv (coords) witht he colour we got from the gradient 
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gy8rg"]
+shader = SubResource( "Shader_yfdu7" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "26_vrrc0" )
+
+[sub_resource type="Font" id="Font_toqbx"]
+data/0 = ExtResource( "24_yx3ol" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2evui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nhrjj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsabs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kk772"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gnhs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ui43v"]
+shader = SubResource( "Shader_yfdu7" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "26_vrrc0" )
+
+[sub_resource type="Font" id="Font_4i4dl"]
+data/0 = ExtResource( "24_yx3ol" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovsqs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3d32q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tp3eb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4227"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aivo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uymwg"]
+shader = SubResource( "Shader_yfdu7" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "26_vrrc0" )
+
+[sub_resource type="Font" id="Font_a58jk"]
+data/0 = ExtResource( "24_yx3ol" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iir63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfbo6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cpchj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8553"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atat1"]
+
 [sub_resource type="SpriteFrames" id="7"]
 animations = [{
 "frames": [ExtResource( "23" )],
@@ -165,6 +301,15 @@ animations = [{
 script = ExtResource( "1" )
 loading_scene = ExtResource( "28" )
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = -76.0
+offset_right = 796.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_tpow5" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 texture = ExtResource( "2" )
 centered = false
@@ -177,18 +322,21 @@ anims/load = SubResource( "3" )
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
+frame = 2
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
+frame = 2
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
+frame = 2
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -208,6 +356,7 @@ texture = ExtResource( "19" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
+frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -225,58 +374,167 @@ position = Vector2(544, 80)
 scale = Vector2(2, 2)
 texture = ExtResource( "21" )
 
-[node name="Menu" type="Control" parent="."]
+[node name="Menu" type="Node2D" parent="."]
 script = ExtResource( "24" )
+buttons = [NodePath("MainMenu/BtnBattle"), NodePath("MainMenu/BtnOptionsGame"), NodePath("BattleMenu/BtnHostGame"), NodePath("BattleMenu/BtnJoinGame"), NodePath("BattleMenu/BtnQucikMatch")]
+tirra_sprite = NodePath("TirraSprite")
+
+[node name="MainMenu" type="Control" parent="Menu"]
+visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BtnHostGame" type="Button" parent="Menu"]
-focus_next = NodePath("../BtnJoinGame")
-focus_previous = NodePath("../BtnOptionsGame")
-text = "HOST GAME"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Node2D" type="Node2D" parent="Menu/BtnHostGame"]
-position = Vector2(-24, 8)
-
-[node name="BtnJoinGame" type="Button" parent="Menu"]
+[node name="BtnBattle" type="Button" parent="Menu/MainMenu"]
+material = ExtResource( "23_xm05u" )
+offset_left = 267.0
+offset_top = 273.0
+offset_right = 419.0
+offset_bottom = 305.0
+hint_tooltip = "Game Mode"
+focus_neighbor_left = NodePath("../BtnOptionsGame")
+focus_neighbor_top = NodePath("../BtnOptionsGame")
+focus_neighbor_right = NodePath("../BtnOptionsGame")
+focus_neighbor_bottom = NodePath("../BtnOptionsGame")
 focus_next = NodePath("../BtnOptionsGame")
-focus_previous = NodePath("../BtnHostGame")
-text = "JOIN GAME"
+focus_previous = NodePath("../BtnOptionsGame")
+theme_override_fonts/font = SubResource( "Font_ifcni" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_gpynw" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_d1toe" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_kt77v" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_q8udb" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_uimc7" )
+button_group = ExtResource( "25_laalq" )
+text = "BATTLE MODE"
 flat = true
+alignment = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/BtnJoinGame"]
-position = Vector2(-24, 8)
+[node name="Node2D" type="Node2D" parent="Menu/MainMenu/BtnBattle"]
+position = Vector2(-24, 13)
 
-[node name="BtnOptionsGame" type="Button" parent="Menu"]
-focus_next = NodePath("../BtnHostGame")
-focus_previous = NodePath("../BtnJoinGame")
+[node name="BtnOptionsGame" type="Button" parent="Menu/MainMenu"]
+material = SubResource( "ShaderMaterial_me7pb" )
+offset_left = 267.0
+offset_top = 311.0
+offset_right = 419.0
+offset_bottom = 343.0
+hint_tooltip = "Options"
+focus_neighbor_left = NodePath("../BtnBattle")
+focus_neighbor_top = NodePath("../BtnBattle")
+focus_neighbor_right = NodePath("../BtnBattle")
+focus_neighbor_bottom = NodePath("../BtnBattle")
+focus_next = NodePath("../BtnBattle")
+focus_previous = NodePath("../BtnBattle")
+theme_override_fonts/font = SubResource( "Font_x0wj7" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_1r0ht" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_tfnw0" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_graxf" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_u11ir" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_km8cs" )
+button_group = ExtResource( "25_laalq" )
 text = "OPTIONS"
 flat = true
+alignment = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/BtnOptionsGame"]
+[node name="Node2D" type="Node2D" parent="Menu/MainMenu/BtnOptionsGame"]
+position = Vector2(-24, 13)
+
+[node name="BattleMenu" type="Control" parent="Menu"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnHostGame" type="Button" parent="Menu/BattleMenu"]
+material = SubResource( "ShaderMaterial_gy8rg" )
+offset_left = 267.0
+offset_top = 311.0
+offset_right = 419.0
+offset_bottom = 343.0
+focus_next = NodePath("../BtnJoinGame")
+focus_previous = NodePath("../BtnQucikMatch")
+theme_override_fonts/font = SubResource( "Font_toqbx" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_2evui" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_nhrjj" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_lsabs" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_kk772" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_2gnhs" )
+text = "HOST GAME"
+flat = true
+alignment = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnHostGame"]
+position = Vector2(-24, 13)
+
+[node name="BtnJoinGame" type="Button" parent="Menu/BattleMenu"]
+material = SubResource( "ShaderMaterial_ui43v" )
+offset_left = 267.0
+offset_top = 273.0
+offset_right = 419.0
+offset_bottom = 305.0
+focus_next = NodePath("../BtnQucikMatch")
+focus_previous = NodePath("../BtnHostGame")
+theme_override_fonts/font = SubResource( "Font_4i4dl" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_ovsqs" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_3d32q" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_tp3eb" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_w4227" )
+theme_override_styles/normal = SubResource( "StyleBoxFlat_6aivo" )
+text = "JOIN GAME"
+flat = true
+alignment = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnJoinGame"]
+position = Vector2(-24, 13)
+
+[node name="BtnQucikMatch" type="Button" parent="Menu/BattleMenu"]
+material = SubResource( "ShaderMaterial_uymwg" )
+offset_left = 267.0
+offset_top = 349.0
+offset_right = 419.0
+offset_bottom = 381.0
+focus_next = NodePath("../BtnHostGame")
+focus_previous = NodePath("../BtnJoinGame")
+theme_override_fonts/font = SubResource( "Font_a58jk" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_iir63" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_qfbo6" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_cpchj" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_c8553" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_atat1" )
+text = "FIND MATCH"
+flat = true
+alignment = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnQucikMatch"]
 position = Vector2(-24, 8)
 
+[node name="FlashTimer" type="Timer" parent="Menu"]
+autostart = true
+
 [node name="TirraSprite" type="AnimatedSprite2D" parent="Menu"]
-position = Vector2(240, 350)
-scale = Vector2(2, 2)
+position = Vector2(243, 286)
+scale = Vector2(1.5, 1.5)
 frames = SubResource( "7" )
 playing = true
 
-[node name="TirraTween" type="Node" parent="Menu"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-76, 0)
+anchor_mode = 0
+current = true
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Node2D" type="Node2D" parent="Node2D"]
-
-[connection signal="pressed" from="Menu/BtnHostGame" to="." method="_on_btn_host_pressed"]
+[connection signal="pressed" from="Menu/MainMenu/BtnBattle" to="." method="_on_btn_battle_pressed"]
+[connection signal="timeout" from="Menu/FlashTimer" to="Menu" method="_on_flash_timer_timeout"]

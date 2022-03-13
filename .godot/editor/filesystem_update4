@@ -1,2 +1,6 @@
+res://fonts/font/button_font.tres
+res://fonts/material/gradient.tres
+res://fonts/shaders/gardient.gdshader
 res://main_menu/main_menu.tscn
-res://world.tscn
+res://main_menu/scripts/main_menu.gd
+res://main_menu/scripts/menu_animations.gd

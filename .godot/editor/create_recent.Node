@@ -1,7 +1,5 @@
-Control
-Node2D
-TileMap
-CollisionShape2D
-RigidDynamicBody2D
-Sprite2D
+Panel
 Camera2D
+Timer
+Node2D
+PointLight2D

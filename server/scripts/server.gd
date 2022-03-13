@@ -56,11 +56,13 @@ func _player_disconnected(id):
 
 
 func host_game():
-	peer = ENetMultiplayerPeer.new()
-	peer.create_server(DEFAULT_PORT, MAX_PEERS)
+	pass
+	# peer = ENetMultiplayerPeer.new()
+	# peer.create_server(DEFAULT_PORT, MAX_PEERS)
 	# multiplayer.set_network_peer(peer)
 	# multiplayer.set_network_peer(peer)
 
 func get_peer_latency(id):
-	var peer = enet.get_peer(id)
-	return peer.get_statistic(ENetPacketPeer.PEER_ROUND_TRIP_TIME)
+	pass
+	# var peer = enet.get_peer(id)
+	# return peer.get_statistic(ENetPacketPeer.PEER_ROUND_TRIP_TIME)

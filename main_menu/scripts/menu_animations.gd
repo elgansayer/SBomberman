@@ -1,81 +1,108 @@
-extends Control
+extends Node2D
 
 ## BtnHostGame
-@onready var BtnHostGame = get_node("BtnHostGame")
+# @onready var BtnHostGame = get_node("BtnHostGame")
 ## BtnJoinGame
-@onready var BtnJoinGame = get_node("BtnJoinGame")
+# @onready var BtnJoinGame = get_node("BtnJoinGame")
 ## BtnOptionsGame
-@onready var BtnOptionsGame = get_node("BtnOptionsGame")
+# @onready var BtnOptionsGame = get_node("BtnOptionsGame")
+@export var buttons: Array[NodePath] = []
+@export var tirra_sprite: NodePath
+# var tirraSprite: AnimatedSprite2D = null
+@onready var tirraSprite: AnimatedSprite2D = get_node(tirra_sprite)
 
 # Where is the pink tirra?
 var at_top_position: int = 0
-
+var last_button: Button =  null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# tween.connect("tween_completed", _on_tween_completed)
-	BtnHostGame.grab_focus()
-	BtnHostGame.grab_click_focus()
 	swap_position()
 
-
-func _input(_event: InputEvent) -> void:
+func _input(_event: InputEvent):
 	swap_position()
-
 
 func swap_position():
-	var button = null
-	var new_position = $TirraSprite.global_position
+	if !tirraSprite:
+		return
+		
+	var selected_button = null
+	var new_position = tirraSprite.global_position
 
-	if BtnHostGame.has_focus():
-		button = BtnHostGame
-	elif BtnJoinGame.has_focus():
-		button = BtnJoinGame
-	elif BtnOptionsGame.has_focus():
-		button = BtnOptionsGame
+	for node_path in buttons:
+		if get_node(node_path).has_focus():
+			selected_button = get_node(node_path)
 
-	if !button:
+	if !selected_button:
 		return
 
-	new_position = button.get_node("Node2D").global_position
 
-	var direction = $TirraSprite.global_position.y - new_position.y
+	if last_button == selected_button:
+		return
+	last_button = selected_button
+	
+	new_position = selected_button.get_node("Node2D").global_position
+
+	var direction = tirraSprite.global_position.y - new_position.y
 	if direction > 0:
-		$TirraSprite.play("walk_up")
+		tirraSprite.play("walk_up")
 	else:
-		$TirraSprite.play("walk_down")
+		tirraSprite.play("walk_down")
 
-	var speed = ($TirraSprite.global_position - new_position).length() / 100
-
+	var speed = (tirraSprite.global_position - new_position).length() / 100
 	var tween = get_tree().create_tween()
-	# tween.tween_property($Sprite, "modulate", Color.red, 1)
-	# tween.tween_property($Sprite, "scale", Vector2(), 1)
-	# tween.tween_callback($Sprite.queue_free)
-		
-	# tween.tween_property("global_position:x", $TirraSprite.x, 1).as_relative()
-	# tween.tween_callback(jump)
-	# tween.tween_interval(2)
-	# tween.tween_property("global_position:y", $TirraSprite.y, 1).as_relative()
-	# tween.tween_callback(jump)
-	# tween.tween_interval(2)
-
-	# tween.interpolate_value(
-	# 	$TirraSprite,
-	# 	"global_position",
-	# 	$TirraSprite.global_position,
-	# 	new_position,
-	# 	speed,
-	# 	Tween.TRANS_LINEAR
-	# )
+	
+	if speed <= 0:
+		return
 
 	tween.tween_property(
-		$TirraSprite,
+		tirraSprite,
 		"global_position",
 		new_position,
 		speed
 	)	
+	tween.tween_callback(_on_tween_completed)
+
 	tween.play()
 
+	flash_btn_white(selected_button)
 
-func _on_tween_completed(_object: Object, _key: NodePath):
-	$TirraSprite.play("default")
+	$FlashTimer.stop()
+	flash_button(selected_button)
+
+func flash_button(selected_button):
+	var timer = Timer.new()
+	timer.connect("timeout", _on_btn_touch_timeout, [selected_button] ) 
+	timer.wait_time = 0.1
+	timer.one_shot = true
+	add_child(timer) 
+	timer.start()
+	$FlashTimer.start()
+
+
+func _on_btn_touch_timeout(selected_button):
+	var flash_value = 0.0
+	self.set_shader_flash(selected_button, flash_value)
+
+
+func _on_tween_completed():
+	tirraSprite.stop()
+	tirraSprite.play("default")
+
+
+func set_shader_flash(selected_button, flash_value):
+	var btnSpriteMaterial = selected_button.get_material()
+	btnSpriteMaterial.set_shader_param("white_value", flash_value)
+
+
+func flash_btn_white(selected_button):
+	var flash_value = 0.5
+	self.set_shader_flash(last_button, flash_value)	
+
+
+func _on_flash_timer_timeout():
+	if !last_button:
+		return
+
+	flash_btn_white(last_button)
+	flash_button(last_button)

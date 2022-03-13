@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontData"
+uid="uid://cc85eusvhx70l"
+path="res://.godot/imported/equipment-pro.fnt-cd5cd56ee1d2efc1e70185d3b67de380.fontdata"
+
+[deps]
+
+source_file="res://fonts/bmp/equipment-pro.fnt"
+dest_files=["res://.godot/imported/equipment-pro.fnt-cd5cd56ee1d2efc1e70185d3b67de380.fontdata"]
+
+[params]
+
+compress=true

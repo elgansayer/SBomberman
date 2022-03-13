@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 @export var loading_scene: Resource = null
 
@@ -28,3 +28,8 @@ func _on_btn_host_game_pressed():
 	root.remove_child(self)
 	Game.begin_game()
 	root.remove_child(loading)
+
+
+func _on_btn_battle_pressed():
+	get_node("Menu/MainMenu").visible = false	
+	get_node("Menu/BattleMenu").visible = true
