@@ -1,18 +1,10 @@
 extends Node2D
 
-## BtnHostGame
-# @onready var BtnHostGame = get_node("BtnHostGame")
-## BtnJoinGame
-# @onready var BtnJoinGame = get_node("BtnJoinGame")
-## BtnOptionsGame
-# @onready var BtnOptionsGame = get_node("BtnOptionsGame")
 @export var buttons: Array[NodePath] = []
 @export var tirra_sprite: NodePath
-# var tirraSprite: AnimatedSprite2D = null
 @onready var tirraSprite: AnimatedSprite2D = get_node(tirra_sprite)
 
 # Where is the pink tirra?
-var at_top_position: int = 0
 var last_button: Button =  null;
 
 # Called when the node enters the scene tree for the first time.
@@ -43,17 +35,17 @@ func swap_position():
 	
 	new_position = selected_button.get_node("Node2D").global_position
 
-	var direction = tirraSprite.global_position.y - new_position.y
-	if direction > 0:
-		tirraSprite.play("walk_up")
-	else:
-		tirraSprite.play("walk_down")
-
 	var speed = (tirraSprite.global_position - new_position).length() / 100
 	var tween = get_tree().create_tween()
 	
 	if speed <= 0:
 		return
+
+	var direction = tirraSprite.global_position.y - new_position.y
+	if direction > 0:
+		tirraSprite.play("walk_up")
+	else:
+		tirraSprite.play("walk_down")
 
 	tween.tween_property(
 		tirraSprite,

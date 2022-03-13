@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var loading_scene: Resource = null
-
+@export var menu_animator_path: NodePath
 
 func _ready() -> void:
 	pass
@@ -29,7 +29,16 @@ func _on_btn_host_game_pressed():
 	Game.begin_game()
 	root.remove_child(loading)
 
-
 func _on_btn_battle_pressed():
-	get_node("Menu/MainMenu").visible = false	
-	get_node("Menu/BattleMenu").visible = true
+	get_node("UILayer/MainMenu").visible = false	
+	get_node("UILayer/BattleMenu").visible = true
+
+func _on_btn_back_pressed():
+	get_node("UILayer/MainMenu").visible = true
+	get_node("UILayer/BattleMenu").visible = false
+		
+	var menu_animator = get_node(menu_animator_path)
+	var button_path = menu_animator.buttons[0]
+	var btn = get_node("UILayer").get_node(button_path)
+	btn.grab_focus()
+	menu_animator.swap_position()

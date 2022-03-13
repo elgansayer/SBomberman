@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bw0df664sp04g"]
+[gd_scene load_steps=77 format=3 uid="uid://bw0df664sp04g"]
 
 [ext_resource type="Script" path="res://main_menu/scripts/main_menu.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c4vn874epe3q5" path="res://1lobby/assets/main_menu_bg.png" id="2"]
@@ -261,7 +261,7 @@ data/0 = ExtResource( "24_yx3ol" )
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aivo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uymwg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xcuyr"]
 shader = SubResource( "Shader_yfdu7" )
 shader_param/white_value = 0.0
 shader_param/gradient = ExtResource( "26_vrrc0" )
@@ -278,6 +278,11 @@ data/0 = ExtResource( "24_yx3ol" )
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8553"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atat1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0phsy"]
+shader = SubResource( "Shader_yfdu7" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "26_vrrc0" )
 
 [sub_resource type="SpriteFrames" id="7"]
 animations = [{
@@ -300,6 +305,7 @@ animations = [{
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( "1" )
 loading_scene = ExtResource( "28" )
+menu_animator_path = NodePath("UILayer")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -76.0
@@ -322,21 +328,21 @@ anims/load = SubResource( "3" )
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -345,6 +351,7 @@ playing = true
 position = Vector2(264, 160)
 scale = Vector2(2, 2)
 frames = SubResource( "5" )
+frame = 1
 playing = true
 
 [node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -356,7 +363,7 @@ texture = ExtResource( "19" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -374,18 +381,17 @@ position = Vector2(544, 80)
 scale = Vector2(2, 2)
 texture = ExtResource( "21" )
 
-[node name="Menu" type="Node2D" parent="."]
+[node name="UILayer" type="Node2D" parent="."]
 script = ExtResource( "24" )
 buttons = [NodePath("MainMenu/BtnBattle"), NodePath("MainMenu/BtnOptionsGame"), NodePath("BattleMenu/BtnHostGame"), NodePath("BattleMenu/BtnJoinGame"), NodePath("BattleMenu/BtnQucikMatch")]
 tirra_sprite = NodePath("TirraSprite")
 
-[node name="MainMenu" type="Control" parent="Menu"]
-visible = false
+[node name="MainMenu" type="Control" parent="UILayer"]
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BtnBattle" type="Button" parent="Menu/MainMenu"]
+[node name="BtnBattle" type="Button" parent="UILayer/MainMenu"]
 material = ExtResource( "23_xm05u" )
 offset_left = 267.0
 offset_top = 273.0
@@ -412,10 +418,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/MainMenu/BtnBattle"]
+[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/BtnBattle"]
 position = Vector2(-24, 13)
 
-[node name="BtnOptionsGame" type="Button" parent="Menu/MainMenu"]
+[node name="BtnOptionsGame" type="Button" parent="UILayer/MainMenu"]
 material = SubResource( "ShaderMaterial_me7pb" )
 offset_left = 267.0
 offset_top = 311.0
@@ -442,15 +448,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/MainMenu/BtnOptionsGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/BtnOptionsGame"]
 position = Vector2(-24, 13)
 
-[node name="BattleMenu" type="Control" parent="Menu"]
+[node name="BattleMenu" type="Control" parent="UILayer"]
+visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BtnHostGame" type="Button" parent="Menu/BattleMenu"]
+[node name="BtnHostGame" type="Button" parent="UILayer/BattleMenu"]
 material = SubResource( "ShaderMaterial_gy8rg" )
 offset_left = 267.0
 offset_top = 311.0
@@ -471,10 +478,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnHostGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnHostGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnJoinGame" type="Button" parent="Menu/BattleMenu"]
+[node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenu"]
 material = SubResource( "ShaderMaterial_ui43v" )
 offset_left = 267.0
 offset_top = 273.0
@@ -495,11 +502,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnJoinGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnJoinGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnQucikMatch" type="Button" parent="Menu/BattleMenu"]
-material = SubResource( "ShaderMaterial_uymwg" )
+[node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenu"]
+material = SubResource( "ShaderMaterial_xcuyr" )
 offset_left = 267.0
 offset_top = 349.0
 offset_right = 419.0
@@ -519,13 +526,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="Menu/BattleMenu/BtnQucikMatch"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnQucikMatch"]
 position = Vector2(-24, 8)
 
-[node name="FlashTimer" type="Timer" parent="Menu"]
+[node name="BtnBack" type="Button" parent="UILayer/BattleMenu"]
+material = SubResource( "ShaderMaterial_0phsy" )
+offset_left = 267.0
+offset_top = 387.0
+offset_right = 419.0
+offset_bottom = 419.0
+focus_next = NodePath("../BtnHostGame")
+focus_previous = NodePath("../BtnJoinGame")
+theme_override_fonts/font = SubResource( "Font_a58jk" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_iir63" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_qfbo6" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_cpchj" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_c8553" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_atat1" )
+text = "BACK"
+flat = true
+alignment = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnBack"]
+position = Vector2(-24, 8)
+
+[node name="FlashTimer" type="Timer" parent="UILayer"]
 autostart = true
 
-[node name="TirraSprite" type="AnimatedSprite2D" parent="Menu"]
+[node name="TirraSprite" type="AnimatedSprite2D" parent="UILayer"]
 position = Vector2(243, 286)
 scale = Vector2(1.5, 1.5)
 frames = SubResource( "7" )
@@ -536,5 +567,6 @@ position = Vector2(-76, 0)
 anchor_mode = 0
 current = true
 
-[connection signal="pressed" from="Menu/MainMenu/BtnBattle" to="." method="_on_btn_battle_pressed"]
-[connection signal="timeout" from="Menu/FlashTimer" to="Menu" method="_on_flash_timer_timeout"]
+[connection signal="pressed" from="UILayer/MainMenu/BtnBattle" to="." method="_on_btn_battle_pressed"]
+[connection signal="pressed" from="UILayer/BattleMenu/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="timeout" from="UILayer/FlashTimer" to="UILayer" method="_on_flash_timer_timeout"]
