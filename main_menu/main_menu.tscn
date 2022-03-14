@@ -309,7 +309,7 @@ menu_animator_path = NodePath("UILayer")
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = -76.0
-offset_right = 796.0
+offset_right = 721.0
 offset_bottom = 448.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_tpow5" )
 __meta__ = {
@@ -328,21 +328,18 @@ anims/load = SubResource( "3" )
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 3
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 3
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 3
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -351,7 +348,6 @@ playing = true
 position = Vector2(264, 160)
 scale = Vector2(2, 2)
 frames = SubResource( "5" )
-frame = 1
 playing = true
 
 [node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -363,7 +359,7 @@ texture = ExtResource( "19" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
-frame = 1
+frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]

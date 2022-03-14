@@ -1,0 +1,195 @@
+[gd_scene load_steps=24 format=3 uid="uid://bps7kp2108dcw"]
+
+[ext_resource type="Texture2D" uid="uid://pskvhqt30gxh" path="res://single_player/level1/assets/images/train/train1.png" id="1_4yyni"]
+[ext_resource type="Texture2D" uid="uid://dnwt43hcxn4tq" path="res://single_player/level1/assets/images/water/water1.png" id="1_5vlg1"]
+[ext_resource type="Script" path="res://single_player/level1/scripts/train.gd" id="1_cwg3n"]
+[ext_resource type="Texture2D" uid="uid://b30lkp2un2x75" path="res://single_player/level1/assets/images/water/water2.png" id="2_4jc22"]
+[ext_resource type="Texture2D" uid="uid://bmk8cdq37w03r" path="res://single_player/level1/assets/images/train/train2.png" id="2_av78r"]
+[ext_resource type="Texture2D" uid="uid://dlcycfk618670" path="res://single_player/level1/assets/images/water/water3.png" id="3_jf614"]
+[ext_resource type="Texture2D" uid="uid://ct6ou6b4kpubi" path="res://single_player/level1/assets/images/train/train3.png" id="3_w1kno"]
+[ext_resource type="Texture2D" uid="uid://dqgaw2kaoh7vq" path="res://single_player/level1/assets/images/train/train4.png" id="4_shwsy"]
+[ext_resource type="Texture2D" uid="uid://dnkovfg4dox17" path="res://single_player/level1/assets/images/cart/cart1.png" id="5_8hm8n"]
+[ext_resource type="Texture2D" uid="uid://h2e00tehjjdn" path="res://single_player/level1/assets/images/full1.png" id="5_smgk5"]
+[ext_resource type="Texture2D" uid="uid://dy61uofv5rctk" path="res://single_player/level1/assets/images/cart/cart2.png" id="6_vd85t"]
+[ext_resource type="Texture2D" uid="uid://c5anylikuh8bv" path="res://single_player/level1/assets/images/cart/cart3.png" id="7_iawp4"]
+[ext_resource type="Texture2D" uid="uid://dqou5qs0bultv" path="res://single_player/level1/assets/images/cart/cart4.png" id="8_ih4m0"]
+[ext_resource type="Texture2D" uid="uid://bytlmcpu8qhs7" path="res://single_player/level1/assets/images/smoke/smoke.png" id="13_2osvs"]
+[ext_resource type="Texture2D" uid="uid://dkp0hada1q7of" path="res://single_player/level1/assets/images/smoke/smoke3.png" id="14_nfb3n"]
+[ext_resource type="Texture2D" uid="uid://c7os66g1rfkwl" path="res://single_player/level1/assets/images/smoke/smoke5.png" id="15_8tudl"]
+[ext_resource type="Texture2D" uid="uid://cp4lwqsja6d8" path="res://single_player/level1/assets/images/smoke/smopke.png" id="16_3fu1r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yl3rk"]
+animations = [{
+"frames": [ExtResource( "1_5vlg1" ), ExtResource( "2_4jc22" ), ExtResource( "3_jf614" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjlib"]
+animations = [{
+"frames": [ExtResource( "1_4yyni" ), ExtResource( "2_av78r" ), ExtResource( "3_w1kno" ), ExtResource( "4_shwsy" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt80w"]
+animations = [{
+"frames": [ExtResource( "5_8hm8n" ), ExtResource( "6_vd85t" ), ExtResource( "7_iawp4" ), ExtResource( "8_ih4m0" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lknl6"]
+animations = [{
+"frames": [ExtResource( "13_2osvs" ), ExtResource( "14_nfb3n" ), ExtResource( "15_8tudl" ), ExtResource( "16_3fu1r" )],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_gkuc3"]
+resource_name = "choochoo"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SmokeAnim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeAnim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.5, 2.5, 4.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-31, -47), Vector2(-31, -47), Vector2(-25, -50), Vector2(24, -105), Vector2(80, -150), Vector2(80, -150)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SmokeAnim:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SmokeAnim:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0980392)]
+}
+
+[sub_resource type="Animation" id="Animation_o5j3w"]
+resource_name = "train"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Train:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, -51), Vector2(-700, -51)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Timer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start"
+}]
+}
+
+[node name="TrainBackground" type="Node2D"]
+script = ExtResource( "1_cwg3n" )
+anim_player_path = NodePath("Background/AnimationPlayer")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(320, 224)
+
+[node name="WaterAnim" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(348, -208)
+scale = Vector2(2, 2)
+frames = SubResource( "SpriteFrames_yl3rk" )
+frame = 2
+playing = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(-320, -224)
+texture = ExtResource( "5_smgk5" )
+centered = false
+
+[node name="Train" type="Node2D" parent="Background"]
+position = Vector2(301, -22)
+scale = Vector2(0.5, 0.5)
+
+[node name="TrainAnim" type="AnimatedSprite2D" parent="Background/Train"]
+frames = SubResource( "SpriteFrames_pjlib" )
+frame = 3
+playing = true
+
+[node name="CartAnim1" type="AnimatedSprite2D" parent="Background/Train"]
+position = Vector2(292, 11)
+frames = SubResource( "SpriteFrames_mt80w" )
+frame = 1
+playing = true
+
+[node name="CartAnim" type="AnimatedSprite2D" parent="Background/Train"]
+position = Vector2(584, 11)
+frames = SubResource( "SpriteFrames_mt80w" )
+frame = 2
+playing = true
+
+[node name="SmokeAnim" type="AnimatedSprite2D" parent="Background/Train"]
+modulate = Color(1, 1, 1, 0.580339)
+position = Vector2(3.68035, -82.1922)
+scale = Vector2(4, 4)
+frames = SubResource( "SpriteFrames_lknl6" )
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Train"]
+autoplay = "choochoo"
+anims/choochoo = SubResource( "Animation_gkuc3" )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../..")
+autoplay = "train"
+anims/train = SubResource( "Animation_o5j3w" )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,5 +1,6 @@
 res://account/create/create_account.tscn
-res://fonts/material/gradient.tres
-res://main_menu/main_menu.tscn
-res://main_menu/scripts/button_flash.gd
-res://main_menu/scripts/menu_animations.gd
+res://single_player/level1/scripts/train.gd
+res://themes/button.tres
+res://themes/button_hover.tres
+res://themes/options.tres
+res://train.tscn

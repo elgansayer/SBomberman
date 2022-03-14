@@ -10,7 +10,13 @@ config_version=5
 
 [application]
 
-run/main_scene="res://main_menu/main_menu.tscn"
+config/name="Saturn Bomberman"
+run/main_scene="res://account/create/create_account.tscn"
+run/low_processor_mode=true
+boot_splash/show_image=false
+config/icon="res://icon.png"
+config/macos_native_icon="res://icon.png"
+config/windows_native_icon="res://icon.png"
 config/features=PackedStringArray("4.0")
 
 [autoload]
@@ -119,6 +125,15 @@ restart_map={
 2d_physics/layer_4="bombs"
 2d_physics/layer_5="items"
 2d_physics/layer_6="player"
+
+[physics]
+
+2d/default_linear_damp=0.0
+2d/default_angular_damp=0.0
+
+[rendering]
+
+shader_compiler/shader_cache/strip_debug=true
 
 [run]
 
