@@ -1,5 +1,6 @@
 res://account/create/create_account.tscn
-res://single_player/level1/scripts/train.gd
+res://account/create/scripts/button_highlight_border.gd
+res://button_highlight_border.tscn
 res://themes/button.tres
 res://themes/button_hover.tres
 res://themes/options.tres

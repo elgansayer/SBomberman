@@ -18,14 +18,14 @@ animations = [{
 
 [node name="FocusBorder" type="Node2D"]
 script = ExtResource( "1_2mqj5" )
+sizable = NodePath("NinePatchBorder")
+indicators = [NodePath("AnimatedArrowDown"), NodePath("AnimatedArrowUp")]
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(0, -2)
-
-[node name="NinePatchBorder" type="NinePatchRect" parent="Node2D"]
+[node name="NinePatchBorder" type="NinePatchRect" parent="."]
 offset_left = -2.0
-offset_right = 115.0
-offset_bottom = 34.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = ExtResource( "1_4amnu" )
 region_rect = Rect2(5, 0, 62, 23)
 patch_margin_left = 5
@@ -36,19 +36,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="Node2D"]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="AnimatedArrowDown" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedArrowDown" type="AnimatedSprite2D" parent="."]
 position = Vector2(54.5, 33.9)
 frames = SubResource( "SpriteFrames_mgksp" )
+frame = 4
 playing = true
 
-[node name="AnimatedArrowUp" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedArrowUp" type="AnimatedSprite2D" parent="."]
 position = Vector2(54.5, 0)
 frames = SubResource( "SpriteFrames_mgksp" )
+frame = 4
 playing = true
 flip_v = true
 
-[connection signal="timeout" from="Node2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,3 +1,4 @@
+res://
 res://single_player/level1/assets/images
 res://single_player/level1/scripts
 res://single_player/level1/assets/images/water
@@ -9,7 +10,6 @@ res://account/create/scripts
 res://themes/assets/password
 res://themes/assets/highlight
 res://themes/assets
-res://
 res://fonts/material
 res://main_menu/scripts
 res://main_menu/btn_groups

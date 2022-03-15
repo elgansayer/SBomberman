@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://6h47jaxgebw6"]
+[gd_scene load_steps=25 format=3 uid="uid://6h47jaxgebw6"]
 
 [ext_resource type="Texture2D" uid="uid://dvlinm42bi3rd" path="res://window_options.png" id="1_dk2e3"]
 [ext_resource type="PackedScene" uid="uid://bps7kp2108dcw" path="res://train.tscn" id="1_qclie"]
@@ -37,6 +37,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bma5e"]
+
 [sub_resource type="Font" id="Font_ck7vt"]
 data/0 = ExtResource( "2_yml5s" )
 
@@ -56,9 +58,35 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_w8hcb"]
+color = Color(0.980392, 0.913725, 0.254902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqx4x"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.898039, 0.898039, 0.898039, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.431373, 0.0235294, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_0h37d"]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/clear_button_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/styles/focus = SubResource( "StyleBoxLine_w8hcb" )
+LineEdit/styles/normal = SubResource( "StyleBoxFlat_mqx4x" )
+
 [node name="CreateAccount" type="Node2D"]
 
 [node name="TrainBackground" parent="." instance=ExtResource( "1_qclie" )]
+visible = false
 
 [node name="UIPanel" type="Panel" parent="."]
 offset_right = 796.0
@@ -74,7 +102,7 @@ password_edit = NodePath("../ContentPanel/TabContainer/Login/GridContainer/LineE
 
 [node name="GridContainer" type="GridContainer" parent="UIPanel"]
 offset_left = 40.0
-offset_top = 40.0
+offset_top = 49.0
 offset_right = 180.0
 offset_bottom = 63.0
 theme_override_constants/vseparation = 10
@@ -89,6 +117,7 @@ hint_tooltip = "Login"
 theme = ExtResource( "2_21vdr" )
 theme_override_styles/hover = ExtResource( "4_6nn1v" )
 theme_override_styles/pressed = SubResource( "StyleBoxFlat_xefpk" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_bma5e" )
 theme_override_styles/normal = ExtResource( "5_lnmdk" )
 text = "Login"
 script = ExtResource( "2_m67h0" )
@@ -137,8 +166,8 @@ visible = false
 [node name="ContentPanel" type="Control" parent="."]
 offset_left = 162.0
 offset_top = 32.0
-offset_right = 958.0
-offset_bottom = 480.0
+offset_right = 762.0
+offset_bottom = 414.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -146,10 +175,10 @@ __meta__ = {
 [node name="TabContainer" type="TabContainer" parent="ContentPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
+offset_left = 150.0
 offset_top = 16.0
-offset_right = -245.0
-offset_bottom = -83.0
+offset_right = -150.0
+offset_bottom = -100.0
 tabs_visible = false
 use_hidden_tabs_for_min_size = true
 __meta__ = {
@@ -169,36 +198,38 @@ offset_right = -8.0
 offset_bottom = -8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LblEmail" type="Label" parent="ContentPanel/TabContainer/Login/GridContainer"]
-offset_top = 2.0
-offset_right = 79.0
-offset_bottom = 28.0
+offset_right = 284.0
+offset_bottom = 26.0
 text = "E-mail:"
 
 [node name="LineEditEmail" type="LineEdit" parent="ContentPanel/TabContainer/Login/GridContainer"]
-offset_left = 83.0
-offset_right = 519.0
-offset_bottom = 31.0
+offset_top = 30.0
+offset_right = 284.0
+offset_bottom = 58.0
 size_flags_horizontal = 3
+theme = SubResource( "Theme_0h37d" )
 max_length = 255
+clear_button_enabled = true
 caret_blink = true
 
+[node name="FocusBorder" parent="ContentPanel/TabContainer/Login/GridContainer/LineEditEmail" instance=ExtResource( "3_78d0s" )]
+size_offset = Vector2(4, 1)
+
 [node name="LabelPassword" type="Label" parent="ContentPanel/TabContainer/Login/GridContainer"]
-offset_top = 37.0
-offset_right = 79.0
-offset_bottom = 63.0
+offset_top = 62.0
+offset_right = 284.0
+offset_bottom = 88.0
 text = "Password:"
 
 [node name="LineEditPassword" type="LineEdit" parent="ContentPanel/TabContainer/Login/GridContainer"]
-offset_left = 83.0
-offset_top = 35.0
-offset_right = 519.0
-offset_bottom = 66.0
+offset_top = 92.0
+offset_right = 284.0
+offset_bottom = 123.0
 max_length = 32
 secret = true
 
@@ -227,7 +258,6 @@ offset_right = -8.0
 offset_bottom = -8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
