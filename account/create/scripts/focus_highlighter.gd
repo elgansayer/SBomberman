@@ -8,8 +8,14 @@ extends Node2D
 var ninePatchBorder: NinePatchRect
 
 func _ready():
-	var size = get_parent().get_size()
+	var parent = self.get_parent()
+	
+	if !parent.has_focus():
+		self.visible = false
+	
 	ninePatchBorder = get_node(sizable)
+	var size = parent.get_size()
+		
 	var newSize = size + size_offset
 	ninePatchBorder.set_size(newSize)
 			
@@ -24,6 +30,20 @@ func _ready():
 	var newPos = newSize / 2
 	indicator1.position = Vector2(newPos.x, 0)
 	indicator2.position = Vector2(newPos.x, newSize.y)
+		
+	parent.connect("focus_entered", _on_focus_entered)
+	parent.connect("focus_exited", _on_focus_exited)
 	
+func _on_focus_entered():
+	self.visible = true
+	
+	var parent = self.get_parent()	
+	if parent.is_class("Button") && parent.disabled == true:
+		self.visible = false
+	
+	
+func _on_focus_exited():
+	self.visible = false
+
 func _on_timer_timeout():
 	ninePatchBorder.visible = !ninePatchBorder.visible

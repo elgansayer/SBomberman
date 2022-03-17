@@ -1,11 +1,12 @@
+res://themes
 res://
+res://fonts
 res://single_player/level1/assets/images
 res://single_player/level1/scripts
 res://single_player/level1/assets/images/water
 res://single_player/level1/assets/images/smoke
 res://single_player/level1/assets/images/cart
 res://single_player/level1/assets/images/train
-res://themes
 res://account/create/scripts
 res://themes/assets/password
 res://themes/assets/highlight
@@ -13,4 +14,3 @@ res://themes/assets
 res://fonts/material
 res://main_menu/scripts
 res://main_menu/btn_groups
-res://fonts

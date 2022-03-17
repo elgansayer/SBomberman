@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Saturn Bomberman"
-run/main_scene="res://account/create/create_account.tscn"
+run/main_scene="res://account/create/account.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 config/icon="res://icon.png"

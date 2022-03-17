@@ -1,0 +1,204 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4e62yntsv0he"]
+
+[ext_resource type="Texture2D" uid="uid://dvlinm42bi3rd" path="res://window_options.png" id="1_dk2e3"]
+[ext_resource type="PackedScene" uid="uid://bps7kp2108dcw" path="res://train.tscn" id="1_qclie"]
+[ext_resource type="Theme" uid="uid://b7xwrws2wt3k2" path="res://themes/options.tres" id="2_21vdr"]
+[ext_resource type="Script" path="res://account/create/scripts/ui_panel.gd" id="2_bbt0i"]
+[ext_resource type="PackedScene" uid="uid://c045x70d8jfr1" path="res://button_yellow.tscn" id="4_1ukhl"]
+[ext_resource type="PackedScene" uid="uid://ctrtfi3qtvdof" path="res://button.tscn" id="4_l0lfh"]
+[ext_resource type="PackedScene" uid="uid://y0xrsg3q5s8r" path="res://button_green.tscn" id="16_dw6bm"]
+[ext_resource type="PackedScene" uid="uid://ch0hguwwhkokg" path="res://line_edit.tscn" id="16_puyq8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w10ci"]
+texture = ExtResource( "1_dk2e3" )
+region_rect = Rect2(0, 0, 796, 450)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bptlc"]
+bg_color = Color(0.313726, 0.25098, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu5vh"]
+bg_color = Color(0.721569, 0.784314, 0.815686, 1)
+
+[node name="CreateAccount" type="Node2D"]
+
+[node name="TrainBackground" parent="." instance=ExtResource( "1_qclie" )]
+
+[node name="UIPanel" type="Panel" parent="."]
+offset_right = 796.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource( "StyleBoxTexture_w10ci" )
+script = ExtResource( "2_bbt0i" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+start_focus = NodePath("GridContainer/BtnLogin")
+tab_container = NodePath("../ContentPanel/TabContainer")
+
+[node name="GridContainer" type="GridContainer" parent="UIPanel"]
+offset_left = 40.0
+offset_top = 49.0
+offset_right = 180.0
+offset_bottom = 63.0
+theme_override_constants/vseparation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLogin" parent="UIPanel/GridContainer" instance=ExtResource( "4_1ukhl" )]
+offset_right = 113.0
+offset_bottom = 30.0
+text = "Login
+"
+
+[node name="BtnCreateAccount" parent="UIPanel/GridContainer" instance=ExtResource( "4_l0lfh" )]
+offset_top = 40.0
+offset_right = 113.0
+offset_bottom = 70.0
+text = "New Account"
+
+[node name="BtnGo" parent="UIPanel" instance=ExtResource( "16_dw6bm" )]
+offset_left = 40.0
+offset_top = 378.0
+offset_right = 153.0
+offset_bottom = 408.0
+disabled = true
+text = "Go"
+
+[node name="ContentPanel" type="Control" parent="."]
+offset_left = 162.0
+offset_top = 32.0
+offset_right = 762.0
+offset_bottom = 414.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="ContentPanel"]
+offset_left = 149.0
+offset_top = 15.0
+offset_right = 451.0
+offset_bottom = 283.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_bptlc" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="ContentPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 16.0
+offset_right = -150.0
+offset_bottom = -100.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_bu5vh" )
+tabs_visible = false
+use_hidden_tabs_for_min_size = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Control" parent="ContentPanel/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="ContentPanel/TabContainer/Login"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LblEmail" type="Label" parent="ContentPanel/TabContainer/Login/GridContainer"]
+offset_right = 284.0
+offset_bottom = 17.0
+theme = ExtResource( "2_21vdr" )
+text = "E-mail:"
+
+[node name="LineEditEmail" parent="ContentPanel/TabContainer/Login/GridContainer" instance=ExtResource( "16_puyq8" )]
+offset_top = 21.0
+offset_right = 284.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+
+[node name="LabelPassword" type="Label" parent="ContentPanel/TabContainer/Login/GridContainer"]
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 69.0
+theme = ExtResource( "2_21vdr" )
+text = "Password:"
+
+[node name="LineEditPassword" parent="ContentPanel/TabContainer/Login/GridContainer" instance=ExtResource( "16_puyq8" )]
+offset_top = 73.0
+offset_right = 284.0
+offset_bottom = 100.0
+secret = true
+
+[node name="Create Account" type="Control" parent="ContentPanel/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="ContentPanel/TabContainer/Create Account"]
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LblUsername" type="Label" parent="ContentPanel/TabContainer/Create Account/GridContainer"]
+offset_right = 284.0
+offset_bottom = 17.0
+theme = ExtResource( "2_21vdr" )
+text = "Username:"
+
+[node name="LineEditUsername" parent="ContentPanel/TabContainer/Create Account/GridContainer" instance=ExtResource( "16_puyq8" )]
+offset_top = 21.0
+offset_right = 284.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+
+[node name="LblEmail" type="Label" parent="ContentPanel/TabContainer/Create Account/GridContainer"]
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 69.0
+theme = ExtResource( "2_21vdr" )
+text = "E-mail:"
+
+[node name="LineEditEmail" parent="ContentPanel/TabContainer/Create Account/GridContainer" instance=ExtResource( "16_puyq8" )]
+offset_top = 73.0
+offset_right = 284.0
+offset_bottom = 100.0
+
+[node name="LabelPassword" type="Label" parent="ContentPanel/TabContainer/Create Account/GridContainer"]
+offset_top = 104.0
+offset_right = 284.0
+offset_bottom = 121.0
+theme = ExtResource( "2_21vdr" )
+text = "Password:"
+
+[node name="LineEditPassword" parent="ContentPanel/TabContainer/Create Account/GridContainer" instance=ExtResource( "16_puyq8" )]
+offset_top = 125.0
+offset_right = 284.0
+offset_bottom = 152.0
+secret = true
+
+[node name="Button" parent="ContentPanel/TabContainer/Create Account" instance=ExtResource( "16_dw6bm" )]
+offset_left = 217.0
+offset_top = 229.0
+offset_right = 293.0
+offset_bottom = 259.0
+text = "Create"
+
+[connection signal="pressed" from="UIPanel/GridContainer/BtnLogin" to="UIPanel" method="_on_btn_login_pressed"]
+[connection signal="pressed" from="UIPanel/GridContainer/BtnCreateAccount" to="UIPanel" method="_on_btn_create_account_pressed"]

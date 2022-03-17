@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bsyj14av0wofi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxoyr"]
+content_margin_left = 5.0
+bg_color = Color(0.913725, 0.913725, 0.913725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.772549, 0, 0.8, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/clear_button_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/styles/focus = null
+LineEdit/styles/normal = SubResource( "StyleBoxFlat_hxoyr" )

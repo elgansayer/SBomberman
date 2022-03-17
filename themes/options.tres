@@ -1,25 +1,21 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://58o4e1dcdjj5"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://b7xwrws2wt3k2"]
 
 [ext_resource type="FontData" uid="uid://ux0l0yeqcmkn" path="res://fonts/FutilePro.otf" id="1_qj6mo"]
+[ext_resource type="StyleBox" uid="uid://7j0a81lcekqb" path="res://themes/button_disabled.tres" id="2_iofnq"]
+[ext_resource type="StyleBox" uid="uid://cdb3j1mdxltib" path="res://themes/button_hover.tres" id="2_xykfk"]
+[ext_resource type="StyleBox" uid="uid://clfuf7r362jph" path="res://themes/button.tres" id="4_v76tg"]
+[ext_resource type="StyleBox" uid="uid://0h8hsa70f8a4" path="res://themes/button_pressed.tres" id="5_kcnaw"]
+[ext_resource type="StyleBox" uid="uid://dkgf6ukau8tiu" path="res://themes/new_style_box_flat.tres" id="6_yfxdb"]
 
 [sub_resource type="Font" id="Font_y7fxl"]
 data/0 = ExtResource( "1_qj6mo" )
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsuvi"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.0627451, 0.847059, 0.972549, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.282353, 0.188235, 0.282353, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8brlm"]
+
+[sub_resource type="Font" id="Font_7a1w8"]
+data/0 = ExtResource( "1_qj6mo" )
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15qqt"]
 
 [sub_resource type="Font" id="Font_hm45x"]
 data/0 = ExtResource( "1_qj6mo" )
@@ -27,6 +23,16 @@ data/0 = ExtResource( "1_qj6mo" )
 [resource]
 default_font = SubResource( "Font_hm45x" )
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/constants/outline_size = 2
+Button/constants/outline_size = 3
 Button/fonts/font = SubResource( "Font_y7fxl" )
-Button/styles/normal = SubResource( "StyleBoxFlat_jsuvi" )
+Button/styles/disabled = ExtResource( "2_iofnq" )
+Button/styles/focus = SubResource( "StyleBoxEmpty_8brlm" )
+Button/styles/hover = ExtResource( "2_xykfk" )
+Button/styles/normal = ExtResource( "4_v76tg" )
+Button/styles/pressed = ExtResource( "5_kcnaw" )
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 3
+Label/fonts/font = SubResource( "Font_7a1w8" )
+LineEdit/styles/focus = SubResource( "StyleBoxEmpty_15qqt" )
+LineEdit/styles/normal = ExtResource( "6_yfxdb" )
+LineEdit/styles/read_only = null
