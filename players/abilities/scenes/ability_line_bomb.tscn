@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://players/abilities/scenes/ability_base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://players/abilities/scripts/ability_line_bomb.gd" type="Script" id=2]
-
-[node name="AbilityLineBomb" instance=ExtResource( 1 )]
-script = ExtResource( 2 )

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://game/items/item_base.tscn" id="1"]
+[ext_resource type="Script" path="res://game/items/scripts/sandals.gd" id="2"]
+
+[node name="Sandals" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="1"]
+animation = "sandals"

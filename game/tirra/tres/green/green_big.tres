@@ -1,0 +1,130 @@
+[gd_resource type="SpriteFrames" load_steps=31 format=3]
+
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/down/walking_down_1.png" id="1"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/idle/idle_1.png" id="2"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_up/action_up_2.png" id="3"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/right/walking_right_1.png" id="4"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/idle/idle_3.png" id="5"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/explode/explode_2.png" id="6"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_left/action_left_2.png" id="7"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/celebrate/celebrate_1.png" id="8"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_down/action_down_1.png" id="9"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/left/walking_left_2.png" id="10"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/explode/explode_3.png" id="11"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_right/action_right_1.png" id="12"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/down/walking_down_2.png" id="13"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/idle/idle_2.png" id="14"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_left/action_left_1.png" id="15"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/celebrate/celebrate_2.png" id="16"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/left/standing_left.png" id="17"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/explode/explode_1.png" id="18"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/celebrate/celebrate_3.png" id="19"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/up/walking_up_1.png" id="20"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/right/standin_right.png" id="21"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_down/action_down_2.png" id="22"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/left/walking_left_1.png" id="23"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/up/walking_up_2.png" id="24"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_up/action_up_1.png" id="25"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/right/walking_right_2.png" id="26"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/action_right/action_right_2.png" id="27"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/up/standing_up.png" id="28"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/explode/explode_4.png" id="29"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/big/down/standing_down.png" id="30"]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "hit_wall_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "hit_wall_right",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "hit_wall_down",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 16 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "celebrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "action_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": false,
+"name": "hit_wall_left",
+"speed": 4.0
+} ]

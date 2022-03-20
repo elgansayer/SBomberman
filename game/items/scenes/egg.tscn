@@ -1,0 +1,355 @@
+[gd_scene load_steps=32 format=3]
+
+[ext_resource type="Texture" uid="uid://dnmyws08fmtwa" path="res://game/items/assets/egg/wobble/egg-wobble-02.png" id="1"]
+[ext_resource type="Texture" uid="uid://dgmu1thhnfpdq" path="res://game/items/assets/egg/wobble/egg-wobble-01.png" id="2"]
+[ext_resource type="Texture" uid="uid://c0f6xssvnh3tm" path="res://game/items/assets/egg/wobble/egg-wobble-03.png" id="3"]
+[ext_resource type="Texture" uid="uid://ca3d8boahjnkh" path="res://game/items/assets/egg/break/egg-break-04.png" id="4"]
+[ext_resource type="Texture" uid="uid://b10crls8hfwhb" path="res://game/items/assets/egg/break/egg-break-03.png" id="5"]
+[ext_resource type="Texture" uid="uid://chr5e25j10877" path="res://game/items/assets/egg/break/egg-break-01.png" id="6"]
+[ext_resource type="Texture" uid="uid://boyqja506nsue" path="res://game/items/assets/egg/break/egg-break-02.png" id="7"]
+[ext_resource type="Script" path="res://game/items/scripts/egg.gd" id="8"]
+[ext_resource type="AudioStream" uid="uid://b63yufhhjbmdh" path="res://sounds/items/pickup.ogg" id="9"]
+[ext_resource type="Texture" uid="uid://de5kefdrgf1mt" path="res://game/items/assets/explode/itemsmoke-04.png" id="10"]
+[ext_resource type="Texture" uid="uid://c5nk3m73gmxf3" path="res://game/items/assets/explode/itemsmoke-01.png" id="11"]
+[ext_resource type="Texture" uid="uid://7rmoj3f74iao" path="res://game/items/assets/explode/itemsmoke-02.png" id="12"]
+[ext_resource type="Texture" uid="uid://b4u2mjfl7g6on" path="res://game/items/assets/explode/itemsmoke-03.png" id="13"]
+[ext_resource type="Texture" uid="uid://p627qkorx75k" path="res://game/items/assets/explode/itemsmoke-05.png" id="14"]
+[ext_resource type="Texture" uid="uid://bkptituhcy0p8" path="res://game/items/assets/egg/open/egg-open-05.png" id="15"]
+[ext_resource type="Texture" uid="uid://b82p8qbg6l2ti" path="res://game/items/assets/egg/open/egg-open-06.png" id="16"]
+[ext_resource type="Texture" uid="uid://ce8ulb8woraah" path="res://game/items/assets/egg/open/egg-open-01.png" id="17"]
+[ext_resource type="Texture" uid="uid://cqhtj3o4cwxn5" path="res://game/items/assets/egg/open/egg-open-03.png" id="18"]
+[ext_resource type="Texture" uid="uid://bv70l1hvqbeye" path="res://game/items/assets/egg/open/egg-open-02.png" id="19"]
+[ext_resource type="Texture" uid="uid://b7hsnkeqynv8l" path="res://game/items/assets/egg/open/egg-open-04.png" id="20"]
+[ext_resource type="PackedScene" path="res://game/tirra/scenes/green/tirra_green_small.tscn" id="21"]
+[ext_resource type="PackedScene" path="res://game/tirra/scenes/pink/tirra_pink_small.tscn" id="22"]
+[ext_resource type="PackedScene" path="res://game/tirra/scenes/blue/tirra_blue_small.tscn" id="23"]
+[ext_resource type="PackedScene" path="res://game/tirra/scenes/yellow/tirra_yellow_small.tscn" id="24"]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "picked_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "egg",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "wobble",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "explode"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExplodeSmoke:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplodeSmoke:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplodeSmoke:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, -30 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2.6 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("AnimatedSprite:animation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "explode" ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "load"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 3, 1.5 ), Vector2( 1, 2.5 ), Vector2( 3, 1.5 ), Vector2( 1.7, 2 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 0, -4 ), Vector2( 0, -25 ), Vector2( 0, -22 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ExplodeSmoke:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "egg" ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "picked_up"
+length = 1.1
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "picked_up" ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "spin"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "wobble", "idle" ]
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Egg" type="Area2D"]
+collision_layer = 16
+collision_mask = 44
+script = ExtResource( 8 )
+item_type = "egg"
+pickup_sound = "pickup_egg"
+tirras = [ ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 24 ) ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -6 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "load"
+anims/explode = SubResource( 6 )
+anims/load = SubResource( 3 )
+anims/picked_up = SubResource( 4 )
+anims/spin = SubResource( 7 )
+
+[node name="ExplodeSmoke" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -20 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Node2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

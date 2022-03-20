@@ -1,0 +1,497 @@
+[gd_scene load_steps=100 format=3]
+
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-04.png" id="1"]
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-06.png" id="2"]
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-03.png" id="3"]
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-02.png" id="4"]
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-05.png" id="5"]
+[ext_resource type="Texture" path="res://game/items/assets/power/itm-fire-01.png" id="6"]
+[ext_resource type="Texture" path="res://game/items/assets/shadow.png" id="7"]
+[ext_resource type="Script" path="res://game/items/item.gd" id="8"]
+[ext_resource type="AudioStream" uid="uid://b63yufhhjbmdh" path="res://sounds/items/pickup.ogg" id="9"]
+[ext_resource type="Texture" path="res://game/items/assets/explode/itemsmoke-04.png" id="10"]
+[ext_resource type="Texture" path="res://game/items/assets/explode/itemsmoke-01.png" id="11"]
+[ext_resource type="Texture" path="res://game/items/assets/explode/itemsmoke-02.png" id="12"]
+[ext_resource type="Texture" path="res://game/items/assets/explode/itemsmoke-03.png" id="13"]
+[ext_resource type="Texture" path="res://game/items/assets/explode/itemsmoke-05.png" id="14"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-05.png" id="15"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-02.png" id="16"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-06.png" id="17"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-03.png" id="18"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-01.png" id="19"]
+[ext_resource type="Texture" path="res://game/items/assets/powerglove/itm-pglove-04.png" id="20"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-06.png" id="21"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-01.png" id="22"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-02.png" id="23"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-04.png" id="24"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-03.png" id="25"]
+[ext_resource type="Texture" path="res://game/items/assets/bomb/itm-bomb-05.png" id="26"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-06.png" id="27"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-05.png" id="28"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-04.png" id="29"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-01.png" id="30"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-02.png" id="31"]
+[ext_resource type="Texture" path="res://game/items/assets/kickbomb/itm-kickbomb-03.png" id="32"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-06.png" id="33"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-04.png" id="34"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-03.png" id="35"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-02.png" id="36"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-01.png" id="37"]
+[ext_resource type="Texture" path="res://game/items/assets/skate/itm-skate-05.png" id="38"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-05.png" id="39"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-01.png" id="40"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-02.png" id="41"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-03.png" id="42"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-06.png" id="43"]
+[ext_resource type="Texture" path="res://game/items/assets/skull/itm-skull-04.png" id="44"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb5.png" id="45"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb4.png" id="46"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb1.png" id="47"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb6.png" id="48"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb2.png" id="49"]
+[ext_resource type="Texture" path="res://game/items/assets/marble_bomb/marble_bomb3.png" id="50"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta6.png" id="51"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta3.png" id="52"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta2.png" id="53"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta5.png" id="54"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta4.png" id="55"]
+[ext_resource type="Texture" path="res://game/items/assets/sandals/geta1.png" id="56"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb2.png" id="57"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb3.png" id="58"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb4.png" id="59"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb5.png" id="60"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb6.png" id="61"]
+[ext_resource type="Texture" path="res://game/items/assets/rubber_bomb/rubber_bomb1.png" id="62"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom5.png" id="63"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom3.png" id="64"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom.png" id="65"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom6.png" id="66"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom2.png" id="67"]
+[ext_resource type="Texture" path="res://game/items/assets/mushroom/mushroom4.png" id="68"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb4.png" id="69"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb1.png" id="70"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb2.png" id="71"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb3.png" id="72"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb6.png" id="73"]
+[ext_resource type="Texture" path="res://game/items/assets/power_bomb/powerbomb5.png" id="74"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb4.png" id="75"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb6.png" id="76"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb3.png" id="77"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb2.png" id="78"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb5.png" id="79"]
+[ext_resource type="Texture" path="res://game/items/assets/line_bomb/line_bomb1.png" id="80"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil2.png" id="81"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil1.png" id="82"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil3.png" id="83"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil6.png" id="84"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil5.png" id="85"]
+[ext_resource type="Texture" path="res://game/items/assets/devil/devil4.png" id="86"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger6.png" id="87"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger1.png" id="88"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger5.png" id="89"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger2.png" id="90"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger4.png" id="91"]
+[ext_resource type="Texture" path="res://game/items/assets/merger/merger3.png" id="92"]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "power",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 38 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "rollerskate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ) ],
+"loop": true,
+"name": "rubber_bomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 67 ), ExtResource( 64 ), ExtResource( 68 ), ExtResource( 63 ), ExtResource( 66 ), ExtResource( 65 ) ],
+"loop": true,
+"name": "mushroom",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "mushroom 1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "power_glove",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "bomb_kicker",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "bomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "marble_bomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 39 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "virus",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 88 ), ExtResource( 90 ), ExtResource( 92 ), ExtResource( 91 ), ExtResource( 89 ), ExtResource( 87 ) ],
+"loop": true,
+"name": "merger",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 81 ), ExtResource( 83 ), ExtResource( 86 ), ExtResource( 85 ), ExtResource( 84 ) ],
+"loop": true,
+"name": "devil",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 73 ) ],
+"loop": true,
+"name": "powwer_bomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 53 ), ExtResource( 52 ), ExtResource( 55 ), ExtResource( 54 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "sandals",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "egg",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 80 ), ExtResource( 78 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 79 ), ExtResource( 76 ) ],
+"loop": true,
+"name": "line_bomb",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "explode"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ExplodeSmoke:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ExplodeSmoke:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExplodeSmoke:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -20 ), Vector2( 0, -30 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("Timer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "picked_up"
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 9 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.557113 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spawn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 3, 1.5 ), Vector2( 1, 2.5 ), Vector2( 3, 1.5 ), Vector2( 1.7, 2 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 0, -4 ), Vector2( 0, -25 ), Vector2( 0, -22 ), Vector2( 0, -20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ExplodeSmoke:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "default",
+"speed": 3.0
+} ]
+
+[node name="Item" type="Area2D"]
+collision_layer = 16
+collision_mask = 44
+script = ExtResource( 8 )
+pickup_sound = "pickup"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 9 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 7 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "mushroom 1"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spawn"
+anims/explode = SubResource( 6 )
+anims/picked_up = SubResource( 4 )
+anims/spawn = SubResource( 3 )
+anims/spin = SubResource( 7 )
+
+[node name="ExplodeSmoke" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -20 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+frame = 4
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Node2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

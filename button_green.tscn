@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://y0xrsg3q5s8r"]
-
-[ext_resource type="PackedScene" uid="uid://ctrtfi3qtvdof" path="res://button.tscn" id="1_hfdym"]
-[ext_resource type="StyleBox" uid="uid://cm42vp14a53wq" path="res://themes/button_green.tres" id="2_cb5we"]
-
-[node name="Button" instance=ExtResource( "1_hfdym" )]
-theme_override_styles/normal = ExtResource( "2_cb5we" )

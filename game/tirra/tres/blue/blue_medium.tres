@@ -1,0 +1,102 @@
+[gd_resource type="SpriteFrames" load_steps=28 format=3]
+
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/right/2-walk-right-01.png" id="1"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/idle/2-idle-right-01.png" id="2"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/idle/2-idle-left-02.png" id="3"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_down/2-kick-down-02.png" id="4"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/up/2-walk-up-01.png" id="5"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/idle/2-idle-right-02.png" id="6"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/up/2-stood-up-01.png" id="7"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_right/2-kick-right-02.png" id="8"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_left/2-kick-left-02.png" id="9"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_down/2-kick-down-01.png" id="10"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/up/2-walk-up-02.png" id="11"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/left/2-walk-left-01.png" id="12"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_up/2-kick-up-01.png" id="13"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/explode/2-explode-02.png" id="14"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/down/2-walk-down-02.png" id="15"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/explode/2-explode-01.png" id="16"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_left/2-kick-left-01.png" id="17"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/left/2-stood-left-01.png" id="18"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/explode/2-explode-03.png" id="19"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/right/2-stood-right-01.png" id="20"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/down/2-walk-down-01.png" id="21"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/explode/2-explode-04.png" id="22"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/left/2-walk-left-02.png" id="23"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/action_right/2-kick-right-01.png" id="24"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/idle/2-idle-left-01.png" id="25"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/right/2-walk-right-02.png" id="26"]
+[ext_resource type="Texture" path="res://game/tirra/assets/blue/middle/down/2-stood-down-01.png" id="27"]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 25 ), ExtResource( 3 ), ExtResource( 25 ), ExtResource( 3 ), ExtResource( 25 ), ExtResource( 3 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": false,
+"name": "standing_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "action_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "standing_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 8 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "action_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": false,
+"name": "standing_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "action_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": false,
+"name": "standing_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "explode",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 4 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "action_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+} ]
