@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://yo1ql5p5l23y"]
+[gd_scene load_steps=8 format=3 uid="uid://xdcgequkny4q"]
 
-[ext_resource type="Texture2D" uid="uid://dvlinm42bi3rd" path="res://window_options.png" id="1_dk2e3"]
+[ext_resource type="Texture2D" uid="uid://dvlinm42bi3rd" path="res://screens/account/window_options.png" id="1_dk2e3"]
 [ext_resource type="PackedScene" path="res://screens/account/scenes/train.tscn" id="1_qclie"]
-[ext_resource type="Theme" path="res://ui/themes/theme.tres" id="2_21vdr"]
+[ext_resource type="Theme" uid="uid://igllb7sfnjt8" path="res://ui/themes/theme.tres" id="2_21vdr"]
 [ext_resource type="Script" path="res://screens/account/create/scripts/ui_panel.gd" id="2_bbt0i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w10ci"]

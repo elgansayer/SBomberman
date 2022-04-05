@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3]
+[gd_scene load_steps=33 format=3 uid="uid://d4m6yvprylolu"]
 
 [ext_resource type="Texture2D" uid="uid://cjccru84sq2x2" path="res://game/stage/stage_background.png" id="1"]
 [ext_resource type="PackedScene" path="res://game/stage/rock.tscn" id="2"]

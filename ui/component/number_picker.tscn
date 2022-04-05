@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="PackedScene" path="res://ui/component/focus_border.tscn" id="1_2he1k"]
+[ext_resource type="Script" path="res://ui/scripts/number_picker.gd" id="1_vyy4x"]
+[ext_resource type="Theme" uid="uid://igllb7sfnjt8" path="res://ui/themes/theme.tres" id="2_d5ytg"]
+[ext_resource type="Texture2D" uid="uid://38suw2nbsvr4" path="res://ui/assets/highlight/arrow1.png" id="3_n3mti"]
+[ext_resource type="Texture2D" uid="uid://o566l7qk6fpk" path="res://ui/assets/highlight/arrow3.png" id="4_d2gve"]
+[ext_resource type="Texture2D" uid="uid://ba8p2cotexxfb" path="res://ui/assets/highlight/arrow4.png" id="5_66lbl"]
+[ext_resource type="Texture2D" uid="uid://b3jpx1hku6uba" path="res://ui/assets/highlight/arrow6.png" id="6_xrvrv"]
+[ext_resource type="Texture2D" uid="uid://ddevqysi4jhcr" path="res://ui/assets/highlight/arrow.png" id="7_oxrt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i5dj"]
+bg_color = Color(0.0627451, 0.847059, 0.972549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.282353, 0.188235, 0.282353, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjpm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehvv2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k68wb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mp6vm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkjuj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3qgn"]
+animations = [{
+"frames": [ExtResource( "3_n3mti" ), ExtResource( "4_d2gve" ), ExtResource( "5_66lbl" ), ExtResource( "6_xrvrv" ), ExtResource( "7_oxrt5" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NumberPicker" type="Control"]
+script = ExtResource( "1_vyy4x" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_4i5dj" )
+
+[node name="Label" type="Label" parent="Panel"]
+offset_right = 40.0
+offset_bottom = 30.0
+theme = ExtResource( "2_d5ytg" )
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FocusBorder" parent="Panel" instance=ExtResource( "1_2he1k" )]
+visible = false
+
+[node name="BtnRight" type="Button" parent="Panel"]
+offset_left = 48.0
+offset_top = 26.0
+offset_right = 61.0
+offset_bottom = 49.0
+rect_rotation = 3.14159
+size_flags_horizontal = 13
+size_flags_vertical = 13
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_fjpm7" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_ehvv2" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_k68wb" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_mp6vm" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_mkjuj" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/BtnRight"]
+position = Vector2(11, -1)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+frames = SubResource( "SpriteFrames_x3qgn" )
+playing = true
+centered = false
+
+[node name="BtnLeft" type="Button" parent="Panel"]
+offset_left = -9.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 27.0
+size_flags_horizontal = 13
+size_flags_vertical = 13
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_fjpm7" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_ehvv2" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_k68wb" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_mp6vm" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_mkjuj" )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/BtnLeft"]
+position = Vector2(11, -1)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+frames = SubResource( "SpriteFrames_x3qgn" )
+frame = 2
+playing = true
+centered = false
+
+[connection signal="pressed" from="Panel/BtnRight" to="." method="_on_btn_right_pressed"]
+[connection signal="pressed" from="Panel/BtnLeft" to="." method="_on_btn_left_pressed"]

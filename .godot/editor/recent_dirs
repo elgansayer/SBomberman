@@ -1,12 +1,7 @@
-res://ui/themes
+res://screens/battle_options/scripts
 res://ui/component
 res://ui/scripts
+res://ui/themes
+res://ui/assets/highlight
 res://ui
-res://assets/images
 res://
-res://single_player/level1/assets/images
-res://single_player/level1/scripts
-res://single_player/level1/assets/images/water
-res://single_player/level1/assets/images/smoke
-res://single_player/level1/assets/images/cart
-res://single_player/level1/assets/images/train

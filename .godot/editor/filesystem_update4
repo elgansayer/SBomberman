@@ -1,12 +1,9 @@
-res://screens/account/create/account.tscn
 res://screens/battle_options/scenes/battle_setup.tscn
-res://themes/button_hover.tres
-res://themes/new_style_box_flat.tres
+res://screens/battle_options/scripts/ui_tabs.gd
 res://ui/component/button.tscn
-res://ui/component/line_edit.tscn
+res://ui/component/focus_border.tscn
+res://ui/component/pressed_border.tscn
+res://ui/component/slider_tile.gd
+res://ui/component/time_slider_tile0.gd
 res://ui/scripts/button.gd
-res://ui/themes/button.tres
-res://ui/themes/line_edit.tres
-res://ui/themes/line_edit_normal.tres
-res://ui/themes/new_style_box_flat.tres
 res://ui/themes/theme.tres
