@@ -1,11 +1,11 @@
-extends "res://tirra/scripts/tirra.gd"
+extends "res://game/tirra/scripts/tirra.gd"
 
 var jumping = false
 var shadow
 
 
 func attach_rider_to_tirra(player):
-	.attach_rider_to_tirra(player)
+	super.attach_rider_to_tirra(player)
 	rider.connect("landed", self, "_on_rider_landed")
 
 
@@ -24,7 +24,7 @@ func perform_action():
 	shadow.position = rider.position
 	shadow.constructor(rider, shadow_move_dir)
 
-	.perform_action()
+	super.perform_action()
 	jump()
 
 

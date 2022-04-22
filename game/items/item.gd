@@ -1,7 +1,7 @@
 extends Area2D
 
-@export(String, "power", "power_glove", "bomb", "bomb_kicker", "rollerskate", "virus", "egg") var item_type
-@export(String, "pickup_special", "pickup", "pickup_powerglove", "got_virus", "pickup_egg") var pickup_sound
+@export_enum ("power", "power_glove", "bomb", "bomb_kicker", "rollerskate", "virus", "egg") var item_type
+@export_enum ("pickup_special", "pickup", "pickup_powerglove", "got_virus", "pickup_egg") var pickup_sound
 
 var picked = false
 var correct_sound
@@ -54,7 +54,7 @@ func picked_up(player):
 	rpc("picked_up_by", player)
 
 
-puppet func picked_up_by(player):
+func picked_up_by(player):
 	if picked:
 		return
 

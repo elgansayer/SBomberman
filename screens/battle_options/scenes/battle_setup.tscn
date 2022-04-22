@@ -1,18 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://drv0a2kxngsfi"]
+[gd_scene load_steps=13 format=3 uid="uid://ct42u44dqmy54"]
 
 [ext_resource type="Script" path="res://screens/battle_options/scripts/animated_panel.gd" id="2_ncsho"]
 [ext_resource type="Texture2D" uid="uid://bwgpnlrtyd8ea" path="res://screens/battle_options/assets/images/options_panel.png" id="3_1ys61"]
-[ext_resource type="Texture2D" uid="uid://drqnrskd4rdaa" path="res://screens/battle_options/assets/images/match selection bomb background.png" id="3_3sndf"]
 [ext_resource type="Script" path="res://screens/battle_options/scripts/ui_tabs.gd" id="4_8mgyb"]
 [ext_resource type="PackedScene" uid="uid://ck1oxnv7q8dyl" path="res://ui/component/button.tscn" id="4_xmiyc"]
 [ext_resource type="Theme" uid="uid://igllb7sfnjt8" path="res://ui/themes/theme.tres" id="7_2ebco"]
-[ext_resource type="PackedScene" path="res://ui/component/number_picker.tscn" id="7_4tvjj"]
-[ext_resource type="PackedScene" path="res://ui/component/option_button.tscn" id="8_e3ha4"]
+[ext_resource type="PackedScene" uid="uid://cnv28g2cvaejx" path="res://ui/component/option_button.tscn" id="8_e3ha4"]
 [ext_resource type="Script" path="res://ui/scripts/switch_button.gd" id="8_fu2a5"]
 [ext_resource type="PackedScene" uid="uid://dbhourolrv1u1" path="res://ui/component/pressed_border.tscn" id="9_iwtuv"]
 [ext_resource type="Script" path="res://ui/component/slider_tile.gd" id="10_30jv7"]
 [ext_resource type="Script" path="res://ui/component/time_slider_tile0.gd" id="11_4yp43"]
-[ext_resource type="Texture2D" uid="uid://bgn2d1qpfujp5" path="res://game/items/assets/kickbomb/itm-kickbomb-01.png" id="12_xmvjl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fay5q"]
 bg_color = Color(0.721569, 0.784314, 0.815686, 1)
@@ -27,26 +24,14 @@ offset_left = 162.0
 offset_top = 33.0
 offset_right = 612.0
 offset_bottom = 423.0
-rect_rotation = 0.00174533
 theme_override_styles/panel = SubResource( "StyleBoxFlat_fay5q" )
 script = ExtResource( "2_ncsho" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-bomb_texture = ExtResource( "3_3sndf" )
-
-[node name="Timer" type="Timer" parent="AnimatedPanel"]
-wait_time = 1.2
-autostart = true
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 644.0
 offset_right = 804.0
 offset_bottom = 448.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_fdes5" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
@@ -57,9 +42,6 @@ centered = false
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource( "4_8mgyb" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 ControlStagePath = NodePath("Panel/ControlStage")
 ControlRulesPath = NodePath("Panel/ControlRules")
 
@@ -73,9 +55,6 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_bottom = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="UiLayer/MarginContainer"]
 offset_left = 4.0
@@ -83,9 +62,6 @@ offset_top = 12.0
 offset_right = 122.0
 offset_bottom = 222.0
 theme = ExtResource( "7_2ebco" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BtnBattle" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_right = 118.0
@@ -123,16 +99,10 @@ offset_left = 162.0
 offset_top = 33.0
 offset_right = 202.0
 offset_bottom = 73.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ControlStage" type="Control" parent="UiLayer/Panel"]
 offset_right = 447.0
 offset_bottom = 384.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Panel/ControlStage"]
 offset_right = 447.0
@@ -141,9 +111,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer"]
 offset_left = 12.0
@@ -160,9 +127,6 @@ offset_right = 103.0
 offset_bottom = 32.0
 theme = ExtResource( "7_2ebco" )
 text = "Stage"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StageSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
 offset_left = 203.0
@@ -171,9 +135,6 @@ offset_bottom = 32.0
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource( "8_fu2a5" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 Buttons = [NodePath("btnNormal"), NodePath("btnWide")]
 
 [node name="btnNormal" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer/StageSwitchGrid" instance=ExtResource( "4_xmiyc" )]
@@ -203,9 +164,6 @@ offset_right = 103.0
 offset_bottom = 68.0
 theme = ExtResource( "7_2ebco" )
 text = "Mode"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="modeSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
 offset_left = 203.0
@@ -215,9 +173,6 @@ offset_bottom = 68.0
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource( "8_fu2a5" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 Buttons = [NodePath("btnSingle"), NodePath("btnTeam")]
 
 [node name="btnSingle" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer/modeSwitchGrid" instance=ExtResource( "4_xmiyc" )]
@@ -247,16 +202,12 @@ offset_right = 103.0
 offset_bottom = 104.0
 theme = ExtResource( "7_2ebco" )
 text = "Gametype"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="OptionButton" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "8_e3ha4" )]
 offset_left = 203.0
 offset_top = 72.0
 offset_right = 423.0
 offset_bottom = 104.0
-text = "Game Mode"
 clip_text = true
 item_count = 5
 popup/item_0/text = "Normal (Most Wins)"
@@ -278,25 +229,11 @@ offset_right = 103.0
 offset_bottom = 140.0
 theme = ExtResource( "7_2ebco" )
 text = "Players"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NumberPicker" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "7_4tvjj" )]
-offset_left = 203.0
-offset_top = 108.0
-offset_right = 423.0
-offset_bottom = 140.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="ControlRules" type="Control" parent="UiLayer/Panel"]
 visible = false
 offset_right = 39.0
 offset_bottom = 89.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Panel/ControlRules"]
 offset_right = 447.0
@@ -305,15 +242,12 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="UiLayer/Panel/ControlRules/MarginContainer"]
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 435.0
-offset_bottom = 262.0
+offset_bottom = 264.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/hseparation = 100
@@ -325,9 +259,6 @@ offset_right = 131.0
 offset_bottom = 41.0
 theme = ExtResource( "7_2ebco" )
 text = "# of Battles"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SliderTileGrid" type="GridContainer" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer"]
 offset_left = 231.0
@@ -344,24 +275,18 @@ size_flags_vertical = 7
 theme = ExtResource( "7_2ebco" )
 text = "0"
 horizontal_alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSlider" type="HSlider" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer/SliderTileGrid"]
 offset_top = 36.0
 offset_right = 192.0
 offset_bottom = 51.0
-auto_translate = false
-hint_tooltip = "Number of battles"
 size_flags_horizontal = 3
 size_flags_vertical = 1
+auto_translate = false
+hint_tooltip = "Number of battles"
 theme = ExtResource( "7_2ebco" )
 min_value = 1.0
 value = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="lblTimeSlider" type="Label" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer"]
 offset_top = 64.0
@@ -369,9 +294,6 @@ offset_right = 131.0
 offset_bottom = 96.0
 theme = ExtResource( "7_2ebco" )
 text = "Time"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SliderTileGridTime" type="GridContainer" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer"]
 offset_left = 231.0
@@ -389,25 +311,19 @@ size_flags_vertical = 7
 theme = ExtResource( "7_2ebco" )
 text = "02:00"
 horizontal_alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSlider" type="HSlider" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer/SliderTileGridTime"]
 offset_top = 36.0
 offset_right = 192.0
 offset_bottom = 51.0
-auto_translate = false
-hint_tooltip = "Number of battles"
 size_flags_horizontal = 3
 size_flags_vertical = 1
+auto_translate = false
+hint_tooltip = "Number of battles"
 theme = ExtResource( "7_2ebco" )
 min_value = 1.0
 max_value = 10.0
 value = 2.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="lblShuffle" type="Label" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer"]
 offset_top = 110.0
@@ -415,9 +331,6 @@ offset_right = 131.0
 offset_bottom = 142.0
 theme = ExtResource( "7_2ebco" )
 text = "Shuffle"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tblBtnShuffle" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 231.0
@@ -435,9 +348,6 @@ offset_right = 131.0
 offset_bottom = 178.0
 theme = ExtResource( "7_2ebco" )
 text = "No Draw"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tblBtnNoDraw" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 231.0
@@ -455,9 +365,6 @@ offset_right = 131.0
 offset_bottom = 214.0
 theme = ExtResource( "7_2ebco" )
 text = "Devil"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tblBtnDevil" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 231.0
@@ -475,9 +382,6 @@ offset_right = 131.0
 offset_bottom = 250.0
 theme = ExtResource( "7_2ebco" )
 text = "Mad Bomber"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tblBtnMadBomber" parent="UiLayer/Panel/ControlRules/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 231.0
@@ -493,9 +397,6 @@ toggle_pressed_text = "On"
 visible = false
 offset_right = 39.0
 offset_bottom = 89.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Panel/ControlItems"]
 offset_right = 447.0
@@ -504,9 +405,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="UiLayer/Panel/ControlItems/MarginContainer"]
 offset_left = 12.0
@@ -525,8 +423,6 @@ size_flags_horizontal = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="UiLayer/Panel/ControlItems/MarginContainer/GridContainer/Panel"]
 scale = Vector2(2, 2)
-texture = ExtResource( "12_xmvjl" )
-centered = false
 
 [node name="Button" parent="UiLayer/Panel/ControlItems/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 127.0
@@ -545,14 +441,11 @@ size_flags_horizontal = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="UiLayer/Panel/ControlItems/MarginContainer/GridContainer/Panel2"]
 scale = Vector2(2, 2)
-texture = ExtResource( "12_xmvjl" )
-centered = false
 
 [node name="Button2" parent="UiLayer/Panel/ControlItems/MarginContainer/GridContainer" instance=ExtResource( "4_xmiyc" )]
 offset_left = 305.0
 offset_right = 422.0
 offset_bottom = 30.0
 
-[connection signal="timeout" from="AnimatedPanel/Timer" to="AnimatedPanel" method="_on_timer_timeout"]
 [connection signal="pressed" from="UiLayer/MarginContainer/GridContainer/BtnBattle" to="UiLayer" method="_on_btn_battle_pressed"]
 [connection signal="pressed" from="UiLayer/MarginContainer/GridContainer/BtnRules" to="UiLayer" method="_on_btn_rules_pressed"]

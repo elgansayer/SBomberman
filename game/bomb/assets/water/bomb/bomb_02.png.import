@@ -1,9 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture2D"
+type="CompressedTexture2D"
 uid="uid://dq5o3y6msmvh4"
-path="res://.godot/imported/bomb_02.png-678c7c2321c5cf93acf398752c8bb81f.stex"
+path="res://.godot/imported/bomb_02.png-678c7c2321c5cf93acf398752c8bb81f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://game/bomb/assets/water/bomb/bomb_02.png"
-dest_files=["res://.godot/imported/bomb_02.png-678c7c2321c5cf93acf398752c8bb81f.stex"]
+dest_files=["res://.godot/imported/bomb_02.png-678c7c2321c5cf93acf398752c8bb81f.ctex"]
 
 [params]
 
@@ -21,7 +21,6 @@ compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-compress/streamed=false
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
@@ -29,6 +28,6 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/HDR_as_SRGB=false
+process/hdr_as_srgb=false
 process/size_limit=0
 detect_3d/compress_to=1

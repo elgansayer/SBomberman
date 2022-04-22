@@ -1,15 +1,13 @@
-extends "res://items/item.gd"
+extends "res://game/items/item.gd"
 
 ## Nodes
 @onready var world = get_node("/root/World")
-@export(Array, Resource) var tirras
-
+@export var tirras:Array[Resource]
 
 func picked_up(player):
 	# if player.tirra && player.tirra.tirra_level >= 2:
 	# 	return
-
-	.picked_up(player)
+	super.picked_up(player)
 
 
 # func upgrade_tirra(player):

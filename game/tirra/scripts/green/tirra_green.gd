@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/tirra.gd"
+extends "res://game/tirra/scripts/tirra.gd"
 
 enum states { STATE_IDLE, STATE_ACTION, STATE_SKIDDING }
 var state = states.STATE_IDLE
@@ -15,7 +15,7 @@ func perform_action():
 	force_rider_speed()
 
 	$Animator.action = true
-	.perform_action()
+	super.perform_action()
 
 
 func reset_rider_speed():
@@ -51,7 +51,7 @@ func hit_wall():
 	$Animator.action = false
 
 	var animation = "hit_wall_" + $Animator.facing_direction
-	$AnimatedSprite.connect("animation_finished", self, "_on_animation_finished")
+	$AnimatedSprite.connect("animation_finished", _on_animation_finished)
 
 	$AnimationPlayer.play(animation)
 
@@ -87,6 +87,6 @@ func _on_animation_finished():
 	$Mover.enabled = true
 	$Animator.enabled = true
 
-	$AnimatedSprite.disconnect("animation_finished", self, "_on_animation_finished")
+	$AnimatedSprite.disconnect("animation_finished", _on_animation_finished)
 	reset_rider_motion()
 	reset_rider_speed()

@@ -12,13 +12,17 @@ var riderAnimationSprite
 var correct_sound
 enum TIRRA_LEVEL { none, small, medium, big }
 const tirra_levels = ["none", "small", "medium", "big"]
-@export(String, "none", "blue", "pink", "yellow", "green") var colour = "none"
-@export(TIRRA_LEVEL) var tirra_level = TIRRA_LEVEL.none
+@export_enum("none", "blue", "pink", "yellow", "green") var colour
+@export_enum(TIRRA_LEVEL) var tirra_level = 0
 
 ## Nodes
 @onready var world = get_node("/root/World")
 
-var grid_position setget grid_position_set, grid_position_get
+var grid_position:
+	get:
+		return grid_position_get()
+	set(value):
+		grid_position_set(value)
 
 # The last animation played
 # var $Animator.facing_direction = "down"
@@ -34,7 +38,7 @@ func _ready():
 
 
 func query_input():
-	if is_network_master():
+#	if is_network_master():
 		action = Input.is_action_pressed("action")
 
 

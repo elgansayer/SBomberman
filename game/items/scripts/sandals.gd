@@ -1,4 +1,4 @@
-extends "res://items/item.gd"
+extends "res://game/items/item.gd"
 
 
 func award_player(player):

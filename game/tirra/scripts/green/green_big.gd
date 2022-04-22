@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/green/tirra_green.gd"
+extends "res://game/tirra/scripts/green/tirra_green.gd"
 
 
 func perform_action():

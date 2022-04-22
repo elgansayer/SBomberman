@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/blue/tirra_blue.gd"
+extends "res://game/tirra/scripts/blue/tirra_blue.gd"
 
 var z_index_table = {
 	"up": 1,

@@ -1,1 +1,1 @@
-extends "res://tirra/scripts/green/green_animator.gd"
+extends "res://game/tirra/scripts/green/green_animator.gd"

@@ -1,9 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture2D"
+type="CompressedTexture2D"
 uid="uid://de5kefdrgf1mt"
-path="res://.godot/imported/itemsmoke-04.png-3ce48307876dbf0f91ce69005b2020c8.stex"
+path="res://.godot/imported/itemsmoke-04.png-3ce48307876dbf0f91ce69005b2020c8.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://game/items/assets/explode/itemsmoke-04.png"
-dest_files=["res://.godot/imported/itemsmoke-04.png-3ce48307876dbf0f91ce69005b2020c8.stex"]
+dest_files=["res://.godot/imported/itemsmoke-04.png-3ce48307876dbf0f91ce69005b2020c8.ctex"]
 
 [params]
 
@@ -21,7 +21,6 @@ compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-compress/streamed=false
 mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
@@ -29,6 +28,6 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/HDR_as_SRGB=false
+process/hdr_as_srgb=false
 process/size_limit=0
 detect_3d/compress_to=1

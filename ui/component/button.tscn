@@ -9,9 +9,6 @@ size_flags_horizontal = 3
 theme = ExtResource( "1_56u2j" )
 text = "BUTTON"
 script = ExtResource( "2_meg73" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 button_colour = 3
 
 [node name="FocusBorder" parent="." instance=ExtResource( "3_anxax" )]

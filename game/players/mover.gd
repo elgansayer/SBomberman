@@ -2,7 +2,12 @@ extends Node2D
 const SPEED_DEFAULT = 10000.0
 
 # Allow the animator to process
-@export(bool) var enabled = true setget enabled_set, enabled_get
+var _enabled:bool = true
+@export var enabled:bool = true:
+	get:
+		return enabled_get()
+	set(value):
+		enabled_set(value)		
 
 # The actor is the node that is moving
 var actor
@@ -10,7 +15,12 @@ var actor
 var animator_node
 
 # What is the mover direction
-var facing_direction setget facing_direction_set, facing_direction_get
+var facing_direction:
+	get:
+		return facing_direction_get()
+	set(value):
+		return facing_direction_set(value)
+
 
 # Force continuous movement in any direction
 var forced_move = false
@@ -22,8 +32,12 @@ var motion = Vector2.ZERO
 var pressed_direction
 
 # Force movement in a direction
-var forced_direction setget forced_direction_set, forced_direction_get
-
+var forced_direction:
+	get:
+		return forced_direction_get()
+	set(value):
+		forced_direction_set(value)	
+		
 var speed = 10000.0
 
 ## Nodes
@@ -33,7 +47,7 @@ var puppet_pos = Vector2()
 var puppet_motion = Vector2()
 
 
-puppet func _update_state(p_pos, p_motion):
+func _update_state(p_pos, p_motion):
 	puppet_pos = p_pos
 	puppet_motion = p_motion
 
@@ -53,12 +67,12 @@ func facing_direction_get():
 
 # Force movement in a direction
 func enabled_set(value):
-	enabled = value
+	_enabled = value
 
 
 # Force movement in a direction
 func enabled_get():
-	return enabled
+	return _enabled
 
 
 # Force movement in a direction
@@ -92,17 +106,17 @@ func process(delta):
 	if !is_instance_valid(world):
 		return	
 
-	if is_network_master():
+	#if is_network_master():
 		motion = update_input()
 
 	var move_motion = (motion.normalized() * speed) * delta
 	actor.move_and_slide(move_motion)
 
-	if is_network_master():
-		rpc_unreliable("_update_state", actor.position, motion)
-	else:
-		actor.position = puppet_pos
-		motion = puppet_motion
+	#if is_network_master():
+	#	rpc_unreliable("_update_state", actor.position, motion)
+	#else:
+	#	actor.position = puppet_pos
+	#	motion = puppet_motion
 
 	# if not is_network_master():
 	# 	puppet_pos = position  # To avoid jitter

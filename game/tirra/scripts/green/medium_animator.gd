@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/green/green_animator.gd"
+extends "res://game/tirra/scripts/green/green_animator.gd"
 
 # Are we skidding?
 var skidding = false
@@ -9,7 +9,7 @@ func set_animation(anim_data):
 	var rider_animation = "ride" + "_" + anim_data["direction"]
 
 	# This is a new animation
-	last_action_time = OS.get_ticks_msec()
+	#last_action_time = OS.get_ticks_msec()
 
 	# We are skidding so set the animation to skid
 	if mover.skidding:

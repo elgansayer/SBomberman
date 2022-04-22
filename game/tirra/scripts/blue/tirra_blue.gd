@@ -1,4 +1,4 @@
-extends "res://tirra/scripts/tirra.gd"
+extends "res://game/tirra/scripts/tirra.gd"
 
 enum states { STATE_IDLE, STATE_DEAD, STATE_ACTION, STATE_MOVING, STATE_NONE }
 var state = states.STATE_NONE
@@ -30,7 +30,7 @@ func kick_bomb():
 	for bomb in bombs:
 		if bomb.grid_position == forward_grid_position:
 			var animation = "action_" + $Animator.facing_direction
-			$AnimatedSprite.connect("animation_finished", self, "_on_animation_finished")
+			$AnimatedSprite.connect("animation_finished", _on_animation_finished)
 			$AnimatedSprite.play(animation)
 			$AnimationPlayer.play(animation)
 			bomb.launch(target)

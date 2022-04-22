@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cc7x8itdgowgd"]
 
 [ext_resource type="Script" path="res://ui/scripts/focus_border.gd" id="1_2mqj5"]
-[ext_resource type="Texture2D" uid="uid://cce2saxrwiwu8" path="res://ui/assets/outline.png" id="1_4amnu"]
+[ext_resource type="Texture2D" uid="uid://cce2saxrwiwu8" path="res://ui/assets/outline.png" id="2_caomq"]
 [ext_resource type="Texture2D" uid="uid://38suw2nbsvr4" path="res://ui/assets/highlight/arrow1.png" id="2_dp7yp"]
 [ext_resource type="Texture2D" uid="uid://o566l7qk6fpk" path="res://ui/assets/highlight/arrow3.png" id="3_2ry0w"]
 [ext_resource type="Texture2D" uid="uid://ba8p2cotexxfb" path="res://ui/assets/highlight/arrow4.png" id="4_euskr"]
@@ -25,15 +25,11 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 48.0
 offset_bottom = 48.0
-texture = ExtResource( "1_4amnu" )
-region_rect = Rect2(5, 0, 62, 23)
+texture = ExtResource( "2_caomq" )
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
@@ -41,13 +37,13 @@ wait_time = 0.5
 [node name="AnimatedArrowDown" type="AnimatedSprite2D" parent="."]
 position = Vector2(54.5, 33.9)
 frames = SubResource( "SpriteFrames_mgksp" )
-frame = 4
+frame = 1
 playing = true
 offset = Vector2(0, -2)
 
 [node name="AnimatedArrowUp" type="AnimatedSprite2D" parent="."]
 frames = SubResource( "SpriteFrames_mgksp" )
-frame = 4
+frame = 1
 playing = true
 offset = Vector2(0, -2)
 flip_v = true

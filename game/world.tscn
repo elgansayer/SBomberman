@@ -1190,9 +1190,6 @@ flip_h = true
 
 [node name="ClockLabel" type="Label" parent="InfoBoard"]
 text = "324234"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ClockTimer" type="Timer" parent="InfoBoard/ClockLabel"]
 autostart = true
@@ -1349,9 +1346,6 @@ position = Vector2(1, 1)
 size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource( "3" )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Winner" type="Label" parent="."]
 visible = false
@@ -1362,18 +1356,12 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = SubResource( "1" )
 text = "THE WINNER IS:
 YOU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ExitGame" type="Button" parent="Winner"]
 size_flags_horizontal = 2
 size_flags_vertical = 2
 theme_override_fonts/font = SubResource( "1" )
 text = "EXIT GAME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(16, -32)
@@ -1390,12 +1378,16 @@ root_node = NodePath("../AnimatedSprite")
 
 [node name="Egg" parent="." instance=ExtResource( "14" )]
 position = Vector2(400, 338)
+item_type = null
+pickup_sound = null
 
 [node name="TirraPinkSmall" parent="." instance=ExtResource( "15" )]
 position = Vector2(144, 336)
+colour = null
 
 [node name="TirraGreenSmall" parent="." instance=ExtResource( "16" )]
 position = Vector2(208, 336)
+colour = null
 
 [node name="TirraBlueSmall" parent="." instance=ExtResource( "12" )]
 position = Vector2(274, 335)

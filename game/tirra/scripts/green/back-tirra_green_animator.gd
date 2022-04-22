@@ -9,7 +9,7 @@ var animationPlayer
 
 # Set up the animator node
 func setup(mover_node, tirraSprite_node, tirraPlayer_node, playerSprite_node):
-	.construct(mover_node, tirraSprite_node)
+	super.construct(mover_node, tirraSprite_node)
 	playerAnimatedSprite = playerSprite_node
 	animationPlayer = tirraPlayer_node
 
