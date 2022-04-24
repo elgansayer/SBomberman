@@ -1,10 +1,2 @@
-res://game/items/scripts/egg.gd
-res://game/players/animator.gd
-res://game/players/mover.gd
-res://game/tirra/scripts/green/back-tirra_green_animator.gd
-res://game/tirra/scripts/green/green_animator.gd
-res://game/tirra/scripts/green/medium_animator.gd
-res://game/tirra/scripts/green/tirra_green.gd
-res://game/tirra/scripts/pink/tirra_pink.gd
-res://game/tirra/scripts/tirra_animator.gd
+res://game/world.gd
 res://game/world.tscn

@@ -1,9 +1,14 @@
+Label
+Node2D
+Node
+CollisionShape2D
+RigidDynamicBody2D
+ShapeCast2D
+Sprite2D
 Panel
 Control
-Sprite2D
 Button
 GridContainer
-Label
 HSlider
 MarginContainer
 HSplitContainer
@@ -11,7 +16,6 @@ OptionButton
 AnimatedSprite2D
 Timer
 LineEdit
-Node2D
 AnimationPlayer
 SpinBox
 TextureButton

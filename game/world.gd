@@ -1,8 +1,19 @@
+@tool
 extends Node2D
 
+@export var level_size: Vector2 = Vector2(32, 32)
+@export var level_offset: Vector2 = Vector2(16, 32)
 @export var grid_size: int = 32
 @export var half_grid: int = grid_size / 2
+@export var spawn_point_scn: PackedScene
 
+var _spanpoints: Array[Vector2] = []
+@export var spawnpoints: Array[Vector2] = []:
+		set(value):
+			spanpoints_set(value)
+		get:
+			return _spanpoints
+			
 # Time the map lasts for
 @export var time: int = 60 * 3
 
@@ -56,6 +67,22 @@ enum layers {
 	LAYER_PLAYERS = 1 << 5,
 }
 
+func spanpoints_set(value):
+	_spanpoints = value
+	print(value)
+	for spawnpoint in value:
+		print(value)
+		var position = get_grid_position(spawnpoint)
+		print(position)
+		make_spawn_point(position)
+
+func make_spawn_point(position: Vector2): Node2D
+	print("make_spawn_point")
+	var spawnpoint = spawn_point_scn.instance()	
+	spawnpoint.position = position
+	this.addChild(spawnpoint)
+	print(spawnpoint)
+
 var blockingMask = layers.LAYER_TILEMAP | layers.LAYER_ROCKS | layers.LAYER_BOMBS
 
 var bounceMask = (
@@ -71,7 +98,6 @@ var bounceMask = (
 
 # Called when the node enters the scene tree for the first time.
 var font
-
 
 func get_group_node_at(grid_position, group):
 	var nodes = get_tree().get_nodes_in_group(group)

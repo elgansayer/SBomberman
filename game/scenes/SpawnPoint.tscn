@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8wp57bp4x5ps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3tn6k"]
+bg_color = Color(0.6, 0, 0.121569, 1)
+
+[node name="SpanPoint1" type="Node2D"]
+position = Vector2(64, 80)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/normal = SubResource( "StyleBoxFlat_3tn6k" )
+text = "SP"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

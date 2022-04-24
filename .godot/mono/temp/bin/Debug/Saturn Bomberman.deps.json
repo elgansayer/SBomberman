@@ -1,0 +1,35 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "Saturn Bomberman/1.0.0": {
+        "dependencies": {
+          "Godot.SourceGenerators": "4.0.0-dev3"
+        },
+        "runtime": {
+          "Saturn Bomberman.dll": {}
+        }
+      },
+      "Godot.SourceGenerators/4.0.0-dev3": {}
+    }
+  },
+  "libraries": {
+    "Saturn Bomberman/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Godot.SourceGenerators/4.0.0-dev3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dQRNp06TLFau5MPgYzGnkhAHrFdQYZY6GPnc4J3x8cv1eDvtHgzXEUK1VCFIO/tZper3Wo8j2ODHsP30oRY0/Q==",
+      "path": "godot.sourcegenerators/4.0.0-dev3",
+      "hashPath": "godot.sourcegenerators.4.0.0-dev3.nupkg.sha512"
+    }
+  }
+}

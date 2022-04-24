@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1e/J702gmrMEKsD/r4Rsh25d3dZoK/kaX+Cp9dh90NI/z1sSbXuXO42vkqcKR9FGG6TzxJITJBRFp8Ye38lolg==",
+  "success": true,
+  "projectFilePath": "/home/elgan/games/SBomberman/Saturn Bomberman.csproj",
+  "expectedPackageFiles": [
+    "/home/elgan/.nuget/packages/godot.sourcegenerators/4.0.0-dev3/godot.sourcegenerators.4.0.0-dev3.nupkg.sha512"
+  ],
+  "logs": []
+}

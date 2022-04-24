@@ -1,0 +1,10 @@
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/Saturn Bomberman.deps.json
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/Saturn Bomberman.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/Saturn Bomberman.pdb
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.csproj.AssemblyReference.cache
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.GeneratedMSBuildEditorConfig.editorconfig
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.AssemblyInfoInputs.cache
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.AssemblyInfo.cs
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.csproj.CoreCompileInputs.cache
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.pdb

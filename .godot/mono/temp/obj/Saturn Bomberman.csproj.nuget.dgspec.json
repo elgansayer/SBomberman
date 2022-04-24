@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/elgan/games/SBomberman/Saturn Bomberman.csproj": {}
+  },
+  "projects": {
+    "/home/elgan/games/SBomberman/Saturn Bomberman.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/elgan/games/SBomberman/Saturn Bomberman.csproj",
+        "projectName": "Saturn Bomberman",
+        "projectPath": "/home/elgan/games/SBomberman/Saturn Bomberman.csproj",
+        "packagesPath": "/home/elgan/.nuget/packages/",
+        "outputPath": "/home/elgan/games/SBomberman/.godot/mono/temp/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/home/elgan/.local/share/godot/mono/GodotNuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/elgan/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Godot.SourceGenerators": {
+              "target": "Package",
+              "version": "[4.0.*-*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.102/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
