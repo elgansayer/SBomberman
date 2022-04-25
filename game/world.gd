@@ -1,13 +1,46 @@
 @tool
 extends Node2D
 
+# 20 x 14
+@export var update_button: bool:
+		set(value):
+			return update_pressed()
+
+@export var level_grid_size: Vector2 = Vector2(20, 14)
 @export var level_size: Vector2 = Vector2(32, 32)
 @export var level_offset: Vector2 = Vector2(16, 32)
 @export var grid_size: int = 32
 @export var half_grid: int = grid_size / 2
 @export var spawn_point_scn: PackedScene
 @export var spawn_point_parent: NodePath
+@export var soft_block_info_scn: PackedScene
+@export var soft_block_info_parent: NodePath
 
+var soft_block_info: Array[float] = [
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.0, 
+	0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 
+	0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 
+	0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 
+	0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 
+	0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 
+	0.0, 0.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.5, 0.0, 0.0, 0.0, 		
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 
+	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 	
+]
+
+
+func update_pressed():
+	if Engine.is_editor_hint():
+		spanpoints_set(spawnpoints)
+		softblockinfo_set(soft_block_info)
+		
 @export var spawnpoints: Array[Vector2] = []
 #@export var spawnpoints: Array[Vector2]:
 #		set(value):
@@ -15,6 +48,8 @@ extends Node2D
 #			return spanpoints_set(value)
 #		get:
 #			return spawnpoints
+
+var spawnpoints_length: int = 0
 
 # Time the map lasts for
 @export var time: int = 60 * 3
@@ -69,32 +104,40 @@ enum layers {
 	LAYER_PLAYERS = 1 << 5,
 }
 
-func _process(delta):
-	
-	if Engine.is_editor_hint():
-		print("hello")
-		spanpoints_set(spawnpoints)
+#func _process(delta):
+#	if Engine.is_editor_hint():
+#		if spawnpoints_length != spawnpoints.size():
+#			spawnpoints_length = spawnpoints.size()
+#			spanpoints_set(spawnpoints)
+					
 		# Code to execute in editor.
 
-func _run(delta):
-	print("hello")
-	if Engine.is_editor_hint:
-		print("hello")
-		spanpoints_set(spawnpoints)
-		# Code to execute in editor.
+
+func softblockinfo_set(value):
+	var parent = get_node(soft_block_info_parent)
+	for n in parent.get_children():
+		parent.remove_child(n)
+		n.queue_free()
+	
+	var index = 0
+	for y in level_grid_size.y:
+		for x in level_grid_size.x:		
+			var position = get_position_from_grid(Vector2(x,y))
+			make_soft_block_info(position, soft_block_info[index])
+			index += 1
+
+		
+	return value
 
 
 func spanpoints_set(value):
-	print(value)
 	var parent = get_node(spawn_point_parent)
 	for n in parent.get_children():
 		parent.remove_child(n)
 		n.queue_free()
 		
 	for spawnpoint in value:
-		print(value)
 		var position = get_position_from_grid(spawnpoint)
-		print(position)
 		make_spawn_point(position)
 	return value
 	
@@ -114,12 +157,17 @@ var bounceMask = (
 # Called when the node enters the scene tree for the first time.
 var font
 
+
+func make_soft_block_info(position: Vector2, label_text: float):
+	var softblockinfo = soft_block_info_scn.instantiate()
+	softblockinfo.position = position
+	softblockinfo.get_node("Label").text = str(label_text)
+	get_node(soft_block_info_parent).add_child(softblockinfo)
+
 func make_spawn_point(position: Vector2):
-	print("make_spawn_point")
 	var spawnpoint = spawn_point_scn.instantiate()
 	spawnpoint.position = position
 	get_node(spawn_point_parent).add_child(spawnpoint)
-	print(spawnpoint)
 
 func get_group_node_at(grid_position, group):
 	var nodes = get_tree().get_nodes_in_group(group)
@@ -147,7 +195,7 @@ func get_position_from_grid(grid_pos):
 
 
 # Get a grid position from a position
-func get_grid_position(position_vec):
+func get_grid_position(position_vec: Vector2):
 	var grid_x = floor(position_vec.x / grid_size)
 	var grid_y = floor(position_vec.y / grid_size)
 	var new_grid_position = Vector2(grid_x, grid_y)
