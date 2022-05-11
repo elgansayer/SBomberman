@@ -1,4 +1,1 @@
-res://game/scenes/SoftBlockInfo.tscn
-res://game/scenes/SpawnPoint.tscn
-res://game/world.gd
 res://game/world.tscn

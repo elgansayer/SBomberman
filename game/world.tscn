@@ -1275,6 +1275,7 @@ position = Vector2(1, 0)
 frames = SubResource( "98" )
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 position = Vector2(0, -16)
 tile_set = SubResource( "TileSet_hb5tb" )
 format = 2

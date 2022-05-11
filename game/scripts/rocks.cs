@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class rocks : Node
 {
@@ -15,7 +16,8 @@ public partial class rocks : Node
     {
         _world = GetNode<Node2D>(world);
         GD.Print("Rocks Ready");
-        // SpawnRocks();
+
+        // Call spawn rocks on ready frame done
         CallDeferred("SpawnRocks");
     }
 
@@ -36,6 +38,8 @@ public partial class rocks : Node
         GD.Print("Rocks softBlockInfo ", softBlockInfo);
         GD.Print("Rocks mapSize ", mapSize);
         GD.Print("Rocks gridSize ", gridSize);
+
+        softBlockInfo = CLearSoftRocks(mapSize, softBlockInfo);
 
         GD.Print(mapSize);
         int index = 0;
@@ -61,13 +65,34 @@ public partial class rocks : Node
                 // float y = mapOffset.y + (yi * gridSize - gridSquare);
                 // Vector2 pos = new Vector2(x, y);
                 Vector2 gridPos = new Vector2(ix, iy);
-                GD.Print("Rocks gridPos ", gridPos); 
+                GD.Print("Rocks gridPos ", gridPos);
                 Vector2 pos = (Vector2)_world.Call("get_position_from_grid", gridPos);
                 GD.Print("Rocks pos ", pos.GetType());
                 this.SpawnRock(pos);
                 index++;
             }
         }
+    }
+
+    public Godot.Collections.Array CLearSoftRocks(Vector2 mapSize, Godot.Collections.Array softBlockInfo, int maxBlockToClear = 40)
+    {
+        int length = softBlockInfo.Count - 1;
+        int count = 0;
+        
+        while (count < maxBlockToClear)
+        {
+            Random rand = new Random();
+            int index = rand.Next(0, length);
+
+            float chance = (float)softBlockInfo[index];
+            if (chance > 0.0f)
+            {
+                softBlockInfo[index] = 0.0f;
+                count++;
+            }
+        }
+
+        return softBlockInfo;
     }
 
     public void SpawnRock(Vector2 pos)
