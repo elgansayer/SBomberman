@@ -1,10 +1,11 @@
+Sprite2D
+Position2D
 Label
 Node2D
 Node
 CollisionShape2D
 RigidDynamicBody2D
 ShapeCast2D
-Sprite2D
 Panel
 Control
 Button

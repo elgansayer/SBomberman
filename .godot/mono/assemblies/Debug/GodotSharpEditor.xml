@@ -84,9 +84,9 @@
             <para>Returns <c>true</c> if there is an instance of the game running with the attached debugger otherwise <c>false</c>.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorDebuggerPlugin.BreakedHandler">
+        <member name="T:Godot.EditorDebuggerPlugin.StartedHandler">
             <summary>
-            <para>Emitted when the game enters a break state.</para>
+            <para>Emitted when the debugging starts.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorDebuggerPlugin.StoppedHandler">
@@ -94,9 +94,9 @@
             <para>Emitted when the debugging stops.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorDebuggerPlugin.StartedHandler">
+        <member name="T:Godot.EditorDebuggerPlugin.BreakedHandler">
             <summary>
-            <para>Emitted when the debugging starts.</para>
+            <para>Emitted when the game enters a break state.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorDebuggerPlugin.ContinuedHandler">
@@ -287,16 +287,6 @@
             <para>Loads an editor feature profile from a file. The file must follow the JSON format obtained by using the feature profile manager's Export button or the <see cref="M:Godot.EditorFeatureProfile.SaveToFile(System.String)"/> method.</para>
             </summary>
         </member>
-        <member name="F:Godot.EditorFileDialog.DisplayModeEnum.Thumbnails">
-            <summary>
-            <para>The <see cref="T:Godot.EditorFileDialog"/> displays resources as thumbnails.</para>
-            </summary>
-        </member>
-        <member name="F:Godot.EditorFileDialog.DisplayModeEnum.List">
-            <summary>
-            <para>The <see cref="T:Godot.EditorFileDialog"/> displays resources as a list of filenames.</para>
-            </summary>
-        </member>
         <member name="F:Godot.EditorFileDialog.FileModeEnum.OpenFile">
             <summary>
             <para>The <see cref="T:Godot.EditorFileDialog"/> can select only one file. Accepting the window will open the file.</para>
@@ -335,6 +325,16 @@
         <member name="F:Godot.EditorFileDialog.AccessEnum.Filesystem">
             <summary>
             <para>The <see cref="T:Godot.EditorFileDialog"/> can view the entire local file system.</para>
+            </summary>
+        </member>
+        <member name="F:Godot.EditorFileDialog.DisplayModeEnum.Thumbnails">
+            <summary>
+            <para>The <see cref="T:Godot.EditorFileDialog"/> displays resources as thumbnails.</para>
+            </summary>
+        </member>
+        <member name="F:Godot.EditorFileDialog.DisplayModeEnum.List">
+            <summary>
+            <para>The <see cref="T:Godot.EditorFileDialog"/> displays resources as a list of filenames.</para>
             </summary>
         </member>
         <member name="P:Godot.EditorFileDialog.Access">
@@ -399,6 +399,11 @@
             <para>Notify the <see cref="T:Godot.EditorFileDialog"/> that its view of the data is no longer accurate. Updates the view contents on next view update.</para>
             </summary>
         </member>
+        <member name="T:Godot.EditorFileDialog.FileSelectedHandler">
+            <summary>
+            <para>Emitted when a file is selected.</para>
+            </summary>
+        </member>
         <member name="T:Godot.EditorFileDialog.FilesSelectedHandler">
             <summary>
             <para>Emitted when multiple files are selected.</para>
@@ -407,11 +412,6 @@
         <member name="T:Godot.EditorFileDialog.DirSelectedHandler">
             <summary>
             <para>Emitted when a directory is selected.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorFileDialog.FileSelectedHandler">
-            <summary>
-            <para>Emitted when a file is selected.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorFileSystem">
@@ -427,7 +427,7 @@
         </member>
         <member name="M:Godot.EditorFileSystem.IsScanning">
             <summary>
-            <para>Returns <c>true</c> of the filesystem is being scanned.</para>
+            <para>Returns <c>true</c> if the filesystem is being scanned.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorFileSystem.GetScanningProgress">
@@ -447,7 +447,8 @@
         </member>
         <member name="M:Godot.EditorFileSystem.UpdateFile(System.String)">
             <summary>
-            <para>Update a file information. Call this if an external program (not Godot) modified the file.</para>
+            <para>Add a file in an existing directory, or schedule file information to be updated on editor restart. Can be used to update text files saved by an external program.</para>
+            <para>This will not import the file. To reimport, call <see cref="M:Godot.EditorFileSystem.ReimportFiles(System.String[])"/> or <see cref="M:Godot.EditorFileSystem.Scan"/> methods.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorFileSystem.GetFilesystemPath(System.String)">
@@ -465,9 +466,16 @@
             <para>Scans the script files and updates the list of custom class names.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorFileSystem.ResourcesReimportedHandler">
+        <member name="M:Godot.EditorFileSystem.ReimportFiles(System.String[])">
             <summary>
-            <para>Emitted if a resource is reimported.</para>
+            <para>Reimports a set of files. Call this if these files or their <c>.import</c> files were directly edited by script or an external program.</para>
+            <para>If the file type changed or the file was newly created, use <see cref="M:Godot.EditorFileSystem.UpdateFile(System.String)"/> or <see cref="M:Godot.EditorFileSystem.Scan"/>.</para>
+            <para>Note: This function blocks until the import is finished. However, the main loop iteration, including timers and <see cref="M:Godot.Node._Process(System.Single)"/>, will occur during the import process due to progress bar updates. Avoid calls to <see cref="M:Godot.EditorFileSystem.ReimportFiles(System.String[])"/> or <see cref="M:Godot.EditorFileSystem.Scan"/> while an import is in progress.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorFileSystem.FilesystemChangedHandler">
+            <summary>
+            <para>Emitted if the filesystem changed.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorFileSystem.SourcesChangedHandler">
@@ -475,9 +483,9 @@
             <para>Emitted if the source of any imported file changed.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorFileSystem.FilesystemChangedHandler">
+        <member name="T:Godot.EditorFileSystem.ResourcesReimportedHandler">
             <summary>
-            <para>Emitted if the filesystem changed.</para>
+            <para>Emitted if a resource is reimported.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorFileSystem.ResourcesReloadHandler">
@@ -783,34 +791,9 @@
             <para>Note: Unlike sections created from path-like property names, <see cref="T:Godot.EditorInspector"/> won't capitalize the name for sections created from groups. So properties with group usage usually use capitalized names instead of snake_cased names.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorInspector.PropertyEditedHandler">
-            <summary>
-            <para>Emitted when a property is edited in the inspector.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorInspector.ObjectIdSelectedHandler">
-            <summary>
-            <para>Emitted when the Edit button of an <see cref="T:Godot.Object"/> has been pressed in the inspector. This is mainly used in the remote scene tree inspector.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorInspector.PropertyDeletedHandler">
-            <summary>
-            <para>Emitted when a property is removed from the inspector.</para>
-            </summary>
-        </member>
         <member name="T:Godot.EditorInspector.PropertySelectedHandler">
             <summary>
             <para>Emitted when a property is selected in the inspector.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorInspector.RestartRequestedHandler">
-            <summary>
-            <para>Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorInspector.EditedObjectChangedHandler">
-            <summary>
-            <para>Emitted when the object being edited by the inspector has changed.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorInspector.PropertyKeyedHandler">
@@ -818,15 +801,40 @@
             <para>Emitted when a property is keyed in the inspector. Properties can be keyed by clicking the "key" icon next to a property when the Animation panel is toggled.</para>
             </summary>
         </member>
+        <member name="T:Godot.EditorInspector.PropertyDeletedHandler">
+            <summary>
+            <para>Emitted when a property is removed from the inspector.</para>
+            </summary>
+        </member>
         <member name="T:Godot.EditorInspector.ResourceSelectedHandler">
             <summary>
             <para>Emitted when a resource is selected in the inspector.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorInspector.ObjectIdSelectedHandler">
+            <summary>
+            <para>Emitted when the Edit button of an <see cref="T:Godot.Object"/> has been pressed in the inspector. This is mainly used in the remote scene tree inspector.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorInspector.PropertyEditedHandler">
+            <summary>
+            <para>Emitted when a property is edited in the inspector.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorInspector.PropertyToggledHandler">
             <summary>
             <para>Emitted when a boolean property is toggled in the inspector.</para>
             <para>Note: This signal is never emitted if the internal <c>autoclear</c> property enabled. Since this property is always enabled in the editor inspector, this signal is never emitted by the editor itself.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorInspector.EditedObjectChangedHandler">
+            <summary>
+            <para>Emitted when the object being edited by the inspector has changed.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorInspector.RestartRequestedHandler">
+            <summary>
+            <para>Emitted when a property that requires a restart to be applied is edited in the inspector. This is only used in the Project Settings and Editor Settings.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorInspectorPlugin">
@@ -1715,6 +1723,11 @@
             <para>Removes a menu <c>name</c> from Project &gt; Tools.</para>
             </summary>
         </member>
+        <member name="M:Godot.EditorPlugin.GetExportAsMenu">
+            <summary>
+            <para>Returns the <see cref="T:Godot.PopupMenu"/> under Scene &gt; Export As....</para>
+            </summary>
+        </member>
         <member name="M:Godot.EditorPlugin.AddCustomType(System.String,System.String,Godot.Script,Godot.Texture2D)">
             <summary>
             <para>Adds a custom type, which will appear in the list of nodes or resources. An icon can be optionally passed.</para>
@@ -1896,9 +1909,9 @@
             <para>Removes the debugger plugin with given script from the Debugger.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorPlugin.MainScreenChangedHandler">
+        <member name="T:Godot.EditorPlugin.SceneChangedHandler">
             <summary>
-            <para>Emitted when user changes the workspace (2D, 3D, Script, AssetLib). Also works with custom screens defined by plugins.</para>
+            <para>Emitted when the scene is changed in the editor. The argument will return the root node of the scene that has just become active. If this scene is new and empty, the argument will be <c>null</c>.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorPlugin.SceneClosedHandler">
@@ -1906,9 +1919,9 @@
             <para>Emitted when user closes a scene. The argument is file path to a closed scene.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorPlugin.SceneChangedHandler">
+        <member name="T:Godot.EditorPlugin.MainScreenChangedHandler">
             <summary>
-            <para>Emitted when the scene is changed in the editor. The argument will return the root node of the scene that has just become active. If this scene is new and empty, the argument will be <c>null</c>.</para>
+            <para>Emitted when user changes the workspace (2D, 3D, Script, AssetLib). Also works with custom screens defined by plugins.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorProperty">
@@ -1987,14 +2000,19 @@
             </summary>
             <param name="field">If the parameter is null, then the default value is (StringName)""</param>
         </member>
-        <member name="T:Godot.EditorProperty.ObjectIdSelectedHandler">
+        <member name="T:Godot.EditorProperty.PropertyChangedHandler">
             <summary>
-            <para>Used by sub-inspectors. Emit it if what was selected was an Object ID.</para>
+            <para>Do not emit this manually, use the <see cref="M:Godot.EditorProperty.EmitChanged(Godot.StringName,System.Object,Godot.StringName,System.Boolean)"/> method instead.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorProperty.PropertyCheckedHandler">
+        <member name="T:Godot.EditorProperty.MultiplePropertiesChangedHandler">
             <summary>
-            <para>Emitted when a property was checked. Used internally.</para>
+            <para>Emit it if you want multiple properties modified at the same time. Do not use if added via <see cref="M:Godot.EditorInspectorPlugin._ParseProperty(Godot.Object,System.Int32,System.String,System.Int32,System.String,System.Int32,System.Boolean)"/>.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.EditorProperty.PropertyKeyedHandler">
+            <summary>
+            <para>Emit it if you want to add this value as an animation key (check for keying being enabled first).</para>
             </summary>
         </member>
         <member name="T:Godot.EditorProperty.PropertyDeletedHandler">
@@ -2007,14 +2025,15 @@
             <para>Emit it if you want to key a property with a single value.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorProperty.PropertyKeyedHandler">
+        <member name="T:Godot.EditorProperty.PropertyCheckedHandler">
             <summary>
-            <para>Emit it if you want to add this value as an animation key (check for keying being enabled first).</para>
+            <para>Emitted when a property was checked. Used internally.</para>
             </summary>
         </member>
-        <member name="T:Godot.EditorProperty.PropertyChangedHandler">
+        <member name="T:Godot.EditorProperty.PropertyPinnedHandler">
             <summary>
-            <para>Do not emit this manually, use the <see cref="M:Godot.EditorProperty.EmitChanged(Godot.StringName,System.Object,Godot.StringName,System.Boolean)"/> method instead.</para>
+            <para>Emit it if you want to mark (or unmark) the value of a property for being saved regardless of being equal to the default value.</para>
+            <para>The default value is the one the property will get when the node is just instantiated and can come from an ancestor scene in the inheritance/instancing chain, a script or a builtin class.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorProperty.ResourceSelectedHandler">
@@ -2022,20 +2041,14 @@
             <para>If you want a sub-resource to be edited, emit this signal with the resource.</para>
             </summary>
         </member>
+        <member name="T:Godot.EditorProperty.ObjectIdSelectedHandler">
+            <summary>
+            <para>Used by sub-inspectors. Emit it if what was selected was an Object ID.</para>
+            </summary>
+        </member>
         <member name="T:Godot.EditorProperty.SelectedHandler">
             <summary>
             <para>Emitted when selected. Used internally.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorProperty.MultiplePropertiesChangedHandler">
-            <summary>
-            <para>Emit it if you want multiple properties modified at the same time. Do not use if added via <see cref="M:Godot.EditorInspectorPlugin._ParseProperty(Godot.Object,System.Int32,System.String,System.Int32,System.String,System.Int32,System.Boolean)"/>.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.EditorProperty.PropertyPinnedHandler">
-            <summary>
-            <para>Emit it if you want to mark (or unmark) the value of a property for being saved regardless of being equal to the default value.</para>
-            <para>The default value is the one the property will get when the node is just instantiated and can come from an ancestor scene in the inheritance/instancing chain, a script or a builtin class.</para>
             </summary>
         </member>
         <member name="T:Godot.EditorResourcePicker">
@@ -2579,6 +2592,11 @@
             <para>The suffix to display after the value (in a faded color). This should generally be a plural word. You may have to use an abbreviation if the suffix is too long to be displayed.</para>
             </summary>
         </member>
+        <member name="P:Godot.EditorSpinSlider.HideSlider">
+            <summary>
+            <para>If <c>true</c>, the slider is hidden.</para>
+            </summary>
+        </member>
         <member name="T:Godot.EditorSyntaxHighlighter">
             <summary>
             <para>Base syntax highlighter resource all editor syntax highlighters extend from, it is used in the <see cref="T:Godot.ScriptEditor"/>.</para>
@@ -2882,34 +2900,14 @@
             <para>Adds a <see cref="T:Godot.EditorSyntaxHighlighter"/> to the open script.</para>
             </summary>
         </member>
+        <member name="T:Godot.ScriptEditorBase.NameChangedHandler">
+            <summary>
+            <para>Emitted after script validation or when the edited resource has changed. Not used by visual scripts.</para>
+            </summary>
+        </member>
         <member name="T:Godot.ScriptEditorBase.EditedScriptChangedHandler">
             <summary>
             <para>Emitted after script validation. For visual scripts on modification.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.ScriptEditorBase.ReplaceInFilesRequestedHandler">
-            <summary>
-            <para>Emitted when the user request to find and replace text in the file system. Not used by visual scripts.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.ScriptEditorBase.SearchInFilesRequestedHandler">
-            <summary>
-            <para>Emitted when the user request to search text in the file system. Not used by visual scripts.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.ScriptEditorBase.GoToHelpHandler">
-            <summary>
-            <para>Emitted when the user requests a specific documentation page.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.ScriptEditorBase.RequestSaveHistoryHandler">
-            <summary>
-            <para>Emitted when the user contextual goto and the item is in the same script.</para>
-            </summary>
-        </member>
-        <member name="T:Godot.ScriptEditorBase.RequestOpenScriptAtLineHandler">
-            <summary>
-            <para>Emitted when the user requests a script.</para>
             </summary>
         </member>
         <member name="T:Godot.ScriptEditorBase.RequestHelpHandler">
@@ -2917,9 +2915,29 @@
             <para>Emitted when the user requests contextual help.</para>
             </summary>
         </member>
-        <member name="T:Godot.ScriptEditorBase.NameChangedHandler">
+        <member name="T:Godot.ScriptEditorBase.RequestOpenScriptAtLineHandler">
             <summary>
-            <para>Emitted after script validation or when the edited resource has changed. Not used by visual scripts.</para>
+            <para>Emitted when the user requests a script.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.ScriptEditorBase.RequestSaveHistoryHandler">
+            <summary>
+            <para>Emitted when the user contextual goto and the item is in the same script.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.ScriptEditorBase.GoToHelpHandler">
+            <summary>
+            <para>Emitted when the user requests a specific documentation page.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.ScriptEditorBase.SearchInFilesRequestedHandler">
+            <summary>
+            <para>Emitted when the user request to search text in the file system. Not used by visual scripts.</para>
+            </summary>
+        </member>
+        <member name="T:Godot.ScriptEditorBase.ReplaceInFilesRequestedHandler">
+            <summary>
+            <para>Emitted when the user request to find and replace text in the file system. Not used by visual scripts.</para>
             </summary>
         </member>
         <member name="T:Godot.VisualScriptCustomNodes">

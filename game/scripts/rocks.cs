@@ -1,8 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public partial class rocks : Node
+public partial class rocks : Node2D
 {
     [Export]
     private PackedScene Rock;
@@ -23,7 +24,11 @@ public partial class rocks : Node
 
     public void SpawnRocks()
     {
-        GD.Print("Rocks SpawnRocks");
+        // GD.Print("Rocks SpawnRocks");
+        var SpawnPointsNodes = _world.GetNode("SpawnPoints");
+        GD.Print("SpawnPointsNodes", SpawnPointsNodes);
+        SpanPoint[] spawnPoints =  SpawnPointsNodes.GetChildren().Cast<SpanPoint>().ToArray();
+        GD.Print("spawnPoints", spawnPoints);
         Vector2 mapSize = (Vector2)_world.Get("level_grid_size");
         Vector2 mapOffset = (Vector2)_world.Get("level_offset");
         GD.Print("Rocks mapSize", mapSize);
@@ -34,14 +39,14 @@ public partial class rocks : Node
         GD.Print("Rocks gridSize", gridSize);
         Godot.Collections.Array softBlockInfo = (Godot.Collections.Array)_world.Get("soft_block_info");
 
-        GD.Print("Rocks softBlockInfo ", softBlockInfo.GetType());
-        GD.Print("Rocks softBlockInfo ", softBlockInfo);
-        GD.Print("Rocks mapSize ", mapSize);
-        GD.Print("Rocks gridSize ", gridSize);
+        // GD.Print("Rocks softBlockInfo ", softBlockInfo.GetType());
+        // GD.Print("Rocks softBlockInfo ", softBlockInfo);
+        // GD.Print("Rocks mapSize ", mapSize);
+        // GD.Print("Rocks gridSize ", gridSize);
 
         softBlockInfo = CLearSoftRocks(mapSize, softBlockInfo);
 
-        GD.Print(mapSize);
+        // GD.Print(mapSize);
         int index = 0;
         for (int iy = 0; iy < mapSize.y; iy++)
         {
@@ -65,9 +70,24 @@ public partial class rocks : Node
                 // float y = mapOffset.y + (yi * gridSize - gridSquare);
                 // Vector2 pos = new Vector2(x, y);
                 Vector2 gridPos = new Vector2(ix, iy);
-                GD.Print("Rocks gridPos ", gridPos);
+
+                GD.Print("spawnPoints", spawnPoints);
+                // var spawnPoint = spawnPoints.First(p => ((int)(p.Get("x"))) == ix && ((int)(p.Get("y"))) == iy);
+                foreach (var item in spawnPoints)
+                {
+                    GD.Print(item.Get("Y"));                    
+                }
+
+                // GD.Print("spawnPoint", spawnPoint);
+                // if (spawnPoint != null && ((bool)spawnPoint.Get("used")) )
+                // {
+                //     GD.Print("Rocks spawnPoint ", spawnPoint);
+                //     continue;
+                // }
+
+                // GD.Print("Rocks gridPos ", gridPos);
                 Vector2 pos = (Vector2)_world.Call("get_position_from_grid", gridPos);
-                GD.Print("Rocks pos ", pos.GetType());
+                // GD.Print("Rocks pos ", pos.GetType());
                 this.SpawnRock(pos);
                 index++;
             }
@@ -78,7 +98,7 @@ public partial class rocks : Node
     {
         int length = softBlockInfo.Count - 1;
         int count = 0;
-        
+
         while (count < maxBlockToClear)
         {
             Random rand = new Random();
@@ -100,6 +120,6 @@ public partial class rocks : Node
         var rock = (Node2D)Rock.Instantiate();
         _world.AddChild(rock);
         rock.Position = pos;
-        GD.Print("Rocks SpawnRock ", pos);
+        // GD.Print("Rocks SpawnRock ", pos);
     }
 }

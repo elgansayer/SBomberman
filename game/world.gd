@@ -1,16 +1,19 @@
 @tool
 extends Node2D
+
+class_name World
+
 # Takes 40 soft blocks away
 # 20 x 14
 @export var update_button: bool:
 		set(value):
-			return update_pressed()
+			update_pressed(value)
 
 @export var level_grid_size: Vector2 = Vector2(20, 14)
 @export var level_size: Vector2 = Vector2(32, 32)
 @export var level_offset: Vector2 = Vector2(16, 32)
 @export var grid_size: int = 32
-@export var half_grid: int = grid_size / 2
+@export var half_grid: int = 8
 @export var spawn_point_scn: PackedScene
 @export var spawn_point_parent: NodePath
 @export var soft_block_info_scn: PackedScene
@@ -35,22 +38,12 @@ var soft_block_info: Array[float] = [
 	0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 	
 ]
 
-
-
-func update_pressed():
+func update_pressed(_value):
 	if Engine.is_editor_hint():
-		spanpoints_set(spawnpoints)
 		softblockinfo_set(soft_block_info)
 		
-@export var spawnpoints: Array[Vector2] = []
-#@export var spawnpoints: Array[Vector2]:
-#		set(value):
-#			spawnpoints = value
-#			return spanpoints_set(value)
-#		get:
-#			return spawnpoints
 
-var spawnpoints_length: int = 0
+# var spawnpoints_length: int = 0
 
 # Time the map lasts for
 @export var time: int = 60 * 3
@@ -123,11 +116,10 @@ func softblockinfo_set(value):
 	var index = 0
 	for y in level_grid_size.y:
 		for x in level_grid_size.x:		
-			var position = get_position_from_grid(Vector2(x,y))
-			make_soft_block_info(position, soft_block_info[index])
+			var pos = get_position_from_grid(Vector2(x,y))
+			make_soft_block_info(pos, soft_block_info[index])
 			index += 1
 
-		
 	return value
 
 
@@ -138,8 +130,8 @@ func spanpoints_set(value):
 		n.queue_free()
 		
 	for spawnpoint in value:
-		var position = get_position_from_grid(spawnpoint)
-		make_spawn_point(position)
+		var pos = get_position_from_grid(spawnpoint)
+		make_spawn_point(pos)
 	return value
 	
 var blockingMask = layers.LAYER_TILEMAP | layers.LAYER_ROCKS | layers.LAYER_BOMBS
@@ -159,15 +151,15 @@ var bounceMask = (
 var font
 
 
-func make_soft_block_info(position: Vector2, label_text: float):
+func make_soft_block_info(pos: Vector2, label_text: float):
 	var softblockinfo = soft_block_info_scn.instantiate()
-	softblockinfo.position = position
+	softblockinfo.position = pos
 	softblockinfo.get_node("Label").text = str(label_text)
 	get_node(soft_block_info_parent).add_child(softblockinfo)
 
-func make_spawn_point(position: Vector2):
+func make_spawn_point(pos: Vector2):
 	var spawnpoint = spawn_point_scn.instantiate()
-	spawnpoint.position = position
+	spawnpoint.position = pos
 	get_node(spawn_point_parent).add_child(spawnpoint)
 
 func get_group_node_at(grid_position, group):
@@ -204,7 +196,7 @@ func get_grid_position(position_vec: Vector2):
 
 
 func _ready():
-	pass
+	Game.world_loaded()
 	#font = DynamicFont.new()
 	#//font.font_data = load("res://montserrat.otf")
 	#//font.size = 10
@@ -255,12 +247,17 @@ func _on_ClockTimer_timeout():
 	# 	get_node("/root/Game").enabled = False
 	# 	get_node("/root/Game").call("_end_game")
 
-	var minutes = time_left / 60
-	var seconds = time_left % 60
+	var minutes: int = int(time_left / 60.0)
+	var seconds: int = time_left % 60
+	var timeString: String = ""
+	var minutestring: String = str(minutes)
+	var secondstring: String = str(seconds)
 
 	if minutes < 10:
-		minutes = "0" + str(minutes)
+		minutestring = "0" + str(minutes)
 	if seconds < 10:
-		seconds = "0" + str(seconds)
+		secondstring = "0" + str(seconds)
+	
+	timeString= minutestring + ":" + secondstring
 
-	$InfoBoard.get_node("ClockLabel").set_text(str(minutes) + ":" + str(seconds))
+	$InfoBoard.get_node("ClockLabel").set_text(timeString)

@@ -1,7 +1,8 @@
+res://game/stage
 res://game/scripts
+res://game
 res://game/scenes
 res://screens/loading/assets
-res://game/stage
 /home/elgan/games/SBomberman/game/players
 res://ui/assets
 res://screens/battle_options/assets/images
