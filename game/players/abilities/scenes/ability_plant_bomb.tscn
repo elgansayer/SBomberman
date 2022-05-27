@@ -1,9 +1,0 @@
-[gd_scene load_steps=4 format=3]
-
-[ext_resource type="Script" path="res://game/players/abilities/scripts/plant_bomb.gd" id="1"]
-[ext_resource type="PackedScene" path="res://game/players/abilities/scenes/ability_base.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://game/bomb/scenes/water_bomb.tscn" id="3"]
-
-[node name="PlantBomb" instance=ExtResource( 2 )]
-script = ExtResource( 1 )
-BombScene = ExtResource( 3 )

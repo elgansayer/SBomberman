@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3]
-
-[ext_resource type="Script" path="res://game/scripts/shadow.gd" id="1"]
-[ext_resource type="Texture" uid="uid://cqeg3vicasqp5" path="res://game/tirra/assets/effects/big/shadow-2.png" id="2"]
-
-[node name="Shadow" type="Sprite"]
-position = Vector2( 1, 4 )
-texture = ExtResource( 2 )
-script = ExtResource( 1 )

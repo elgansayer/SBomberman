@@ -44,6 +44,10 @@
             "Godot.SourceGenerators": {
               "target": "Package",
               "version": "[4.0.*-*, )"
+            },
+            "NakamaClient": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             }
           },
           "imports": [

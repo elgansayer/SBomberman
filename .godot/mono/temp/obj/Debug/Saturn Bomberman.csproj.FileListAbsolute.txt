@@ -8,3 +8,13 @@
 /home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.csproj.CoreCompileInputs.cache
 /home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.dll
 /home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.pdb
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/Nakama.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Collections.Concurrent.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Diagnostics.DiagnosticSource.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.IO.FileSystem.Primitives.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Linq.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Runtime.Numerics.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Security.Cryptography.OpenSsl.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Security.Cryptography.Primitives.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Threading.dll
+/home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.csproj.CopyComplete

@@ -8,20 +8,10 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node2D",
-"class": &"World",
-"language": &"GDScript",
-"path": "res://game/world.gd"
-}]
-_global_script_class_icons={
-"World": ""
-}
-
 [application]
 
 config/name="Saturn Bomberman"
-run/main_scene="res://game/game.tscn"
+run/main_scene="res://game/Main.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 config/icon="res://icon.png"
@@ -31,7 +21,7 @@ config/features=PackedStringArray("4.0", "C#")
 
 [autoload]
 
-Game="*res://game.gd"
+Game="*res://game/scripts/Game.cs"
 
 [config]
 
