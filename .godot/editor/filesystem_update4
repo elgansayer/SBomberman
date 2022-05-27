@@ -1,2 +1,4 @@
 res://game/world.tscn
-res://game/game.tscn
+res://game/scenes/HardBlock.tscn
+res://game/scenes/SoftBlockInfo.tscn
+res://game/stage/rock.tscn

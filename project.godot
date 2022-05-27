@@ -54,6 +54,11 @@ window/size/width=640
 window/size/height=480
 window/vsync/use_vsync=false
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
 [flobb[application]
 
 "config]name"="Multiplayer Bomber"
@@ -134,6 +139,10 @@ restart_map={
 2d_physics/layer_4="bombs"
 2d_physics/layer_5="items"
 2d_physics/layer_6="player"
+
+[mono]
+
+runtime/unhandled_exception_policy=1
 
 [physics]
 
