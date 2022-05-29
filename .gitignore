@@ -19,6 +19,7 @@ data_*/
 # Visual Studio / MonoDevelop
 *.[Oo]bj
 *.exe
+*.zip
 *.dll
 *.pdb
 *.user
