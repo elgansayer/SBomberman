@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dampqgnlc5h05"]
-
-[ext_resource type="Script" path="res://game/scripts/Main.cs" id="1_6r00b"]
-[ext_resource type="PackedScene" uid="uid://deh4v4gbtgq3h" path="res://game/stage/Stage1.tscn" id="2_dsgor"]
-
-[node name="Main" type="Node2D"]
-script = ExtResource( "1_6r00b" )
-WorldNodes = [ExtResource( "2_dsgor" )]

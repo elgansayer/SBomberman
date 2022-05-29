@@ -1,2 +1,5 @@
 res://game/stage/Stage1.tscn
 res://game/Main.tscn
+res://game/scenes/Loading.tscn
+res://game/scenes/Main.tscn
+res://game/scenes/Shell.tscn

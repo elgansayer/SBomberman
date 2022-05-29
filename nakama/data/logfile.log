@@ -371,3 +371,6 @@
 {"level":"info","ts":"2022-05-27T22:13:21.641Z","caller":"server/console.go:202","msg":"Starting Console server for gRPC requests","port":7348}
 {"level":"info","ts":"2022-05-27T22:13:21.641Z","caller":"server/console.go:296","msg":"Starting Console server gateway for HTTP requests","port":7351}
 {"level":"info","ts":"2022-05-27T22:13:21.732Z","caller":"main.go:184","msg":"Startup done"}
+{"level":"info","ts":"2022-05-27T23:21:45.986Z","caller":"main.go:200","msg":"Shutdown started"}
+{"level":"info","ts":"2022-05-27T23:21:45.986Z","caller":"main.go:207","msg":"All authoritative matches stopped"}
+{"level":"info","ts":"2022-05-27T23:21:46.045Z","caller":"main.go:239","msg":"Shutdown complete"}

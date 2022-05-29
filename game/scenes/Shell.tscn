@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnslk23ets1sy"]
+
+[ext_resource type="Script" path="res://game/scripts/Shell.cs" id="1_gccq0"]
+[ext_resource type="PackedScene" path="res://game/scenes/Loading.tscn" id="2_ifqvu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( "1_gccq0" )
+StageScenes = []
+LoadingScene = ExtResource( "2_ifqvu" )
