@@ -1,0 +1,90 @@
+[gd_scene load_steps=25 format=3]
+
+[ext_resource type="PackedScene" path="res://game/tirra/scenes/tirra_base_medium.tscn" id="1"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/middle/effects/feet_1.png" id="2"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/middle/effects/feet_3.png" id="3"]
+[ext_resource type="Texture" path="res://game/tirra/assets/green/middle/effects/feet_2.png" id="4"]
+[ext_resource type="SpriteFrames" path="res://game/tirra/tres/green/green_medium.tres" id="5"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/hit_wall_up.tres" id="6"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/skid_up.tres" id="7"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/action_right.tres" id="8"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/action_left.tres" id="9"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/hit_wall_down.tres" id="10"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/skid_right.tres" id="11"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/hit_wall_left.tres" id="12"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/action_up.tres" id="13"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/hit_wall_right.tres" id="14"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/skid_left.tres" id="15"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/skid_down.tres" id="16"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/action_down.tres" id="17"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/load.tres" id="18"]
+[ext_resource type="Animation" path="res://game/tirra/animations/green/medium/explode.tres" id="19"]
+[ext_resource type="Script" path="res://game/tirra/scripts/green/green_medium.gd" id="20"]
+[ext_resource type="Script" path="res://game/tirra/scripts/green/medium_animator.gd" id="21"]
+[ext_resource type="Script" path="res://game/tirra/scripts/green/medium_mover.gd" id="22"]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="TirraGreenMedium" instance=ExtResource( 1 )]
+script = ExtResource( 20 )
+colour = "green"
+tirra_level = 2
+
+[node name="AnimatedSprite" parent="." index="0"]
+frames = ExtResource( 5 )
+
+[node name="LeftFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="1"]
+visible = false
+position = Vector2( 8.5, 9 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="RightFeetAnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite" index="2"]
+visible = false
+position = Vector2( -7.5, 9 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+flip_h = true
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/action_down = ExtResource( 17 )
+anims/action_left = ExtResource( 9 )
+anims/action_right = ExtResource( 8 )
+anims/action_up = ExtResource( 13 )
+anims/explode = ExtResource( 19 )
+anims/hit_wall_down = ExtResource( 10 )
+anims/hit_wall_left = ExtResource( 12 )
+anims/hit_wall_right = ExtResource( 14 )
+anims/hit_wall_up = ExtResource( 6 )
+anims/load = ExtResource( 18 )
+anims/skid_down = ExtResource( 16 )
+anims/skid_left = ExtResource( 15 )
+anims/skid_right = ExtResource( 11 )
+anims/skid_up = ExtResource( 7 )
+
+[node name="Animator" parent="." index="4"]
+script = ExtResource( 21 )
+
+[node name="Mover" parent="." index="5"]
+script = ExtResource( 22 )
+enabled = true
+
+[node name="SkidTimer" type="Timer" parent="Mover" index="0"]
+wait_time = 0.1
+
+[connection signal="timeout" from="Mover/SkidTimer" to="Mover" method="_on_SkidTimer_timeout"]

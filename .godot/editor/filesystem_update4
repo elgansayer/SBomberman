@@ -1,5 +1,5 @@
-res://game/stage/Stage1.tscn
-res://game/Main.tscn
-res://game/scenes/Loading.tscn
-res://game/scenes/Main.tscn
+res://game/scenes/account/account.tscn
+res://ui/themes/theme.tres
+res://ui/fonts/material/gradient.tres
 res://game/scenes/Shell.tscn
+res://game/scenes/main_menu/MainMenu.tscn

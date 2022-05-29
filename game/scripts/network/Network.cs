@@ -23,7 +23,7 @@ public partial class Network : Node
         this.client = new Client(scheme, host, port, serverKey);
         client.Timeout = 10;
 
-        this.Login();
+        // this.Login();
 
         // or
         // #if UNITY_WEBGL && !UNITY_EDITOR

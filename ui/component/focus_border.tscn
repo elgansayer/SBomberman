@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://ui/scripts/focus_border.gd" id="1_2mqj5"]
+[ext_resource type="Texture2D" path="res://ui/assets/outline.png" id="2_caomq"]
+[ext_resource type="Texture2D" path="res://ui/assets/highlight/arrow1.png" id="2_dp7yp"]
+[ext_resource type="Texture2D" path="res://ui/assets/highlight/arrow3.png" id="3_2ry0w"]
+[ext_resource type="Texture2D" path="res://ui/assets/highlight/arrow4.png" id="4_euskr"]
+[ext_resource type="Texture2D" path="res://ui/assets/highlight/arrow6.png" id="5_vk362"]
+[ext_resource type="Texture2D" path="res://ui/assets/highlight/arrow.png" id="6_3emba"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mgksp"]
+animations = [{
+"frames": [ExtResource( "2_dp7yp" ), ExtResource( "3_2ry0w" ), ExtResource( "4_euskr" ), ExtResource( "5_vk362" ), ExtResource( "6_3emba" )],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FocusBorder" type="Node2D"]
+script = ExtResource( "1_2mqj5" )
+indicators = [NodePath("AnimatedArrowDown"), NodePath("AnimatedArrowUp")]
+
+[node name="NinePatchBorder" type="NinePatchRect" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource( "2_caomq" )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AnimatedArrowDown" type="AnimatedSprite2D" parent="."]
+position = Vector2(54.5, 33.9)
+frames = SubResource( "SpriteFrames_mgksp" )
+frame = 1
+playing = true
+offset = Vector2(0, -2)
+
+[node name="AnimatedArrowUp" type="AnimatedSprite2D" parent="."]
+frames = SubResource( "SpriteFrames_mgksp" )
+frame = 1
+playing = true
+offset = Vector2(0, -2)
+flip_v = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

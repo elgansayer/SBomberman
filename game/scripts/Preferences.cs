@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public class Preferences 
+public partial class Preferences : Node2D
 {
     private ConfigFile dataConfig = new ConfigFile();
     private ConfigFile accountConfig = new ConfigFile();
