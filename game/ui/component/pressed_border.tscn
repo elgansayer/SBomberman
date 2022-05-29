@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbhourolrv1u1"]
+
+[ext_resource type="Texture2D" uid="uid://cce2saxrwiwu8" path="res://ui/assets/outline.png" id="1_4amnu"]
+[ext_resource type="Script" path="res://ui/scripts/pressed_border.gd" id="1_tmx0w"]
+
+[node name="PressedBorder" type="Node2D"]
+script = ExtResource( "1_tmx0w" )
+
+[node name="NinePatchBorder" type="NinePatchRect" parent="."]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource( "1_4amnu" )
+region_rect = Rect2(5, 0, 62, 23)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5

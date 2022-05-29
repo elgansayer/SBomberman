@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1oxnv7q8dyl"]
+
+[ext_resource type="Theme" uid="uid://igllb7sfnjt8" path="res://ui/themes/theme.tres" id="1_56u2j"]
+[ext_resource type="Script" path="res://ui/scripts/button.gd" id="2_meg73"]
+[ext_resource type="PackedScene" uid="uid://cc7x8itdgowgd" path="res://ui/component/focus_border.tscn" id="3_anxax"]
+
+[node name="Button" type="Button"]
+size_flags_horizontal = 3
+theme = ExtResource( "1_56u2j" )
+text = "BUTTON"
+script = ExtResource( "2_meg73" )
+button_colour = 3
+
+[node name="FocusBorder" parent="." instance=ExtResource( "3_anxax" )]
+visible = false
+
+[connection signal="toggled" from="." to="." method="_on_button_toggled"]

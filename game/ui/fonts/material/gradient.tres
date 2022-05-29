@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://ui/fonts/gradient.png" id="2_vnbx6"]
+
+[sub_resource type="Shader" id="Shader_itm1j"]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient; // is a variable that holds a texture 
+
+uniform float white_value : hint_range(0,1) = 0.0;
+
+vec3 interpolate_vec3(vec3 start, vec3 end, float delta){
+    return start + (end - start) * delta;
+}
+
+void fragment(){ 
+	vec4 col = texture(gradient, vec2(0, UV.y));	 // read the colour of the pixel at coords (m, UV.y)
+	
+	if (white_value > 0.0f) {
+	    COLOR.rgb = interpolate_vec3(COLOR.rgb, vec3(1,1,1), white_value);
+	    COLOR.a = COLOR.a;					
+	} else {	
+		COLOR = texture(TEXTURE,UV) * COLOR * col; // mix the colours of the original texture (TEXTURE) at uv (coords) witht he colour we got from the gradient 
+	}
+}"
+
+[resource]
+shader = SubResource( "Shader_itm1j" )
+shader_param/white_value = 0.0
+shader_param/gradient = ExtResource( "2_vnbx6" )

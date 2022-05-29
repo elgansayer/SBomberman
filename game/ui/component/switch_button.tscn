@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxo3dqk86jvrk"]
+
+[ext_resource type="PackedScene" uid="uid://cphs1cubrdc2c" path="res://ui/component/button.tscn" id="1_g3ddr"]
+
+[node name="SwitchButton" type="GridContainer"]
+offset_right = 212.0
+offset_bottom = 30.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" parent="." instance=ExtResource( "1_g3ddr" )]
+offset_right = 104.0
+offset_bottom = 30.0
+
+[node name="Button2" parent="." instance=ExtResource( "1_g3ddr" )]
+offset_left = 108.0
+offset_right = 212.0
+offset_bottom = 30.0
