@@ -18,6 +18,7 @@ bg_color = Color(0.721569, 0.784314, 0.815686, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="BattleOptions" type="Node2D"]
+position = Vector2(33, 387)
 
 [node name="AnimatedPanel" type="Panel" parent="."]
 offset_left = 162.0

@@ -1,0 +1,194 @@
+[gd_scene load_steps=7 format=3 uid="uid://oatndu3e711m"]
+
+[ext_resource type="Script" path="res://game/scenes/account/scripts/LoginScreen.cs" id="1_84up3"]
+[ext_resource type="PackedScene" uid="uid://dmei0amrjis0a" path="res://game/scenes/account/scenes/Train.tscn" id="1_hnxy3"]
+[ext_resource type="Texture2D" uid="uid://bwgpnlrtyd8ea" path="res://game/scenes/battle_options/assets/images/options_panel.png" id="2_1vvub"]
+[ext_resource type="Theme" uid="uid://c2k6i042qsddq" path="res://ui/themes/theme.tres" id="3_kkc3g"]
+[ext_resource type="PackedScene" uid="uid://3ql0us0sxy8h" path="res://ui/component/line_edit.tscn" id="4_2c1yp"]
+[ext_resource type="PackedScene" path="res://ui/component/button.tscn" id="7_k1x4v"]
+
+[node name="LoginScreen" type="Node2D"]
+script = ExtResource( "1_84up3" )
+TxtEmailNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/TextEmails")
+TxtPasswordNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/EditPassword")
+LoginButtonNode = NodePath("Control/UiLayer/MarginContainerTop/VBoxContainer2/BttnLogin")
+CreateAccountButtonNode = NodePath("Control/UiLayer/MarginContainerTop/VBoxContainer2/BtnNewAccount")
+SubmitButtonNode = NodePath("Control/UiLayer/MarginContainerBottom/VBoxContainer2/BtnSubmit")
+LblErrorNode = NodePath("Control/UiLayer/Panel/CenterContainer/LblError")
+LblUsernameNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/LblUSername")
+TxtUsernameNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/TxtUSername")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 796.0
+offset_bottom = 448.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+offset_left = 76.0
+offset_right = 152.0
+offset_bottom = 40.0
+
+[node name="TrainBackground" parent="Control" instance=ExtResource( "1_hnxy3" )]
+
+[node name="Foreground" type="Sprite2D" parent="Control"]
+position = Vector2(-1, 0)
+texture = ExtResource( "2_1vvub" )
+centered = false
+
+[node name="UiLayer" type="Control" parent="Control"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="Control/UiLayer"]
+offset_left = 162.0
+offset_top = 33.0
+offset_right = 609.0
+offset_bottom = 417.0
+
+[node name="ControlStage" type="Control" parent="Control/UiLayer/Panel"]
+offset_right = 447.0
+offset_bottom = 384.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/UiLayer/Panel/ControlStage"]
+offset_left = -1.0
+offset_right = 447.0
+offset_bottom = 164.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="GridContainer" type="GridContainer" parent="Control/UiLayer/Panel/ControlStage/MarginContainer"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 436.0
+offset_bottom = 152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="LblEmail" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+offset_right = 105.0
+offset_bottom = 32.0
+theme = ExtResource( "3_kkc3g" )
+text = "E-Mail"
+
+[node name="TextEmails" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+offset_left = 109.0
+offset_top = 0.0
+offset_right = 424.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+max_length = 255
+
+[node name="LblPassword" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+offset_top = 36.0
+offset_right = 105.0
+offset_bottom = 68.0
+theme = ExtResource( "3_kkc3g" )
+text = "Password
+"
+
+[node name="EditPassword" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+offset_left = 109.0
+offset_top = 36.0
+offset_right = 424.0
+offset_bottom = 68.0
+secret = true
+
+[node name="LblUSername" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+offset_top = 72.0
+offset_right = 105.0
+offset_bottom = 104.0
+theme = ExtResource( "3_kkc3g" )
+text = "Username"
+
+[node name="TxtUSername" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+offset_left = 109.0
+offset_top = 72.0
+offset_right = 424.0
+offset_bottom = 104.0
+size_flags_horizontal = 3
+max_length = 255
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/UiLayer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="LblError" type="Label" parent="Control/UiLayer/Panel/CenterContainer"]
+modulate = Color(1, 0.054902, 0.105882, 1)
+offset_top = 4.0
+offset_right = 64.0
+offset_bottom = 36.0
+theme = ExtResource( "3_kkc3g" )
+text = "Error"
+
+[node name="MarginContainerTop" type="MarginContainer" parent="Control/UiLayer"]
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 158.0
+offset_bottom = 133.0
+theme = ExtResource( "3_kkc3g" )
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/UiLayer/MarginContainerTop"]
+offset_left = 4.0
+offset_top = 12.0
+offset_right = 121.0
+offset_bottom = 96.0
+
+[node name="BttnLogin" parent="Control/UiLayer/MarginContainerTop/VBoxContainer2" instance=ExtResource( "7_k1x4v" )]
+offset_right = 117.0
+offset_bottom = 30.0
+text = "Login
+"
+
+[node name="BtnNewAccount" parent="Control/UiLayer/MarginContainerTop/VBoxContainer2" instance=ExtResource( "7_k1x4v" )]
+offset_top = 34.0
+offset_right = 117.0
+offset_bottom = 64.0
+text = "Create"
+
+[node name="MarginContainerBottom" type="MarginContainer" parent="Control/UiLayer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 269.0
+offset_right = 158.0
+offset_bottom = 369.0
+grow_vertical = 0
+theme = ExtResource( "3_kkc3g" )
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_edit_layout_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/UiLayer/MarginContainerBottom"]
+offset_left = 4.0
+offset_top = 66.0
+offset_right = 121.0
+offset_bottom = 96.0
+size_flags_vertical = 8
+
+[node name="BtnSubmit" parent="Control/UiLayer/MarginContainerBottom/VBoxContainer2" instance=ExtResource( "7_k1x4v" )]
+offset_right = 117.0
+offset_bottom = 30.0
+text = "Submit"
+
+[connection signal="pressed" from="Control/UiLayer/MarginContainerTop/VBoxContainer2/BttnLogin" to="Control/UiLayer" method="_on_btn_battle_pressed"]
+[connection signal="pressed" from="Control/UiLayer/MarginContainerTop/VBoxContainer2/BtnNewAccount" to="Control/UiLayer" method="_on_btn_rules_pressed"]

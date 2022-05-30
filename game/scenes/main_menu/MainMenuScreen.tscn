@@ -1,8 +1,7 @@
-[gd_scene load_steps=79 format=3 uid="uid://cb4er3f8ce3bj"]
+[gd_scene load_steps=78 format=3 uid="uid://c11vtid7cyehc"]
 
-[ext_resource type="Script" path="res://game/scenes/main_menu/MainMenu.cs" id="1_gu8bu"]
-[ext_resource type="PackedScene" uid="uid://c2qc7r8ntghvb" path="res://game/scenes/Loading.tscn" id="2_tg1ew"]
-[ext_resource type="PackedScene" uid="uid://56ixp0abf72b" path="res://game/scenes/account/account.tscn" id="3_0fqxu"]
+[ext_resource type="Script" path="res://game/scenes/main_menu/MainMenuScreen.cs" id="1_gu8bu"]
+[ext_resource type="PackedScene" uid="uid://oatndu3e711m" path="res://game/scenes/account/LoginScreen.tscn" id="3_0fqxu"]
 [ext_resource type="Texture2D" uid="uid://c4vn874epe3q5" path="res://game/assets/main_menu_bg.png" id="3_vsk13"]
 [ext_resource type="Texture2D" uid="uid://cex1dxwlu4ksy" path="res://game/scenes/main_menu/assets/front_page/tirra_man/tirra_man_3.png" id="4_upgvh"]
 [ext_resource type="Texture2D" uid="uid://c466e7kjpypi5" path="res://game/scenes/main_menu/assets/front_page/tirra_man/tirra_man_2.png" id="5_w1u1b"]
@@ -23,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bpadgvkv8m7rj" path="res://game/scenes/main_menu/assets/front_page/fire/bottom.png" id="20_4n6vc"]
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://game/scenes/main_menu/assets/front_page/fire/top.png" id="21_juoan"]
 [ext_resource type="Script" path="res://game/scenes/main_menu/scripts/menu_animations.gd" id="22_w4yhb"]
-[ext_resource type="Material" uid="uid://bjtmintwipj23" path="res://ui/fonts/material/gradient.tres" id="23_wxohk"]
+[ext_resource type="Material" uid="uid://dm4rmmlu2dgk3" path="res://ui/fonts/material/gradient.tres" id="23_wxohk"]
 [ext_resource type="FontData" uid="uid://cc85eusvhx70l" path="res://ui/fonts/bmp/equipment-pro.fnt" id="24_b2uee"]
 [ext_resource type="ButtonGroup" path="res://game/scenes/main_menu/btn_groups/button_group.tres" id="25_7jsaq"]
 [ext_resource type="Texture2D" uid="uid://bhaneoowkv7g" path="res://ui/fonts/gradient.png" id="26_v87ng"]
@@ -310,7 +309,6 @@ animations = [{
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( "1_gu8bu" )
-LoadingScene = ExtResource( "2_tg1ew" )
 LoginScene = ExtResource( "3_0fqxu" )
 
 [node name="Panel" type="Panel" parent="."]
@@ -333,18 +331,21 @@ libraries = {
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
+frame = 2
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
+frame = 2
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
+frame = 2
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -364,7 +365,7 @@ texture = ExtResource( "15_qtsls" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
-frame = 1
+frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -384,8 +385,6 @@ texture = ExtResource( "21_juoan" )
 
 [node name="UILayer" type="Node2D" parent="."]
 script = ExtResource( "22_w4yhb" )
-buttons = [NodePath("MainMenu/BtnBattle"), NodePath("MainMenu/BtnOptionsGame"), NodePath("BattleMenu/BtnHostGame"), NodePath("BattleMenu/BtnJoinGame"), NodePath("BattleMenu/BtnQucikMatch")]
-tirra_sprite = NodePath("TirraSprite")
 
 [node name="MainMenu" type="Control" parent="UILayer"]
 
@@ -443,10 +442,10 @@ alignment = 0
 [node name="Node2D" type="Node2D" parent="UILayer/MainMenu/BtnOptionsGame"]
 position = Vector2(-24, 13)
 
-[node name="BattleMenu" type="Control" parent="UILayer"]
+[node name="BattleMenuScreen" type="Control" parent="UILayer"]
 visible = false
 
-[node name="BtnHostGame" type="Button" parent="UILayer/BattleMenu"]
+[node name="BtnHostGame" type="Button" parent="UILayer/BattleMenuScreen"]
 material = SubResource( "ShaderMaterial_gy8rg" )
 offset_left = 267.0
 offset_top = 311.0
@@ -464,10 +463,10 @@ text = "HOST GAME"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnHostGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnHostGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenu"]
+[node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenuScreen"]
 material = SubResource( "ShaderMaterial_ui43v" )
 offset_left = 267.0
 offset_top = 273.0
@@ -485,10 +484,10 @@ text = "JOIN GAME"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnJoinGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnJoinGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenu"]
+[node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenuScreen"]
 material = SubResource( "ShaderMaterial_xcuyr" )
 offset_left = 267.0
 offset_top = 349.0
@@ -506,10 +505,10 @@ text = "FIND MATCH"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnQucikMatch"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnQucikMatch"]
 position = Vector2(-24, 8)
 
-[node name="BtnBack" type="Button" parent="UILayer/BattleMenu"]
+[node name="BtnBack" type="Button" parent="UILayer/BattleMenuScreen"]
 material = SubResource( "ShaderMaterial_0phsy" )
 offset_left = 267.0
 offset_top = 387.0
@@ -527,7 +526,7 @@ text = "BACK"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenu/BtnBack"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnBack"]
 position = Vector2(-24, 8)
 
 [node name="FlashTimer" type="Timer" parent="UILayer"]
@@ -539,11 +538,6 @@ scale = Vector2(1.5, 1.5)
 frames = SubResource( "7" )
 playing = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-76, 0)
-anchor_mode = 0
-current = true
-
 [connection signal="pressed" from="UILayer/MainMenu/BtnBattle" to="." method="_on_btn_battle_pressed"]
-[connection signal="pressed" from="UILayer/BattleMenu/BtnBack" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="UILayer/BattleMenuScreen/BtnBack" to="." method="_on_btn_back_pressed"]
 [connection signal="timeout" from="UILayer/FlashTimer" to="UILayer" method="_on_flash_timer_timeout"]

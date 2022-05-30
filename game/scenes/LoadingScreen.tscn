@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovjbj"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Loading" type="Node2D"]
+[node name="LoadingScreen" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 796.0

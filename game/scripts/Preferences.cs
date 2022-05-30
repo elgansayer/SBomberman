@@ -2,6 +2,12 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
+public class AccountInfo
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
+}
+
 public partial class Preferences : Node2D
 {
     private ConfigFile dataConfig = new ConfigFile();
@@ -38,5 +44,27 @@ public partial class Preferences : Node2D
         {
             GD.Print("Account Config loaded");
         }
+    }
+
+    public void SaveAccount(string email , string password)
+    {
+        GD.Print("Saving account details");
+        this.accountConfig.SetValue("account", "email", value: email);
+        this.accountConfig.SetValue("account", "password", password);
+
+        this.accountConfig.SaveEncryptedPass(this.accountConfigName, this.accountConfigPassword);
+    }
+
+    public AccountInfo LoadAccount()
+    {
+        GD.Print("Loading account details");
+        string email = this.accountConfig.GetValue("account", "email") as string;
+        string password = this.accountConfig.GetValue("account", "password") as string;
+
+        return new AccountInfo()
+        {
+            Email = email,
+            Password = password
+        };
     }
 }

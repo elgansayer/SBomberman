@@ -1,5 +1,7 @@
-res://game/scenes/account/account.tscn
+res://game/scenes/main_menu/MainMenuScreen.tscn
 res://ui/themes/theme.tres
 res://ui/fonts/material/gradient.tres
+res://game/scenes/account/LoginScreen.tscn
+res://game/scenes/battle_options/BattleOptionsScreen.tscn
+res://game/scenes/LoadingScreen.tscn
 res://game/scenes/Shell.tscn
-res://game/scenes/main_menu/MainMenu.tscn

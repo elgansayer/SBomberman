@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Saturn Bomberman"
-run/main_scene="res://game/scenes/main_menu/MainMenu.tscn"
+run/main_scene="res://game/scenes/main_menu/MainMenuScreen.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 config/icon="res://icon.png"
@@ -24,6 +24,7 @@ config/features=PackedStringArray("4.0", "C#")
 Game="*res://game/scripts/Game.cs"
 Network="*res://game/scripts/network/Network.cs"
 Preferences="*res://game/scripts/Preferences.cs"
+LoadingScreen="*res://game/scenes/LoadingScreen.tscn"
 
 [config]
 
@@ -35,6 +36,7 @@ features=PackedStringArray("4.0")
 
 [debug]
 
+file_logging/enable_file_logging=true
 gdscript/warnings/return_value_discarded=false
 
 [display]

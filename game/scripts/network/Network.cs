@@ -10,12 +10,13 @@ public partial class Network : Node
     protected ISocket socket;
     protected IApiAccount account;
     protected ISession session;
-    
+    public string LastError { get; private set; }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         GD.Print("Connecting to server");
-        
+
         const string scheme = "http";
         const string host = "127.0.0.1";
         const int port = 7350;
@@ -36,12 +37,8 @@ public partial class Network : Node
         this.socket = Socket.From(client, adapter);
     }
 
-
-    public async Task<bool> Login()
+    public async Task<bool> Login(string email, string password, string userName = null, bool create = false)
     {
-        // Login to Nakama using "device authentication".
-        string deviceId = OS.GetUniqueId();
-
         RetryConfiguration retryConfiguration = new RetryConfiguration(100, 5);
 
         // Configure the retry configuration globally.
@@ -50,27 +47,24 @@ public partial class Network : Node
         try
         {
             GD.Print("Attempting to login to the server");
-            this.session = await client.AuthenticateDeviceAsync(deviceId);
+            this.session = await client.AuthenticateEmailAsync(email, password, null, create);
             this.account = await client.GetAccountAsync(this.session);
             GD.Print("Logged in to server ", this.account.User.Id);
         }
         catch (ApiResponseException ex)
         {
-            GD.Print("Error authenticating device: {0}:{1} ", ex.StatusCode, ex.Message);
+            this.LastError = ex.Message;
+            GD.Print("Authenticating Error: {0}:{1} ", ex.StatusCode, ex.Message);
             return false;
         }
         catch (Exception ex)
         {
+            this.LastError = ex.Message;
             GD.Print("Login failed");
-            GD.Print("Error authenticating device: ", ex.Message);
+            GD.Print("Error authenticating: ", ex.Message);
             return false;
         }
-        
-        return true;
-    }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
+        return true;
     }
 }

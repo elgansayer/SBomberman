@@ -1,4 +1,10 @@
+Label
 CenterContainer
+VBoxContainer
+VSeparator
+ColorRect
+Control
+Container
 Panel
 Sprite2D
 Node2D
@@ -8,10 +14,8 @@ Node
 StaticBody2D
 CollisionShape2D
 Position2D
-Label
 RigidDynamicBody2D
 ShapeCast2D
-Control
 Button
 GridContainer
 HSlider
@@ -26,7 +30,3 @@ SpinBox
 TextureButton
 NinePatchRect
 TextEdit
-TabBar
-TabContainer
-Camera2D
-PointLight2D

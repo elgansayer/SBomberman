@@ -1,4 +1,4 @@
-# extends Node2D
+extends Node2D
 
 # @export var loading_scene: Resource = null
 # @export var menu_animator_path: NodePath
