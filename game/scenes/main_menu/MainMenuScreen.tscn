@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bmh5am4qh0aj5" path="res://game/scenes/main_menu/assets/front_page/bomb/bomb_1.png" id="19_fc5k4"]
 [ext_resource type="Texture2D" uid="uid://bpadgvkv8m7rj" path="res://game/scenes/main_menu/assets/front_page/fire/bottom.png" id="20_4n6vc"]
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://game/scenes/main_menu/assets/front_page/fire/top.png" id="21_juoan"]
-[ext_resource type="Script" path="res://game/scenes/main_menu/MainMenunNimations.cs" id="22_e6o0m"]
+[ext_resource type="Script" path="res://game/scenes/main_menu/MainMenunAnimations.cs" id="22_sahmy"]
 [ext_resource type="Material" uid="uid://dm4rmmlu2dgk3" path="res://ui/fonts/material/gradient.tres" id="23_wxohk"]
 [ext_resource type="FontData" uid="uid://cc85eusvhx70l" path="res://ui/fonts/bmp/equipment-pro.fnt" id="24_b2uee"]
 [ext_resource type="ButtonGroup" path="res://game/scenes/main_menu/btn_groups/button_group.tres" id="25_7jsaq"]
@@ -336,21 +336,21 @@ libraries = {
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -371,6 +371,7 @@ texture = ExtResource( "15_qtsls" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
+frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -389,9 +390,9 @@ scale = Vector2(2, 2)
 texture = ExtResource( "21_juoan" )
 
 [node name="UILayer" type="Node2D" parent="."]
-script = ExtResource( "22_e6o0m" )
-ButtonNodes = [NodePath("MainMenu/GridContainer/BtnBattle"), NodePath("MainMenu/GridContainer/BtnAccount"), NodePath("MainMenu/GridContainer/BtnOptionsGame"), NodePath("BattleMenuScreen/GridContainer/BtnHostGame"), NodePath("BattleMenuScreen/GridContainer/BtnJoinGame"), NodePath("BattleMenuScreen/GridContainer/BtnQucikMatch"), NodePath("BattleMenuScreen/GridContainer/BtnBack")]
-TirraSpriteNode = NodePath("TirraSprite")
+script = ExtResource( "22_sahmy" )
+ButtonNodes = [NodePath("MainMenu/GridContainer/BtnBattle"), NodePath("MainMenu/GridContainer/BtnOptionsGame"), NodePath("MainMenu/GridContainer/BtnAccount"), NodePath("BattleMenuScreen/GridContainer/BtnHostGame"), NodePath("BattleMenuScreen/GridContainer/BtnJoinGame"), NodePath("BattleMenuScreen/GridContainer/BtnQucikMatch"), NodePath("BattleMenuScreen/GridContainer/BtnBack")]
+TirraSpriteNode = NodePath("../BackgroundSprite/Title/TitleSprite")
 FlashTimer = NodePath("FlashTimer")
 
 [node name="MainMenu" type="Control" parent="UILayer"]
