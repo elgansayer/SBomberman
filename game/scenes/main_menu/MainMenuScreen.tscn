@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://c11vtid7cyehc"]
+[gd_scene load_steps=79 format=3 uid="uid://c11vtid7cyehc"]
 
 [ext_resource type="Script" path="res://game/scenes/main_menu/MainMenuScreen.cs" id="1_gu8bu"]
 [ext_resource type="PackedScene" uid="uid://oatndu3e711m" path="res://game/scenes/account/LoginScreen.tscn" id="3_0fqxu"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bmh5am4qh0aj5" path="res://game/scenes/main_menu/assets/front_page/bomb/bomb_1.png" id="19_fc5k4"]
 [ext_resource type="Texture2D" uid="uid://bpadgvkv8m7rj" path="res://game/scenes/main_menu/assets/front_page/fire/bottom.png" id="20_4n6vc"]
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://game/scenes/main_menu/assets/front_page/fire/top.png" id="21_juoan"]
-[ext_resource type="Script" path="res://game/scenes/main_menu/scripts/menu_animations.gd" id="22_w4yhb"]
+[ext_resource type="Script" path="res://game/scenes/main_menu/MainMenunNimations.cs" id="22_e6o0m"]
 [ext_resource type="Material" uid="uid://dm4rmmlu2dgk3" path="res://ui/fonts/material/gradient.tres" id="23_wxohk"]
 [ext_resource type="FontData" uid="uid://cc85eusvhx70l" path="res://ui/fonts/bmp/equipment-pro.fnt" id="24_b2uee"]
 [ext_resource type="ButtonGroup" path="res://game/scenes/main_menu/btn_groups/button_group.tres" id="25_7jsaq"]
@@ -208,6 +208,11 @@ data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_graxf"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iw77x"]
+shader = SubResource( "Shader_itm1j" )
+shader_param/gradient = ExtResource( "26_v87ng" )
+shader_param/white_value = 0.0
+
 [sub_resource type="Shader" id="Shader_yfdu7"]
 code = "shader_type canvas_item;
 
@@ -331,21 +336,21 @@ libraries = {
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -354,6 +359,7 @@ playing = true
 position = Vector2(264, 160)
 scale = Vector2(2, 2)
 frames = SubResource( "5" )
+frame = 1
 playing = true
 
 [node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -365,7 +371,6 @@ texture = ExtResource( "15_qtsls" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
-frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -384,16 +389,23 @@ scale = Vector2(2, 2)
 texture = ExtResource( "21_juoan" )
 
 [node name="UILayer" type="Node2D" parent="."]
-script = ExtResource( "22_w4yhb" )
+script = ExtResource( "22_e6o0m" )
+ButtonNodes = [NodePath("MainMenu/GridContainer/BtnBattle"), NodePath("MainMenu/GridContainer/BtnAccount"), NodePath("MainMenu/GridContainer/BtnOptionsGame"), NodePath("BattleMenuScreen/GridContainer/BtnHostGame"), NodePath("BattleMenuScreen/GridContainer/BtnJoinGame"), NodePath("BattleMenuScreen/GridContainer/BtnQucikMatch"), NodePath("BattleMenuScreen/GridContainer/BtnBack")]
+TirraSpriteNode = NodePath("TirraSprite")
+FlashTimer = NodePath("FlashTimer")
 
 [node name="MainMenu" type="Control" parent="UILayer"]
 
-[node name="BtnBattle" type="Button" parent="UILayer/MainMenu"]
-material = ExtResource( "23_wxohk" )
+[node name="GridContainer" type="GridContainer" parent="UILayer/MainMenu"]
 offset_left = 267.0
 offset_top = 273.0
 offset_right = 419.0
-offset_bottom = 305.0
+offset_bottom = 377.0
+
+[node name="BtnBattle" type="Button" parent="UILayer/MainMenu/GridContainer"]
+material = ExtResource( "23_wxohk" )
+offset_right = 152.0
+offset_bottom = 32.0
 hint_tooltip = "Game Mode"
 focus_neighbor_left = NodePath("../BtnOptionsGame")
 focus_neighbor_top = NodePath("../BtnOptionsGame")
@@ -412,15 +424,14 @@ text = "BATTLE MODE"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/BtnBattle"]
+[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/GridContainer/BtnBattle"]
 position = Vector2(-24, 13)
 
-[node name="BtnOptionsGame" type="Button" parent="UILayer/MainMenu"]
+[node name="BtnOptionsGame" type="Button" parent="UILayer/MainMenu/GridContainer"]
 material = SubResource( "ShaderMaterial_me7pb" )
-offset_left = 267.0
-offset_top = 311.0
-offset_right = 419.0
-offset_bottom = 343.0
+offset_top = 36.0
+offset_right = 152.0
+offset_bottom = 68.0
 hint_tooltip = "Options"
 focus_neighbor_left = NodePath("../BtnBattle")
 focus_neighbor_top = NodePath("../BtnBattle")
@@ -439,18 +450,48 @@ text = "OPTIONS"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/BtnOptionsGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/GridContainer/BtnOptionsGame"]
+position = Vector2(-24, 13)
+
+[node name="BtnAccount" type="Button" parent="UILayer/MainMenu/GridContainer"]
+material = SubResource( "ShaderMaterial_iw77x" )
+offset_top = 72.0
+offset_right = 152.0
+offset_bottom = 104.0
+hint_tooltip = "Options"
+focus_neighbor_left = NodePath("../BtnBattle")
+focus_neighbor_top = NodePath("../BtnBattle")
+focus_neighbor_right = NodePath("../BtnBattle")
+focus_neighbor_bottom = NodePath("../BtnBattle")
+focus_next = NodePath("../BtnBattle")
+focus_previous = NodePath("../BtnBattle")
+theme_override_fonts/font = SubResource( "Font_x0wj7" )
+theme_override_styles/normal = SubResource( "StyleBoxEmpty_km8cs" )
+theme_override_styles/hover = SubResource( "StyleBoxEmpty_1r0ht" )
+theme_override_styles/pressed = SubResource( "StyleBoxEmpty_tfnw0" )
+theme_override_styles/disabled = SubResource( "StyleBoxEmpty_u11ir" )
+theme_override_styles/focus = SubResource( "StyleBoxEmpty_graxf" )
+button_group = ExtResource( "25_7jsaq" )
+text = "ACCOUNT"
+flat = true
+alignment = 0
+
+[node name="Node2D" type="Node2D" parent="UILayer/MainMenu/GridContainer/BtnAccount"]
 position = Vector2(-24, 13)
 
 [node name="BattleMenuScreen" type="Control" parent="UILayer"]
 visible = false
 
-[node name="BtnHostGame" type="Button" parent="UILayer/BattleMenuScreen"]
-material = SubResource( "ShaderMaterial_gy8rg" )
+[node name="GridContainer" type="GridContainer" parent="UILayer/BattleMenuScreen"]
 offset_left = 267.0
-offset_top = 311.0
+offset_top = 273.0
 offset_right = 419.0
-offset_bottom = 343.0
+offset_bottom = 377.0
+
+[node name="BtnHostGame" type="Button" parent="UILayer/BattleMenuScreen/GridContainer"]
+material = SubResource( "ShaderMaterial_gy8rg" )
+offset_right = 132.0
+offset_bottom = 32.0
 focus_next = NodePath("../BtnJoinGame")
 focus_previous = NodePath("../BtnQucikMatch")
 theme_override_fonts/font = SubResource( "Font_toqbx" )
@@ -463,15 +504,14 @@ text = "HOST GAME"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnHostGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/GridContainer/BtnHostGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenuScreen"]
+[node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenuScreen/GridContainer"]
 material = SubResource( "ShaderMaterial_ui43v" )
-offset_left = 267.0
-offset_top = 273.0
-offset_right = 419.0
-offset_bottom = 305.0
+offset_top = 36.0
+offset_right = 132.0
+offset_bottom = 68.0
 focus_next = NodePath("../BtnQucikMatch")
 focus_previous = NodePath("../BtnHostGame")
 theme_override_fonts/font = SubResource( "Font_4i4dl" )
@@ -484,15 +524,14 @@ text = "JOIN GAME"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnJoinGame"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/GridContainer/BtnJoinGame"]
 position = Vector2(-24, 13)
 
-[node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenuScreen"]
+[node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenuScreen/GridContainer"]
 material = SubResource( "ShaderMaterial_xcuyr" )
-offset_left = 267.0
-offset_top = 349.0
-offset_right = 419.0
-offset_bottom = 381.0
+offset_top = 72.0
+offset_right = 132.0
+offset_bottom = 104.0
 focus_next = NodePath("../BtnHostGame")
 focus_previous = NodePath("../BtnJoinGame")
 theme_override_fonts/font = SubResource( "Font_a58jk" )
@@ -505,15 +544,14 @@ text = "FIND MATCH"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnQucikMatch"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/GridContainer/BtnQucikMatch"]
 position = Vector2(-24, 8)
 
-[node name="BtnBack" type="Button" parent="UILayer/BattleMenuScreen"]
+[node name="BtnBack" type="Button" parent="UILayer/BattleMenuScreen/GridContainer"]
 material = SubResource( "ShaderMaterial_0phsy" )
-offset_left = 267.0
-offset_top = 387.0
-offset_right = 419.0
-offset_bottom = 419.0
+offset_top = 108.0
+offset_right = 132.0
+offset_bottom = 140.0
 focus_next = NodePath("../BtnHostGame")
 focus_previous = NodePath("../BtnJoinGame")
 theme_override_fonts/font = SubResource( "Font_a58jk" )
@@ -526,7 +564,7 @@ text = "BACK"
 flat = true
 alignment = 0
 
-[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/BtnBack"]
+[node name="Node2D" type="Node2D" parent="UILayer/BattleMenuScreen/GridContainer/BtnBack"]
 position = Vector2(-24, 8)
 
 [node name="FlashTimer" type="Timer" parent="UILayer"]
@@ -538,6 +576,5 @@ scale = Vector2(1.5, 1.5)
 frames = SubResource( "7" )
 playing = true
 
-[connection signal="pressed" from="UILayer/MainMenu/BtnBattle" to="." method="_on_btn_battle_pressed"]
-[connection signal="pressed" from="UILayer/BattleMenuScreen/BtnBack" to="." method="_on_btn_back_pressed"]
-[connection signal="timeout" from="UILayer/FlashTimer" to="UILayer" method="_on_flash_timer_timeout"]
+[connection signal="pressed" from="UILayer/MainMenu/GridContainer/BtnBattle" to="." method="_on_btn_battle_pressed"]
+[connection signal="pressed" from="UILayer/BattleMenuScreen/GridContainer/BtnBack" to="." method="_on_btn_back_pressed"]

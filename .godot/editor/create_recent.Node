@@ -1,9 +1,11 @@
+GridContainer
+HSeparator
+Control
+VSeparator
 Label
 CenterContainer
 VBoxContainer
-VSeparator
 ColorRect
-Control
 Container
 Panel
 Sprite2D
@@ -17,7 +19,6 @@ Position2D
 RigidDynamicBody2D
 ShapeCast2D
 Button
-GridContainer
 HSlider
 MarginContainer
 HSplitContainer
@@ -29,4 +30,3 @@ AnimationPlayer
 SpinBox
 TextureButton
 NinePatchRect
-TextEdit

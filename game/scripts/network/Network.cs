@@ -37,7 +37,7 @@ public partial class Network : Node
         this.socket = Socket.From(client, adapter);
     }
 
-    public async Task<bool> Login(string email, string password, string userName = null, bool create = false)
+    public async Task<bool> Login(string email, string password, string username = null, bool create = false)
     {
         RetryConfiguration retryConfiguration = new RetryConfiguration(100, 5);
 
@@ -47,7 +47,7 @@ public partial class Network : Node
         try
         {
             GD.Print("Attempting to login to the server");
-            this.session = await client.AuthenticateEmailAsync(email, password, null, create);
+            this.session = await client.AuthenticateEmailAsync(email, password, username, create);            
             this.account = await client.GetAccountAsync(this.session);
             GD.Print("Logged in to server ", this.account.User.Id);
         }
