@@ -1,3 +1,4 @@
 res://game/scenes/main_menu/MainMenuScreen.tscn
 res://ui/themes/theme.tres
 res://ui/fonts/material/gradient.tres
+res://game/scenes/account/LoginScreen.tscn

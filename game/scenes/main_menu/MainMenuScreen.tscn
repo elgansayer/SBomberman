@@ -336,21 +336,21 @@ libraries = {
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
 frames = SubResource( "1" )
-frame = 3
+frame = 2
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "2" )
-frame = 3
+frame = 2
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
 frames = SubResource( "4" )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -359,7 +359,6 @@ playing = true
 position = Vector2(264, 160)
 scale = Vector2(2, 2)
 frames = SubResource( "5" )
-frame = 1
 playing = true
 
 [node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -371,7 +370,7 @@ texture = ExtResource( "15_qtsls" )
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource( "6" )
-frame = 2
+frame = 1
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
@@ -392,7 +391,7 @@ texture = ExtResource( "21_juoan" )
 [node name="UILayer" type="Node2D" parent="."]
 script = ExtResource( "22_sahmy" )
 ButtonNodes = [NodePath("MainMenu/GridContainer/BtnBattle"), NodePath("MainMenu/GridContainer/BtnOptionsGame"), NodePath("MainMenu/GridContainer/BtnAccount"), NodePath("BattleMenuScreen/GridContainer/BtnHostGame"), NodePath("BattleMenuScreen/GridContainer/BtnJoinGame"), NodePath("BattleMenuScreen/GridContainer/BtnQucikMatch"), NodePath("BattleMenuScreen/GridContainer/BtnBack")]
-TirraSpriteNode = NodePath("../BackgroundSprite/Title/TitleSprite")
+TirraSpriteNode = NodePath("TirraSprite")
 FlashTimer = NodePath("FlashTimer")
 
 [node name="MainMenu" type="Control" parent="UILayer"]
