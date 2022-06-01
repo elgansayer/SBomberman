@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfpf3vdhjeckt"]
+[gd_scene load_steps=12 format=3 uid="uid://dfpf3vdhjeckt"]
 
 [ext_resource type="Script" path="res://game/scenes/battle_options/scripts/animated_panel.gd" id="1_pgjkl"]
 [ext_resource type="Texture2D" uid="uid://bwgpnlrtyd8ea" path="res://game/scenes/battle_options/assets/images/options_panel.png" id="2_l885d"]
@@ -14,9 +14,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fay5q"]
 bg_color = Color(0.721569, 0.784314, 0.815686, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdes5"]
-bg_color = Color(0, 0, 0, 1)
-
 [node name="BattleOptions" type="Node2D"]
 
 [node name="AnimatedPanel" type="Panel" parent="."]
@@ -26,12 +23,6 @@ offset_right = 612.0
 offset_bottom = 423.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_fay5q" )
 script = ExtResource( "1_pgjkl" )
-
-[node name="Panel" type="Panel" parent="."]
-offset_left = 644.0
-offset_right = 804.0
-offset_bottom = 448.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_fdes5" )
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)

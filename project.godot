@@ -146,7 +146,7 @@ runtime/unhandled_exception_policy=1
 [rendering]
 
 shader_compiler/shader_cache/strip_debug=true
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
 
 [run]
 

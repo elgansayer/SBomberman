@@ -16,6 +16,9 @@ public partial class Shell : Node2D
 
     private void Init()
     {
+        // Ensure the background is black
+        RenderingServer.SetDefaultClearColor(new Color(0f, 0f, 0f));
+        
         // Create a game wide camera 
         this.CreateOffsetCamera();
 

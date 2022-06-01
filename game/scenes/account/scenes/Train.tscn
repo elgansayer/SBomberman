@@ -154,6 +154,7 @@ position = Vector2(320, 224)
 position = Vector2(191.639, -208.008)
 scale = Vector2(2, 2)
 frames = SubResource( "SpriteFrames_yl3rk" )
+frame = 1
 playing = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
@@ -167,18 +168,18 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TrainAnim" type="AnimatedSprite2D" parent="Background/Train"]
 frames = SubResource( "SpriteFrames_pjlib" )
+frame = 2
 playing = true
 
 [node name="CartAnim1" type="AnimatedSprite2D" parent="Background/Train"]
 position = Vector2(292, 11)
 frames = SubResource( "SpriteFrames_mt80w" )
-frame = 2
 playing = true
 
 [node name="CartAnim" type="AnimatedSprite2D" parent="Background/Train"]
 position = Vector2(584, 11)
 frames = SubResource( "SpriteFrames_mt80w" )
-frame = 3
+frame = 1
 playing = true
 
 [node name="SmokeAnim" type="AnimatedSprite2D" parent="Background/Train"]
