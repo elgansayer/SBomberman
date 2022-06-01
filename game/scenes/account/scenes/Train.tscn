@@ -167,18 +167,18 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TrainAnim" type="AnimatedSprite2D" parent="Background/Train"]
 frames = SubResource( "SpriteFrames_pjlib" )
-frame = 2
 playing = true
 
 [node name="CartAnim1" type="AnimatedSprite2D" parent="Background/Train"]
 position = Vector2(292, 11)
 frames = SubResource( "SpriteFrames_mt80w" )
+frame = 2
 playing = true
 
 [node name="CartAnim" type="AnimatedSprite2D" parent="Background/Train"]
 position = Vector2(584, 11)
 frames = SubResource( "SpriteFrames_mt80w" )
-frame = 1
+frame = 3
 playing = true
 
 [node name="SmokeAnim" type="AnimatedSprite2D" parent="Background/Train"]
@@ -204,14 +204,6 @@ libraries = {
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 640.0
 offset_right = 1041.0
-offset_bottom = 448.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-offset_left = -1041.0
-offset_right = -640.0
 offset_bottom = 448.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

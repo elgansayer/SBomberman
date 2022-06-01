@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 public partial class MainMenuScreen : Node2D
 {
     [Export] public PackedScene LoginScene;
+    [Export] public PackedScene BattleOptionsScreen;
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -34,7 +36,7 @@ public partial class MainMenuScreen : Node2D
             GD.Print("Failed to get network object");
             return false;
         }
-        
+
         AccountInfo accountInfo = preferences.LoadAccount();
 
         bool loggedIn = await network.Login(accountInfo.Email, accountInfo.Password);
@@ -49,5 +51,57 @@ public partial class MainMenuScreen : Node2D
         game.HideLoadingScreen();
         return loggedIn;
     }
+
+    void _on_btn_battle_pressed()
+    {
+        GetNode<Control>("UILayer/MainMenu").Visible = false;
+        GetNode<Control>("UILayer/BattleMenu").Visible = true;
+    }
+
+    void _on_btn_options_pressed()
+    {
+        Game _game = GetNode("/root/Game") as Game;
+        _game.ShowLoadingScreen();
+
+        this.GetParent().RemoveChild(this);
+    }
+
+    void _on_btn_account_pressed()
+    {
+        Game _game = GetNode("/root/Game") as Game;
+        _game.ShowLoadingScreen();
+
+        this.GetParent().RemoveChild(this);
+    }
+
+    void _on_btn_host_game_pressed()
+    {
+        Game _game = GetNode("/root/Game") as Game;
+        // _game.ShowLoadingScreen();
+
+        _game.LoadStage(this.BattleOptionsScreen.ResourcePath);
+    }
+
+    void _on_btn_join_pressed()
+    {
+        Game _game = GetNode("/root/Game") as Game;
+        _game.ShowLoadingScreen();
+
+        this.GetParent().RemoveChild(this);
+    }    
+
+    void _on_btn_quick_match_pressed()
+    {
+        Game _game = GetNode("/root/Game") as Game;
+        _game.ShowLoadingScreen();
+
+        this.GetParent().RemoveChild(this);
+    }     
+
+    void _on_btn_back_pressed()
+    {
+        GetNode<Control>("UILayer/MainMenu").Visible = true;
+        GetNode<Control>("UILayer/BattleMenu").Visible = false;
+    }       
 }
 

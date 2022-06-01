@@ -8,7 +8,8 @@ bg_color = Color(0, 0, 0, 1)
 [node name="LoadingScreen" type="Node2D"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 796.0
+offset_left = -75.0
+offset_right = 721.0
 offset_bottom = 448.0
 theme_override_styles/panel = SubResource( "StyleBoxFlat_ovjbj" )
 

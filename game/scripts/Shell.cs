@@ -11,12 +11,33 @@ public partial class Shell : Node2D
     public override void _Ready()
     {
         GD.Print(("Shell Ready"));
-        this.Init();
+        CallDeferred("Init");
     }
 
     private void Init()
     {
+        // Create a game wide camera 
+        this.CreateOffsetCamera();
+
         // Set the scene to loading
+        this.LoadMainMenu();
+    }
+
+    private void CreateOffsetCamera()
+    {
+        // Set the scene to loading
+        Camera2D camera = new Camera2D();
+        camera.Position = new Vector2(-75, 0);  
+        camera.AnchorMode = Camera2D.AnchorModeEnum.FixedTopLeft;
+        camera.Name = "OffsetCamera";
+        camera.Current = true;
+        GetTree().Root.AddChild(camera);
+
+        GD.Print(("CreateOffsetCamera"));
+    }
+
+    public void LoadMainMenu()
+    {
         PackedScene scene = this.MainMenuScene;
         Game _game = GetNode("/root/Game") as Game;
         _game.LoadStage(scene.ResourcePath);

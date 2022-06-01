@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Saturn Bomberman"
-run/main_scene="res://game/scenes/main_menu/MainMenuScreen.tscn"
+run/main_scene="res://game/scenes/Shell.tscn"
 run/low_processor_mode=true
 boot_splash/show_image=false
 config/icon="res://icon.png"
@@ -146,6 +146,7 @@ runtime/unhandled_exception_policy=1
 [rendering]
 
 shader_compiler/shader_cache/strip_debug=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 
 [run]
 
