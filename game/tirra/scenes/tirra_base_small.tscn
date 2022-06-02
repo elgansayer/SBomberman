@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://game/tirra/scripts/blue/tirra_blue.gd" id="1"]
 [ext_resource type="Animation" path="res://game/tirra/animations/load_small.tres" id="2"]
-[ext_resource type="Texture" path="res://game/tirra/assets/effects/sparkle_1.png" id="3"]
-[ext_resource type="Texture" path="res://game/tirra/assets/effects/sparkle_0.png" id="4"]
-[ext_resource type="Texture" path="res://game/tirra/assets/effects/sparkle_3.png" id="5"]
+[ext_resource type="Texture" uid="uid://c2nuqpn0vre6q" path="res://game/tirra/assets/effects/sparkle_1.png" id="3"]
+[ext_resource type="Texture" uid="uid://b3qf6wrbcla3y" path="res://game/tirra/assets/effects/sparkle_0.png" id="4"]
+[ext_resource type="Texture" uid="uid://cbbsjs4itxf2s" path="res://game/tirra/assets/effects/sparkle_3.png" id="5"]
 [ext_resource type="Animation" path="res://game/tirra/animations/idle.tres" id="6"]
 [ext_resource type="Animation" path="res://game/tirra/animations/explode.tres" id="7"]
-[ext_resource type="Script" path="res://game/players/mover.gd" id="8"]
+[ext_resource type="Script" path="res://game/actors/mover.gd" id="8"]
 [ext_resource type="Script" path="res://game/tirra/scripts/tirra_animator.gd" id="9"]
 [ext_resource type="SpriteFrames" path="res://game/tirra/tres/pink/pink_small.tres" id="10"]
-[ext_resource type="AudioStream" uid="uid://c4x0tkokssyu1" path="res://sounds/items/pickup_egg.ogg" id="26"]
+[ext_resource type="AudioStream" path="res://sounds/items/pickup_egg.ogg" id="26"]
 
 [sub_resource type="CanvasItemMaterial" id=7]
 
