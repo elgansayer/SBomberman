@@ -4,8 +4,19 @@ using System.Threading.Tasks;
 
 public partial class LoginScreen : Node2D
 {
+    enum State
+    {
+        login,
+        Register,
+        Reset
+    }
+
+    private State currentState = State.login;
+
+    [Export] public NodePath LblEmailNode;
     [Export] public NodePath TxtEmailNode;
     [Export] public NodePath TxtPasswordNode;
+
 
     [Export] public NodePath LoginButtonNode;
     [Export] public NodePath CreateAccountButtonNode;
@@ -15,10 +26,6 @@ public partial class LoginScreen : Node2D
 
     [Export] public NodePath LblUsernameNode;
     [Export] public NodePath TxtUsernameNode;
-
-
-    [Signal]
-    delegate void MySignal();
 
     public override void _Ready()
     {
@@ -38,7 +45,6 @@ public partial class LoginScreen : Node2D
         this.loadLoginDetails();
 
         GD.Print(("LoginScreen Ready"));
-
     }
 
     private void loadLoginDetails()
@@ -48,7 +54,9 @@ public partial class LoginScreen : Node2D
 
         LineEdit emailNode = GetNode<LineEdit>(this.TxtEmailNode);
         LineEdit passwordNode = GetNode<LineEdit>(this.TxtPasswordNode);
+        LineEdit usernameNode = GetNode<LineEdit>(this.TxtUsernameNode);
 
+        usernameNode.Text = account.Username;
         emailNode.Text = account.Email;
         passwordNode.Text = account.Password;
     }
@@ -57,27 +65,32 @@ public partial class LoginScreen : Node2D
     {
         Label LblError = GetNode<Label>(this.LblErrorNode);
         LblError.Text = error;
+
+        GetNode<AcceptDialog>("AcceptDialog").Popup();
+        GetNode<AcceptDialog>("AcceptDialog").PopupCentered();
     }
 
 
 
     public void onCreateAccountButtonPressed()
     {
-        GetNode<Label>(this.LblUsernameNode).Visible = true;
-        GetNode<LineEdit>(this.TxtUsernameNode).Visible = true;
+        this.currentState = State.Register;
+
+        GetNode<Label>(this.LblEmailNode).Visible = true;
+        GetNode<LineEdit>(this.TxtEmailNode).Visible = true;
     }
 
     public void onLoginButtonPressed()
     {
-        GetNode<Label>(this.LblUsernameNode).Visible = false;
-        GetNode<LineEdit>(this.TxtUsernameNode).Visible = false;
+        this.currentState = State.login;
+
+        GetNode<Label>(this.LblEmailNode).Visible = false;
+        GetNode<LineEdit>(this.TxtEmailNode).Visible = false;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public async void onSubmitPressedAsync()
-    {
-        GD.Print("onSubmitPressed");
-
+    {        
         LineEdit emailNode = GetNode<LineEdit>(this.TxtEmailNode);
         LineEdit passwordNode = GetNode<LineEdit>(this.TxtPasswordNode);
         LineEdit usernameNode = GetNode<LineEdit>(this.TxtUsernameNode);
@@ -92,6 +105,12 @@ public partial class LoginScreen : Node2D
             return;
         }
 
+        if (username == "")
+        {
+            usernameNode.GrabFocus();
+            return;
+        }
+        
         if (password == "")
         {
             passwordNode.GrabFocus();
@@ -99,19 +118,7 @@ public partial class LoginScreen : Node2D
         }
 
         // If the username field is visible, then we are creating an account
-        bool createNew = GetNode<Label>(this.LblUsernameNode).Visible;
-        if (createNew)
-        {
-            if (username == "")
-            {
-                usernameNode.GrabFocus();
-                return;
-            }
-        }
-        else
-        {
-            username = null;
-        }
+        bool createNew = this.currentState == State.Register;
 
         // We have login details. So attempt!
         GD.Print(("Attempting login"));
@@ -126,7 +133,7 @@ public partial class LoginScreen : Node2D
         }
 
         Preferences preferences = GetNode("/root/Preferences") as Preferences;
-        preferences.SaveAccount(email, password);
+        preferences.SaveAccount(email, username, password);
 
         this.GetParent().RemoveChild(this);
         GD.Print("float delta " + email + " " + password);

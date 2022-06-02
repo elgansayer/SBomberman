@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfpf3vdhjeckt"]
+
+[ext_resource type="Script" path="res://game/scenes/battle_options/scripts/animated_panel.gd" id="1_pgjkl"]
+[ext_resource type="Texture2D" uid="uid://bwgpnlrtyd8ea" path="res://game/scenes/battle_options/assets/images/options_panel.png" id="2_l885d"]
+[ext_resource type="Script" path="res://game/scenes/battle_options/scripts/ui_tabs.gd" id="3_hvfyo"]
+[ext_resource type="Theme" uid="uid://c2k6i042qsddq" path="res://ui/themes/theme.tres" id="4_e5vba"]
+[ext_resource type="PackedScene" path="res://ui/component/button.tscn" id="5_10448"]
+[ext_resource type="PackedScene" uid="uid://3ql0us0sxy8h" path="res://ui/component/line_edit.tscn" id="6_7453o"]
+[ext_resource type="PackedScene" uid="uid://cgqn5qdlvloj6" path="res://game/actors/ActorBlackBomberman.tscn" id="7_eodhu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fay5q"]
+bg_color = Color(0.721569, 0.784314, 0.815686, 1)
+
+[node name="AccountOptions" type="Node2D"]
+
+[node name="AnimatedPanel" type="Panel" parent="."]
+offset_left = 162.0
+offset_top = 33.0
+offset_right = 612.0
+offset_bottom = 423.0
+theme_override_styles/panel = SubResource( "StyleBoxFlat_fay5q" )
+script = ExtResource( "1_pgjkl" )
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource( "2_l885d" )
+centered = false
+
+[node name="UiLayer" type="Control" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource( "3_hvfyo" )
+ControlStagePath = NodePath("Panel/ControlProfile")
+ControlRulesPath = NodePath("")
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer"]
+offset_left = 33.0
+offset_top = 33.0
+offset_right = 159.0
+offset_bottom = 259.0
+theme = ExtResource( "4_e5vba" )
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="UiLayer/MarginContainer"]
+offset_left = 4.0
+offset_top = 12.0
+offset_right = 122.0
+offset_bottom = 222.0
+theme = ExtResource( "4_e5vba" )
+
+[node name="BtnProfile" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "5_10448" )]
+offset_right = 118.0
+offset_bottom = 30.0
+text = "Profile"
+
+[node name="BtnCharacter" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "5_10448" )]
+offset_top = 34.0
+offset_right = 118.0
+offset_bottom = 64.0
+text = "Avatar"
+
+[node name="BtnFriends" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "5_10448" )]
+offset_top = 68.0
+offset_right = 118.0
+offset_bottom = 98.0
+text = "Friends"
+
+[node name="BtnTeams" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "5_10448" )]
+offset_top = 102.0
+offset_right = 118.0
+offset_bottom = 132.0
+text = "Teams"
+
+[node name="BtnSocial" parent="UiLayer/MarginContainer/GridContainer" instance=ExtResource( "5_10448" )]
+offset_top = 136.0
+offset_right = 118.0
+offset_bottom = 166.0
+text = "Social"
+
+[node name="Panel" type="Control" parent="UiLayer"]
+offset_left = 162.0
+offset_top = 33.0
+offset_right = 202.0
+offset_bottom = 73.0
+
+[node name="ControlProfile" type="Control" parent="UiLayer/Panel"]
+visible = false
+offset_right = 447.0
+offset_bottom = 384.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Panel/ControlProfile"]
+offset_right = 447.0
+offset_bottom = 41.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="GridContainer" type="GridContainer" parent="UiLayer/Panel/ControlProfile/MarginContainer"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 435.0
+offset_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="LblUsername" type="Label" parent="UiLayer/Panel/ControlProfile/MarginContainer/GridContainer"]
+offset_right = 138.0
+offset_bottom = 32.0
+theme = ExtResource( "4_e5vba" )
+text = "Username"
+
+[node name="LblUsernameActual" type="Label" parent="UiLayer/Panel/ControlProfile/MarginContainer/GridContainer"]
+offset_left = 142.0
+offset_right = 423.0
+offset_bottom = 32.0
+theme = ExtResource( "4_e5vba" )
+text = "Username"
+
+[node name="LblDisplayName" type="Label" parent="UiLayer/Panel/ControlProfile/MarginContainer/GridContainer"]
+offset_top = 36.0
+offset_right = 138.0
+offset_bottom = 68.0
+theme = ExtResource( "4_e5vba" )
+text = "Display Name"
+
+[node name="LineEditDisplayName" parent="UiLayer/Panel/ControlProfile/MarginContainer/GridContainer" instance=ExtResource( "6_7453o" )]
+offset_left = 142.0
+offset_top = 36.0
+offset_right = 423.0
+offset_bottom = 68.0
+size_flags_horizontal = 3
+
+[node name="ControlPlayerSelect" type="Control" parent="UiLayer/Panel"]
+offset_right = 447.0
+offset_bottom = 384.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Panel/ControlPlayerSelect"]
+offset_right = 447.0
+offset_bottom = 41.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="GridContainer" type="GridContainer" parent="UiLayer/Panel/ControlPlayerSelect/MarginContainer"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 435.0
+offset_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="LblPlayer" type="Label" parent="UiLayer/Panel/ControlPlayerSelect/MarginContainer/GridContainer"]
+offset_right = 119.0
+offset_bottom = 32.0
+theme = ExtResource( "4_e5vba" )
+text = "Character "
+
+[node name="ActorBlackBomberman" parent="UiLayer/Panel/ControlPlayerSelect/MarginContainer/GridContainer" instance=ExtResource( "7_eodhu" )]
+position = Vector2(155, 38)
+
+[connection signal="pressed" from="UiLayer/MarginContainer/GridContainer/BtnProfile" to="UiLayer" method="_on_btn_battle_pressed"]
+[connection signal="pressed" from="UiLayer/MarginContainer/GridContainer/BtnCharacter" to="UiLayer" method="_on_btn_rules_pressed"]

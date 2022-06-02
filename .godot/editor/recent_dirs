@@ -1,5 +1,5 @@
-res://game/scenes/main_menu
 res://ui/themes
+res://game/scenes/main_menu
 res://game/scenes
 res://game/scenes/account/scripts
 res://game/scenes/battle_options/assets/images
@@ -7,6 +7,5 @@ res://game/scenes/account/assets/images
 res://game
 res://game/scripts/network
 res://game/scripts
-res://game/stage
 /home/elgan/games/SBomberman/game/players
 res://

@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class TileMap : Godot.TileMap
 {
-    [Export] private PackedScene RockNode;
+    [Export] private PackedScene ExplodableRockNode;
     [Export] private NodePath WorldNode;
 
     public enum TileMapLayers
@@ -13,32 +13,41 @@ public partial class TileMap : Godot.TileMap
         OuterWalls,
         HardRocks,
         SpawnPoints,
-        SoftBlocks
+        ExplodableBlocks
     }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        // Hide our layer but leave it active
         Color hiddenColour = new Color(0, 0, 0, 0);
         this.SetLayerModulate((int)TileMapLayers.OuterWalls, hiddenColour);
 
+        // Disable layers we don't want to see
         this.SetLayerEnabled((int)TileMapLayers.SpawnPoints, false);
-        this.SetLayerEnabled((int)TileMapLayers.SoftBlocks, false);
+        this.SetLayerEnabled((int)TileMapLayers.ExplodableBlocks, false);
 
         // Call spawn rocks on ready frame done
         CallDeferred("SpawnRocks");
     }
 
+    /**
+    * Spawns explodable soft rock tiles in the map
+    */
     public void SpawnRocks()
     {
-        // List<Vector2i> allSpawnTiles = this.GetAllTiles(TileMapLayers.SpawnPoints);
         List<Vector2i> allHardTiles = this.GetAllTiles(TileMapLayers.HardRocks);
-        List<Vector2i> allSoftTiles = this.GetAllTiles(TileMapLayers.SoftBlocks);
+        List<Vector2i> allSoftTiles = this.GetAllTiles(TileMapLayers.ExplodableBlocks);
 
+        // If an actor is spawning on this tile, don't spawn a rock
         List<SpawnPoint> usedSpawnTiles = this.GetAllSpawnPoints().Where((tile) => tile.Used).ToList();
         List<Vector2i> allSpawnTiles = usedSpawnTiles.ConvertAll((tile) => tile.Position).ToList();
-        List<Vector2i> actualSoftBlocks = allSoftTiles.Where((tile) => !allHardTiles.Contains(tile) && !allSpawnTiles.Contains(tile)).ToList();
-        int maxRemove = 40;
 
+        List<Vector2i> actualSoftBlocks = allSoftTiles.Where((tile) =>
+            !allHardTiles.Contains(tile) &&
+            !allSpawnTiles.Contains(tile)).ToList();
+
+        int maxRemove = 40;
         for (int i = 0; i < maxRemove; i++)
         {
             Random rand = new Random();
@@ -52,31 +61,30 @@ public partial class TileMap : Godot.TileMap
         }
     }
 
+    /**
+    * Spawns a rock at the given tile position
+    */
     public void SpawnRock(Vector2i gridPos)
     {
-        Node2D _world = GetNode<Node2D>(this.WorldNode);
-        Node2D rock = (Node2D)this.RockNode.Instantiate();
-        Vector2 rockGlobalPos = World.ToGlobalPosition(gridPos);
-        Vector2 rockPos = World.ToTileCentrePosition(rockGlobalPos);
-        _world.AddChild(rock);
+        Node2D world = GetNode<Node2D>(this.WorldNode);
+        Node2D rock = (Node2D)this.ExplodableRockNode.Instantiate();
+        Vector2 rockPos = this.MapToWorld(gridPos);
+        world.AddChild(node: rock);
         rock.Position = rockPos;
     }
 
+    /**
+    * Returns a list of all tiles in the given layer
+    */
     public List<Vector2i> GetAllTiles(TileMapLayers layerId)
     {
         Godot.Collections.Array usedCells = this.GetUsedCells((int)layerId);
-        List<Vector2i> tiles = new List<Vector2i>();
-
-        foreach (var usedCell in usedCells)
-        {
-            Vector2i spawnPoint = (Vector2i)usedCell;
-            Vector2i newSpawnPoint = new Vector2i(spawnPoint.x, spawnPoint.y);
-            tiles.Add(newSpawnPoint);
-        }
-
-        return tiles;
+        return usedCells.OfType<Vector2i>().ToList();
     }
 
+    /** 
+    * Returns a list of all spawn points in the map
+    */
     public List<SpawnPoint> GetAllSpawnPoints()
     {
         List<Vector2i> allTiles = this.GetAllTiles(TileMapLayers.SpawnPoints);

@@ -1,9 +1,5 @@
 res://game/scenes/account/LoginScreen.tscn
 res://ui/themes/theme.tres
-res://ui/fonts/material/gradient.tres
-res://game/scenes/main_menu/MainMenuScreen.tscn
 res://game/scenes/battle_options/BattleOptionsScreen.tscn
-res://game/stage/Stage1.tscn
-res://game/scenes/account/scenes/Train.tscn
+res://ui/fonts/material/gradient.tres
 res://game/scenes/Shell.tscn
-res://game/scenes/LoadingScreen.tscn

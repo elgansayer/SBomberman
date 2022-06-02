@@ -1,13 +1,16 @@
+Label
+Panel
+Button
+PopupPanel
+Control
+CenterContainer
+AcceptDialog
 GridContainer
 HSeparator
-Control
 VSeparator
-Label
-CenterContainer
 VBoxContainer
 ColorRect
 Container
-Panel
 Sprite2D
 Node2D
 TileMap
@@ -18,7 +21,6 @@ CollisionShape2D
 Position2D
 RigidDynamicBody2D
 ShapeCast2D
-Button
 HSlider
 MarginContainer
 HSplitContainer
@@ -28,5 +30,3 @@ Timer
 LineEdit
 AnimationPlayer
 SpinBox
-TextureButton
-NinePatchRect

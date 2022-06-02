@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 public class AccountInfo
 {
+    public string Username { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
 }
@@ -46,9 +47,11 @@ public partial class Preferences : Node2D
         }
     }
 
-    public void SaveAccount(string email , string password)
+    public void SaveAccount(string email, string username, string password)
     {
         GD.Print("Saving account details");
+        
+        this.accountConfig.SetValue("account", "username", value: username);
         this.accountConfig.SetValue("account", "email", value: email);
         this.accountConfig.SetValue("account", "password", password);
 
@@ -58,11 +61,14 @@ public partial class Preferences : Node2D
     public AccountInfo LoadAccount()
     {
         GD.Print("Loading account details");
+
+        string username = this.accountConfig.GetValue("account", "username") as string;
         string email = this.accountConfig.GetValue("account", "email") as string;
         string password = this.accountConfig.GetValue("account", "password") as string;
 
         return new AccountInfo()
         {
+            Username = username,
             Email = email,
             Password = password
         };

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://game/actors/abilities/scripts/power_glove.gd" id="1"]
+[ext_resource type="PackedScene" path="res://game/actors/abilities/scenes/ability_base.tscn" id="2"]
+
+[node name="AbilityPowerGlove" instance=ExtResource( 2 )]
+script = ExtResource( 1 )

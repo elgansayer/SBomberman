@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfpf3vdhjeckt"]
+[gd_scene load_steps=14 format=3 uid="uid://dfpf3vdhjeckt"]
 
+[ext_resource type="Script" path="res://game/scenes/battle_options/BattleOptionsScreen.cs" id="1_2mxln"]
 [ext_resource type="Script" path="res://game/scenes/battle_options/scripts/animated_panel.gd" id="1_pgjkl"]
 [ext_resource type="Texture2D" uid="uid://bwgpnlrtyd8ea" path="res://game/scenes/battle_options/assets/images/options_panel.png" id="2_l885d"]
 [ext_resource type="Script" path="res://game/scenes/battle_options/scripts/ui_tabs.gd" id="3_hvfyo"]
 [ext_resource type="Theme" uid="uid://c2k6i042qsddq" path="res://ui/themes/theme.tres" id="4_e5vba"]
 [ext_resource type="PackedScene" path="res://ui/component/button.tscn" id="5_10448"]
 [ext_resource type="Script" path="res://ui/scripts/switch_button.gd" id="6_xp1nd"]
+[ext_resource type="PackedScene" uid="uid://3ql0us0sxy8h" path="res://ui/component/line_edit.tscn" id="7_bm04m"]
 [ext_resource type="PackedScene" path="res://ui/component/pressed_border.tscn" id="7_eqn8o"]
 [ext_resource type="PackedScene" path="res://ui/component/option_button.tscn" id="8_4udtt"]
 [ext_resource type="Script" path="res://ui/component/slider_tile.gd" id="9_omnxn"]
@@ -15,6 +17,8 @@
 bg_color = Color(0.721569, 0.784314, 0.815686, 1)
 
 [node name="BattleOptions" type="Node2D"]
+script = ExtResource( "1_2mxln" )
+TxtBattleNameNode = NodePath("UiLayer/Panel/ControlStage/MarginContainer/GridContainer/TxtBattleName")
 
 [node name="AnimatedPanel" type="Panel" parent="."]
 offset_left = 162.0
@@ -107,21 +111,36 @@ theme_override_constants/margin_bottom = 12
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 435.0
-offset_bottom = 152.0
+offset_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="lblStage" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+[node name="lblName" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
 offset_right = 103.0
 offset_bottom = 32.0
+theme = ExtResource( "4_e5vba" )
+text = "Name"
+
+[node name="TxtBattleName" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "7_bm04m" )]
+offset_left = 107.0
+offset_top = 0.0
+offset_right = 423.0
+offset_bottom = 32.0
+text = "tUnnamed battle"
+
+[node name="lblStage" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+offset_top = 36.0
+offset_right = 103.0
+offset_bottom = 68.0
 theme = ExtResource( "4_e5vba" )
 text = "Stage"
 
 [node name="StageSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
 offset_left = 107.0
+offset_top = 36.0
 offset_right = 423.0
-offset_bottom = 32.0
+offset_bottom = 68.0
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource( "6_xp1nd" )
@@ -149,17 +168,17 @@ button_colour = 4
 visible = false
 
 [node name="lblMode" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 36.0
+offset_top = 72.0
 offset_right = 103.0
-offset_bottom = 68.0
+offset_bottom = 104.0
 theme = ExtResource( "4_e5vba" )
 text = "Mode"
 
 [node name="modeSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
 offset_left = 107.0
-offset_top = 36.0
+offset_top = 72.0
 offset_right = 423.0
-offset_bottom = 68.0
+offset_bottom = 104.0
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource( "6_xp1nd" )
@@ -187,17 +206,17 @@ button_colour = 4
 visible = false
 
 [node name="lblGameType" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 72.0
+offset_top = 108.0
 offset_right = 103.0
-offset_bottom = 104.0
+offset_bottom = 140.0
 theme = ExtResource( "4_e5vba" )
 text = "Gametype"
 
 [node name="OptionButton" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "8_4udtt" )]
 offset_left = 107.0
-offset_top = 72.0
+offset_top = 108.0
 offset_right = 423.0
-offset_bottom = 104.0
+offset_bottom = 140.0
 clip_text = true
 item_count = 5
 popup/item_0/text = "Normal (Most Wins)"
@@ -214,9 +233,9 @@ button_colour = 5
 button_panel_colour = 3
 
 [node name="lblPLayers" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 108.0
+offset_top = 144.0
 offset_right = 103.0
-offset_bottom = 140.0
+offset_bottom = 176.0
 theme = ExtResource( "4_e5vba" )
 text = "Players"
 

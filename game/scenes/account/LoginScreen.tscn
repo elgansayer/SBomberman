@@ -9,14 +9,21 @@
 
 [node name="LoginScreen" type="Node2D"]
 script = ExtResource( "1_84up3" )
-TxtEmailNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer/TextEmails")
-TxtPasswordNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer/EditPassword")
+LblEmailNode = NodePath("Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer/LblEmail")
+TxtEmailNode = NodePath("Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer/TextEmails")
+TxtPasswordNode = NodePath("Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer/EditPassword")
 LoginButtonNode = NodePath("Control/UiLayer/MarginContainerTop/VBoxContainer2/BttnLogin")
 CreateAccountButtonNode = NodePath("Control/UiLayer/MarginContainerTop/VBoxContainer2/BtnNewAccount")
 SubmitButtonNode = NodePath("Control/UiLayer/MarginContainerBottom/VBoxContainer2/BtnSubmit")
-LblErrorNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/LblError")
-LblUsernameNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer/LblUSername")
-TxtUsernameNode = NodePath("Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer/TxtUSername")
+LblErrorNode = NodePath("AcceptDialog/LblError")
+LblUsernameNode = NodePath("Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer/LblUSername")
+TxtUsernameNode = NodePath("Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer/TxtUSername")
+
+[node name="Control2" type="Control" parent="."]
+offset_left = 65.0
+offset_top = 70.0
+offset_right = 708.0
+offset_bottom = 522.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 796.0
@@ -44,11 +51,11 @@ offset_top = 33.0
 offset_right = 609.0
 offset_bottom = 417.0
 
-[node name="ControlStage" type="Control" parent="Control/UiLayer/Panel"]
+[node name="ControlLogin" type="Control" parent="Control/UiLayer/Panel"]
 offset_right = 447.0
 offset_bottom = 384.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/UiLayer/Panel/ControlStage"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/UiLayer/Panel/ControlLogin"]
 offset_left = -1.0
 offset_right = 447.0
 offset_bottom = 164.0
@@ -57,26 +64,26 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="GridContainer" type="GridContainer" parent="Control/UiLayer/Panel/ControlStage/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer"]
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 436.0
 offset_bottom = 152.0
 
-[node name="GridContainer" type="GridContainer" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer"]
 offset_right = 424.0
-offset_bottom = 107.0
+offset_bottom = 140.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="LblEmail" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer"]
+[node name="LblUSername" type="Label" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer"]
 offset_right = 105.0
 offset_bottom = 32.0
 theme = ExtResource( "3_kkc3g" )
-text = "E-Mail"
+text = "Username"
 
-[node name="TextEmails" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+[node name="TxtUSername" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
 offset_left = 109.0
 offset_top = 0.0
 offset_right = 424.0
@@ -84,7 +91,7 @@ offset_bottom = 32.0
 size_flags_horizontal = 3
 max_length = 255
 
-[node name="LblPassword" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer"]
+[node name="LblPassword" type="Label" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer"]
 offset_top = 36.0
 offset_right = 105.0
 offset_bottom = 68.0
@@ -92,35 +99,27 @@ theme = ExtResource( "3_kkc3g" )
 text = "Password
 "
 
-[node name="EditPassword" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+[node name="EditPassword" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
 offset_left = 109.0
 offset_top = 36.0
 offset_right = 424.0
 offset_bottom = 68.0
 secret = true
 
-[node name="LblUSername" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer"]
+[node name="LblEmail" type="Label" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer"]
 offset_top = 72.0
 offset_right = 105.0
 offset_bottom = 104.0
 theme = ExtResource( "3_kkc3g" )
-text = "Username"
+text = "E-Mail"
 
-[node name="TxtUSername" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
+[node name="TextEmails" parent="Control/UiLayer/Panel/ControlLogin/MarginContainer/GridContainer/GridContainer" instance=ExtResource( "4_2c1yp" )]
 offset_left = 109.0
 offset_top = 72.0
 offset_right = 424.0
 offset_bottom = 104.0
 size_flags_horizontal = 3
 max_length = 255
-
-[node name="LblError" type="Label" parent="Control/UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-modulate = Color(1, 0.054902, 0.105882, 1)
-offset_top = 111.0
-offset_right = 424.0
-offset_bottom = 140.0
-theme = ExtResource( "3_kkc3g" )
-max_lines_visible = 11
 
 [node name="MarginContainerTop" type="MarginContainer" parent="Control/UiLayer"]
 offset_left = 33.0
@@ -137,7 +136,7 @@ theme_override_constants/margin_bottom = 4
 offset_left = 4.0
 offset_top = 12.0
 offset_right = 121.0
-offset_bottom = 96.0
+offset_bottom = 110.0
 
 [node name="BttnLogin" parent="Control/UiLayer/MarginContainerTop/VBoxContainer2" instance=ExtResource( "7_k1x4v" )]
 offset_right = 117.0
@@ -150,6 +149,13 @@ offset_top = 34.0
 offset_right = 117.0
 offset_bottom = 64.0
 text = "Create"
+
+[node name="BtnReset" parent="Control/UiLayer/MarginContainerTop/VBoxContainer2" instance=ExtResource( "7_k1x4v" )]
+offset_top = 68.0
+offset_right = 117.0
+offset_bottom = 98.0
+text = "Reset
+"
 
 [node name="MarginContainerBottom" type="MarginContainer" parent="Control/UiLayer"]
 anchor_top = 1.0
@@ -178,5 +184,23 @@ offset_right = 117.0
 offset_bottom = 30.0
 text = "Submit"
 
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = "Login Error"
+size = Vector2i(167, 100)
+unresizable = true
+always_on_top = true
+popup_window = true
+theme = ExtResource( "3_kkc3g" )
+
+[node name="LblError" type="Label" parent="AcceptDialog"]
+modulate = Color(1, 0.054902, 0.105882, 1)
+offset_left = 173.0
+offset_top = 156.0
+offset_right = 597.0
+offset_bottom = 185.0
+theme = ExtResource( "3_kkc3g" )
+max_lines_visible = 11
+
 [connection signal="pressed" from="Control/UiLayer/MarginContainerTop/VBoxContainer2/BttnLogin" to="Control/UiLayer" method="_on_btn_battle_pressed"]
 [connection signal="pressed" from="Control/UiLayer/MarginContainerTop/VBoxContainer2/BtnNewAccount" to="Control/UiLayer" method="_on_btn_rules_pressed"]
+[connection signal="pressed" from="Control/UiLayer/MarginContainerTop/VBoxContainer2/BtnReset" to="Control/UiLayer" method="_on_btn_battle_pressed"]

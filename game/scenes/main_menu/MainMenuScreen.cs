@@ -39,7 +39,7 @@ public partial class MainMenuScreen : Node2D
 
         AccountInfo accountInfo = preferences.LoadAccount();
 
-        bool loggedIn = await network.Login(accountInfo.Email, accountInfo.Password);
+        bool loggedIn = await network.Login(accountInfo.Email, accountInfo.Password, accountInfo.Username, false);
 
         if (!loggedIn)
         {
