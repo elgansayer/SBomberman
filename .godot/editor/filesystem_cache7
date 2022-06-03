@@ -1,8 +1,9 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1654201487
+::res://::1654250494
 icon.png::CompressedTexture2D::5718345262866835836::1640472038::1653686147::1::::<><>::
 match selection bomber background.png::CompressedTexture2D::751910404324113728::1640472038::1654164965::1::::<><>::
 mono_crash.0.0.json::TextFile::-1::1654201463::0::1::::<><>::
+mono_crash.0.1.json::TextFile::-1::1654209101::0::1::::<><>::
 README.md::TextFile::-1::1640472383::0::1::::<><>::
 UI-background.png::CompressedTexture2D::363139420980353073::1640472039::1654164965::1::::<><>::
 ::res://game/::1654170268
@@ -147,11 +148,11 @@ white_flashable.tscn::PackedScene::-1::1654170239::0::1::::<><>::res://game/acto
 main_menu_bg.png::CompressedTexture2D::6852519743577731710::1640472038::1653901805::1::::<><>::
 ::res://game/assets/images/::1653901805
 loading.jpeg::CompressedTexture2D::4146380657576795993::1640472039::1653901805::1::::<><>::
-::res://game/scenes/::1654105037
+::res://game/scenes/::1654206264
 LoadingScreen.tscn::PackedScene::6701149713560316199::1654103958::0::1::::<><>::uid://b0csjv5bwm35n
-Shell.tscn::PackedScene::6473527942360002415::1654103137::0::1::::<><>::res://game/scripts/Shell.cs<>uid://c2qc7r8ntghvb<>uid://c11vtid7cyehc
-::res://game/scenes/account/::1654201460
-LoginScreen.tscn::PackedScene::983820838860744488::1654201460::0::1::::<><>::res://game/scenes/account/scripts/LoginScreen.cs<>uid://dmei0amrjis0a<>uid://bwgpnlrtyd8ea<>uid://c2k6i042qsddq<>uid://3ql0us0sxy8h<>res://ui/component/button.tscn
+Shell.tscn::PackedScene::6473527942360002415::1654206264::0::1::::<><>::res://game/scripts/Shell.cs<>uid://c2qc7r8ntghvb<>uid://c11vtid7cyehc
+::res://game/scenes/account/::1654203705
+LoginScreen.tscn::PackedScene::983820838860744488::1654203705::0::1::::<><>::res://game/scenes/account/scripts/LoginScreen.cs<>uid://dmei0amrjis0a<>uid://bwgpnlrtyd8ea<>uid://c2k6i042qsddq<>uid://3ql0us0sxy8h<>res://ui/component/button.tscn
 ::res://game/scenes/account/assets/::1653848120
 ::res://game/scenes/account/assets/images/::1653901811
 normal.png::CompressedTexture2D::7130371286781191929::1647298512::1653901811::1::::<><>::
@@ -180,14 +181,14 @@ water3.png::CompressedTexture2D::7936929145529355613::1647293447::1653901811::1:
 Train.tscn::PackedScene::8010316085864103306::1654198642::0::1::::<><>::res://game/scenes/account/scripts/train.gd<>uid://dnwt43hcxn4tq<>uid://b30lkp2un2x75<>uid://dlcycfk618670<>uid://c8uaf5mxernp6<>uid://pskvhqt30gxh<>uid://bmk8cdq37w03r<>uid://ct6ou6b4kpubi<>uid://dqgaw2kaoh7vq<>uid://dnkovfg4dox17<>uid://dy61uofv5rctk<>uid://c5anylikuh8bv<>uid://dqou5qs0bultv<>uid://bytlmcpu8qhs7<>uid://dkp0hada1q7of<>uid://c7os66g1rfkwl<>uid://cp4lwqsja6d8
 ::res://game/scenes/account/scripts/::1653932030
 hover_animation.gd::GDScript::-1::1647209841::0::1::::<>Button<>::
-LoginScreen.cs::CSharpScript::-1::1654201387::0::1::::<><>::
+LoginScreen.cs::CSharpScript::-1::1654203495::0::1::::<><>::
 train.gd::GDScript::-1::1653904243::0::1::::<>Node2D<>::
 ui_panel.gd::GDScript::-1::1647483051::0::1::::<>Panel<>::
 ::res://game/scenes/account_options/::1654171111
 AccountOptionsScreen.tscn::PackedScene::7541526630728532287::1654171111::0::1::::<><>::res://game/scenes/battle_options/scripts/animated_panel.gd<>uid://bwgpnlrtyd8ea<>res://game/scenes/battle_options/scripts/ui_tabs.gd<>uid://c2k6i042qsddq<>res://ui/component/button.tscn<>uid://3ql0us0sxy8h<>uid://cgqn5qdlvloj6
-::res://game/scenes/battle_options/::1654201459
+::res://game/scenes/battle_options/::1654206418
 BattleOptionsScreen.cs::CSharpScript::-1::1654194781::0::1::::<><>::
-BattleOptionsScreen.tscn::PackedScene::7541526630728532287::1654201459::0::1::::<><>::res://game/scenes/battle_options/BattleOptionsScreen.cs<>res://game/scenes/battle_options/scripts/animated_panel.gd<>uid://bwgpnlrtyd8ea<>res://game/scenes/battle_options/scripts/ui_tabs.gd<>uid://c2k6i042qsddq<>res://ui/component/button.tscn<>res://ui/scripts/switch_button.gd<>uid://3ql0us0sxy8h<>res://ui/component/pressed_border.tscn<>res://ui/component/option_button.tscn<>res://ui/component/slider_tile.gd<>res://ui/component/time_slider_tile0.gd
+BattleOptionsScreen.tscn::PackedScene::7541526630728532287::1654206418::0::1::::<><>::res://game/scenes/battle_options/BattleOptionsScreen.cs<>res://game/scenes/battle_options/scripts/animated_panel.gd<>uid://bwgpnlrtyd8ea<>res://game/scenes/battle_options/scripts/ui_tabs.gd<>uid://c2k6i042qsddq<>res://ui/component/button.tscn<>res://ui/scripts/switch_button.gd<>uid://3ql0us0sxy8h<>res://ui/component/pressed_border.tscn<>res://ui/component/option_button.tscn<>res://ui/component/slider_tile.gd<>res://ui/component/time_slider_tile0.gd
 ::res://game/scenes/battle_options/assets/::1647697985
 ::res://game/scenes/battle_options/assets/images/::1653901926
 match selection bomb background.png::CompressedTexture2D::8386323077437235780::1647696762::1653901926::1::::<><>::
@@ -198,7 +199,7 @@ animated_panel.gd::GDScript::-1::1648899446::0::1::::<>Panel<>::
 ui_tabs.gd::GDScript::-1::1649196396::0::1::::<>Control<>::
 ::res://game/scenes/main_menu/::1654103957
 MainMenunAnimations.cs::CSharpScript::-1::1654029408::0::1::::<><>::
-MainMenuScreen.cs::CSharpScript::-1::1654101314::0::1::::<><>::
+MainMenuScreen.cs::CSharpScript::-1::1654203556::0::1::::<><>::
 MainMenuScreen.tscn::PackedScene::6652734536791655840::1654103957::0::1::::<><>::res://game/scenes/main_menu/MainMenuScreen.cs<>uid://oatndu3e711m<>uid://dfpf3vdhjeckt<>uid://c4vn874epe3q5<>uid://cex1dxwlu4ksy<>uid://c466e7kjpypi5<>uid://bvtnrf2oyf3u1<>uid://og2c4bxkjdyf<>uid://3fp04htdtwh7<>uid://dhh1v4kicjn6k<>uid://oq6g48gc48m1<>uid://bemhd03ysxjil<>uid://cdy0cw4c758ar<>uid://bstgnmv3fugxd<>uid://buylsuvkj2d7v<>uid://ipvtougdnxtm<>uid://iseh32c0ur8l<>uid://b5okij4ke31ji<>uid://bvstw21o7dxfo<>uid://bmh5am4qh0aj5<>uid://bpadgvkv8m7rj<>uid://b0wwk8qaoekcp<>res://game/scenes/main_menu/MainMenunAnimations.cs<>uid://dm4rmmlu2dgk3<>uid://cc85eusvhx70l<>res://game/scenes/main_menu/btn_groups/button_group.tres<>uid://bhaneoowkv7g<>uid://cr3sa7lhdv85y<>uid://b1a67y6xkipfq<>uid://vidgxsawtunl<>uid://cr2o1obofci5i<>uid://ckf6ka4vs3m5m
 tirraSprite.cs::CSharpScript::-1::1654017339::0::1::::<><>::
 ::res://game/scenes/main_menu/assets/::1653901928
@@ -237,14 +238,15 @@ button_flash.gd::GDScript::-1::1647173985::0::1::::<>Node2D<>::
 gradient.gdshader::Shader::-1::1650481328::0::1::::<><>::
 main_menu.gd::GDScript::-1::1653900858::0::1::::<>Node2D<>::
 menu_animations.gd::GDScript::-1::1653994474::0::1::::<>Node2D<>::
-::res://game/scripts/::1653916821
+::res://game/scripts/::1654203898
+BattleOptions.cs::CSharpScript::-1::1654205504::0::1::::<><>::
 Game.cs::CSharpScript::-1::1653930811::0::1::::<><>::
 LoadingScreen.cs::CSharpScript::-1::1653914549::0::1::::<><>::
 main.gd::GDScript::-1::1653673957::0::1::::<>Node<>::
-Preferences.cs::CSharpScript::-1::1653937108::0::1::::<><>::
+Preferences.cs::CSharpScript::-1::1654202673::0::1::::<><>::
 Shell.cs::CSharpScript::-1::1654103932::0::1::::<><>::
 ::res://game/scripts/network/::1653825728
-Network.cs::CSharpScript::-1::1654196319::0::1::::<><>::
+Network.cs::CSharpScript::-1::1654206410::0::1::::<><>::
 ::res://game/scripts/stage/::1653676454
 SpawnPoint.cs::CSharpScript::-1::1653672920::0::1::::<><>::
 TileMap.cs::CSharpScript::-1::1654193784::0::1::::<><>::
@@ -1213,7 +1215,7 @@ tirra_yellow_small.tres::SpriteFrames::-1::1647722742::0::1::::<><>::res://game/
 ::res://nakama/::1653855350
 docker-compose.yml::TextFile::-1::1653688920::0::1::::<><>::
 ::res://nakama/data/::1653932950
-logfile.log::TextFile::-1::1654196713::0::1::::<><>::
+logfile.log::TextFile::-1::1654209295::0::1::::<><>::
 my-config.yml::TextFile::-1::1653689408::0::1::::<><>::
 ::res://nakama/data/modules/::1653932950
 ::res://nakama/modules/::1653855350
@@ -1262,8 +1264,8 @@ ExpressionPro.otf::FontData::8688149243118382808::1535381282::1653845865::1::::<
 FutilePro.otf::FontData::5517500436260220141::1535378624::1653845865::1::::<><>::
 ::res://ui/fonts/hf-free-complete/matchup-pro-v1.1/::1653845865
 MatchupPro.otf::FontData::7158687937467632067::1535381540::1653845865::1::::<><>::
-::res://ui/fonts/material/::1654101944
-gradient.tres::ShaderMaterial::8062449396225278992::1654101944::0::1::::<><>::uid://bhaneoowkv7g
+::res://ui/fonts/material/::1654203407
+gradient.tres::ShaderMaterial::8062449396225278992::1654203407::0::1::::<><>::uid://bhaneoowkv7g
 ::res://ui/fonts/shaders/::1647121235
 gardient.gdshader::Shader::-1::1647121235::0::1::::<><>::
 ::res://ui/fonts/Weiholmir Standard/::1653845865
@@ -1280,7 +1282,7 @@ number_picker.gd::GDScript::-1::1647798867::0::1::::<>Control<>::
 option_button.gd::GDScript::-1::1648805562::0::1::::<>Button<>::
 pressed_border.gd::GDScript::-1::1648894874::0::1::::<>Node2D<>::
 switch_button.gd::GDScript::-1::1648892560::0::1::::<>GridContainer<>::
-::res://ui/themes/::1654200514
+::res://ui/themes/::1654206338
 button2.tres::StyleBoxFlat::6527709577170926148::1648810026::0::1::::<><>::
 button.tres::StyleBoxFlat::5556465513323281073::1648809941::0::1::::<><>::
-theme.tres::Theme::6690481795412604338::1654200514::0::1::::<><>::uid://ckuyoqsgoa2vx<>uid://ux0l0yeqcmkn
+theme.tres::Theme::6690481795412604338::1654206338::0::1::::<><>::uid://ckuyoqsgoa2vx<>uid://ux0l0yeqcmkn

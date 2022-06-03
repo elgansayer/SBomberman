@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using Nakama.TinyJson;
+using System.Collections;
 
 public class PlayerAccount
 {
@@ -161,7 +162,7 @@ public partial class Network : Node
         return matchmakingTicket;
     }
 
-    public async Task CreateMatch(string matchName = null)
+    public async Task CreateMatch(string matchName)
     {
         if (matchName == null)
         {
@@ -172,7 +173,8 @@ public partial class Network : Node
 
         try
         {
-            IMatch match = await this.socket.CreateMatchAsync();
+            IMatch match = await this.socket.CreateMatchAsync(matchName);
+            
             GD.Print(match);
         }
         catch (ApiResponseException ex)

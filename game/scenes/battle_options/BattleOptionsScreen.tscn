@@ -111,7 +111,7 @@ theme_override_constants/margin_bottom = 12
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 435.0
-offset_bottom = 188.0
+offset_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
@@ -127,16 +127,19 @@ offset_left = 107.0
 offset_top = 0.0
 offset_right = 423.0
 offset_bottom = 32.0
+size_flags_horizontal = 3
 text = "tUnnamed battle"
 
 [node name="lblStage" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+visible = false
 offset_top = 36.0
-offset_right = 103.0
+offset_right = 316.0
 offset_bottom = 68.0
 theme = ExtResource( "4_e5vba" )
 text = "Stage"
 
 [node name="StageSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
+visible = false
 offset_left = 107.0
 offset_top = 36.0
 offset_right = 423.0
@@ -168,17 +171,18 @@ button_colour = 4
 visible = false
 
 [node name="lblMode" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 72.0
+visible = false
+offset_top = 36.0
 offset_right = 103.0
-offset_bottom = 104.0
+offset_bottom = 68.0
 theme = ExtResource( "4_e5vba" )
 text = "Mode"
 
 [node name="modeSwitchGrid" type="GridContainer" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_left = 107.0
-offset_top = 72.0
-offset_right = 423.0
-offset_bottom = 104.0
+visible = false
+offset_top = 36.0
+offset_right = 316.0
+offset_bottom = 68.0
 size_flags_horizontal = 3
 columns = 2
 script = ExtResource( "6_xp1nd" )
@@ -206,17 +210,17 @@ button_colour = 4
 visible = false
 
 [node name="lblGameType" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 108.0
+offset_top = 36.0
 offset_right = 103.0
-offset_bottom = 140.0
+offset_bottom = 68.0
 theme = ExtResource( "4_e5vba" )
 text = "Gametype"
 
 [node name="OptionButton" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer" instance=ExtResource( "8_4udtt" )]
 offset_left = 107.0
-offset_top = 108.0
+offset_top = 36.0
 offset_right = 423.0
-offset_bottom = 140.0
+offset_bottom = 68.0
 clip_text = true
 item_count = 5
 popup/item_0/text = "Normal (Most Wins)"
@@ -233,9 +237,9 @@ button_colour = 5
 button_panel_colour = 3
 
 [node name="lblPLayers" type="Label" parent="UiLayer/Panel/ControlStage/MarginContainer/GridContainer"]
-offset_top = 144.0
+offset_top = 72.0
 offset_right = 103.0
-offset_bottom = 176.0
+offset_bottom = 104.0
 theme = ExtResource( "4_e5vba" )
 text = "Players"
 

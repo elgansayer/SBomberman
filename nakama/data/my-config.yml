@@ -2,7 +2,7 @@ name: nakama-node-1
 data_dir: "./data/"
 
 logger:
-    stdout: false
+    stdout: true
     level: "warn"
     file: "./data/logfile.log"
 
@@ -10,3 +10,8 @@ console:
     port: 7351
     username: "elgan"
     password: "password"
+
+matchmaker:
+    max_tickets: 2
+    interval_sec: 15
+    max_intervals: 3
