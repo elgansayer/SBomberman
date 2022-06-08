@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 [Serializable]
 public enum GameType
 {
+    Unknown,
     NormalMostWins,
     BestScoreKillsAndWins,
     GoldBomber,
@@ -19,11 +20,12 @@ public class BattleOptions
     public string BattleName;
     public GameType GameType;
     public int MaxPlayers;
+    public int MinPlayers;
     public int NumBattles;
     public int Time;
     public bool SpawnShuffle;
     public bool Devil;
     public bool MadBomber;
-
     public int[] Stages;
+    public int[] CurrentStageIndex;    
 }

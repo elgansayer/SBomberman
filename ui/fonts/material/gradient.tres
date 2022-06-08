@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bhaneoowkv7g" path="res://ui/fonts/gradient.png" id="2_vnbx6"]
 
-[sub_resource type="Shader" id="Shader_itm1j"]
+[sub_resource type="Shader" id="Shader_ep5jb"]
 code = "shader_type canvas_item;
 
 uniform sampler2D gradient; // is a variable that holds a texture 
@@ -25,6 +25,6 @@ void fragment(){
 }"
 
 [resource]
-shader = SubResource( "Shader_itm1j" )
+shader = SubResource( "Shader_ep5jb" )
 shader_param/gradient = ExtResource( "2_vnbx6" )
 shader_param/white_value = 0.0

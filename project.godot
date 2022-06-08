@@ -22,9 +22,8 @@ config/features=PackedStringArray("4.0", "C#")
 [autoload]
 
 Game="*res://game/scripts/Game.cs"
-Network="*res://game/scripts/network/Network.cs"
 Preferences="*res://game/scripts/Preferences.cs"
-LoadingScreen="*res://game/scenes/LoadingScreen.tscn"
+NakamaNetwork="*res://game/scripts/network/NakamaNetwork.cs"
 
 [config]
 

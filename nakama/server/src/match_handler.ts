@@ -28,8 +28,9 @@ let matchJoinAttempt: nkruntime.MatchJoinAttemptFunction = function (context: nk
 
 let matchJoin: nkruntime.MatchJoinFunction = function (context: nkruntime.Context, logger: nkruntime.Logger, nakama: nkruntime.Nakama, dispatcher: nkruntime.MatchDispatcher, tick: number, state: nkruntime.MatchState, presences: nkruntime.Presence[]) {
     let gameState = state as GameState;
-    if (gameState.scene != Scene.Lobby)
+    if (gameState.scene != Scene.Lobby) {
         return { state: gameState };
+    }
 
     let presencesOnMatch: nkruntime.Presence[] = [];
     gameState.players.forEach(player => { if (player != undefined) presencesOnMatch.push(player.presence); });

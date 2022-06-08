@@ -43,8 +43,6 @@ public partial class LoginScreen : Node2D
         submitButton.ButtonDown += onSubmitPressedAsync;
 
         this.loadLoginDetails();
-
-        GD.Print(("LoginScreen Ready"));
     }
 
     private void loadLoginDetails()
@@ -90,7 +88,7 @@ public partial class LoginScreen : Node2D
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public async void onSubmitPressedAsync()
-    {        
+    {
         LineEdit emailNode = GetNode<LineEdit>(this.TxtEmailNode);
         LineEdit passwordNode = GetNode<LineEdit>(this.TxtPasswordNode);
         LineEdit usernameNode = GetNode<LineEdit>(this.TxtUsernameNode);
@@ -110,7 +108,7 @@ public partial class LoginScreen : Node2D
             usernameNode.GrabFocus();
             return;
         }
-        
+
         if (password == "")
         {
             passwordNode.GrabFocus();
@@ -127,8 +125,8 @@ public partial class LoginScreen : Node2D
         GD.Print(("Logged in: ", loggedIn));
         if (!loggedIn)
         {
-            Network network = GetNode("/root/Network") as Network;
-            this.SetError(network.LastError);
+            Network.NakamaNetwork nakamaNetwork = GetNode("/root/NakamaNetwork") as Network.NakamaNetwork;
+            this.SetError(nakamaNetwork.LastError);
             return;
         }
 
@@ -136,7 +134,6 @@ public partial class LoginScreen : Node2D
         preferences.SaveAccount(email, username, password);
 
         this.GetParent().RemoveChild(this);
-        GD.Print("float delta " + email + " " + password);
     }
 
     private async Task<bool> CheckLoggedIn(string email, string password, string username, bool createNew)
@@ -145,7 +142,7 @@ public partial class LoginScreen : Node2D
         Game game = GetNode("/root/Game") as Game;
         game.ShowLoadingScreen();
 
-        Network network = GetNode("/root/Network") as Network;
+        Network.NakamaNetwork network = GetNode("/root/NakamaNetwork") as Network.NakamaNetwork;
 
         if (network == null)
         {

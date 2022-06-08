@@ -10,8 +10,7 @@ public partial class MainMenuScreen : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GD.Print(("MainMenuScreen Ready"));
-        CallDeferred("MainCheckLoggedIn");
+        CallDeferred(nameof(this.MainCheckLoggedIn));
     }
 
     // private async Task<bool> MainCheckLoggedIn()
@@ -27,7 +26,7 @@ public partial class MainMenuScreen : Node2D
 
         Game game = GetNode("/root/Game") as Game;
         Preferences preferences = GetNode("/root/Preferences") as Preferences;
-        Network network = GetNode("/root/Network") as Network;
+        Network.NakamaNetwork network = GetNode("/root/NakamaNetwork") as Network.NakamaNetwork;
 
         game.ShowLoadingScreen();
 
@@ -88,7 +87,7 @@ public partial class MainMenuScreen : Node2D
         _game.ShowLoadingScreen();
 
         this.GetParent().RemoveChild(this);
-    }    
+    }
 
     void _on_btn_quick_match_pressed()
     {
@@ -96,12 +95,12 @@ public partial class MainMenuScreen : Node2D
         _game.ShowLoadingScreen();
 
         this.GetParent().RemoveChild(this);
-    }     
+    }
 
     void _on_btn_back_pressed()
     {
         GetNode<Control>("UILayer/MainMenu").Visible = true;
         GetNode<Control>("UILayer/BattleMenu").Visible = false;
-    }       
+    }
 }
 

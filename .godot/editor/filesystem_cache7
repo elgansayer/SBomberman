@@ -1,9 +1,11 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1654250494
+::res://::1654711158
+export_presets.cfg::TextFile::-1::1654279425::0::1::::<><>::
 icon.png::CompressedTexture2D::5718345262866835836::1640472038::1653686147::1::::<><>::
 match selection bomber background.png::CompressedTexture2D::751910404324113728::1640472038::1654164965::1::::<><>::
 mono_crash.0.0.json::TextFile::-1::1654201463::0::1::::<><>::
 mono_crash.0.1.json::TextFile::-1::1654209101::0::1::::<><>::
+mono_crash.0.2.json::TextFile::-1::1654425585::0::1::::<><>::
 README.md::TextFile::-1::1640472383::0::1::::<><>::
 UI-background.png::CompressedTexture2D::363139420980353073::1640472039::1654164965::1::::<><>::
 ::res://game/::1654170268
@@ -148,9 +150,9 @@ white_flashable.tscn::PackedScene::-1::1654170239::0::1::::<><>::res://game/acto
 main_menu_bg.png::CompressedTexture2D::6852519743577731710::1640472038::1653901805::1::::<><>::
 ::res://game/assets/images/::1653901805
 loading.jpeg::CompressedTexture2D::4146380657576795993::1640472039::1653901805::1::::<><>::
-::res://game/scenes/::1654206264
+::res://game/scenes/::1654448623
 LoadingScreen.tscn::PackedScene::6701149713560316199::1654103958::0::1::::<><>::uid://b0csjv5bwm35n
-Shell.tscn::PackedScene::6473527942360002415::1654206264::0::1::::<><>::res://game/scripts/Shell.cs<>uid://c2qc7r8ntghvb<>uid://c11vtid7cyehc
+Shell.tscn::PackedScene::6473527942360002415::1654448623::0::1::::<><>::res://game/scripts/Shell.cs<>uid://c2qc7r8ntghvb<>uid://c11vtid7cyehc
 ::res://game/scenes/account/::1654203705
 LoginScreen.tscn::PackedScene::983820838860744488::1654203705::0::1::::<><>::res://game/scenes/account/scripts/LoginScreen.cs<>uid://dmei0amrjis0a<>uid://bwgpnlrtyd8ea<>uid://c2k6i042qsddq<>uid://3ql0us0sxy8h<>res://ui/component/button.tscn
 ::res://game/scenes/account/assets/::1653848120
@@ -181,13 +183,13 @@ water3.png::CompressedTexture2D::7936929145529355613::1647293447::1653901811::1:
 Train.tscn::PackedScene::8010316085864103306::1654198642::0::1::::<><>::res://game/scenes/account/scripts/train.gd<>uid://dnwt43hcxn4tq<>uid://b30lkp2un2x75<>uid://dlcycfk618670<>uid://c8uaf5mxernp6<>uid://pskvhqt30gxh<>uid://bmk8cdq37w03r<>uid://ct6ou6b4kpubi<>uid://dqgaw2kaoh7vq<>uid://dnkovfg4dox17<>uid://dy61uofv5rctk<>uid://c5anylikuh8bv<>uid://dqou5qs0bultv<>uid://bytlmcpu8qhs7<>uid://dkp0hada1q7of<>uid://c7os66g1rfkwl<>uid://cp4lwqsja6d8
 ::res://game/scenes/account/scripts/::1653932030
 hover_animation.gd::GDScript::-1::1647209841::0::1::::<>Button<>::
-LoginScreen.cs::CSharpScript::-1::1654203495::0::1::::<><>::
+LoginScreen.cs::CSharpScript::-1::1654379125::0::1::::<><>::
 train.gd::GDScript::-1::1653904243::0::1::::<>Node2D<>::
 ui_panel.gd::GDScript::-1::1647483051::0::1::::<>Panel<>::
 ::res://game/scenes/account_options/::1654171111
 AccountOptionsScreen.tscn::PackedScene::7541526630728532287::1654171111::0::1::::<><>::res://game/scenes/battle_options/scripts/animated_panel.gd<>uid://bwgpnlrtyd8ea<>res://game/scenes/battle_options/scripts/ui_tabs.gd<>uid://c2k6i042qsddq<>res://ui/component/button.tscn<>uid://3ql0us0sxy8h<>uid://cgqn5qdlvloj6
 ::res://game/scenes/battle_options/::1654206418
-BattleOptionsScreen.cs::CSharpScript::-1::1654194781::0::1::::<><>::
+BattleOptionsScreen.cs::CSharpScript::-1::1654379199::0::1::::<><>::
 BattleOptionsScreen.tscn::PackedScene::7541526630728532287::1654206418::0::1::::<><>::res://game/scenes/battle_options/BattleOptionsScreen.cs<>res://game/scenes/battle_options/scripts/animated_panel.gd<>uid://bwgpnlrtyd8ea<>res://game/scenes/battle_options/scripts/ui_tabs.gd<>uid://c2k6i042qsddq<>res://ui/component/button.tscn<>res://ui/scripts/switch_button.gd<>uid://3ql0us0sxy8h<>res://ui/component/pressed_border.tscn<>res://ui/component/option_button.tscn<>res://ui/component/slider_tile.gd<>res://ui/component/time_slider_tile0.gd
 ::res://game/scenes/battle_options/assets/::1647697985
 ::res://game/scenes/battle_options/assets/images/::1653901926
@@ -198,8 +200,8 @@ tiling_background_bomb.png::CompressedTexture2D::8386323077437235780::1647696762
 animated_panel.gd::GDScript::-1::1648899446::0::1::::<>Panel<>::
 ui_tabs.gd::GDScript::-1::1649196396::0::1::::<>Control<>::
 ::res://game/scenes/main_menu/::1654103957
-MainMenunAnimations.cs::CSharpScript::-1::1654029408::0::1::::<><>::
-MainMenuScreen.cs::CSharpScript::-1::1654203556::0::1::::<><>::
+MainMenunAnimations.cs::CSharpScript::-1::1654454834::0::1::::<><>::
+MainMenuScreen.cs::CSharpScript::-1::1654546321::0::1::::<><>::
 MainMenuScreen.tscn::PackedScene::6652734536791655840::1654103957::0::1::::<><>::res://game/scenes/main_menu/MainMenuScreen.cs<>uid://oatndu3e711m<>uid://dfpf3vdhjeckt<>uid://c4vn874epe3q5<>uid://cex1dxwlu4ksy<>uid://c466e7kjpypi5<>uid://bvtnrf2oyf3u1<>uid://og2c4bxkjdyf<>uid://3fp04htdtwh7<>uid://dhh1v4kicjn6k<>uid://oq6g48gc48m1<>uid://bemhd03ysxjil<>uid://cdy0cw4c758ar<>uid://bstgnmv3fugxd<>uid://buylsuvkj2d7v<>uid://ipvtougdnxtm<>uid://iseh32c0ur8l<>uid://b5okij4ke31ji<>uid://bvstw21o7dxfo<>uid://bmh5am4qh0aj5<>uid://bpadgvkv8m7rj<>uid://b0wwk8qaoekcp<>res://game/scenes/main_menu/MainMenunAnimations.cs<>uid://dm4rmmlu2dgk3<>uid://cc85eusvhx70l<>res://game/scenes/main_menu/btn_groups/button_group.tres<>uid://bhaneoowkv7g<>uid://cr3sa7lhdv85y<>uid://b1a67y6xkipfq<>uid://vidgxsawtunl<>uid://cr2o1obofci5i<>uid://ckf6ka4vs3m5m
 tirraSprite.cs::CSharpScript::-1::1654017339::0::1::::<><>::
 ::res://game/scenes/main_menu/assets/::1653901928
@@ -238,15 +240,22 @@ button_flash.gd::GDScript::-1::1647173985::0::1::::<>Node2D<>::
 gradient.gdshader::Shader::-1::1650481328::0::1::::<><>::
 main_menu.gd::GDScript::-1::1653900858::0::1::::<>Node2D<>::
 menu_animations.gd::GDScript::-1::1653994474::0::1::::<>Node2D<>::
-::res://game/scripts/::1654203898
-BattleOptions.cs::CSharpScript::-1::1654205504::0::1::::<><>::
-Game.cs::CSharpScript::-1::1653930811::0::1::::<><>::
-LoadingScreen.cs::CSharpScript::-1::1653914549::0::1::::<><>::
+::res://game/scripts/::1654702304
+BattleOptions.cs::CSharpScript::-1::1654707681::0::1::::<><>::
+BattleType.cs::CSharpScript::-1::1654709544::0::1::::<><>::
+Game.cs::CSharpScript::-1::1654346535::0::1::::<><>::
+LoadingScreen.cs::CSharpScript::-1::1654340478::0::1::::<><>::
 main.gd::GDScript::-1::1653673957::0::1::::<>Node<>::
 Preferences.cs::CSharpScript::-1::1654202673::0::1::::<><>::
-Shell.cs::CSharpScript::-1::1654103932::0::1::::<><>::
-::res://game/scripts/network/::1653825728
-Network.cs::CSharpScript::-1::1654206410::0::1::::<><>::
+Shell.cs::CSharpScript::-1::1654711137::0::1::::<><>::
+::res://game/scripts/network/::1654710880
+Client.cs::CSharpScript::-1::1654710855::0::1::::<><>::
+ClientServerHandler.cs::CSharpScript::-1::1654709545::0::1::::<><>::
+ClientSetup.cs::CSharpScript::-1::1654710952::0::1::::<><>::
+NakamaNetwork.cs::CSharpScript::-1::1654705041::0::1::::<><>::
+PeerInfo.cs::CSharpScript::-1::1654706497::0::1::::<><>::
+PlayerAccount.cs::CSharpScript::-1::1654378326::0::1::::<><>::
+Server.cs::CSharpScript::-1::1654710880::0::1::::<><>::
 ::res://game/scripts/stage/::1653676454
 SpawnPoint.cs::CSharpScript::-1::1653672920::0::1::::<><>::
 TileMap.cs::CSharpScript::-1::1654193784::0::1::::<><>::
@@ -267,7 +276,7 @@ block.png::CompressedTexture2D::5305707431273900487::1640472038::1654170269::1::
 block1.png::CompressedTexture2D::7457043399971469484::1653660330::1654170269::1::::<><>::
 rock.png::CompressedTexture2D::6556792172864230356::1653655858::1654170269::1::::<><>::
 spawnpoint.png::CompressedTexture2D::7672142796072261523::1653657105::1654170269::1::::<><>::
-::res://game/tirra/::1644787819
+::res://game/tirra/::1654281160
 ::res://game/tirra/animations/::1653855123
 explode.tres::Animation::-1::1644797394::0::1::::<><>::
 idle.tres::Animation::-1::1645204665::0::1::::<><>::
@@ -1175,27 +1184,6 @@ tirra_pink_small.tscn::PackedScene::-1::1647722742::0::1::::<><>::res://game/tir
 ::res://game/tirra/scenes/yellow/::1647722742
 tirra_yellow_medium.tscn::PackedScene::-1::1647722742::0::1::::<><>::res://game/tirra/scenes/tirra_base_medium.tscn<>res://game/tirra/assets/yellow/middle/effects/horizontal.png<>res://game/tirra/tres/yellow/tirra_yellow_medium.tres<>res://game/tirra/assets/yellow/middle/effects/vertical.png<>res://game/tirra/scripts/yellow/tirra_yellow.gd<>res://game/tirra/animations/yellow/medium/action_down.tres<>res://game/tirra/animations/yellow/medium/action_up.tres<>res://game/tirra/animations/yellow/medium/action_left.tres<>res://game/tirra/animations/yellow/medium/load.tres<>res://game/tirra/animations/yellow/medium/action_right.tres
 tirra_yellow_small.tscn::PackedScene::-1::1647722742::0::1::::<><>::res://game/tirra/scenes/tirra_base_small.tscn<>res://game/tirra/animations/yellow/small/action_down.tres<>res://game/tirra/scripts/yellow/tirra_yellow.gd<>res://game/tirra/animations/yellow/small/action_right.tres<>res://game/tirra/animations/yellow/small/action_up.tres<>res://game/tirra/animations/yellow/small/action_left.tres<>res://game/tirra/tres/yellow/tirra_yellow_small.tres<>res://game/tirra/assets/yellow/small/effects/bu-horzontal.png<>res://game/tirra/assets/yellow/small/effects/bu-vertical.png
-::res://game/tirra/scripts/::1650666801
-tirra.gd::GDScript::-1::1650565551::0::1::::<>Area2D<>::
-tirra_animator.gd::GDScript::-1::1650666801::0::1::::<>Node2D<>::
-::res://game/tirra/scripts/blue/::1650565541
-blue_big.gd::GDScript::-1::1650564237::0::1::::<>Area2D<>::
-blue_medium.gd::GDScript::-1::1650564237::0::1::::<>Area2D<>::
-tirra_blue.gd::GDScript::-1::1650565541::0::1::::<>Area2D<>::
-::res://game/tirra/scripts/green/::1650668723
-back-tirra_green_animator.gd::GDScript::-1::1650668163::0::1::::<><>::
-big_animator.gd::GDScript::-1::1650564237::0::1::::<>Node2D<>::
-big_mover.gd::GDScript::-1::1644764145::0::1::::<><>::
-green_animator.gd::GDScript::-1::1650667200::0::1::::<>Node2D<>::
-green_big.gd::GDScript::-1::1650564237::0::1::::<>Area2D<>::
-green_medium.gd::GDScript::-1::1650564237::0::1::::<><>::
-medium_animator.gd::GDScript::-1::1650668723::0::1::::<>Node2D<>::
-medium_mover.gd::GDScript::-1::1644764145::0::1::::<><>::
-tirra_green.gd::GDScript::-1::1650667190::0::1::::<>Area2D<>::
-::res://game/tirra/scripts/pink/::1650667351
-tirra_pink.gd::GDScript::-1::1650667351::0::1::::<>Area2D<>::
-::res://game/tirra/scripts/yellow/::1644951886
-tirra_yellow.gd::GDScript::-1::1650564237::0::1::::<>Area2D<>::
 ::res://game/tirra/tres/::1643662114
 ::res://game/tirra/tres/blue/::1647722742
 blue_big.tres::SpriteFrames::-1::1647722742::0::1::::<><>::res://game/tirra/assets/blue/big/right/3-158.png<>res://game/tirra/assets/blue/big/idle/2.png<>res://game/tirra/assets/blue/big/left/3-160.png<>res://game/tirra/assets/blue/big/down/3-157.png<>res://game/tirra/assets/blue/big/explode/3-216.png<>res://game/tirra/assets/blue/big/left/3-158.png<>res://game/tirra/assets/blue/big/down/3-155.png<>res://game/tirra/assets/blue/big/up/3-150.png<>res://game/tirra/assets/blue/big/down/3-156.png<>res://game/tirra/assets/blue/big/left/3-159.png<>res://game/tirra/assets/blue/big/explode/3-206.png<>res://game/tirra/assets/blue/big/explode/3-205.png<>res://game/tirra/assets/blue/big/right/3-160.png<>res://game/tirra/assets/blue/big/up/3-151.png<>res://game/tirra/assets/blue/big/idle/3.png<>res://game/tirra/assets/blue/big/explode/3-208.png<>res://game/tirra/assets/blue/big/right/3-159.png<>res://game/tirra/assets/blue/big/idle/1.png<>res://game/tirra/assets/blue/big/up/3-149.png<>res://game/tirra/assets/blue/big/explode/3-207.png
@@ -1212,13 +1200,346 @@ pink_small.tres::SpriteFrames::-1::1647722742::0::1::::<><>::res://game/tirra/as
 ::res://game/tirra/tres/yellow/::1647722742
 tirra_yellow_medium.tres::SpriteFrames::-1::1647722742::0::1::::<><>::res://game/tirra/assets/yellow/middle/action_left/action_left_1.png<>res://game/tirra/assets/yellow/middle/action_right/action_right_2.png<>res://game/tirra/assets/yellow/middle/action_up/action_up_2.png<>res://game/tirra/assets/yellow/middle/exploded/exploded_3.png<>res://game/tirra/assets/yellow/middle/celebrate/celebrate_4.png<>res://game/tirra/assets/yellow/middle/action_left/action_left_2.png<>res://game/tirra/assets/yellow/middle/idle/idle_1.png<>res://game/tirra/assets/yellow/middle/walking_down/walking_down_2.png<>res://game/tirra/assets/yellow/middle/walking_right/walking_right_1.png<>res://game/tirra/assets/yellow/middle/walking_left/walking_left_2.png<>res://game/tirra/assets/yellow/middle/walking_up/walkingu_up_1.png<>res://game/tirra/assets/yellow/middle/celebrate/celebrate_3.png<>res://game/tirra/assets/yellow/middle/idle/idle_4.png<>res://game/tirra/assets/yellow/middle/action_right/action_right_1.png<>res://game/tirra/assets/yellow/middle/idle/idle_2.png<>res://game/tirra/assets/yellow/middle/exploded/exploded_4.png<>res://game/tirra/assets/yellow/middle/standing_left/standing_left.png<>res://game/tirra/assets/yellow/middle/action_down/action_down_1.png<>res://game/tirra/assets/yellow/middle/walking_up/walkingu_up_2.png<>res://game/tirra/assets/yellow/middle/exploded/exploded_1.png<>res://game/tirra/assets/yellow/middle/celebrate/celebrate_2.png<>res://game/tirra/assets/yellow/middle/action_up/action_up_1.png<>res://game/tirra/assets/yellow/middle/standing_right/standing_right.png<>res://game/tirra/assets/yellow/middle/idle/idle_5.png<>res://game/tirra/assets/yellow/middle/walking_right/walking_right_2.png<>res://game/tirra/assets/yellow/middle/exploded/exploded_2.png<>res://game/tirra/assets/yellow/middle/standing_up/standing_up.png<>res://game/tirra/assets/yellow/middle/walking_down/walking_down_1.png<>res://game/tirra/assets/yellow/middle/action_down/action_down_2.png<>res://game/tirra/assets/yellow/middle/walking_left/walking_left_1.png<>res://game/tirra/assets/yellow/middle/idle/idle_3.png<>res://game/tirra/assets/yellow/middle/celebrate/celebrate_1.png<>res://game/tirra/assets/yellow/middle/standing_down/standing_down.png
 tirra_yellow_small.tres::SpriteFrames::-1::1647722742::0::1::::<><>::res://game/tirra/assets/yellow/small/standing_up/standing_up.png<>res://game/tirra/assets/yellow/small/celebrate/celebrate_3.png<>res://game/tirra/assets/yellow/small/walking_right/walking_right_1.png<>res://game/tirra/assets/yellow/small/standing_down/standing_down.png<>res://game/tirra/assets/yellow/small/exploded/exploded_4.png<>res://game/tirra/assets/yellow/small/idle/idle_5.png<>res://game/tirra/assets/yellow/small/exploded/exploded_1.png<>res://game/tirra/assets/yellow/small/walking_right/walking_right_2.png<>res://game/tirra/assets/yellow/small/celebrate/celebrate_1.png<>res://game/tirra/assets/yellow/small/idle/idle_2.png<>res://game/tirra/assets/yellow/small/walking_left/walking_left_2.png<>res://game/tirra/assets/yellow/small/idle/idle_3.png<>res://game/tirra/assets/yellow/small/idle/idle_4.png<>res://game/tirra/assets/yellow/small/celebrate/celebrate_2.png<>res://game/tirra/assets/yellow/small/walking_up/yellow_walk_up_1.png<>res://game/tirra/assets/yellow/small/walking_down/walking_down_2.png<>res://game/tirra/assets/yellow/small/exploded/exploded_2.png<>res://game/tirra/assets/yellow/small/exploded/exploded_3.png<>res://game/tirra/assets/yellow/small/standing_right/standing_right.png<>res://game/tirra/assets/yellow/small/idle/idle_1.png<>res://game/tirra/assets/yellow/small/walking_down/walking_down_1.png<>res://game/tirra/assets/yellow/small/walking_left/walking_left_1.png<>res://game/tirra/assets/yellow/small/walking_up/yellow_walk_up_2.png<>res://game/tirra/assets/yellow/small/standing_left/standing_left.png<>res://game/tirra/assets/yellow/small/action_down/action_down_1.png<>res://game/tirra/assets/yellow/small/action_down/action_down_2.png<>res://game/tirra/assets/yellow/small/action_left/action_left_1.png<>res://game/tirra/assets/yellow/small/action_left/action_left_2.png<>res://game/tirra/assets/yellow/small/action_right/action_right_2.png<>res://game/tirra/assets/yellow/small/action_right/action_right_1.png<>res://game/tirra/assets/yellow/small/action_up/action_up_1.png<>res://game/tirra/assets/yellow/small/action_up/action_up_2.png
-::res://nakama/::1653855350
+::res://nakama/::1654252361
 docker-compose.yml::TextFile::-1::1653688920::0::1::::<><>::
-::res://nakama/data/::1653932950
-logfile.log::TextFile::-1::1654209295::0::1::::<><>::
-my-config.yml::TextFile::-1::1653689408::0::1::::<><>::
-::res://nakama/data/modules/::1653932950
-::res://nakama/modules/::1653855350
+::res://nakama/data/::1654260868
+logfile.log::TextFile::-1::1654699335::0::1::::<><>::
+my-config.yml::TextFile::-1::1654260863::0::1::::<><>::
+::res://nakama/data/modules/::1654263295
+::res://nakama/server/::1654263269
+docker-compose.yml::TextFile::-1::1644173738::0::1::::<><>::
+package-lock.json::TextFile::-1::1654262832::0::1::::<><>::
+package.json::TextFile::-1::1654262832::0::1::::<><>::
+tsconfig.json::TextFile::-1::1654263288::0::1::::<><>::
+::res://nakama/server/New Folder/::1654261992
+package-lock.json::TextFile::-1::1654261796::0::1::::<><>::
+package.json::TextFile::-1::1654253734::0::1::::<><>::
+tsconfig.json::TextFile::-1::1654261975::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/::1654261796
+CHANGELOG.md::TextFile::-1::1654261796::0::1::::<><>::
+package.json::TextFile::-1::1654261796::0::1::::<><>::
+README.md::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/nakama-runtime/api/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/rtapi/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/runtime/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/::1654261796
+modules.txt::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/protoc-gen-go/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/compiler/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/compiler/protogen/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/prototext/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/protowire/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/descfmt/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/descopts/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/detrand/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/defval/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/messageset/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/tag/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/text/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/errors/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/filedesc/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/filetype/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/flags/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/genid/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/impl/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/order/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/pragma/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/set/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/strs/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/version/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/proto/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protodesc/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protoreflect/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protoregistry/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/protoiface/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/protoimpl/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/descriptorpb/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/timestamppb/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/wrapperspb/::1654261796
+::res://nakama/server/New Folder/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/pluginpb/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/::1654261796
+AUTHORS.md::TextFile::-1::1654261796::0::1::::<><>::
+CODE_OF_CONDUCT.md::TextFile::-1::1654261796::0::1::::<><>::
+CopyrightNotice.txt::TextFile::-1::1654261796::0::1::::<><>::
+LICENSE.txt::TextFile::-1::1654261796::0::1::::<><>::
+package.json::TextFile::-1::1654261796::0::1::::<><>::
+README.md::TextFile::-1::1654261796::0::1::::<><>::
+SECURITY.md::TextFile::-1::1654261796::0::1::::<><>::
+ThirdPartyNoticeText.txt::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/bin/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/lib/::1654261796
+README.md::TextFile::-1::1654261796::0::1::::<><>::
+typesMap.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/cs/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/de/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/es/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/fr/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/it/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/ja/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/ko/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/pl/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/pt-br/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/ru/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/tr/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/zh-cn/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/lib/zh-tw/::1654261796
+diagnosticMessages.generated.json::TextFile::-1::1654261796::0::1::::<><>::
+::res://nakama/server/New Folder/node_modules/typescript/loc/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHS/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHS/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHS/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHS/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHS/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHT/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHT/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHT/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHT/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CHT/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CSY/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CSY/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CSY/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CSY/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/CSY/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/DEU/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/DEU/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/DEU/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/DEU/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/DEU/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ESN/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ESN/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ESN/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ESN/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ESN/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/FRA/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/FRA/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/FRA/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/FRA/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/FRA/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ITA/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ITA/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ITA/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ITA/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/ITA/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/JPN/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/JPN/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/JPN/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/JPN/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/JPN/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/KOR/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/KOR/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/KOR/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/KOR/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/KOR/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PLK/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PLK/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PLK/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PLK/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PLK/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PTB/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PTB/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PTB/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PTB/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/PTB/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/RUS/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/RUS/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/RUS/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/RUS/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/RUS/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/TRK/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/TRK/Targets/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/TRK/TypeScriptDebugEngine/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/TRK/TypeScriptLanguageService/::1654261796
+::res://nakama/server/New Folder/node_modules/typescript/loc/lcl/TRK/TypeScriptTasks/::1654261796
+::res://nakama/server/New Folder/src/::1644173738
+::res://nakama/server/node_modules/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/::1654262832
+CHANGELOG.md::TextFile::-1::1654262832::0::1::::<><>::
+package.json::TextFile::-1::1654262832::0::1::::<><>::
+README.md::TextFile::-1::1654262832::0::1::::<><>::
+::res://nakama/server/node_modules/nakama-runtime/api/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/rtapi/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/runtime/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/::1654262832
+modules.txt::TextFile::-1::1654262832::0::1::::<><>::
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/protoc-gen-go/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/compiler/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/compiler/protogen/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/prototext/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/encoding/protowire/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/descfmt/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/descopts/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/detrand/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/defval/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/messageset/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/tag/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/encoding/text/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/errors/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/filedesc/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/filetype/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/flags/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/genid/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/impl/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/order/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/pragma/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/set/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/strs/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/internal/version/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/proto/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protodesc/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protoreflect/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/reflect/protoregistry/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/protoiface/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/runtime/protoimpl/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/descriptorpb/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/timestamppb/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/known/wrapperspb/::1654262832
+::res://nakama/server/node_modules/nakama-runtime/vendor/google.golang.org/protobuf/types/pluginpb/::1654262832
+::res://nakama/server/node_modules/typescript/::1654262704
+AUTHORS.md::TextFile::-1::1654262704::0::1::::<><>::
+CODE_OF_CONDUCT.md::TextFile::-1::1654262704::0::1::::<><>::
+CopyrightNotice.txt::TextFile::-1::1654262704::0::1::::<><>::
+LICENSE.txt::TextFile::-1::1654262704::0::1::::<><>::
+package.json::TextFile::-1::1654262704::0::1::::<><>::
+README.md::TextFile::-1::1654262704::0::1::::<><>::
+SECURITY.md::TextFile::-1::1654262704::0::1::::<><>::
+ThirdPartyNoticeText.txt::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/bin/::1654262704
+::res://nakama/server/node_modules/typescript/lib/::1654262704
+README.md::TextFile::-1::1654262704::0::1::::<><>::
+typesMap.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/cs/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/de/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/es/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/fr/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/it/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/ja/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/ko/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/pl/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/pt-br/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/ru/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/tr/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/zh-cn/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/lib/zh-tw/::1654262704
+diagnosticMessages.generated.json::TextFile::-1::1654262704::0::1::::<><>::
+::res://nakama/server/node_modules/typescript/loc/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHS/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHS/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHS/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHS/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHS/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHT/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHT/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHT/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHT/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CHT/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CSY/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CSY/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CSY/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CSY/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/CSY/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/DEU/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/DEU/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/DEU/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/DEU/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/DEU/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ESN/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ESN/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ESN/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ESN/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ESN/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/FRA/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/FRA/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/FRA/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/FRA/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/FRA/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ITA/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ITA/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ITA/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ITA/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/ITA/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/JPN/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/JPN/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/JPN/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/JPN/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/JPN/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/KOR/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/KOR/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/KOR/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/KOR/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/KOR/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PLK/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PLK/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PLK/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PLK/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PLK/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PTB/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PTB/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PTB/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PTB/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/PTB/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/RUS/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/RUS/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/RUS/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/RUS/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/RUS/TypeScriptTasks/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/TRK/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/TRK/Targets/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/TRK/TypeScriptDebugEngine/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/TRK/TypeScriptLanguageService/::1654262704
+::res://nakama/server/node_modules/typescript/loc/lcl/TRK/TypeScriptTasks/::1654262704
+::res://nakama/server/src/::1644173738
+::res://obj/::1654533943
+::res://server/::1654280421
+Server.tscn::PackedScene::966643770646118005::1654280421::0::1::::<><>::
 ::res://ui/::1647794600
 ::res://ui/assets/::1653845865
 outline.png::CompressedTexture2D::4923148105106132385::1647199064::1653845865::1::::<><>::
@@ -1264,8 +1585,8 @@ ExpressionPro.otf::FontData::8688149243118382808::1535381282::1653845865::1::::<
 FutilePro.otf::FontData::5517500436260220141::1535378624::1653845865::1::::<><>::
 ::res://ui/fonts/hf-free-complete/matchup-pro-v1.1/::1653845865
 MatchupPro.otf::FontData::7158687937467632067::1535381540::1653845865::1::::<><>::
-::res://ui/fonts/material/::1654203407
-gradient.tres::ShaderMaterial::8062449396225278992::1654203407::0::1::::<><>::uid://bhaneoowkv7g
+::res://ui/fonts/material/::1654441324
+gradient.tres::ShaderMaterial::8062449396225278992::1654441324::0::1::::<><>::uid://bhaneoowkv7g
 ::res://ui/fonts/shaders/::1647121235
 gardient.gdshader::Shader::-1::1647121235::0::1::::<><>::
 ::res://ui/fonts/Weiholmir Standard/::1653845865
@@ -1282,7 +1603,7 @@ number_picker.gd::GDScript::-1::1647798867::0::1::::<>Control<>::
 option_button.gd::GDScript::-1::1648805562::0::1::::<>Button<>::
 pressed_border.gd::GDScript::-1::1648894874::0::1::::<>Node2D<>::
 switch_button.gd::GDScript::-1::1648892560::0::1::::<>GridContainer<>::
-::res://ui/themes/::1654206338
+::res://ui/themes/::1654441324
 button2.tres::StyleBoxFlat::6527709577170926148::1648810026::0::1::::<><>::
 button.tres::StyleBoxFlat::5556465513323281073::1648809941::0::1::::<><>::
-theme.tres::Theme::6690481795412604338::1654206338::0::1::::<><>::uid://ckuyoqsgoa2vx<>uid://ux0l0yeqcmkn
+theme.tres::Theme::6690481795412604338::1654441324::0::1::::<><>::uid://ckuyoqsgoa2vx<>uid://ux0l0yeqcmkn

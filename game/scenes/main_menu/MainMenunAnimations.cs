@@ -19,8 +19,7 @@ public partial class MainMenunAnimations : Node2D
     }
 
     private void SwapPosition()
-    {
-        GD.Print("SwapPosition");
+    { 
         if (this.TirraSpriteNode == null)
         {
             return;
@@ -54,7 +53,7 @@ public partial class MainMenunAnimations : Node2D
         timer.WaitTime = 0.5f;
         timer.OneShot = true;
 
-        Callable callable = new Callable(this, "FlashButtonOff");
+        Callable callable = new Callable(this, nameof(this.FlashButtonOff));
 
         Godot.Collections.Array binds =  new Godot.Collections.Array(){ button };
         timer.Connect("timeout", callable , binds );
