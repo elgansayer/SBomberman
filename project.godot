@@ -24,6 +24,7 @@ config/features=PackedStringArray("4.0", "C#")
 Game="*res://game/scripts/Game.cs"
 Preferences="*res://game/scripts/Preferences.cs"
 NakamaNetwork="*res://game/scripts/network/NakamaNetwork.cs"
+NetworkMessenger="*res://game/scripts/network/NetworkMessenger.cs"
 
 [config]
 

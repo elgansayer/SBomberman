@@ -1,6 +1,2 @@
-res://game/scenes/Shell.tscn
-res://game/scenes/ClientSetup.tscn
 res://ui/themes/theme.tres
 res://ui/fonts/material/gradient.tres
-res://game/scenes/Client.tscn
-res://server/Server.tscn
