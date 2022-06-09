@@ -42,9 +42,8 @@ public partial class ClientSetup : Node2D
         PackedScene scene = this.NetworkClientScene;
         Network.Client networkClient = scene.Instantiate() as Network.Client;
         GetTree().Root.AddChild(networkClient);
-
-        ClientServerHandler clientServerHandler = GetNode("/root/ClientServerHandler") as ClientServerHandler;
-        networkClient.Setup(clientServerHandler);
+        
+        networkClient.Setup();
     }
 
     private void CreateOffsetCamera()

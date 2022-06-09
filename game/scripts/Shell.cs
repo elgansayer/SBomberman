@@ -11,7 +11,7 @@ public partial class Shell : Node2D
 
     protected bool IsServer = false;
 
-    public ClientServerHandler clientServerHandler { get; private set; }
+    // public NetworkMessenger networkMessenger { get; private set; }
 
     [Export]
     public PackedScene ClientGameSetupScene { get; set; }
@@ -30,8 +30,8 @@ public partial class Shell : Node2D
         GD.Print(what: ("InitNetwork"));
         this.IsServer = this.getServerCmdlineArgs();
 
-        this.clientServerHandler = new Network.ClientServerHandler();
-        GetTree().Root.AddChild(clientServerHandler);
+        // var networkMessenger = as Network.NetworkMessenger();
+        // GetTree().Root.AddChild(networkMessenger);
 
         if (this.IsServer)
         {
@@ -69,7 +69,7 @@ public partial class Shell : Node2D
         PackedScene scene = this.ServerScene;
         Network.Server isntance = scene.Instantiate() as Network.Server;
         GetTree().Root.AddChild(isntance);
-        isntance.Setup(this.clientServerHandler);
+        isntance.Setup();
     }
 
     private void InitClient()

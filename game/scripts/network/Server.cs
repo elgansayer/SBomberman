@@ -7,7 +7,15 @@ namespace Network
 {
     public partial class Server : Node2D
     {
-        public ClientServerHandler clientServerHandler { get; private set; }
+        public NetworkMessenger networkMessenger { get; private set; }
+
+        public ENetMultiplayerPeer eNet { get; private set; }
+        protected int playerCount = 0;
+        protected int port = 4333;
+        protected int maxPlayers = 10;
+        public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
+        protected string host = "localhost";
+
 
         public override void _Ready()
         {
@@ -34,29 +42,34 @@ namespace Network
             return battleOptions;
         }
 
-        public void Setup(ClientServerHandler clientServerHandler)
+        public void Setup()
         {
-            GD.Print("Game Server Setup");
-            this.clientServerHandler = clientServerHandler;
+            this.eNet = new ENetMultiplayerPeer();
 
-            this.clientServerHandler.eNet.PeerConnected += this.OnPeerConnected;
-            this.clientServerHandler.eNet.PeerDisconnected += this.onPeerDisconnected;
+            GD.Print("Game Server Setup");
+            this.networkMessenger = GetNode("/root/NetworkMessenger") as NetworkMessenger;
+
+            this.eNet.PeerConnected += this.OnPeerConnected;
+            this.eNet.PeerDisconnected += this.onPeerDisconnected;
 
             this.CreateServer();
-            this.AddGameType();
+            // this.AddGameType();
         }
 
         private void CreateServer()
         {
             GD.Print("Game Server Setup CreateServer");
             BattleOptions battleOptions = GetBattleOptions();
-            this.clientServerHandler.CreateServer();
+
+            this.eNet.CreateServer(this.port, this.maxPlayers);
+            GD.Print("Game Server created server");
+            Multiplayer.MultiplayerPeer = this.eNet;
         }
 
         private void AddGameType()
         {
             // Add a game type
-            BattleTypeNormal battleType = new BattleTypeNormal(this.clientServerHandler);
+            BattleTypeNormal battleType = new BattleTypeNormal(this);
             GetTree().Root.AddChild(battleType);
             battleType.init();
         }
@@ -75,7 +88,7 @@ namespace Network
             }
 
             GD.Print("Game Server OnPeerConnected");
-            this.clientServerHandler.SendRpc("OnPeerConnected");
+            this.networkMessenger.SendRpc("OnPeerConnected");
 
             // Sent the game info to the player
             // RpcId(id, nameof(this.clientGotBattleOptions), this.battleOptions);

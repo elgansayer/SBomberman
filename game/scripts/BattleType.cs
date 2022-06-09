@@ -18,14 +18,14 @@ public abstract partial class BattleType : Node2D
     protected BattleState State = BattleState.NotStarted;
     protected GameType GameType = GameType.Unknown;
     protected BattleOptions BattleOptions;
-    private Network.ClientServerHandler server;
+    private Network.Server server;
 
 
-    public BattleType(Network.ClientServerHandler server)
+    public BattleType(Network.Server server)
     {
         this.server = server;
-        this.server.OnPeerReady += this.OnPeerReady;
-        this.server.OnPeerLeft += this.OnPeerLeft;
+        // this.server.OnPeerReady += this.OnPeerReady;
+        // this.server.OnPeerLeft += this.OnPeerLeft;
     }
 
     public override void _Ready()
@@ -143,7 +143,7 @@ public partial class BattleTypeNormal : BattleType
         this.Name = "BattleTypeNormal";
     }
 
-    public BattleTypeNormal(ClientServerHandler server) : base(server)
+    public BattleTypeNormal(Network.Server server) : base(server)
     {
         this.GameType = GameType.NormalMostWins;
     }

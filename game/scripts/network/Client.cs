@@ -6,7 +6,15 @@ using Network;
 namespace Network
 {
     public partial class Client : Node2D
-    {        
+    {
+        public ENetMultiplayerPeer eNet { get; private set; }
+        protected int playerCount = 0;
+        protected int port = 4333;
+        protected int maxPlayers = 10;
+        public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
+        protected string host = "localhost";
+
+
         public override void _Ready()
         {
             this.Name = "Client";
@@ -14,20 +22,30 @@ namespace Network
 
         private PeerInfo clientPlayerInfo;
 
-        public ClientServerHandler clientServerHandler { get; private set; }
+        public NetworkMessenger networkMessenger { get; private set; }
 
-        public void Setup(ClientServerHandler clientServerHandler)
+        public void Setup()
         {
-            this.clientServerHandler = clientServerHandler;
+            this.networkMessenger = GetNode("/root/NetworkMessenger") as NetworkMessenger;
 
-            this.clientServerHandler.eNet.ServerDisconnected += this.onServerDisconnected;
-            this.clientServerHandler.eNet.ConnectionSucceeded += this.onConnectionSucceeded;
-            this.clientServerHandler.eNet.ConnectionFailed += this.onConnectionFailed;
+            this.eNet = new ENetMultiplayerPeer();
+
+            this.eNet.ServerDisconnected += this.onServerDisconnected;
+            this.eNet.ConnectionSucceeded += this.onConnectionSucceeded;
+            this.eNet.ConnectionFailed += this.onConnectionFailed;
 
             // this.clientServerHandler.RegisterRpc("OnPeerConnected", this.OnPeerConnected);
 
             // Actually connect to the server
-            this.clientServerHandler.CreateClient();
+            this.CreateClient();
+        }
+
+        public void CreateClient()
+        {
+            this.eNet.CreateClient(this.host, this.port);
+            GD.Print("Game Client created Client");
+            Multiplayer.MultiplayerPeer = null;
+            Multiplayer.MultiplayerPeer = this.eNet;
         }
 
         public void OnPeerConnected(Godot.Object[] args)
