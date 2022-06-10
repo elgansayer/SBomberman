@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ruk5u8j4w7k"]
+
+[ext_resource type="Script" path="res://game/scripts/network/Tournement.cs" id="1_txc4a"]
+[ext_resource type="PackedScene" uid="uid://ecranwnaliej" path="res://game/stages/Stage1.tscn" id="2_3ocij"]
+
+[node name="Tournement" type="Node2D"]
+script = ExtResource( "1_txc4a" )
+StageScenes = [ExtResource( "2_3ocij" )]

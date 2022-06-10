@@ -12,6 +12,7 @@ namespace Network
     {
         None,
         Connecting,
+        Registered,
         Ready,
     }
 

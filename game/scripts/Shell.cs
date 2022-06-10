@@ -66,10 +66,12 @@ public partial class Shell : Node2D
     private void InitServer()
     {
         GD.Print("Game InitServer");
-        PackedScene scene = this.ServerScene;
-        Network.Server isntance = scene.Instantiate() as Network.Server;
-        GetTree().Root.AddChild(isntance);
-        isntance.Setup();
+        Network.Server server = GetNode("/root/Server") as Server;
+
+        // PackedScene scene = this.ServerScene;
+        // Network.Server isntance = scene.Instantiate() as Network.Server;
+        // GetTree().Root.AddChild(isntance);
+        server.Host();
     }
 
     private void InitClient()

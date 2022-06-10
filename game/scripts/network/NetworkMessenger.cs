@@ -87,13 +87,13 @@ namespace Network
         public void SendRpc(string methodName, params Godot.Object[] args)
         {
             GD.Print("Game Server SendRpc " + methodName);
-            Rpc(nameof(this.RecievedRpc));
+            this.Rpc(nameof(this.RecievedRpc));
         }
 
         public void SendRpcId(int id, string methodName, params Godot.Object[] args)
         {
             // var ss = [...args];
-            RpcId(id, nameof(RecievedRpc), methodName, args);
+            RpcId(id, nameof(this.RecievedRpc), methodName, args);
         }
 
         public void RegisterRpc(string methodName, RPCDelegate rpc)
@@ -117,7 +117,7 @@ namespace Network
         }
 
         [AnyPeer]
-        public void clientGotBattleOptions(BattleOptions battleOptions)
+        public void clientGotBattleOptions(ServerOptions battleOptions)
         {
             GD.Print("Game Client clientGotBattleOptions");
             GD.Print("battleOptions ", battleOptions);

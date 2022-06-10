@@ -1,12 +1,17 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using Nakama;
 using Network;
+using Newtonsoft.Json;
 
 namespace Network
 {
     public partial class Client : Node2D
     {
+        [Export] private PackedScene TournementScene;
+
+        public Server server { get; private set; }
         public ENetMultiplayerPeer eNet { get; private set; }
         protected int playerCount = 0;
         protected int port = 4333;
@@ -22,17 +27,21 @@ namespace Network
 
         private PeerInfo clientPlayerInfo;
 
-        public NetworkMessenger networkMessenger { get; private set; }
+        // public NetworkMessenger networkMessenger { get; private set; }
 
-        public void Setup()
+        public void Connect()
         {
-            this.networkMessenger = GetNode("/root/NetworkMessenger") as NetworkMessenger;
+            // this.networkMessenger = GetNode("/root/NetworkMessenger") as NetworkMessenger;
+            this.server = GetNode("/root/Server") as Network.Server;
 
             this.eNet = new ENetMultiplayerPeer();
 
             this.eNet.ServerDisconnected += this.onServerDisconnected;
             this.eNet.ConnectionSucceeded += this.onConnectionSucceeded;
             this.eNet.ConnectionFailed += this.onConnectionFailed;
+
+            this.eNet.PeerConnected += this.OnPeerConnected;
+            this.eNet.PeerDisconnected += this.onPeerDisconnected;
 
             // this.clientServerHandler.RegisterRpc("OnPeerConnected", this.OnPeerConnected);
 
@@ -44,8 +53,19 @@ namespace Network
         {
             this.eNet.CreateClient(this.host, this.port);
             GD.Print("Game Client created Client");
-            Multiplayer.MultiplayerPeer = null;
             Multiplayer.MultiplayerPeer = this.eNet;
+            GD.Print(what: "Multiplayer.GetUniqueId " + Multiplayer.GetUniqueId());
+        }
+
+        public void onPeerDisconnected(int id)
+        {
+            GD.Print("Game CLIENT onPeerDisconnected");
+            // this.UnregisterPlayer(id);
+        }
+
+        public void OnPeerConnected(int id)
+        {
+            GD.Print("Game CLIENT OnPeerConnected");
         }
 
         public void OnPeerConnected(Godot.Object[] args)
@@ -72,14 +92,13 @@ namespace Network
             try
             {
                 PeerInfo peerInfo = this.GetPlayerInfo();
+                String peerInfoJson = JsonConvert.SerializeObject(peerInfo);
 
-                // Rpc(nameof(this.RegisterPlayer), peerInfo.ToDictionary());
-
-                // GD.Print("Game Server RegisterPlayer sent");
+                this.server.Rpc(nameof(this.server.RegisterPeer), peerInfoJson);
             }
             catch (System.Exception ex)
             {
-                GD.Print("Failed to parse peer data");
+                GD.Print("Failed to send peer data");
                 GD.Print("Error: " + ex.Message);
             }
         }
@@ -92,13 +111,10 @@ namespace Network
             GD.Print("Game Server OnConnectionFailed");
         }
 
-
         protected PeerInfo GetPlayerInfo()
         {
             Network.NakamaNetwork nakamaNetwork = GetNode("/root/NakamaNetwork") as Network.NakamaNetwork;
             IApiAccount account = nakamaNetwork.Account;
-
-            GD.Print("Account ", account);
 
             this.clientPlayerInfo = new PeerInfo()
             {
@@ -112,43 +128,35 @@ namespace Network
             return this.clientPlayerInfo;
         }
 
+        internal void RpcId(int id, object registerPlayerCompleted, ServerOptions battleOptions)
+        {
+            throw new NotImplementedException();
+        }
 
-        // void UnregisterPlayer(int id)
-        // {
-        //     PeerList.Remove(id);
-        //     GD.Print("Removed peer with id: " + id);
+        [Authority]
+        [AnyPeer]
+        public void RegisterPeerCompleted(String serverOptionsJson)
+        {
+            GD.Print("Game Server serverOptionsJson0: " + serverOptionsJson);
+            ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
 
-        //     OnPeerLeftHandler handler = this.OnPeerLeft;
-        //     handler?.Invoke();
-        // }
+            GD.Print("CLIENT Register Player Completed");
+            GD.Print("serverOptions ", serverOptions);
+            this.AddTournement(serverOptions);
+            this.server.RpcId(1, nameof(this.server.RegisterPeerReady));
+        }
 
-        // [Authority]
-        // [AnyPeer]
-        // void RegisterPlayer(Godot.Collections.Dictionary<string, object> peerData)
-        // {
-        //     GD.Print(peerData);
-        //     // Godot.AnyPeerAttribute
-        //     GD.Print("Game Server RegisterPlayer");
-        //     int id = Multiplayer.GetRemoteSenderId();
-
-        //     try
-        //     {
-        //         PeerInfo peerInfo = PeerInfo.FromDictionary(peerData);
-        //         peerInfo.State = PeerInfoState.Connecting;
-
-        //         PeerList[id] = peerInfo;
-        //         GD.Print(what: "Added peer with id: " + id);
-
-        //         // OnPeerReadyHandler handler = this.OnPeerReady;
-        //         // handler?.Invoke();
-        //     }
-        //     catch (System.Exception ex)
-        //     {
-
-        //         GD.Print("Failed to parse peer data");
-        //         GD.Print("Error: " + ex.Message);
-        //     }
-        // }
-
+        private void AddTournement(ServerOptions serverOptions)
+        {
+            // Add a game type
+            // Tournement tournement = new Tournement(serverOptions);
+            // GetTree().Root.AddChild(tournement);
+            // tournement.init();
+            PackedScene tournementScene = this.TournementScene;
+            Tournement tournementNode = tournementScene.Instantiate() as Tournement;
+            GetTree().Root.AddChild(tournementNode);
+            tournementNode.ServerOptions = serverOptions;
+            tournementNode.initClient();
+        }
     }
 }

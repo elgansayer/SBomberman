@@ -7,7 +7,7 @@ using Network;
 public partial class ClientSetup : Node2D
 {
     [Export] private PackedScene MainMenuScene;
-    [Export] private PackedScene NetworkClientScene;
+    // [Export] private PackedScene NetworkClientScene;
     [Export] private PackedScene LoadingScene;
 
     public override void _Ready()
@@ -20,16 +20,14 @@ public partial class ClientSetup : Node2D
         // Create a game wide camera 
         this.CreateOffsetCamera();
 
-        this.AddLoadingScreen();
-
         GD.Print("NakamaNetwork nakamaNetwork");
 
         // // Set the scene to loading
         // // this.LoadMainMenu();
         // // Temp just add and try to create a client
         PackedScene scene = this.MainMenuScene;
-        // Game _game = GetNode("/root/Game") as Game;
-        GetTree().Root.AddChild(scene.Instantiate());
+        Game game = GetNode("/root/Game") as Game;
+        game.ChangeScene(scene.Instantiate());
 
         Network.NakamaNetwork nakamaNetwork = GetNode("/root/NakamaNetwork") as Network.NakamaNetwork;
         nakamaNetwork.OnPeerConnected += this.AddNetworkClient;
@@ -39,11 +37,12 @@ public partial class ClientSetup : Node2D
     {
         GD.Print("AddNetworkCLient actually ");
 
-        PackedScene scene = this.NetworkClientScene;
-        Network.Client networkClient = scene.Instantiate() as Network.Client;
-        GetTree().Root.AddChild(networkClient);
+        Game game = GetNode("/root/Game") as Game;
+        game.ShowLoadingScreen();
         
-        networkClient.Setup();
+        GD.Print("Game InitServer");
+        Network.Client Client = GetNode("/root/Client") as Network.Client;
+        Client.Connect();
     }
 
     private void CreateOffsetCamera()
@@ -55,12 +54,5 @@ public partial class ClientSetup : Node2D
         camera.Name = "OffsetCamera";
         camera.Current = true;
         GetTree().Root.AddChild(camera);
-    }
-
-    void AddLoadingScreen()
-    {
-        PackedScene scene = GD.Load<PackedScene>(this.LoadingScene.ResourcePath);
-        Node instance = scene.Instantiate();
-        GetTree().Root.AddChild(instance);
     }
 }

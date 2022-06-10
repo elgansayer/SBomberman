@@ -1,5 +1,7 @@
-res://game/scripts/network
 res://game/scenes
+res://server
+res://game/scripts/network
+res://game/stages
 res://game/scripts
 res://ui/themes
 res://game/scenes/main_menu

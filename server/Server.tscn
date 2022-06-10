@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://n1iqm2yp3n6t"]
+[gd_scene load_steps=3 format=3 uid="uid://n1iqm2yp3n6t"]
 
 [ext_resource type="Script" path="res://game/scripts/network/Server.cs" id="1_e7xmn"]
+[ext_resource type="PackedScene" uid="uid://8ruk5u8j4w7k" path="res://game/scenes/Tournement.tscn" id="2_ss402"]
 
 [node name="Server" type="Node2D"]
 script = ExtResource( "1_e7xmn" )
+TournementScene = ExtResource( "2_ss402" )

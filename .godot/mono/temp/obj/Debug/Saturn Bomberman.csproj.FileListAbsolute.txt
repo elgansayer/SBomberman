@@ -18,3 +18,4 @@
 /home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Security.Cryptography.Primitives.dll
 /home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/System.Threading.dll
 /home/elgan/games/SBomberman/.godot/mono/temp/obj/Debug/Saturn Bomberman.csproj.CopyComplete
+/home/elgan/games/SBomberman/.godot/mono/temp/bin/Debug/Newtonsoft.Json.dll

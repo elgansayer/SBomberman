@@ -25,6 +25,9 @@ Game="*res://game/scripts/Game.cs"
 Preferences="*res://game/scripts/Preferences.cs"
 NakamaNetwork="*res://game/scripts/network/NakamaNetwork.cs"
 NetworkMessenger="*res://game/scripts/network/NetworkMessenger.cs"
+Client="*res://game/scenes/Client.tscn"
+Server="*res://server/Server.tscn"
+LoadingScreen="*res://game/scenes/LoadingScreen.tscn"
 
 [config]
 
