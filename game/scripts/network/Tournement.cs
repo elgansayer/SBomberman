@@ -1,6 +1,8 @@
 using Godot;
 using Network;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Network
 {
@@ -15,97 +17,150 @@ namespace Network
         Finished
     }
 
+    [Serializable]
+    public class TournementData
+    {
+        public int StageIndex { get; private set; }
+        public GameType GameType { get; private set; }
+        public int MaxPlayers { get; private set; }
+        public int MinPlayers { get; private set; }
+        public int NumBattles { get; private set; }
+        public int Time { get; private set; }
+        public bool SpawnShuffle { get; private set; }
+        public bool Devil { get; private set; }
+        public bool MadBomber { get; private set; }
+        public int[] Stages { get; private set; }
+
+        public TournementData(int stageIndex, GameType gameType, int maxPlayers, int minPlayers, int numBattles, int time, bool spawnShuffle, bool devil, bool madBomber, int[] stages)
+        {
+            this.StageIndex = stageIndex;
+
+            this.GameType = gameType;
+            this.MaxPlayers = maxPlayers;
+            this.MinPlayers = minPlayers;
+            this.NumBattles = numBattles;
+            this.Time = time;
+            this.SpawnShuffle = spawnShuffle;
+            this.Devil = devil;
+            this.MadBomber = madBomber;
+            this.Stages = stages;
+        }
+    }
+
     public partial class Tournement : Node2D
     {
-        [Export] private PackedScene[] StageScenes;
-
         protected TournementState State = TournementState.NotStarted;
-        protected GameType GameType = GameType.Unknown;
         public ServerOptions ServerOptions;
         public TournementState state;
         private Network.Server server;
+        private Network.Client client;
 
-        private int[] stages;
-        private int currentStageIndex;
+        public Battle Battle { get; private set; }
 
-        public virtual void LoadBattlesOnClients()
-        {
-            GD.Print(what: "Tournement LoadBattlesOnClients");
-            // int nextBatttle = this.GetNextBattleStage();
-            // if (nextBatttle == -1)
-            // {
-            //     this.Finish();
-            //     return;
-            // }
+        public int StageIndex { get; set; } = 0;
 
-            int nextBatttle = this.currentStageIndex;
-            this.State = TournementState.Initializing;
-
-            this.Rpc(nameof(this.LoadBattle), nextBatttle);
-            this.LoadBattle(nextBatttle);
-        }
-
-        public virtual int GetNextBattleStage()
-        {
-
-            int nextStageIndex = this.currentStageIndex + 1;
-
-            if (this.stages.Length <= nextStageIndex)
-            {
-                // We are done
-                return -1;
-            }
-
-            return nextStageIndex;
-        }
-
-        [Authority]
-        [AnyPeer]
-        public virtual void LoadBattle(int stageId)
-        {
-            // Upset the current stage
-            this.currentStageIndex = stageId;
-
-            GD.Print(what: "Tournement LoadBattle " + stageId.ToString());
-
-            // Load the stage
-            GD.Print("Loading stage: " + stageId);
-            PackedScene stage1 = this.StageScenes[0];
-
-            Game game = GetNode("/root/Game") as Game;        
-            game.ChangeScene(node: stage1.Instantiate());
-
-            this.State = TournementState.InLobby;
-
-            // Hide the loading scrfeens
-            game.HideLoadingScreen();
-        }
+        [Export] private PackedScene battleScene;
 
         public override void _Ready()
         {
+            this.Name = "Tournement";
             this.State = TournementState.NotStarted;
         }
 
-        public virtual void initClient()
+        // public virtual int GetNextBattleStage()
+        // {
+        //     int nextStageIndex = this.stageIndex + 1;
+
+        //     if (this.stages.Length <= nextStageIndex)
+        //     {
+        //         // We are done
+        //         return -1;
+        //     }
+
+        //     return nextStageIndex;
+        // }
+
+        [Authority]
+        [AnyPeer]
+        public virtual void ClientLoadBattle(string optionsJson)
         {
-            this.State = TournementState.Initializing;
+            // Create a battle options
+            ClientBattleOptions options = JsonConvert.DeserializeObject<ClientBattleOptions>(optionsJson);
+
+            this.CreateBattle();
+
+            // Upset the current stage            
+            // this.stageIndex = options.StageIndex;
+            // this.battle.Time = options.Time;
+
+            // this.battle.Stage.ExplodableRocks = options.ExplodableRocks;
+
+            this.State = TournementState.InLobby;
         }
 
-        public virtual void initServer()
+        void CreateBattle()
+        {
+            GD.Print("CreateBattle");
+            PackedScene battleScene = this.battleScene;
+            this.Battle = battleScene.Instantiate() as Battle;
+            GetTree().Root.AddChild(this.Battle);
+
+            this.Battle.CreateStage(this.StageIndex);
+        }
+
+        public virtual void Init()
         {
             GD.Print(what: "Tournement initServer");
             this.State = TournementState.Initializing;
 
-            this.server = GetNode("/root/Server") as Network.Server;
-            this.server.OnPeerEntered += this.OnPeerEntered;
-            this.server.OnPeerLeft += this.OnPeerLeft;
+            // Load the battle for the server
+            this.CreateBattle();
 
-            this.LoadBattlesOnClients();
+            // this.stageIndex = this.ServerOptions.StageIndex;
+            // this.battle.Time = this.ServerOptions.Time;
+            // this.battle.CreateStage(this.stageScenes[this.stageIndex]);
+
+            if (Multiplayer.IsServer())
+            {
+                this.server = GetNode("/root/Server") as Network.Server;
+                this.server.OnPeerEntered += this.OnPeerEntered;
+                this.server.OnPeerLeft += this.OnPeerLeft;
+            }
+            else
+            {
+                this.client = GetNode("/root/Client") as Network.Client;
+                this.client.OnPeerEntered += this.OnPeerEntered;
+                this.client.OnPeerLeft += this.OnPeerLeft;
+            }
         }
+
+        // void SendStageToClients()
+        // {
+        //     // Load a battle for each player
+        //     string optionsJson = this.GetStageStateJson();
+        //     this.Rpc(nameof(this.ClientLoadBattle), optionsJson);
+        // }
+
+        // string GetStageStateJson()
+        // {
+        //     // Only done on the server. Creates the rocks
+        //     List<Vector2i> rocks = this.battle.Stage.ExplodableRocks;
+
+        //     // Create a battle options
+        //     ClientBattleOptions options = new ClientBattleOptions()
+        //     {
+        //         GameType = this.ServerOptions.GameType,
+        //         Time = this.battle.Time,
+        //         StageIndex = this.stageIndex,
+        //         ExplodableRocks = rocks
+        //     };
+
+        //     GD.Print(what: "Tournement LoadBattlesOnClients");
+        //     return JsonConvert.SerializeObject(options);
+        // }
 
         public virtual void Finish()
         {
-
             this.State = TournementState.Finished;
         }
 
@@ -114,8 +169,8 @@ namespace Network
             GD.Print(what: "Tournement OnPeerEntered");
             // Peer has entered the server
             // Tell them to load the map
-            int stageIndex = this.ServerOptions.CurrentStageIndex;
-            this.RpcId(peerId, nameof(this.LoadBattle), stageIndex);
+            // string optionsJson = this.GetStageStateJson();
+            // this.Rpc(nameof(this.ClientLoadBattle), optionsJson);
         }
 
         public virtual void OnPeerLeft(int peerId)

@@ -23,7 +23,7 @@ namespace Network
         public delegate void OnPeerLeftHandler(int peerId);
         [Signal] public event OnPeerLeftHandler OnPeerLeft;
         public delegate void OnPeerEnteredHandler(int peerId);
-        [Signal] public event OnPeerEnteredHandler OnPeerEntered;
+        public event OnPeerEnteredHandler OnPeerEntered;
 
         public override void _Ready()
         {
@@ -33,20 +33,18 @@ namespace Network
         private ServerOptions GetServerOptions()
         {
             //Todo: Get battle options from nakama        
-            ServerOptions serverOptions = new ServerOptions()
-            {
-                BattleName = "TestBattle",
-                GameType = GameType.NormalMostWins,
-                MaxPlayers = 4,
-                MinPlayers = 2,
-                NumBattles = 1,
-                Time = 60,
-                SpawnShuffle = true,
-                Devil = true,
-                MadBomber = true,
-                Stages = new int[] { 0 },
-                CurrentStageIndex = 0
-            };
+            ServerOptions serverOptions = new ServerOptions(
+                battleName: "TestBattle",
+                gameType: GameType.NormalMostWins,
+                maxPlayers: 4,
+                minPlayers: 2,
+                numBattles: 1,
+                time: 60,
+                spawnShuffle: true,
+                devil: true,
+                madBomber: true,
+                stages: new int[] { 0 }
+            );
 
             return serverOptions;
         }
@@ -85,10 +83,10 @@ namespace Network
             GD.Print("Game Server Setup AddTournement ", this.TournementScene);
             PackedScene tournementScene = this.TournementScene;
             Node tournementNode = tournementScene.Instantiate();
-            Tournement tournemen = tournementNode as Tournement;
-            GetTree().Root.AddChild(tournemen);
-            tournemen.ServerOptions = serverOptions;
-            tournemen.initServer();
+            Tournement tournement = tournementNode as Tournement;
+            GetTree().Root.AddChild(tournement);
+            tournement.ServerOptions = serverOptions;
+            tournement.Init();
         }
 
         public void onPeerDisconnected(int id)
@@ -139,12 +137,15 @@ namespace Network
                 PeerList[id] = peerInfo;
                 GD.Print(what: "Added peer with id: " + id);
 
+                Tournement tournement = GetTree().Root.GetNode<Tournement>("Tournement") as Tournement;
+                Battle battle = tournement.Battle;
+                
                 // Tell the player the battle options and ask if they are ready
                 ServerOptions serverOptions = GetServerOptions();
-                string json = JsonConvert.SerializeObject(serverOptions);
-                GD.Print(json);
+                string serverOptionsJson = JsonConvert.SerializeObject(serverOptions);
+                GD.Print(serverOptionsJson);
 
-                this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), json);
+                this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournement.StageIndex);
             }
             catch (System.Exception ex)
             {

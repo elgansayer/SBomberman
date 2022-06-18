@@ -2978,3 +2978,338 @@
 {"level":"debug","ts":"2022-06-10T20:19:20.355Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
 {"level":"info","ts":"2022-06-10T20:19:35.224Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46","format":0}
 {"level":"debug","ts":"2022-06-10T20:19:35.224Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"info","ts":"2022-06-10T20:22:11.556Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-10T20:22:11.556Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-10T20:24:28.366Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:24:28.366Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:28.366Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:28.366Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:28.366Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:28.367Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:28.367Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:24:28.367Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"f87ebe8f-e8f9-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:32.127Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:32.128Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:24:32.128Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"025a844d-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:33.692Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:33.692Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a52c26ee-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:35.129Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:24:35.129Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"9c4f5e84-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:36.666Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-10T20:24:36.666Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-10T20:24:38.131Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:24:38.132Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:24:38.132Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2f1d0565-e8fa-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-10T20:52:56.172Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"58d892c9-e8fb-11ec-83d5-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-10T20:52:56.172Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-10T20:52:56.182Z","caller":"main.go:200","msg":"Shutdown started"}
+{"level":"info","ts":"2022-06-10T20:52:56.182Z","caller":"main.go:207","msg":"All authoritative matches stopped"}
+{"level":"info","ts":"2022-06-10T20:52:56.243Z","caller":"main.go:239","msg":"Shutdown complete"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:307","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.password"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:311","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.signing_key"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:315","msg":"WARNING: insecure default parameter value, change this for production!","param":"socket.server_key"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:319","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.encryption_key"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:323","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.refresh_encryption_key"}
+{"level":"warn","ts":"2022-06-14T08:26:12.283Z","caller":"server/config.go:327","msg":"WARNING: insecure default parameter value, change this for production!","param":"runtime.http_key"}
+{"level":"info","ts":"2022-06-14T08:26:12.283Z","caller":"main.go:103","msg":"Nakama starting"}
+{"level":"info","ts":"2022-06-14T08:26:12.283Z","caller":"main.go:104","msg":"Node","name":"nakama1","version":"3.12.0+f5e935d6","runtime":"go1.18.2","cpu":12,"proc":12}
+{"level":"info","ts":"2022-06-14T08:26:12.283Z","caller":"main.go:105","msg":"Data directory","path":"./data/"}
+{"level":"info","ts":"2022-06-14T08:26:12.283Z","caller":"main.go:124","msg":"Database connections","dsns":["postgres:xxxxx@postgres:5432/nakama"]}
+{"level":"debug","ts":"2022-06-14T08:26:12.284Z","caller":"server/db.go:61","msg":"Complete database connection URL","raw_url":"postgres://postgres:localdb@postgres:5432/nakama?sslmode=prefer"}
+{"level":"info","ts":"2022-06-14T08:26:12.287Z","caller":"main.go:130","msg":"Database information","version":"PostgreSQL 12.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 9.2.0) 9.2.0, 64-bit"}
+{"level":"info","ts":"2022-06-14T08:26:12.294Z","caller":"server/leaderboard_rank_cache.go:117","msg":"Initializing leaderboard rank cache"}
+{"level":"debug","ts":"2022-06-14T08:26:12.294Z","caller":"server/leaderboard_rank_cache.go:133","msg":"Caching leaderboard ranks","leaderboard_id":"game_wins"}
+{"level":"info","ts":"2022-06-14T08:26:12.295Z","caller":"server/runtime.go:571","msg":"Initialising runtime","path":"data/modules"}
+{"level":"info","ts":"2022-06-14T08:26:12.295Z","caller":"server/runtime.go:578","msg":"Initialising runtime event queue processor"}
+{"level":"info","ts":"2022-06-14T08:26:12.295Z","caller":"server/runtime.go:580","msg":"Runtime event queue processor started","size":65536,"workers":8}
+{"level":"info","ts":"2022-06-14T08:26:12.296Z","caller":"server/runtime_go.go:2396","msg":"Initialising Go runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-14T08:26:12.296Z","caller":"server/runtime_go.go:2420","msg":"Go runtime modules loaded"}
+{"level":"info","ts":"2022-06-14T08:26:12.297Z","caller":"server/leaderboard_rank_cache.go:240","msg":"Leaderboard rank cache initialization completed successfully","cached":["game_wins"],"skipped":[]}
+{"level":"info","ts":"2022-06-14T08:26:12.297Z","caller":"server/runtime_lua.go:110","msg":"Initialising Lua runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-14T08:26:12.300Z","caller":"server/runtime_lua.go:1116","msg":"Lua runtime modules loaded"}
+{"level":"info","ts":"2022-06-14T08:26:12.301Z","caller":"server/runtime_lua.go:1119","msg":"Allocating minimum Lua runtime pool","count":16}
+{"level":"info","ts":"2022-06-14T08:26:12.301Z","caller":"server/runtime_lua.go:1127","msg":"Allocated minimum Lua runtime pool"}
+{"level":"info","ts":"2022-06-14T08:26:12.301Z","caller":"server/runtime_javascript.go:578","msg":"Initialising JavaScript runtime provider","path":"data/modules","entrypoint":""}
+{"level":"info","ts":"2022-06-14T08:26:12.310Z","caller":"server/runtime_javascript_logger.go:74","msg":"Custom logic loaded."}
+{"level":"info","ts":"2022-06-14T08:26:12.310Z","caller":"server/runtime_javascript.go:1572","msg":"JavaScript runtime modules loaded"}
+{"level":"info","ts":"2022-06-14T08:26:12.310Z","caller":"server/runtime_javascript.go:1575","msg":"Allocating minimum JavaScript runtime pool","count":16}
+{"level":"info","ts":"2022-06-14T08:26:12.334Z","caller":"server/runtime_javascript.go:1583","msg":"Allocated minimum JavaScript runtime pool"}
+{"level":"info","ts":"2022-06-14T08:26:12.334Z","caller":"server/runtime.go:613","msg":"Found runtime modules","count":2,"modules":["index.js","leaderbaord.lua"]}
+{"level":"info","ts":"2022-06-14T08:26:12.334Z","caller":"server/runtime.go:630","msg":"Registered JavaScript runtime RPC function invocation","id":"joinorcreatematchrpc"}
+{"level":"info","ts":"2022-06-14T08:26:12.335Z","caller":"server/leaderboard_scheduler.go:92","msg":"Leaderboard scheduler start"}
+{"level":"info","ts":"2022-06-14T08:26:12.335Z","caller":"server/leaderboard_scheduler.go:279","msg":"Leaderboard scheduler update","end_active":"-1ns","end_active_count":0,"expiry":"-1ns","expiry_count":0}
+{"level":"info","ts":"2022-06-14T08:26:12.335Z","caller":"server/api.go:131","msg":"Starting API server for gRPC requests","port":7349}
+{"level":"info","ts":"2022-06-14T08:26:12.336Z","caller":"server/api.go:265","msg":"Starting API server gateway for HTTP requests","port":7350}
+{"level":"info","ts":"2022-06-14T08:26:12.339Z","caller":"server/console.go:202","msg":"Starting Console server for gRPC requests","port":7348}
+{"level":"info","ts":"2022-06-14T08:26:12.339Z","caller":"server/console.go:296","msg":"Starting Console server gateway for HTTP requests","port":7351}
+{"level":"info","ts":"2022-06-14T08:26:12.459Z","caller":"main.go:184","msg":"Startup done"}
+{"level":"info","ts":"2022-06-14T14:49:00.431Z","caller":"main.go:200","msg":"Shutdown started"}
+{"level":"info","ts":"2022-06-14T14:49:00.443Z","caller":"main.go:207","msg":"All authoritative matches stopped"}
+{"level":"info","ts":"2022-06-14T14:49:00.528Z","caller":"main.go:239","msg":"Shutdown complete"}
+{"level":"warn","ts":"2022-06-17T21:44:56.620Z","caller":"server/config.go:307","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.password"}
+{"level":"warn","ts":"2022-06-17T21:44:56.621Z","caller":"server/config.go:311","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.signing_key"}
+{"level":"warn","ts":"2022-06-17T21:44:56.621Z","caller":"server/config.go:315","msg":"WARNING: insecure default parameter value, change this for production!","param":"socket.server_key"}
+{"level":"warn","ts":"2022-06-17T21:44:56.621Z","caller":"server/config.go:319","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.encryption_key"}
+{"level":"warn","ts":"2022-06-17T21:44:56.621Z","caller":"server/config.go:323","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.refresh_encryption_key"}
+{"level":"warn","ts":"2022-06-17T21:44:56.621Z","caller":"server/config.go:327","msg":"WARNING: insecure default parameter value, change this for production!","param":"runtime.http_key"}
+{"level":"info","ts":"2022-06-17T21:44:56.621Z","caller":"main.go:103","msg":"Nakama starting"}
+{"level":"info","ts":"2022-06-17T21:44:56.621Z","caller":"main.go:104","msg":"Node","name":"nakama1","version":"3.12.0+f5e935d6","runtime":"go1.18.2","cpu":12,"proc":12}
+{"level":"info","ts":"2022-06-17T21:44:56.621Z","caller":"main.go:105","msg":"Data directory","path":"./data/"}
+{"level":"info","ts":"2022-06-17T21:44:56.621Z","caller":"main.go:124","msg":"Database connections","dsns":["postgres:xxxxx@postgres:5432/nakama"]}
+{"level":"debug","ts":"2022-06-17T21:44:56.623Z","caller":"server/db.go:61","msg":"Complete database connection URL","raw_url":"postgres://postgres:localdb@postgres:5432/nakama?sslmode=prefer"}
+{"level":"info","ts":"2022-06-17T21:44:56.627Z","caller":"main.go:130","msg":"Database information","version":"PostgreSQL 12.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 9.2.0) 9.2.0, 64-bit"}
+{"level":"info","ts":"2022-06-17T21:44:56.633Z","caller":"server/leaderboard_rank_cache.go:117","msg":"Initializing leaderboard rank cache"}
+{"level":"debug","ts":"2022-06-17T21:44:56.634Z","caller":"server/leaderboard_rank_cache.go:133","msg":"Caching leaderboard ranks","leaderboard_id":"game_wins"}
+{"level":"info","ts":"2022-06-17T21:44:56.636Z","caller":"server/runtime.go:571","msg":"Initialising runtime","path":"data/modules"}
+{"level":"info","ts":"2022-06-17T21:44:56.636Z","caller":"server/runtime.go:578","msg":"Initialising runtime event queue processor"}
+{"level":"info","ts":"2022-06-17T21:44:56.636Z","caller":"server/runtime.go:580","msg":"Runtime event queue processor started","size":65536,"workers":8}
+{"level":"info","ts":"2022-06-17T21:44:56.637Z","caller":"server/runtime_go.go:2396","msg":"Initialising Go runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-17T21:44:56.637Z","caller":"server/runtime_go.go:2420","msg":"Go runtime modules loaded"}
+{"level":"info","ts":"2022-06-17T21:44:56.638Z","caller":"server/leaderboard_rank_cache.go:240","msg":"Leaderboard rank cache initialization completed successfully","cached":["game_wins"],"skipped":[]}
+{"level":"info","ts":"2022-06-17T21:44:56.637Z","caller":"server/runtime_lua.go:110","msg":"Initialising Lua runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-17T21:44:56.640Z","caller":"server/runtime_lua.go:1116","msg":"Lua runtime modules loaded"}
+{"level":"info","ts":"2022-06-17T21:44:56.640Z","caller":"server/runtime_lua.go:1119","msg":"Allocating minimum Lua runtime pool","count":16}
+{"level":"info","ts":"2022-06-17T21:44:56.641Z","caller":"server/runtime_lua.go:1127","msg":"Allocated minimum Lua runtime pool"}
+{"level":"info","ts":"2022-06-17T21:44:56.641Z","caller":"server/runtime_javascript.go:578","msg":"Initialising JavaScript runtime provider","path":"data/modules","entrypoint":""}
+{"level":"info","ts":"2022-06-17T21:44:56.650Z","caller":"server/runtime_javascript_logger.go:74","msg":"Custom logic loaded."}
+{"level":"info","ts":"2022-06-17T21:44:56.650Z","caller":"server/runtime_javascript.go:1572","msg":"JavaScript runtime modules loaded"}
+{"level":"info","ts":"2022-06-17T21:44:56.650Z","caller":"server/runtime_javascript.go:1575","msg":"Allocating minimum JavaScript runtime pool","count":16}
+{"level":"info","ts":"2022-06-17T21:44:56.679Z","caller":"server/runtime_javascript.go:1583","msg":"Allocated minimum JavaScript runtime pool"}
+{"level":"info","ts":"2022-06-17T21:44:56.679Z","caller":"server/runtime.go:613","msg":"Found runtime modules","count":2,"modules":["index.js","leaderbaord.lua"]}
+{"level":"info","ts":"2022-06-17T21:44:56.679Z","caller":"server/runtime.go:630","msg":"Registered JavaScript runtime RPC function invocation","id":"joinorcreatematchrpc"}
+{"level":"info","ts":"2022-06-17T21:44:56.679Z","caller":"server/leaderboard_scheduler.go:92","msg":"Leaderboard scheduler start"}
+{"level":"info","ts":"2022-06-17T21:44:56.679Z","caller":"server/leaderboard_scheduler.go:279","msg":"Leaderboard scheduler update","end_active":"-1ns","end_active_count":0,"expiry":"-1ns","expiry_count":0}
+{"level":"info","ts":"2022-06-17T21:44:56.680Z","caller":"server/api.go:131","msg":"Starting API server for gRPC requests","port":7349}
+{"level":"info","ts":"2022-06-17T21:44:56.680Z","caller":"server/api.go:265","msg":"Starting API server gateway for HTTP requests","port":7350}
+{"level":"info","ts":"2022-06-17T21:44:56.684Z","caller":"server/console.go:202","msg":"Starting Console server for gRPC requests","port":7348}
+{"level":"info","ts":"2022-06-17T21:44:56.684Z","caller":"server/console.go:296","msg":"Starting Console server gateway for HTTP requests","port":7351}
+{"level":"info","ts":"2022-06-17T21:44:56.817Z","caller":"main.go:184","msg":"Startup done"}
+{"level":"info","ts":"2022-06-17T21:45:05.334Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T21:45:05.335Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"info","ts":"2022-06-17T21:45:19.736Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T21:45:19.736Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T21:45:27.626Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T21:45:27.626Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:27.626Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:27.627Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:27.627Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:27.627Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T21:45:27.627Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T21:45:27.627Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c86eaf7c-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T21:45:28.718Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T21:45:28.718Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T21:45:28.719Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"bfd911af-ee86-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:10.981Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T22:33:10.982Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"info","ts":"2022-06-17T22:33:18.989Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T22:33:18.989Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:24.989Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T22:33:24.989Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T22:33:24.990Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"7c99c1b7-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T22:33:26.591Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T22:33:26.591Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:26.592Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:26.592Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T22:33:26.592Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T22:33:26.592Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:26.592Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:33:26.593Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"77d3eb5f-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:34:21.848Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T22:34:21.848Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T22:51:23.733Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T22:51:23.733Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T22:51:23.734Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"a2113a98-ee8d-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:38.963Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T23:09:38.963Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T23:09:41.425Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T23:09:41.425Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:41.425Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:41.426Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:41.426Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T23:09:41.426Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T23:09:41.426Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:41.426Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"8ff77128-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:09:49.381Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T23:09:49.381Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T23:10:55.203Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T23:10:55.203Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"962d1abf-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:10:56.677Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T23:10:56.677Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T23:11:10.917Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T23:11:10.918Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T23:11:10.918Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"be49a045-ee92-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:13:50.927Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-17T23:13:50.927Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-17T23:13:54.673Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-17T23:13:54.674Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-17T23:13:54.674Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2625fd7b-ee93-11ec-b629-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-17T23:25:31.744Z","caller":"main.go:200","msg":"Shutdown started"}
+{"level":"info","ts":"2022-06-17T23:25:31.745Z","caller":"main.go:207","msg":"All authoritative matches stopped"}
+{"level":"info","ts":"2022-06-17T23:25:31.804Z","caller":"main.go:239","msg":"Shutdown complete"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:307","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.password"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:311","msg":"WARNING: insecure default parameter value, change this for production!","param":"console.signing_key"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:315","msg":"WARNING: insecure default parameter value, change this for production!","param":"socket.server_key"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:319","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.encryption_key"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:323","msg":"WARNING: insecure default parameter value, change this for production!","param":"session.refresh_encryption_key"}
+{"level":"warn","ts":"2022-06-18T14:02:26.017Z","caller":"server/config.go:327","msg":"WARNING: insecure default parameter value, change this for production!","param":"runtime.http_key"}
+{"level":"info","ts":"2022-06-18T14:02:26.017Z","caller":"main.go:103","msg":"Nakama starting"}
+{"level":"info","ts":"2022-06-18T14:02:26.017Z","caller":"main.go:104","msg":"Node","name":"nakama1","version":"3.12.0+f5e935d6","runtime":"go1.18.2","cpu":12,"proc":12}
+{"level":"info","ts":"2022-06-18T14:02:26.017Z","caller":"main.go:105","msg":"Data directory","path":"./data/"}
+{"level":"info","ts":"2022-06-18T14:02:26.017Z","caller":"main.go:124","msg":"Database connections","dsns":["postgres:xxxxx@postgres:5432/nakama"]}
+{"level":"debug","ts":"2022-06-18T14:02:26.018Z","caller":"server/db.go:61","msg":"Complete database connection URL","raw_url":"postgres://postgres:localdb@postgres:5432/nakama?sslmode=prefer"}
+{"level":"info","ts":"2022-06-18T14:02:26.021Z","caller":"main.go:130","msg":"Database information","version":"PostgreSQL 12.2 on x86_64-pc-linux-musl, compiled by gcc (Alpine 9.2.0) 9.2.0, 64-bit"}
+{"level":"info","ts":"2022-06-18T14:02:26.026Z","caller":"server/leaderboard_rank_cache.go:117","msg":"Initializing leaderboard rank cache"}
+{"level":"debug","ts":"2022-06-18T14:02:26.026Z","caller":"server/leaderboard_rank_cache.go:133","msg":"Caching leaderboard ranks","leaderboard_id":"game_wins"}
+{"level":"info","ts":"2022-06-18T14:02:26.028Z","caller":"server/runtime.go:571","msg":"Initialising runtime","path":"data/modules"}
+{"level":"info","ts":"2022-06-18T14:02:26.028Z","caller":"server/runtime.go:578","msg":"Initialising runtime event queue processor"}
+{"level":"info","ts":"2022-06-18T14:02:26.028Z","caller":"server/runtime.go:580","msg":"Runtime event queue processor started","size":65536,"workers":8}
+{"level":"info","ts":"2022-06-18T14:02:26.029Z","caller":"server/runtime_go.go:2396","msg":"Initialising Go runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-18T14:02:26.029Z","caller":"server/runtime_go.go:2420","msg":"Go runtime modules loaded"}
+{"level":"info","ts":"2022-06-18T14:02:26.029Z","caller":"server/leaderboard_rank_cache.go:240","msg":"Leaderboard rank cache initialization completed successfully","cached":["game_wins"],"skipped":[]}
+{"level":"info","ts":"2022-06-18T14:02:26.030Z","caller":"server/runtime_lua.go:110","msg":"Initialising Lua runtime provider","path":"data/modules"}
+{"level":"info","ts":"2022-06-18T14:02:26.033Z","caller":"server/runtime_lua.go:1116","msg":"Lua runtime modules loaded"}
+{"level":"info","ts":"2022-06-18T14:02:26.033Z","caller":"server/runtime_lua.go:1119","msg":"Allocating minimum Lua runtime pool","count":16}
+{"level":"info","ts":"2022-06-18T14:02:26.033Z","caller":"server/runtime_lua.go:1127","msg":"Allocated minimum Lua runtime pool"}
+{"level":"info","ts":"2022-06-18T14:02:26.034Z","caller":"server/runtime_javascript.go:578","msg":"Initialising JavaScript runtime provider","path":"data/modules","entrypoint":""}
+{"level":"info","ts":"2022-06-18T14:02:26.041Z","caller":"server/runtime_javascript_logger.go:74","msg":"Custom logic loaded."}
+{"level":"info","ts":"2022-06-18T14:02:26.041Z","caller":"server/runtime_javascript.go:1572","msg":"JavaScript runtime modules loaded"}
+{"level":"info","ts":"2022-06-18T14:02:26.041Z","caller":"server/runtime_javascript.go:1575","msg":"Allocating minimum JavaScript runtime pool","count":16}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/runtime_javascript.go:1583","msg":"Allocated minimum JavaScript runtime pool"}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/runtime.go:613","msg":"Found runtime modules","count":2,"modules":["index.js","leaderbaord.lua"]}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/runtime.go:630","msg":"Registered JavaScript runtime RPC function invocation","id":"joinorcreatematchrpc"}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/leaderboard_scheduler.go:92","msg":"Leaderboard scheduler start"}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/leaderboard_scheduler.go:279","msg":"Leaderboard scheduler update","end_active":"-1ns","end_active_count":0,"expiry":"-1ns","expiry_count":0}
+{"level":"info","ts":"2022-06-18T14:02:26.065Z","caller":"server/api.go:131","msg":"Starting API server for gRPC requests","port":7349}
+{"level":"info","ts":"2022-06-18T14:02:26.066Z","caller":"server/api.go:265","msg":"Starting API server gateway for HTTP requests","port":7350}
+{"level":"info","ts":"2022-06-18T14:02:26.069Z","caller":"server/console.go:202","msg":"Starting Console server for gRPC requests","port":7348}
+{"level":"info","ts":"2022-06-18T14:02:26.069Z","caller":"server/console.go:296","msg":"Starting Console server gateway for HTTP requests","port":7351}
+{"level":"info","ts":"2022-06-18T14:02:26.205Z","caller":"main.go:184","msg":"Startup done"}
+{"level":"info","ts":"2022-06-18T15:19:48.393Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T15:19:48.393Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T15:19:49.255Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T15:19:49.255Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:19:49.255Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:19:49.256Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:19:49.256Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:19:49.256Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T15:19:49.256Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T15:19:49.256Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"177d9279-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:20:14.444Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T15:20:14.444Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T15:20:16.554Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T15:20:16.554Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"2704a394-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:22:11.464Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T15:22:11.464Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T15:33:53.862Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T15:33:53.862Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"6cc4664e-ef1a-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:09:23.873Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T18:09:23.873Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T18:09:24.934Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:09:24.934Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"c88c8116-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:10:56.730Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T18:10:56.730Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T18:11:05.854Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:11:05.855Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ffe56d83-ef31-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T18:11:05.856Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T18:13:24.773Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T18:13:24.773Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T18:13:26.244Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T18:13:26.244Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"5822f7ca-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:16:09.694Z","caller":"server/session_ws.go:80","msg":"New WebSocket session connected","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46","format":0}
+{"level":"debug","ts":"2022-06-18T18:16:09.694Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":1,"leaves":0}
+{"level":"debug","ts":"2022-06-18T18:20:54.723Z","caller":"server/session_ws.go:204","msg":"Error reading message from client","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46","error":"websocket: close 1006 (abnormal closure): unexpected EOF"}
+{"level":"info","ts":"2022-06-18T18:20:54.724Z","caller":"server/session_ws.go:438","msg":"Cleaning up closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:20:54.724Z","caller":"server/session_ws.go:446","msg":"Cleaned up closed connection matchmaker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:20:54.724Z","caller":"server/session_ws.go:450","msg":"Cleaned up closed connection tracker","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:20:54.724Z","caller":"server/session_ws.go:454","msg":"Cleaned up closed connection status registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"debug","ts":"2022-06-18T18:20:54.724Z","caller":"server/tracker.go:907","msg":"Processing presence event","joins":0,"leaves":1}
+{"level":"info","ts":"2022-06-18T18:20:54.724Z","caller":"server/session_ws.go:458","msg":"Cleaned up closed connection session registry","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}
+{"level":"info","ts":"2022-06-18T18:20:54.725Z","caller":"server/session_ws.go:517","msg":"Closed client connection","uid":"4712aee8-bf9d-40c3-997e-504b4f0e9c9f","sid":"ba6ff2e2-ef32-11ec-8bf0-7106fdcb5b46"}

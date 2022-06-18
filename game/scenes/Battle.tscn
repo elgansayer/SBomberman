@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cywgu567aoaxu"]
+
+[ext_resource type="Script" path="res://game/scripts/network/Battle.cs" id="1_2sswq"]
+[ext_resource type="PackedScene" uid="uid://ecranwnaliej" path="res://game/stages/Stage1.tscn" id="2_wbkfv"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource( "1_2sswq" )
+stageScenes = [ExtResource( "2_wbkfv" )]

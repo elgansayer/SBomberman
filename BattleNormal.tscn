@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkrlbs8g8oqpc"]
+
+[ext_resource type="PackedScene" uid="uid://cywgu567aoaxu" path="res://game/scenes/Battle.tscn" id="1_oxd7k"]
+[ext_resource type="Script" path="res://game/scripts/network/BattleNormal.cs" id="2_t15nn"]
+
+[node name="BattleNormal" instance=ExtResource( "1_oxd7k" )]
+script = ExtResource( "2_t15nn" )

@@ -19,6 +19,11 @@ namespace Network
         public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
         protected string host = "localhost";
 
+        public delegate void OnPeerLeftHandler(int peerId);
+        [Signal] public event OnPeerLeftHandler OnPeerLeft;
+        public delegate void OnPeerEnteredHandler(int peerId);
+        public event OnPeerEnteredHandler OnPeerEntered;
+
 
         public override void _Ready()
         {
@@ -135,28 +140,28 @@ namespace Network
 
         [Authority]
         [AnyPeer]
-        public void RegisterPeerCompleted(String serverOptionsJson)
+        public void RegisterPeerCompleted(String serverOptionsJson, int stageIndex)
         {
             GD.Print("Game Server serverOptionsJson0: " + serverOptionsJson);
             ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
 
             GD.Print("CLIENT Register Player Completed");
             GD.Print("serverOptions ", serverOptions);
-            this.AddTournement(serverOptions);
+            this.AddTournement(serverOptions, stageIndex);
+
+            // Notifcy the server we are ready to start the game
             this.server.RpcId(1, nameof(this.server.RegisterPeerReady));
         }
 
-        private void AddTournement(ServerOptions serverOptions)
+        private void AddTournement(ServerOptions serverOptions, int stageIndex)
         {
             // Add a game type
-            // Tournement tournement = new Tournement(serverOptions);
-            // GetTree().Root.AddChild(tournement);
-            // tournement.init();
             PackedScene tournementScene = this.TournementScene;
             Tournement tournementNode = tournementScene.Instantiate() as Tournement;
             GetTree().Root.AddChild(tournementNode);
             tournementNode.ServerOptions = serverOptions;
-            tournementNode.initClient();
+            tournementNode.StageIndex = stageIndex;
+            tournementNode.Init();
         }
     }
 }

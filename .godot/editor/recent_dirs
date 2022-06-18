@@ -1,7 +1,8 @@
+res://game/stages
+res://game/scripts/network
+res://
 res://game/scenes
 res://server
-res://game/scripts/network
-res://game/stages
 res://game/scripts
 res://ui/themes
 res://game/scenes/main_menu
@@ -10,4 +11,3 @@ res://game/scenes/battle_options/assets/images
 res://game/scenes/account/assets/images
 res://game
 /home/elgan/games/SBomberman/game/players
-res://

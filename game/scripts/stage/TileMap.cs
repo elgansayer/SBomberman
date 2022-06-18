@@ -26,15 +26,12 @@ public partial class TileMap : Godot.TileMap
         // Disable layers we don't want to see
         this.SetLayerEnabled((int)TileMapLayers.SpawnPoints, false);
         this.SetLayerEnabled((int)TileMapLayers.ExplodableBlocks, false);
-
-        // Call spawn rocks on ready frame done
-        CallDeferred("SpawnRocks");
     }
 
     /**
     * Spawns explodable soft rock tiles in the map
     */
-    public void SpawnRocks()
+    public List<Vector2i> GenerateRockPositions()
     {
         List<Vector2i> allHardTiles = this.GetAllTiles(TileMapLayers.HardRocks);
         List<Vector2i> allSoftTiles = this.GetAllTiles(TileMapLayers.ExplodableBlocks);
@@ -55,6 +52,12 @@ public partial class TileMap : Godot.TileMap
             actualSoftBlocks.RemoveAt(randomInt);
         }
 
+        return actualSoftBlocks;
+    }
+
+    public void SpawnRocks(List<Vector2i> actualSoftBlocks)
+    {
+        this.ClearLayer((int)TileMapLayers.ExplodableBlocks);
         foreach (Vector2i softBlock in actualSoftBlocks)
         {
             this.SpawnRock(softBlock);

@@ -1,6 +1,7 @@
 using Godot;
 using Network;
 using System;
+using System.Collections.Generic;
 
 namespace Network
 {
@@ -15,144 +16,64 @@ namespace Network
         Finished
     }
 
-    public abstract partial class Battle : Node2D
+    [Serializable]
+    public class ClientBattleOptions
     {
-        protected BattleState State = BattleState.NotStarted;
-        protected GameType GameType = GameType.Unknown;
-        protected ServerOptions BattleOptions;
-        private Network.Server server;
-
-
-        public Battle(Network.Server server)
-        {
-            this.server = server;
-            // this.server.OnPeerReady += this.OnPeerReady;
-            // this.server.OnPeerLeft += this.OnPeerLeft;
-        }
-
-        public override void _Ready()
-        {
-            this.State = BattleState.NotStarted;
-        }
-
-        public virtual void init()
-        {
-            this.State = BattleState.NotStarted;
-        }
-
-        public virtual void OnPeerReady()
-        {
-            this.CanBattleStart();
-        }
-
-        public virtual void OnPeerLeft()
-        {
-            this.State = BattleState.NotStarted;
-        }
-
-        // public override void _Process(float delta)
-        // {
-        //     this.State = BattleState.NotStarted;
-        // }
-
-        public virtual bool CanBattleStart()
-        {
-            int numPlayers = this.server.PeerList.Count;
-            if (numPlayers >= this.BattleOptions.MinPlayers)
-            {
-                return true;
-            }
-
-            return false;
-            // {
-            //     this.State = BattleState.InLobby;
-            //     return true;
-            // }
-        }
-
-        // public virtual bool CanBattleStart()
-        // {
-        // }
-
-        // public virtual bool CanBattleEnd()
-        // {
-        // }
-
-        public virtual void LobbyStarted()
-        {
-            this.State = BattleState.InLobby;
-        }
-
-        public virtual void LobbyEnded()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void BattleInitializing()
-        {
-            this.State = BattleState.Initializing;
-            this.BattlePreStart();
-            this.BattleStart();
-            this.BattleStarted();
-        }
-
-        public virtual void BattlePreStart()
-        {
-            this.State = BattleState.PreStart;
-
-        }
-
-        public virtual void BattleStart()
-        {
-            this.State = BattleState.Start;
-        }
-
-        public virtual void BattleStarted()
-        {
-            this.State = BattleState.InProgress;
-        }
-
-        public virtual void BattleEnded()
-        {
-            this.State = BattleState.Finished;
-        }
-
-        public virtual void ClockStarted()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void ClockEnded()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void ClockTick()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void CheckBattleEnd()
-        {
-            throw new NotImplementedException();
-        }
+        public GameType GameType;
+        public int Time;
+        public int StageIndex;
+        public List<Vector2i> ExplodableRocks;
     }
 
-    public partial class BattleNormal : Battle
+    public partial class Battle : Node2D
     {
-        public override void _Ready()
+        [Export] private PackedScene[] stageScenes;
+        private Stage stage;
+
+        public GamePlayNormal GamePlay { get; private set; }
+
+        internal void CreateStage(int stageIndex)
         {
-            this.Name = "BattleTypeNormal";
+            // Load the stage
+            GD.Print("Loading stage: ");
+
+            PackedScene packedScene = this.stageScenes[stageIndex];
+            Node node = packedScene.Instantiate();
+            this.stage = node as Stage;
+            Game game = GetTree().Root.GetNode("Game") as Game;
+            game.ChangeScene(node: this.stage);
+
+            GD.Print("Loading node: ", node);
+            GD.Print("Loading packedScene: ", packedScene);
+            GD.Print("Loading stage: ", this.stage);
+
+            // Hide the loading scrfeens
+            game.HideLoadingScreen();
         }
 
-        public BattleNormal(Network.Server server) : base(server)
+        public void CreateGamePlay(GameType gameType)
         {
-            this.GameType = GameType.NormalMostWins;
-        }
+            switch (gameType)
+            {
+                case GameType.Unknown:
+                    break;
+                case GameType.NormalMostWins:
+                    break;
+                case GameType.BestScoreKillsAndWins:
+                    break;
+                case GameType.GoldBomber:
+                    break;
+                case GameType.DeathMatchMostKills:
+                    break;
+                case GameType.Virus:
+                    break;
+                default:
+                    this.GamePlay = new GamePlayNormal(this);
+                    break;
+            }
 
-        public virtual void OnPeerRegistered()
-        {
-
+            this.GamePlay = new GamePlayNormal(this);
         }
     }
 }
+

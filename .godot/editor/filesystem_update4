@@ -1,3 +1,4 @@
-res://game/scenes/Shell.tscn
-res://ui/themes/theme.tres
-res://ui/fonts/material/gradient.tres
+res://game/scenes/Tournement.tscn
+res://game/scenes/Battle.tscn
+res://BattleNormal.tscn
+res://game/stages/Stage1.tscn
