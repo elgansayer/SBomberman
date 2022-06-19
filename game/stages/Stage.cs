@@ -5,40 +5,23 @@ using System.Collections.Generic;
 public partial class Stage : Node2D
 {
     [Export] private NodePath TileMapPath;
-    public List<Vector2i> ExplodableRocks
-    {
-        get
-        {
-            return this.explodableRocks;
-        }
-        set
-        {
-            this.explodableRocks = value;
-            TileMapaNode.SpawnRocks(this.explodableRocks);
-        }
-    }
 
-    public TileMap TileMapaNode { get; private set; }
+    public List<Node2D> ExplodableRocks { get; private set; } = new List<Node2D>();
 
-    private List<Vector2i> explodableRocks;
+    public TileMap TileMap { get; private set; }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        this.TileMapaNode = GetNode(this.TileMapPath) as TileMap;
+        this.TileMap = GetNode(this.TileMapPath) as TileMap;
 
         if (Multiplayer.IsServer())
         {
-            this.GenerateRocks();
+            GD.Print("Generate Explodable Rocks");
+            this.ExplodableRocks = this.TileMap.GenerateAndSpawnRocks();
         }
-    }
 
-    private List<Vector2i> GenerateRocks()
-    {
-        GD.Print("GenerateRocks");
-        // long id = ResourceLoader.GetResourceUid(Player.resource_path        
-        this.ExplodableRocks = TileMapaNode.GenerateRockPositions();        
-        return this.ExplodableRocks;
+        GD.Print("Stage Ready");
     }
 
 

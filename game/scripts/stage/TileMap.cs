@@ -55,25 +55,32 @@ public partial class TileMap : Godot.TileMap
         return actualSoftBlocks;
     }
 
-    public void SpawnRocks(List<Vector2i> actualSoftBlocks)
+    public List<Node2D> GenerateAndSpawnRocks()
+    {
+        return this.SpawnRocks(this.GenerateRockPositions());
+    }
+
+    public List<Node2D> SpawnRocks(List<Vector2i> rockPositions)
     {
         this.ClearLayer((int)TileMapLayers.ExplodableBlocks);
-        foreach (Vector2i softBlock in actualSoftBlocks)
+        return rockPositions.ConvertAll<Node2D>((Vector2i gridPos) =>
         {
-            this.SpawnRock(softBlock);
-        }
+            return this.SpawnRock(gridPos);
+        });
     }
 
     /**
     * Spawns a rock at the given tile position
     */
-    public void SpawnRock(Vector2i gridPos)
+    public Node2D SpawnRock(Vector2 gridPos)
     {
-        Node2D world = GetNode<Node2D>(this.WorldNode);
+        Node2D stage = GetNode<Node2D>(this.WorldNode);
         Node2D rock = (Node2D)this.ExplodableRockNode.Instantiate();
-        Vector2 rockPos = this.MapToWorld(gridPos);
-        world.AddChild(node: rock);
+        Vector2 rockPos = this.MapToWorld((Vector2i)gridPos);
+        stage.AddChild(node: rock);
         rock.Position = rockPos;
+        rock.Name = "ExplodableRock" + gridPos.ToString();
+        return rock;
     }
 
     /**

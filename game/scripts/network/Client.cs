@@ -56,6 +56,9 @@ namespace Network
 
         public void CreateClient()
         {
+            Game game = GetTree().Root.GetNode("Game") as Game;
+            game.ShowLoadingScreen();
+
             this.eNet.CreateClient(this.host, this.port);
             GD.Print("Game Client created Client");
             Multiplayer.MultiplayerPeer = this.eNet;
@@ -140,28 +143,41 @@ namespace Network
 
         [Authority]
         [AnyPeer]
-        public void RegisterPeerCompleted(String serverOptionsJson, int stageIndex)
+        public void RegisterPeerCompleted(String serverOptionsJson, string battleSnapshotJson)
         {
             GD.Print("Game Server serverOptionsJson0: " + serverOptionsJson);
-            ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
 
-            GD.Print("CLIENT Register Player Completed");
-            GD.Print("serverOptions ", serverOptions);
-            this.AddTournement(serverOptions, stageIndex);
+            // GD.Print("CLIENT AddTournement");
+            // // GD.Print("serverOptions ", serverOptionsJson);
+            // GD.Print("battleSnapShot ", battleSnapshotJson);
+
+            ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
+            // GD.Print("serverOptions ", serverOptions);
+
+            BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapshotJson);
+            // GD.Print("battleSnapShot ", battleSnapShot);
+
+            this.AddTournement(serverOptions, battleSnapShot);
 
             // Notifcy the server we are ready to start the game
             this.server.RpcId(1, nameof(this.server.RegisterPeerReady));
         }
 
-        private void AddTournement(ServerOptions serverOptions, int stageIndex)
+        private void AddTournement(ServerOptions serverOptions, BattleSnapShot battleSnapShot)
         {
+            // GD.Print("CLIENT AddTournement");
+            // GD.Print("serverOptions ", serverOptions);
+            // GD.Print("battleSnapShot ", battleSnapShot);
+
             // Add a game type
             PackedScene tournementScene = this.TournementScene;
             Tournement tournementNode = tournementScene.Instantiate() as Tournement;
             GetTree().Root.AddChild(tournementNode);
             tournementNode.ServerOptions = serverOptions;
-            tournementNode.StageIndex = stageIndex;
+            tournementNode.StageIndex = battleSnapShot.StageIndex;
             tournementNode.Init();
+
+            tournementNode.Battle.SnapShot = battleSnapShot;
         }
     }
 }

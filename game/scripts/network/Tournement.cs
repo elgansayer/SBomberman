@@ -85,7 +85,7 @@ namespace Network
         public virtual void ClientLoadBattle(string optionsJson)
         {
             // Create a battle options
-            ClientBattleOptions options = JsonConvert.DeserializeObject<ClientBattleOptions>(optionsJson);
+            BattleSnapShot options = JsonConvert.DeserializeObject<BattleSnapShot>(optionsJson);
 
             this.CreateBattle();
 

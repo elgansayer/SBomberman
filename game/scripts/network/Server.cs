@@ -57,12 +57,19 @@ namespace Network
 
             this.client = GetNode("/root/Client") as Network.Client;
 
-            this.AddTournement();
-
+            // Create the server and start listening for connections
+            // but don't start accepting connections yet
             this.CreateServer();
 
+            // Build the tournament, battle and stage
+            this.AddTournement();
+
+            // Handle incoming connections
             this.eNet.PeerConnected += this.OnPeerConnected;
             this.eNet.PeerDisconnected += this.onPeerDisconnected;
+
+            // Finally, Allow server connections
+            Multiplayer.RefuseNewConnections = false;
         }
 
         private void CreateServer()
@@ -73,6 +80,8 @@ namespace Network
             this.eNet.CreateServer(this.port, this.maxPlayers);
             GD.Print("Game Server created server");
             Multiplayer.MultiplayerPeer = this.eNet;
+            Multiplayer.AllowObjectDecoding = true;
+            Multiplayer.RefuseNewConnections = true;
 
             GD.Print(what: "Multiplayer.GetUniqueId " + Multiplayer.GetUniqueId());
         }
@@ -127,31 +136,36 @@ namespace Network
             GD.Print("Game Server RegisterPlayer");
             int id = Multiplayer.GetRemoteSenderId();
 
-            try
-            {
-                // PeerInfo peerInfo = PeerInfo.FromDictionary(peerData);
-                PeerInfo peerInfo = JsonConvert.DeserializeObject<PeerInfo>(peerData);
+            // try
+            // {
+            // PeerInfo peerInfo = PeerInfo.FromDictionary(peerData);
+            PeerInfo peerInfo = JsonConvert.DeserializeObject<PeerInfo>(peerData);
 
-                peerInfo.State = PeerInfoState.Registered;
+            peerInfo.State = PeerInfoState.Registered;
 
-                PeerList[id] = peerInfo;
-                GD.Print(what: "Added peer with id: " + id);
+            PeerList[id] = peerInfo;
+            GD.Print(what: "Added peer with id: " + id);
 
-                Tournement tournement = GetTree().Root.GetNode<Tournement>("Tournement") as Tournement;
-                Battle battle = tournement.Battle;
-                
-                // Tell the player the battle options and ask if they are ready
-                ServerOptions serverOptions = GetServerOptions();
-                string serverOptionsJson = JsonConvert.SerializeObject(serverOptions);
-                GD.Print(serverOptionsJson);
 
-                this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournement.StageIndex);
-            }
-            catch (System.Exception ex)
-            {
-                GD.Print("Failed to parse peer data");
-                GD.Print("Error: " + ex.Message);
-            }
+            Battle battle = GetTree().Root.GetNode<Battle>("Battle") as Battle;
+
+            GD.Print(what: "battle: " + battle);
+            GD.Print(what: "battle.SnapShot: " + battle.SnapShot);
+
+            string snapShotJson = battle.SnapShot.ToJson();
+
+            // Tell the player the battle options and ask if they are ready
+            ServerOptions serverOptions = GetServerOptions();
+            string serverOptionsJson = serverOptions.ToJson();
+            GD.Print(serverOptionsJson);
+
+            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, snapShotJson);
+            // }
+            // catch (System.Exception ex)
+            // {
+            //     GD.Print("Failed to parse peer data");
+            //     GD.Print("Error: " + ex.Message);
+            // }
         }
 
         [Authority]

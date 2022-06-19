@@ -1,4 +1,5 @@
 using Godot;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
@@ -30,6 +31,10 @@ namespace Network
             this.Devil = devil;
             this.MadBomber = madBomber;
             this.Stages = stages;
+        }
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 
