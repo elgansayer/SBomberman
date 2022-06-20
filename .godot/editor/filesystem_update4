@@ -1,4 +1,5 @@
-res://game/stages/Stage1.tscn
 res://game/scenes/Battle.tscn
 res://game/scenes/Tournement.tscn
-res://game/stages/Rock.tscn
+res://game/stages/Stage1.tscn
+res://game/stages/ExplodableRock.tscn
+res://game/actors/ActorBlackBomberman.tscn

@@ -157,13 +157,13 @@ namespace Network
             BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapshotJson);
             // GD.Print("battleSnapShot ", battleSnapShot);
 
-            this.AddTournement(serverOptions, battleSnapShot);
+            this.CreateTournement(serverOptions, battleSnapShot);
 
             // Notifcy the server we are ready to start the game
             this.server.RpcId(1, nameof(this.server.RegisterPeerReady));
         }
 
-        private void AddTournement(ServerOptions serverOptions, BattleSnapShot battleSnapShot)
+        private void CreateTournement(ServerOptions serverOptions, BattleSnapShot battleSnapShot)
         {
             // GD.Print("CLIENT AddTournement");
             // GD.Print("serverOptions ", serverOptions);

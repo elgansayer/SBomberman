@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cgqn5qdlvloj6"]
+[gd_scene load_steps=92 format=3 uid="uid://cgqn5qdlvloj6"]
 
 [ext_resource type="Script" path="res://game/actors/player.gd" id="1_ypx34"]
 [ext_resource type="Texture2D" uid="uid://bi2dy7p7iyths" path="res://game/actors/assets/black_bomberman/dizzy/bbm-stood-dizzy-01.png" id="2_hipvy"]
@@ -62,9 +62,6 @@
 [ext_resource type="Texture2D" uid="uid://brkemtoveqh83" path="res://game/actors/assets/black_bomberman/ride/bbm-ride-win-01.png" id="60_hjbe6"]
 [ext_resource type="Texture2D" uid="uid://ctqejaf0d28uk" path="res://game/actors/assets/black_bomberman/power_glove/bbm-walk-pglove-left-01.png" id="61_bpta4"]
 [ext_resource type="Texture2D" uid="uid://bnbco145hc0vr" path="res://game/actors/assets/black_bomberman/power_glove/bbm-walk-pglove-left-02.png" id="62_c2s1k"]
-[ext_resource type="PackedScene" path="res://game/actors/abilities/scenes/ability_kick_bomb.tscn" id="63_axl04"]
-[ext_resource type="PackedScene" path="res://game/actors/abilities/scenes/ability_marble_bomb.tscn" id="64_oo2v5"]
-[ext_resource type="PackedScene" path="res://game/actors/abilities/scenes/ability_plant_bomb.tscn" id="65_ol5px"]
 [ext_resource type="Script" path="res://game/actors/animator.gd" id="66_groim"]
 [ext_resource type="Script" path="res://game/actors/mover.gd" id="67_x1r1u"]
 
@@ -985,7 +982,8 @@ material = SubResource( "27" )
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
 frames = SubResource( "9" )
-animation = &"standing_down"
+animation = &"dizzy"
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1011,12 +1009,6 @@ text = "X:Y"
 clip_text = true
 
 [node name="Abilities" type="Node2D" parent="."]
-
-[node name="AbilityKickBomb" parent="Abilities" instance=ExtResource( "63_axl04" )]
-
-[node name="MarbleBomb" parent="Abilities" instance=ExtResource( "64_oo2v5" )]
-
-[node name="PlantBomb" parent="Abilities" instance=ExtResource( "65_ol5px" )]
 
 [node name="Animator" type="Node2D" parent="."]
 script = ExtResource( "66_groim" )

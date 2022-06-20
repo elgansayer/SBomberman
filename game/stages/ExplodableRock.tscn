@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://buvprru2qvxqa"]
+[gd_scene load_steps=12 format=3 uid="uid://buvprru2qvxqa"]
 
 [ext_resource type="Texture2D" uid="uid://5tdbq0rpbcor" path="res://game/stages/assets/soft/block1.png" id="1_ny34e"]
+[ext_resource type="Script" path="res://game/stages/ExplodableRock.cs" id="1_r77bj"]
 [ext_resource type="Texture2D" uid="uid://b4jb1jyvdr6vp" path="res://game/stages/assets/soft/block-explode-01.png" id="2_8pkxf"]
 [ext_resource type="Texture2D" uid="uid://bv6jxtp80pvim" path="res://game/stages/assets/soft/block-explode-02.png" id="3_n0n6f"]
 [ext_resource type="Texture2D" uid="uid://c63cwfdhgrlco" path="res://game/stages/assets/soft/block-explode-03.png" id="4_k10dj"]
@@ -199,9 +200,10 @@ direction = Vector3(0, -1, 0)
 gravity = Vector3(0, 98, 0)
 color = Color(0.32549, 0.231373, 0.231373, 1)
 
-[node name="ExplodableRock" type="CharacterBody2D"]
+[node name="ExplodableRock" type="StaticBody2D"]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource( "1_r77bj" )
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource( "1" )

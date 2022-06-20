@@ -80,30 +80,30 @@ namespace Network
         //     return nextStageIndex;
         // }
 
-        [Authority]
-        [AnyPeer]
-        public virtual void ClientLoadBattle(string optionsJson)
-        {
-            // Create a battle options
-            BattleSnapShot options = JsonConvert.DeserializeObject<BattleSnapShot>(optionsJson);
+        // [Authority]
+        // [AnyPeer]
+        // public virtual void ClientLoadBattle(string optionsJson)
+        // {
+        //     // Create a battle options
+        //     BattleSnapShot options = JsonConvert.DeserializeObject<BattleSnapShot>(optionsJson);
 
-            this.CreateBattle();
+        //     this.CreateBattle();
 
-            // Upset the current stage            
-            // this.stageIndex = options.StageIndex;
-            // this.battle.Time = options.Time;
+        //     // Upset the current stage            
+        //     // this.stageIndex = options.StageIndex;
+        //     // this.battle.Time = options.Time;
 
-            // this.battle.Stage.ExplodableRocks = options.ExplodableRocks;
+        //     // this.battle.Stage.ExplodableRocks = options.ExplodableRocks;
 
-            this.State = TournementState.InLobby;
-        }
+        //     this.State = TournementState.InLobby;
+        // }
 
         void CreateBattle()
         {
-            GD.Print("CreateBattle");
+            GD.Print("Tournament, Create Battle");
             PackedScene battleScene = this.battleScene;
             this.Battle = battleScene.Instantiate() as Battle;
-            GetTree().Root.AddChild(this.Battle);
+            this.AddChild(this.Battle);
 
             this.Battle.CreateStage(this.StageIndex);
         }

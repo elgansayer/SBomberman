@@ -1,12 +1,15 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Stage : Node2D
 {
     [Export] private NodePath TileMapPath;
 
-    public List<Node2D> ExplodableRocks { get; private set; } = new List<Node2D>();
+    public ExplodableRockList ExplodableRocks { get; private set; } = new ExplodableRockList();
+
+    public List<SpawnPoint> SpawnPoints { get; private set; } = new List<SpawnPoint>();
 
     public TileMap TileMap { get; private set; }
 
@@ -18,15 +21,22 @@ public partial class Stage : Node2D
         if (Multiplayer.IsServer())
         {
             GD.Print("Generate Explodable Rocks");
+            this.SpawnPoints = this.TileMap.GetAllSpawnPoints();
             this.ExplodableRocks = this.TileMap.GenerateAndSpawnRocks();
+            this.ExplodableRocks.RemoveRandomTiles();
         }
 
         GD.Print("Stage Ready");
     }
 
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
+    internal void SyncExplodableRocks(List<Vector2i> explodableRocks)
     {
+        foreach (ExplodableRock item in this.ExplodableRocks.ToList())
+        {
+            item.Remove();
+        }
+
+        this.ExplodableRocks.Clear();
+        this.ExplodableRocks = TileMap.SpawnExplodableRocks(explodableRocks);
     }
 }

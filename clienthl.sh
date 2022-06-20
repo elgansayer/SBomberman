@@ -1,0 +1,1 @@
+clear && godot-mono --headless

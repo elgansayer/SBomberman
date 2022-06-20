@@ -59,34 +59,43 @@ namespace Network
 
             // Create the server and start listening for connections
             // but don't start accepting connections yet
-            this.CreateServer();
+            Error error = this.CreateServer();
+
+            if (error != Error.Ok)
+            {
+                GD.Print("Error creating server: " + error);
+                GetTree().Quit();
+                return;
+            }
 
             // Build the tournament, battle and stage
-            this.AddTournement();
+            this.CreateTournement();
 
             // Handle incoming connections
             this.eNet.PeerConnected += this.OnPeerConnected;
             this.eNet.PeerDisconnected += this.onPeerDisconnected;
 
             // Finally, Allow server connections
-            Multiplayer.RefuseNewConnections = false;
+            // Multiplayer.RefuseNewConnections = false;
         }
 
-        private void CreateServer()
+        private Error CreateServer()
         {
             GD.Print("Game Server Setup CreateServer");
             ServerOptions battleOptions = GetServerOptions();
 
-            this.eNet.CreateServer(this.port, this.maxPlayers);
+            Error error = this.eNet.CreateServer(this.port, this.maxPlayers);
+
             GD.Print("Game Server created server");
             Multiplayer.MultiplayerPeer = this.eNet;
             Multiplayer.AllowObjectDecoding = true;
-            Multiplayer.RefuseNewConnections = true;
+            // Multiplayer.RefuseNewConnections = true;
 
             GD.Print(what: "Multiplayer.GetUniqueId " + Multiplayer.GetUniqueId());
+            return Error.Ok;
         }
 
-        private void AddTournement()
+        private void CreateTournement()
         {
             ServerOptions serverOptions = GetServerOptions();
             GD.Print("Game Server Setup AddTournement ", this.TournementScene);
@@ -147,10 +156,10 @@ namespace Network
             GD.Print(what: "Added peer with id: " + id);
 
 
-            Battle battle = GetTree().Root.GetNode<Battle>("Battle") as Battle;
+            Battle battle = GetTree().Root.GetNode<Battle>("Tournement/Battle") as Battle;
 
-            GD.Print(what: "battle: " + battle);
-            GD.Print(what: "battle.SnapShot: " + battle.SnapShot);
+            // GD.Print(what: "battle: " + battle);
+            // GD.Print(what: "battle.SnapShot: " + battle.SnapShot);
 
             string snapShotJson = battle.SnapShot.ToJson();
 

@@ -37,45 +37,39 @@ public partial class TileMap : Godot.TileMap
         List<Vector2i> allSoftTiles = this.GetAllTiles(TileMapLayers.ExplodableBlocks);
 
         // If an actor is spawning on this tile, don't spawn a rock
-        List<SpawnPoint> usedSpawnTiles = this.GetAllSpawnPoints().Where((tile) => tile.Used).ToList();
-        List<Vector2i> allSpawnTiles = usedSpawnTiles.ConvertAll((tile) => tile.Position).ToList();
+        // List<SpawnPoint> usedSpawnTiles = spawnTiles.Where((tile) => tile.Used).ToList();
+        // List<Vector2i> allSpawnTiles = usedSpawnTiles.ConvertAll((tile) => tile.Position).ToList();
 
         List<Vector2i> actualSoftBlocks = allSoftTiles.Where((tile) =>
-            !allHardTiles.Contains(tile) &&
-            !allSpawnTiles.Contains(tile)).ToList();
-
-        int maxRemove = 40;
-        for (int i = 0; i < maxRemove; i++)
-        {
-            Random rand = new Random();
-            int randomInt = (int)rand.Next(0, actualSoftBlocks.Count);
-            actualSoftBlocks.RemoveAt(randomInt);
-        }
+            !allHardTiles.Contains(tile)).ToList();
 
         return actualSoftBlocks;
     }
 
-    public List<Node2D> GenerateAndSpawnRocks()
+    public ExplodableRockList GenerateAndSpawnRocks()
     {
-        return this.SpawnRocks(this.GenerateRockPositions());
+        return this.SpawnExplodableRocks(this.GenerateRockPositions());
     }
 
-    public List<Node2D> SpawnRocks(List<Vector2i> rockPositions)
+    public ExplodableRockList SpawnExplodableRocks(List<Vector2i> rockPositions)
     {
         this.ClearLayer((int)TileMapLayers.ExplodableBlocks);
-        return rockPositions.ConvertAll<Node2D>((Vector2i gridPos) =>
+        List<ExplodableRock> rocks = rockPositions.ConvertAll<ExplodableRock>((Vector2i gridPos) =>
         {
             return this.SpawnRock(gridPos);
         });
+
+        return new ExplodableRockList(rocks);
     }
 
     /**
     * Spawns a rock at the given tile position
     */
-    public Node2D SpawnRock(Vector2 gridPos)
+    public ExplodableRock SpawnRock(Vector2 gridPos)
     {
         Node2D stage = GetNode<Node2D>(this.WorldNode);
-        Node2D rock = (Node2D)this.ExplodableRockNode.Instantiate();
+        Node node = this.ExplodableRockNode.Instantiate();
+        ExplodableRock rock = (ExplodableRock)node as ExplodableRock;
         Vector2 rockPos = this.MapToWorld((Vector2i)gridPos);
         stage.AddChild(node: rock);
         rock.Position = rockPos;

@@ -1,3 +1,4 @@
+StaticBody2D
 Label
 Panel
 Button
@@ -16,7 +17,6 @@ Node2D
 TileMap
 NavigationRegion2D
 Node
-StaticBody2D
 CollisionShape2D
 Position2D
 RigidDynamicBody2D
