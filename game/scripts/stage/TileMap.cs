@@ -5,8 +5,8 @@ using System.Linq;
 
 public partial class TileMap : Godot.TileMap
 {
-    [Export] private PackedScene ExplodableRockNode;
-    [Export] private NodePath WorldNode;
+    [Export] public PackedScene ExplodableRockNode;
+    [Export] public NodePath WorldNode;
 
     public enum TileMapLayers
     {
@@ -82,7 +82,7 @@ public partial class TileMap : Godot.TileMap
     */
     public List<Vector2i> GetAllTiles(TileMapLayers layerId)
     {
-        Godot.Collections.Array usedCells = this.GetUsedCells((int)layerId);
+        var usedCells = this.GetUsedCells((int)layerId);
         return usedCells.OfType<Vector2i>().ToList();
     }
 
@@ -95,7 +95,7 @@ public partial class TileMap : Godot.TileMap
 
         return allTiles.ConvertAll((Vector2i tile) =>
         {
-            SpawnPoint SpawnPoint = new SpawnPoint(tile);
+            SpawnPoint SpawnPoint = new SpawnPoint(gridPosition: tile, position: this.MapToWorld(tile));
             return SpawnPoint;
         });
     }

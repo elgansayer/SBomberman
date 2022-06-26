@@ -9,22 +9,31 @@ namespace Network
 {
     public partial class Battle : Node2D
     {
-        [Export] private PackedScene[] stageScenes;
+        [Export] public PackedScene[] StageScenes;
+        [Export] public PackedScene[] ActorScenes;
         public Stage Stage;
         private int time = 0;
         private int stageIndex = 0;
+        private int battleId;
         private BattleState state = BattleState.Initializing;
 
         private Network.Server server;
         private Network.Client client;
+        private GameState gameState;
 
         public override void _Ready()
         {
+            this.RpcConfig(nameof(this.SpawnPeer), RPCMode.AnyPeer, true, TransferMode.Reliable);
+
             GD.Print("Battle Ready");
+            this.gameState = GetTree().Root.GetNode<GameState>("GameState");
 
             if (Multiplayer.IsServer())
             {
-                GD.Print("Server Battle Ready");
+                Random rnd = new Random();
+                this.battleId = rnd.Next(minValue: 1, 9999999);
+
+                GD.Print("Server Battle Ready " + this.battleId);
 
                 this.server = GetNode("/root/Server") as Network.Server;
                 this.server.OnPeerEntered += this.OnPeerEntered;
@@ -35,33 +44,45 @@ namespace Network
                 GD.Print("Client Battle Ready");
 
                 this.client = GetNode("/root/Client") as Network.Client;
-                this.client.OnPeerEntered += this.OnPeerEntered;
-                this.client.OnPeerLeft += this.OnPeerLeft;
+                // this.client.OnPeerEntered += this.OnPeerEntered;
+                // this.client.OnPeerLeft += this.OnPeerLeft;
             }
         }
 
         public virtual void OnPeerEntered(int peerId)
         {
             GD.Print(what: "Battle OnPeerEntered");
-            // Peer has entered the server
-            // Tell them to load the map
-            // string optionsJson = this.GetStageStateJson();
-            // this.Rpc(nameof(this.ClientLoadBattle), optionsJson);
 
-            // We need to add a player to the battle
-            // 1 Spawnpoint 
-            SpawnPoint spawnPoint = this.getNextSpawnPoint();
-            spawnPoint.Used = true;
-            this.Stage.ExplodableRocks.AddSpawnPointHole(spawnPoint.Position);
+            if (Multiplayer.IsServer())
+            {
+                Dictionary<int, PeerInfo> peers = this.gameState.Peers;
+                PeerInfo peerInfo = peers[peerId];
+                peerInfo.State = PeerInfoState.InLobby;
 
-            GD.Print(this.SnapShot);
-            GD.Print(this.SnapShot.ToJson());
+                BattlePeerInfo battleInfo = peerInfo.AddBattle(BattleId: this.battleId);
+                battleInfo.spawnPoint = this.getNextSpawnPoint();
+                battleInfo.spawnPoint.Used = true;
+                this.Stage.ExplodableRocks.AddSpawnPointHole(battleInfo.spawnPoint.GridPosition);
+
+                this.gameState.Rpc(nameof(this.gameState.UpdatePeers));
+
+                this.Rpc(nameof(this.SpawnPeer),
+                        peerInfo.ToJson(),
+                        this.battleId);
+
+                // Update Rocks
+                this.updatePeers();
+            }
+        }
+
+        void updatePeers()
+        {
+            // Send the snapshot to all clients
             this.Rpc(nameof(this.RecievedSnapshot), this.SnapShot.ToJson());
         }
 
         private SpawnPoint getNextSpawnPoint()
         {
-
             Tournement tournement = GetNode("/root/Tournement") as Tournement;
             bool SpawnShuffle = tournement.ServerOptions.SpawnShuffle;
 
@@ -94,9 +115,9 @@ namespace Network
 
         public virtual void OnPeerLeft(int peerId)
         {
-            // this.State = TournementState.NotStarted;
+            PeerInfo peerInfo = this.gameState.Peers[peerId];
+            peerInfo.State = PeerInfoState.Disconnected;
         }
-
 
         public GamePlayNormal GamePlay { get; private set; }
 
@@ -114,12 +135,12 @@ namespace Network
                 return null;
             }
 
-
             BattleSnapShot snapShot = new BattleSnapShot(
             this.state,
             this.time,
             this.stageIndex,
-            this.Stage.ExplodableRocks.Positions()
+            this.Stage.ExplodableRocks.Positions(),
+            this.battleId
             );
 
             return snapShot;
@@ -127,13 +148,13 @@ namespace Network
 
         [Authority]
         [AnyPeer]
-        private void RecievedSnapshot(string battleSnapShotJson)
+        public void RecievedSnapshot(string battleSnapShotJson)
         {
-
             BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapShotJson);
             this.state = battleSnapShot.State;
             this.time = battleSnapShot.Time;
             this.stageIndex = battleSnapShot.StageIndex;
+            this.battleId = battleSnapShot.BattleId;
 
             this.Stage.SyncExplodableRocks(battleSnapShot.ExplodableRocks);
         }
@@ -143,8 +164,65 @@ namespace Network
             this.state = battleSnapShot.State;
             this.time = battleSnapShot.Time;
             this.stageIndex = battleSnapShot.StageIndex;
+            this.battleId = battleSnapShot.BattleId;
 
             this.Stage.SyncExplodableRocks(battleSnapShot.ExplodableRocks);
+        }
+
+        internal void SpawnPeers()
+        {
+            GD.Print("Battle SpawnPeers");
+
+            Dictionary<int, PeerInfo> peers = this.gameState.Peers;
+            foreach (KeyValuePair<int, PeerInfo> peer in peers)
+            {
+                this.SpawnPeer(peer.Value.ToJson(), this.battleId);
+            }
+
+            if (Multiplayer.IsServer())
+            {
+                // Update Rocks
+                this.updatePeers();
+            }
+        }
+
+        [Authority]
+        [AnyPeer]
+        public void SpawnPeer(string peerInfoJson, int battleId)
+        {
+            this.battleId = battleId;
+            PeerInfo peerInfo = JsonConvert.DeserializeObject<PeerInfo>(peerInfoJson);
+            int peerId = peerInfo.Id;
+
+            if (peerInfo.State == PeerInfoState.InLobby)
+            {
+                GD.Print("Battle SpawnPeer: peer is spawned InLobby");
+                return;
+            }
+
+            this.gameState.Peers[peerId] = peerInfo;
+
+            GD.Print("Battle SpawnPeer: " + peerId);
+
+            peerInfo.State = PeerInfoState.InLobby;
+
+            // We need to add a player to the battle
+            // 1 Spawnpoint 
+
+            // 2 Player
+            int avatarId = peerInfo.AvatarId ?? 0;
+            PackedScene actorScene = this.ActorScenes[avatarId];
+            Node2D actor = (Node2D)actorScene.Instantiate();
+
+            GD.Print("Spawning peerInfo ", peerInfo.ToJson());
+            actor.Name = peerInfo.DisplayName == "" ? peerInfo.UserName : peerInfo.DisplayName;
+            GD.Print("Spawning peer: " + peerInfo.DisplayName);
+
+            this.Stage.AddChild(actor);
+
+            GD.Print("Spawning actor avatar: " + actor.GetPath());
+            BattlePeerInfo battleInfo = peerInfo.Battles[battleId];
+            actor.Position = battleInfo.spawnPoint.Position;
         }
 
         internal void CreateStage(int stageIndex)
@@ -154,7 +232,7 @@ namespace Network
             // Load the stage
             GD.Print("Loading stage: ");
 
-            PackedScene packedScene = this.stageScenes[stageIndex];
+            PackedScene packedScene = this.StageScenes[stageIndex];
             Node node = packedScene.Instantiate();
             this.Stage = node as Stage;
             Game game = GetTree().Root.GetNode("Game") as Game;

@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Saturn Bomberman"
 run/main_scene="res://game/scenes/Shell.tscn"
+config/features=PackedStringArray("4.0", "C#")
 run/low_processor_mode=true
 boot_splash/show_image=false
 config/icon="res://icon.png"
 config/macos_native_icon="res://icon.png"
 config/windows_native_icon="res://icon.png"
-config/features=PackedStringArray("4.0", "C#")
 
 [autoload]
 
@@ -28,6 +28,7 @@ NetworkMessenger="*res://game/scripts/network/NetworkMessenger.cs"
 Client="*res://game/scenes/Client.tscn"
 Server="*res://server/Server.tscn"
 LoadingScreen="*res://game/scenes/LoadingScreen.tscn"
+GameState="*res://game/scripts/network/GameState.cs"
 
 [config]
 

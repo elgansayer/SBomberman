@@ -17,7 +17,7 @@ namespace Network
         protected int playerCount = 0;
         protected int port = 4333;
         protected int maxPlayers = 10;
-        public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
+        // public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
         protected string host = "localhost";
 
         public delegate void OnPeerLeftHandler(int peerId);
@@ -25,9 +25,12 @@ namespace Network
         public delegate void OnPeerEnteredHandler(int peerId);
         public event OnPeerEnteredHandler OnPeerEntered;
 
+        private GameState gameState;
+
         public override void _Ready()
         {
             this.Name = "Server";
+            this.gameState = GetTree().Root.GetNode<GameState>("GameState");
         }
 
         private ServerOptions GetServerOptions()
@@ -105,6 +108,7 @@ namespace Network
             GetTree().Root.AddChild(tournement);
             tournement.ServerOptions = serverOptions;
             tournement.Init();
+            tournement.Battle.SpawnPeers();
         }
 
         public void onPeerDisconnected(int id)
@@ -122,14 +126,13 @@ namespace Network
 
             GD.Print("Game Server OnPeerConnected");
 
-            PeerInfo peerInfo = new PeerInfo();
+            PeerInfo peerInfo = this.gameState.AddPeer(id);
             peerInfo.State = PeerInfoState.Connecting;
-            PeerList[id] = peerInfo;
         }
 
         public void UnregisterPeer(int id)
         {
-            PeerList.Remove(id);
+            gameState.RemovePeer(id);
             GD.Print("Removed peer with id: " + id);
 
             OnPeerLeftHandler handler = this.OnPeerLeft;
@@ -140,41 +143,20 @@ namespace Network
         [AnyPeer]
         public void RegisterPeer(string peerData)
         {
-            GD.Print(peerData);
-            // Godot.AnyPeerAttribute
             GD.Print("Game Server RegisterPlayer");
             int id = Multiplayer.GetRemoteSenderId();
 
-            // try
-            // {
-            // PeerInfo peerInfo = PeerInfo.FromDictionary(peerData);
-            PeerInfo peerInfo = JsonConvert.DeserializeObject<PeerInfo>(peerData);
-
-            peerInfo.State = PeerInfoState.Registered;
-
-            PeerList[id] = peerInfo;
-            GD.Print(what: "Added peer with id: " + id);
-
+            GameState gameState = GetTree().Root.GetNode<GameState>("GameState") as GameState;
 
             Battle battle = GetTree().Root.GetNode<Battle>("Tournement/Battle") as Battle;
-
-            // GD.Print(what: "battle: " + battle);
-            // GD.Print(what: "battle.SnapShot: " + battle.SnapShot);
-
             string snapShotJson = battle.SnapShot.ToJson();
 
             // Tell the player the battle options and ask if they are ready
             ServerOptions serverOptions = GetServerOptions();
             string serverOptionsJson = serverOptions.ToJson();
-            GD.Print(serverOptionsJson);
-
-            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, snapShotJson);
-            // }
-            // catch (System.Exception ex)
-            // {
-            //     GD.Print("Failed to parse peer data");
-            //     GD.Print("Error: " + ex.Message);
-            // }
+            
+            // Send the battle options and ask if the player is ready   
+            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, snapShotJson, gameState.SnapShot);
         }
 
         [Authority]
@@ -185,7 +167,7 @@ namespace Network
             GD.Print("Game Server RegisterPeerReady");
             int id = Multiplayer.GetRemoteSenderId();
 
-            PeerList[id].State = PeerInfoState.Ready;
+            this.gameState.Peers[id].State = PeerInfoState.Ready;
             GD.Print(what: "Set peer ready: " + id);
 
             OnPeerEnteredHandler handler = this.OnPeerEntered;

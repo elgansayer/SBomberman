@@ -11,7 +11,7 @@ bg_color = Color(0, 0, 0, 1)
 offset_left = -75.0
 offset_right = 721.0
 offset_bottom = 448.0
-theme_override_styles/panel = SubResource( "StyleBoxFlat_ovjbj" )
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovjbj")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel"]
 anchor_left = 0.5
@@ -27,4 +27,4 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/CenterContainer"]
-texture = ExtResource( "1_cbkcs" )
+texture = ExtResource("1_cbkcs")

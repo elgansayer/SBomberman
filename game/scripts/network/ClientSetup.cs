@@ -6,9 +6,9 @@ using Network;
 
 public partial class ClientSetup : Node2D
 {
-    [Export] private PackedScene MainMenuScene;
+    [Export] public PackedScene MainMenuScene;
     // [Export] private PackedScene NetworkClientScene;
-    [Export] private PackedScene LoadingScene;
+    [Export] public PackedScene LoadingScene;
 
     public override void _Ready()
     {

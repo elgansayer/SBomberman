@@ -5,7 +5,7 @@ using System.Linq;
 
 public partial class Stage : Node2D
 {
-    [Export] private NodePath TileMapPath;
+    [Export] public NodePath TileMapPath;
 
     public ExplodableRockList ExplodableRocks { get; private set; } = new ExplodableRockList();
 

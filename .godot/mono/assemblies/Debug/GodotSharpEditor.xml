@@ -570,7 +570,7 @@
         </member>
         <member name="T:Godot.EditorFileSystemImportFormatSupportQuery">
             <summary>
-            <para>This class is used to query and configure a certain import format. It is used in conjuntion with asset format import plugins.</para>
+            <para>This class is used to query and configure a certain import format. It is used in conjunction with asset format import plugins.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorFileSystemImportFormatSupportQuery._GetFileExtensions">
@@ -883,7 +883,7 @@
             <para>Adds a custom control, which is not necessarily a property editor.</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorInspectorPlugin.AddPropertyEditor(System.String,Godot.Control)">
+        <member name="M:Godot.EditorInspectorPlugin.AddPropertyEditor(System.String,Godot.Control,System.Boolean)">
             <summary>
             <para>Adds a property editor for an individual property. The <c>editor</c> control must extend <see cref="T:Godot.EditorProperty"/>.</para>
             </summary>
@@ -1094,9 +1094,9 @@
             <para>The <c>secondary</c> argument is <c>true</c> when the committed handle is secondary (see <see cref="M:Godot.EditorNode3DGizmo.AddHandles(Godot.Vector3[],Godot.Material,System.Int32[],System.Boolean,System.Boolean)"/> for more information).</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array,System.Boolean)">
+        <member name="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)">
             <summary>
-            <para>Override this method to commit a group of subgizmos being edited (see <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectRay(Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array)"/>). This usually means creating an <see cref="T:Godot.UndoRedo"/> action for the change, using the current transforms as "do" and the <c>restore</c> transforms as "undo".</para>
+            <para>Override this method to commit a group of subgizmos being edited (see <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectRay(Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array{Godot.Plane})"/>). This usually means creating an <see cref="T:Godot.UndoRedo"/> action for the change, using the current transforms as "do" and the <c>restore</c> transforms as "undo".</para>
             <para>If the <c>cancel</c> argument is <c>true</c>, the <c>restore</c> transforms should be directly set, without any <see cref="T:Godot.UndoRedo"/> action.</para>
             </summary>
         </member>
@@ -1114,7 +1114,7 @@
         </member>
         <member name="M:Godot.EditorNode3DGizmo._GetSubgizmoTransform(System.Int32)">
             <summary>
-            <para>Override this method to return the current transform of a subgizmo. This transform will be requested at the start of an edit and used as the <c>restore</c> argument in <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array,System.Boolean)"/>.</para>
+            <para>Override this method to return the current transform of a subgizmo. This transform will be requested at the start of an edit and used as the <c>restore</c> argument in <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmo._IsHandleHighlighted(System.Int32,System.Boolean)">
@@ -1136,30 +1136,30 @@
         </member>
         <member name="M:Godot.EditorNode3DGizmo._SetSubgizmoTransform(System.Int32,Godot.Transform3D)">
             <summary>
-            <para>Override this method to update the node properties during subgizmo editing (see <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectRay(Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array)"/>). The <c>transform</c> is given in the Node3D's local coordinate system.</para>
+            <para>Override this method to update the node properties during subgizmo editing (see <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectRay(Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array{Godot.Plane})"/>). The <c>transform</c> is given in the Node3D's local coordinate system.</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array)">
+        <member name="M:Godot.EditorNode3DGizmo._SubgizmosIntersectFrustum(Godot.Camera3D,Godot.Collections.Array{Godot.Plane})">
             <summary>
-            <para>Override this method to allow selecting subgizmos using mouse drag box selection. Given a <c>camera</c> and a <c>frustum</c>, this method should return which subgizmos are contained within the frustum. The <c>frustum</c> argument consists of an <c>Array</c> with all the <c>Plane</c>s that make up the selection frustum. The returned value should contain a list of unique subgizmo identifiers, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmo._GetSubgizmoTransform(System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array,System.Boolean)"/>.</para>
+            <para>Override this method to allow selecting subgizmos using mouse drag box selection. Given a <c>camera</c> and a <c>frustum</c>, this method should return which subgizmos are contained within the frustum. The <c>frustum</c> argument consists of an <c>Array</c> with all the <c>Plane</c>s that make up the selection frustum. The returned value should contain a list of unique subgizmo identifiers, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmo._GetSubgizmoTransform(System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmo._SubgizmosIntersectRay(Godot.Camera3D,Godot.Vector2)">
             <summary>
-            <para>Override this method to allow selecting subgizmos using mouse clicks. Given a <c>camera</c> and a <c>point</c> in screen coordinates, this method should return which subgizmo should be selected. The returned value should be a unique subgizmo identifier, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmo._GetSubgizmoTransform(System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array,System.Boolean)"/>.</para>
+            <para>Override this method to allow selecting subgizmos using mouse clicks. Given a <c>camera</c> and a <c>point</c> in screen coordinates, this method should return which subgizmo should be selected. The returned value should be a unique subgizmo identifier, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmo._GetSubgizmoTransform(System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmo._CommitSubgizmos(System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmo.AddLines(Godot.Vector3[],Godot.Material,System.Boolean,System.Nullable{Godot.Color})">
             <summary>
             <para>Adds lines to the gizmo (as sets of 2 points), with a given material. The lines are used for visualizing the gizmo. Call this method during <see cref="M:Godot.EditorNode3DGizmo._Redraw"/>.</para>
             </summary>
-            <param name="modulate">If the parameter is null, then the default value is new Color(1, 1, 1, 1)</param>
+            <param name="modulate">If the parameter is null, then the default value is <c>new Color(1, 1, 1, 1)</c>.</param>
         </member>
         <member name="M:Godot.EditorNode3DGizmo.AddMesh(Godot.Mesh,Godot.Material,System.Nullable{Godot.Transform3D},Godot.SkinReference)">
             <summary>
             <para>Adds a mesh to the gizmo with the specified <c>material</c>, local <c>transform</c> and <c>skeleton</c>. Call this method during <see cref="M:Godot.EditorNode3DGizmo._Redraw"/>.</para>
             </summary>
-            <param name="transform">If the parameter is null, then the default value is Transform3D.Identity</param>
+            <param name="transform">If the parameter is null, then the default value is <c>Transform3D.Identity</c>.</param>
         </member>
         <member name="M:Godot.EditorNode3DGizmo.AddCollisionSegments(Godot.Vector3[])">
             <summary>
@@ -1175,7 +1175,7 @@
             <summary>
             <para>Adds an unscaled billboard for visualization and selection. Call this method during <see cref="M:Godot.EditorNode3DGizmo._Redraw"/>.</para>
             </summary>
-            <param name="modulate">If the parameter is null, then the default value is new Color(1, 1, 1, 1)</param>
+            <param name="modulate">If the parameter is null, then the default value is <c>new Color(1, 1, 1, 1)</c>.</param>
         </member>
         <member name="M:Godot.EditorNode3DGizmo.AddHandles(Godot.Vector3[],Godot.Material,System.Int32[],System.Boolean,System.Boolean)">
             <summary>
@@ -1238,9 +1238,9 @@
             <para>Called for this plugin's active gizmos.</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array,System.Boolean)">
+        <member name="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)">
             <summary>
-            <para>Override this method to commit a group of subgizmos being edited (see <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectRay(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array)"/>). This usually means creating an <see cref="T:Godot.UndoRedo"/> action for the change, using the current transforms as "do" and the <c>restore</c> transforms as "undo".</para>
+            <para>Override this method to commit a group of subgizmos being edited (see <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectRay(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array{Godot.Plane})"/>). This usually means creating an <see cref="T:Godot.UndoRedo"/> action for the change, using the current transforms as "do" and the <c>restore</c> transforms as "undo".</para>
             <para>If the <c>cancel</c> argument is <c>true</c>, the <c>restore</c> transforms should be directly set, without any <see cref="T:Godot.UndoRedo"/> action. As with all subgizmo methods, transforms are given in local space respect to the gizmo's Node3D. Called for this plugin's active gizmos.</para>
             </summary>
         </member>
@@ -1274,7 +1274,7 @@
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin._GetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32)">
             <summary>
-            <para>Override this method to return the current transform of a subgizmo. As with all subgizmo methods, the transform should be in local space respect to the gizmo's Node3D. This transform will be requested at the start of an edit and used in the <c>restore</c> argument in <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array,System.Boolean)"/>. Called for this plugin's active gizmos.</para>
+            <para>Override this method to return the current transform of a subgizmo. As with all subgizmo methods, the transform should be in local space respect to the gizmo's Node3D. This transform will be requested at the start of an edit and used in the <c>restore</c> argument in <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>. Called for this plugin's active gizmos.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin._HasGizmo(Godot.Node3D)">
@@ -1306,17 +1306,17 @@
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin._SetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32,Godot.Transform3D)">
             <summary>
-            <para>Override this method to update the node properties during subgizmo editing (see <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectRay(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array)"/>). The <c>transform</c> is given in the Node3D's local coordinate system.  Called for this plugin's active gizmos.</para>
+            <para>Override this method to update the node properties during subgizmo editing (see <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectRay(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Vector2)"/> and <see cref="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array{Godot.Plane})"/>). The <c>transform</c> is given in the Node3D's local coordinate system.  Called for this plugin's active gizmos.</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array)">
+        <member name="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectFrustum(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Collections.Array{Godot.Plane})">
             <summary>
-            <para>Override this method to allow selecting subgizmos using mouse drag box selection. Given a <c>camera</c> and a <c>frustum</c>, this method should return which subgizmos are contained within the frustum. The <c>frustum</c> argument consists of an <c>Array</c> with all the <c>Plane</c>s that make up the selection frustum. The returned value should contain a list of unique subgizmo identifiers, these identifiers can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmoPlugin._GetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array,System.Boolean)"/>.  Called for this plugin's active gizmos.</para>
+            <para>Override this method to allow selecting subgizmos using mouse drag box selection. Given a <c>camera</c> and a <c>frustum</c>, this method should return which subgizmos are contained within the frustum. The <c>frustum</c> argument consists of an <c>Array</c> with all the <c>Plane</c>s that make up the selection frustum. The returned value should contain a list of unique subgizmo identifiers, these identifiers can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmoPlugin._GetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>.  Called for this plugin's active gizmos.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin._SubgizmosIntersectRay(Godot.EditorNode3DGizmo,Godot.Camera3D,Godot.Vector2)">
             <summary>
-            <para>Override this method to allow selecting subgizmos using mouse clicks. Given a <c>camera</c> and a <c>point</c> in screen coordinates, this method should return which subgizmo should be selected. The returned value should be a unique subgizmo identifier, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmoPlugin._GetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array,System.Boolean)"/>. Called for this plugin's active gizmos.</para>
+            <para>Override this method to allow selecting subgizmos using mouse clicks. Given a <c>camera</c> and a <c>point</c> in screen coordinates, this method should return which subgizmo should be selected. The returned value should be a unique subgizmo identifier, which can have any non-negative value and will be used in other virtual methods like <see cref="M:Godot.EditorNode3DGizmoPlugin._GetSubgizmoTransform(Godot.EditorNode3DGizmo,System.Int32)"/> or <see cref="M:Godot.EditorNode3DGizmoPlugin._CommitSubgizmos(Godot.EditorNode3DGizmo,System.Int32[],Godot.Collections.Array{Godot.Transform3D},System.Boolean)"/>. Called for this plugin's active gizmos.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin.CreateMaterial(System.String,Godot.Color,System.Boolean,System.Boolean,System.Boolean)">
@@ -1328,7 +1328,7 @@
             <summary>
             <para>Creates an icon material with its variants (selected and/or editable) and adds them to the internal material list. They can then be accessed with <see cref="M:Godot.EditorNode3DGizmoPlugin.GetMaterial(System.String,Godot.EditorNode3DGizmo)"/> and used in <see cref="M:Godot.EditorNode3DGizmo.AddUnscaledBillboard(Godot.Material,System.Single,System.Nullable{Godot.Color})"/>. Should not be overridden.</para>
             </summary>
-            <param name="color">If the parameter is null, then the default value is new Color(1, 1, 1, 1)</param>
+            <param name="color">If the parameter is null, then the default value is <c>new Color(1, 1, 1, 1)</c>.</param>
         </member>
         <member name="M:Godot.EditorNode3DGizmoPlugin.CreateHandleMaterial(System.String,System.Boolean,Godot.Texture2D)">
             <summary>
@@ -1635,12 +1635,26 @@
         </member>
         <member name="M:Godot.EditorPlugin._GetState">
             <summary>
-            <para>Gets the state of your plugin editor. This is used when saving the scene (so state is kept when opening it again) and for switching tabs (so state can be restored when the tab returns).</para>
+            <para>Override this method to provide a state data you want to be saved, like view position, grid settings, folding, etc. This is used when saving the scene (so state is kept when opening it again) and for switching tabs (so state can be restored when the tab returns). This data is automatically saved for each scene in an <c>editstate</c> file in the editor metadata folder. If you want to store global (scene-independent) editor data for your plugin, you can use <see cref="M:Godot.EditorPlugin._GetWindowLayout(Godot.ConfigFile)"/> instead.</para>
+            <para>Use <see cref="M:Godot.EditorPlugin._SetState(Godot.Collections.Dictionary)"/> to restore your saved state.</para>
+            <para>Note: This method should not be used to save important settings that should persist with the project.</para>
+            <para>Note: You must implement <see cref="M:Godot.EditorPlugin._GetPluginName"/> for the state to be stored and restored correctly.</para>
+            <para><code>
+            func _get_state():
+                var state = {"zoom": zoom, "preferred_color": my_color}
+                return state
+            </code></para>
             </summary>
         </member>
         <member name="M:Godot.EditorPlugin._GetWindowLayout(Godot.ConfigFile)">
             <summary>
-            <para>Gets the GUI layout of the plugin. This is used to save the project's editor layout when <see cref="M:Godot.EditorPlugin.QueueSaveLayout"/> is called or the editor layout was changed(For example changing the position of a dock).</para>
+            <para>Override this method to provide the GUI layout of the plugin or any other data you want to be stored. This is used to save the project's editor layout when <see cref="M:Godot.EditorPlugin.QueueSaveLayout"/> is called or the editor layout was changed (for example changing the position of a dock). The data is stored in the <c>editor_layout.cfg</c> file in the editor metadata directory.</para>
+            <para>Use <see cref="M:Godot.EditorPlugin._SetWindowLayout(Godot.ConfigFile)"/> to restore your saved layout.</para>
+            <para><code>
+            func _get_window_layout(configuration):
+                configuration.set_value("MyPlugin", "window_position", $Window.position)
+                configuration.set_value("MyPlugin", "icon_color", $Icon.modulate)
+            </code></para>
             </summary>
         </member>
         <member name="M:Godot.EditorPlugin._Handles(System.Object)">
@@ -1666,12 +1680,23 @@
         </member>
         <member name="M:Godot.EditorPlugin._SetState(Godot.Collections.Dictionary)">
             <summary>
-            <para>Restore the state saved by <see cref="M:Godot.EditorPlugin._GetState"/>.</para>
+            <para>Restore the state saved by <see cref="M:Godot.EditorPlugin._GetState"/>. This method is called when the current scene tab is changed in the editor.</para>
+            <para>Note: Your plugin must implement <see cref="M:Godot.EditorPlugin._GetPluginName"/>, otherwise it will not be recognized and this method will not be called.</para>
+            <para><code>
+            func _set_state(data):
+                zoom = data.get("zoom", 1.0)
+                preferred_color = data.get("my_color", Color.white)
+            </code></para>
             </summary>
         </member>
         <member name="M:Godot.EditorPlugin._SetWindowLayout(Godot.ConfigFile)">
             <summary>
-            <para>Restore the plugin GUI layout saved by <see cref="M:Godot.EditorPlugin._GetWindowLayout(Godot.ConfigFile)"/>.</para>
+            <para>Restore the plugin GUI layout and data saved by <see cref="M:Godot.EditorPlugin._GetWindowLayout(Godot.ConfigFile)"/>. This method is called for every plugin on editor startup. Use the provided <c>configuration</c> file to read your saved data.</para>
+            <para><code>
+            func _set_window_layout(configuration):
+                $Window.position = configuration.get_value("MyPlugin", "window_position", Vector2())
+                $Icon.modulate = configuration.get_value("MyPlugin", "icon_color", Color.white)
+            </code></para>
             </summary>
         </member>
         <member name="M:Godot.EditorPlugin.AddControlToContainer(Godot.EditorPlugin.CustomControlContainer,Godot.Control)">
@@ -1894,7 +1919,7 @@
         </member>
         <member name="M:Godot.EditorPlugin.GetScriptCreateDialog">
             <summary>
-            <para>Gets the Editor's dialogue used for making scripts.</para>
+            <para>Gets the Editor's dialog used for making scripts.</para>
             <para>Note: Users can configure it before use.</para>
             <para>Warning: Removing and freeing this node will render a part of the editor useless and may cause a crash.</para>
             </summary>
@@ -1998,7 +2023,7 @@
             <summary>
             <para>If one or several properties have changed, this must be called. <c>field</c> is used in case your editor can modify fields separately (as an example, Vector3.x). The <c>changing</c> argument avoids the editor requesting this property to be refreshed (leave as <c>false</c> if unsure).</para>
             </summary>
-            <param name="field">If the parameter is null, then the default value is (StringName)""</param>
+            <param name="field">If the parameter is null, then the default value is <c>(StringName)""</c>.</param>
         </member>
         <member name="T:Godot.EditorProperty.PropertyChangedHandler">
             <summary>
@@ -2461,12 +2486,12 @@
         </member>
         <member name="M:Godot.EditorSettings.SetSetting(System.String,System.Object)">
             <summary>
-            <para>Sets the <c>value</c> of the setting specified by <c>name</c>. This is equivalent to using <see cref="M:Godot.Object.Set(System.String,System.Object)"/> on the EditorSettings instance.</para>
+            <para>Sets the <c>value</c> of the setting specified by <c>name</c>. This is equivalent to using <see cref="M:Godot.Object.Set(Godot.StringName,System.Object)"/> on the EditorSettings instance.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorSettings.GetSetting(System.String)">
             <summary>
-            <para>Returns the value of the setting specified by <c>name</c>. This is equivalent to using <see cref="M:Godot.Object.Get(System.String)"/> on the EditorSettings instance.</para>
+            <para>Returns the value of the setting specified by <c>name</c>. This is equivalent to using <see cref="M:Godot.Object.Get(Godot.StringName)"/> on the EditorSettings instance.</para>
             </summary>
         </member>
         <member name="M:Godot.EditorSettings.Erase(System.String)">

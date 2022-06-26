@@ -17,35 +17,35 @@ namespace Network
         Finished
     }
 
-    [Serializable]
-    public class TournementData
-    {
-        public int StageIndex { get; private set; }
-        public GameType GameType { get; private set; }
-        public int MaxPlayers { get; private set; }
-        public int MinPlayers { get; private set; }
-        public int NumBattles { get; private set; }
-        public int Time { get; private set; }
-        public bool SpawnShuffle { get; private set; }
-        public bool Devil { get; private set; }
-        public bool MadBomber { get; private set; }
-        public int[] Stages { get; private set; }
+    // [Serializable]
+    // public class TournementData
+    // {
+    //     public int StageIndex { get; private set; }
+    //     public GameType GameType { get; private set; }
+    //     public int MaxPlayers { get; private set; }
+    //     public int MinPlayers { get; private set; }
+    //     public int NumBattles { get; private set; }
+    //     public int Time { get; private set; }
+    //     public bool SpawnShuffle { get; private set; }
+    //     public bool Devil { get; private set; }
+    //     public bool MadBomber { get; private set; }
+    //     public int[] Stages { get; private set; }
 
-        public TournementData(int stageIndex, GameType gameType, int maxPlayers, int minPlayers, int numBattles, int time, bool spawnShuffle, bool devil, bool madBomber, int[] stages)
-        {
-            this.StageIndex = stageIndex;
+    //     public TournementData(int stageIndex, GameType gameType, int maxPlayers, int minPlayers, int numBattles, int time, bool spawnShuffle, bool devil, bool madBomber, int[] stages)
+    //     {
+    //         this.StageIndex = stageIndex;
 
-            this.GameType = gameType;
-            this.MaxPlayers = maxPlayers;
-            this.MinPlayers = minPlayers;
-            this.NumBattles = numBattles;
-            this.Time = time;
-            this.SpawnShuffle = spawnShuffle;
-            this.Devil = devil;
-            this.MadBomber = madBomber;
-            this.Stages = stages;
-        }
-    }
+    //         this.GameType = gameType;
+    //         this.MaxPlayers = maxPlayers;
+    //         this.MinPlayers = minPlayers;
+    //         this.NumBattles = numBattles;
+    //         this.Time = time;
+    //         this.SpawnShuffle = spawnShuffle;
+    //         this.Devil = devil;
+    //         this.MadBomber = madBomber;
+    //         this.Stages = stages;
+    //     }
+    // }
 
     public partial class Tournement : Node2D
     {
@@ -55,11 +55,13 @@ namespace Network
         private Network.Server server;
         private Network.Client client;
 
+        public readonly Dictionary<int, TournementPeerInfo> TournementPeers = new Dictionary<int, TournementPeerInfo>();
+
         public Battle Battle { get; private set; }
 
         public int StageIndex { get; set; } = 0;
 
-        [Export] private PackedScene battleScene;
+        [Export] public PackedScene BattleScene;
 
         public override void _Ready()
         {
@@ -101,7 +103,7 @@ namespace Network
         void CreateBattle()
         {
             GD.Print("Tournament, Create Battle");
-            PackedScene battleScene = this.battleScene;
+            PackedScene battleScene = this.BattleScene;
             this.Battle = battleScene.Instantiate() as Battle;
             this.AddChild(this.Battle);
 
@@ -115,10 +117,6 @@ namespace Network
 
             // Load the battle for the server
             this.CreateBattle();
-
-            // this.stageIndex = this.ServerOptions.StageIndex;
-            // this.battle.Time = this.ServerOptions.Time;
-            // this.battle.CreateStage(this.stageScenes[this.stageIndex]);
 
             if (Multiplayer.IsServer())
             {
@@ -167,15 +165,15 @@ namespace Network
         public virtual void OnPeerEntered(int peerId)
         {
             GD.Print(what: "Tournement OnPeerEntered");
-            // Peer has entered the server
-            // Tell them to load the map
-            // string optionsJson = this.GetStageStateJson();
-            // this.Rpc(nameof(this.ClientLoadBattle), optionsJson);
+
+            TournementPeerInfo TournementPeerInfo = new TournementPeerInfo();
+            TournementPeerInfo.State = PeerInfoState.Ready;
+            this.TournementPeers[peerId] = TournementPeerInfo;
         }
 
         public virtual void OnPeerLeft(int peerId)
         {
-            this.State = TournementState.NotStarted;
+            TournementPeers.Remove(peerId);
         }
 
         // public override void _Process(float delta)
@@ -183,20 +181,20 @@ namespace Network
         //     this.State = TournementState.NotStarted;
         // }
 
-        public virtual bool CanTournementStart()
-        {
-            int numPlayers = this.server.PeerList.Count;
-            if (numPlayers >= this.ServerOptions.MinPlayers)
-            {
-                return true;
-            }
+        // public virtual bool CanTournementStart()
+        // {
+        //     int numPlayers = this.server.PeerList.Count;
+        //     if (numPlayers >= this.ServerOptions.MinPlayers)
+        //     {
+        //         return true;
+        //     }
 
-            return false;
-            // {
-            //     this.State = TournementState.InLobby;
-            //     return true;
-            // }
-        }
+        //     return false;
+        //     // {
+        //     //     this.State = TournementState.InLobby;
+        //     //     return true;
+        //     // }
+        // }
 
         // public virtual bool CanTournementStart()
         // {

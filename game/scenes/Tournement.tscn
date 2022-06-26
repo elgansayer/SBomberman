@@ -4,5 +4,5 @@
 [ext_resource type="PackedScene" uid="uid://cywgu567aoaxu" path="res://game/scenes/Battle.tscn" id="3_b1rwf"]
 
 [node name="Tournement" type="Node2D"]
-script = ExtResource( "1_txc4a" )
-battleScene = ExtResource( "3_b1rwf" )
+script = ExtResource("1_txc4a")
+BattleScene = ExtResource("3_b1rwf")

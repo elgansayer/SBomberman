@@ -6,7 +6,7 @@ public partial class MainMenunAnimations : Node2D
     [Export] public NodePath[] ButtonNodes;
     [Export] public NodePath TirraSpriteNode;
 
-    private Button lastButton;
+    // private Button lastButton;
 
     [Export] public NodePath FlashTimer;
 

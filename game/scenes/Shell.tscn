@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://n1iqm2yp3n6t" path="res://server/Server.tscn" id="3_x6ub7"]
 
 [node name="ShellScreen" type="Node2D"]
-script = ExtResource( "1_gccq0" )
-ClientGameSetupScene = ExtResource( "2_wtaxn" )
-ServerScene = ExtResource( "3_x6ub7" )
+script = ExtResource("1_gccq0")
+ClientGameSetupScene = ExtResource("2_wtaxn")
+ServerScene = ExtResource("3_x6ub7")
 metadata/_edit_vertical_guides_ = [-111.0]

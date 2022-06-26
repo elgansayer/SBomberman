@@ -9,7 +9,9 @@ namespace Network
 {
     public partial class Client : Node2D
     {
+#pragma warning disable CS0649
         [Export] private PackedScene TournementScene;
+#pragma warning restore CS0649
 
         public Server server { get; private set; }
         public ENetMultiplayerPeer eNet { get; private set; }
@@ -19,15 +21,20 @@ namespace Network
         public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
         protected string host = "localhost";
 
+#pragma warning disable CS0067
         public delegate void OnPeerLeftHandler(int peerId);
         [Signal] public event OnPeerLeftHandler OnPeerLeft;
+
         public delegate void OnPeerEnteredHandler(int peerId);
         public event OnPeerEnteredHandler OnPeerEntered;
+#pragma warning restore CS0067
 
+        private GameState gameState;
 
         public override void _Ready()
         {
             this.Name = "Client";
+            this.gameState = GetTree().Root.GetNode<GameState>("GameState");
         }
 
         private PeerInfo clientPlayerInfo;
@@ -73,12 +80,12 @@ namespace Network
 
         public void OnPeerConnected(int id)
         {
-            GD.Print("Game CLIENT OnPeerConnected");
+            GD.Print("Game CLIENT OnPeerConnected ", id);
         }
 
         public void OnPeerConnected(Godot.Object[] args)
         {
-            GD.Print("Game Server OnPeerConnected");
+            GD.Print("Game Server OnPeerConnected ", args);
         }
 
         //
@@ -86,7 +93,7 @@ namespace Network
         //     Emitted by clients when the server disconnects.
         public void onServerDisconnected()
         {
-            GD.Print("Game Server OnServerDisconnected");
+            GD.Print("Game Client OnServerDisconnected");
         }
 
         //
@@ -95,20 +102,25 @@ namespace Network
         // Only called on clients, not server. Send my ID and info to all the other peers
         public void onConnectionSucceeded()
         {
-            GD.Print("Game Server OnConnectionSucceeded");
+            GD.Print("Game Client OnConnectionSucceeded");
 
-            try
-            {
-                PeerInfo peerInfo = this.GetPlayerInfo();
-                String peerInfoJson = JsonConvert.SerializeObject(peerInfo);
+            // try
+            // {
+            PeerInfo peerInfo = this.GetPlayerInfo();
+            String peerInfoJson = peerInfo.ToJson();
 
-                this.server.Rpc(nameof(this.server.RegisterPeer), peerInfoJson);
-            }
-            catch (System.Exception ex)
-            {
-                GD.Print("Failed to send peer data");
-                GD.Print("Error: " + ex.Message);
-            }
+            // RPCMode rpcMode, bool callLocal = false, TransferMode transferMode = TransferMode.Reliable, int channel = 0);
+
+            this.gameState.AddPeer(peerInfo);
+            // this.gameState.RegisterPeer(peerInfoJson);
+            this.gameState.Rpc(nameof(this.gameState.RegisterPeer), peerInfoJson);
+            this.server.RpcId(1, nameof(this.server.RegisterPeer), peerInfoJson);
+            // }
+            // catch (System.Exception ex)
+            // {
+            // GD.Print("Failed to send peer data");
+            // GD.Print("Error: " + ex.Message);
+            // }
         }
 
         //
@@ -128,28 +140,26 @@ namespace Network
             {
                 Id = Multiplayer.GetUniqueId(),
                 NakamaId = account.User.Id ?? "",
-                DisplayName = account.User.DisplayName ?? "",
-                UserName = account.User.Username ?? "",
-                Avatar = "" ?? "",
+                DisplayName = account.User.DisplayName ?? account.User.Username,
+                UserName = account.User.Username,
+                AvatarId = 0,
             };
 
             return this.clientPlayerInfo;
         }
 
-        internal void RpcId(int id, object registerPlayerCompleted, ServerOptions battleOptions)
-        {
-            throw new NotImplementedException();
-        }
-
         [Authority]
         [AnyPeer]
-        public void RegisterPeerCompleted(String serverOptionsJson, string battleSnapshotJson)
+        public void RegisterPeerCompleted(String serverOptionsJson, string battleSnapshotJson, string gameStateSnapshot)
         {
             GD.Print("Game Server serverOptionsJson0: " + serverOptionsJson);
 
             // GD.Print("CLIENT AddTournement");
             // // GD.Print("serverOptions ", serverOptionsJson);
             // GD.Print("battleSnapShot ", battleSnapshotJson);
+
+            GameState gameState = GetTree().Root.GetNode<GameState>("GameState") as GameState;
+            gameState.SnapShot = gameStateSnapshot;
 
             ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
             // GD.Print("serverOptions ", serverOptions);
@@ -167,7 +177,7 @@ namespace Network
         {
             // GD.Print("CLIENT AddTournement");
             // GD.Print("serverOptions ", serverOptions);
-            // GD.Print("battleSnapShot ", battleSnapShot);
+            // GD.Print("battleSnapShot ", battleSnapShot.ToJson());
 
             // Add a game type
             PackedScene tournementScene = this.TournementScene;
@@ -178,6 +188,7 @@ namespace Network
             tournementNode.Init();
 
             tournementNode.Battle.SnapShot = battleSnapShot;
+            tournementNode.Battle.SpawnPeers();
         }
     }
 }

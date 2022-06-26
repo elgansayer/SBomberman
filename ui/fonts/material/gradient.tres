@@ -25,6 +25,6 @@ void fragment(){
 }"
 
 [resource]
-shader = SubResource( "Shader_ep5jb" )
-shader_param/gradient = ExtResource( "2_vnbx6" )
+shader = SubResource("Shader_ep5jb")
+shader_param/gradient = ExtResource("2_vnbx6")
 shader_param/white_value = 0.0
