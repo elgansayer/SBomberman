@@ -85,7 +85,7 @@ namespace Network
             foreach (PeerInfo peer in tournementSnapshot.Peers)
             {
                 this.RegisterPeer(peer);
-                this.Battle.SpawnPeer(peer);
+                this.Battle.SpawnPeer(this.Peers[peer.Id]);
             }
         }
 
@@ -133,7 +133,14 @@ namespace Network
         public void RegisterPeer(PeerInfo peerInfo)
         {
             int peerId = peerInfo.Id;
-            this.Peers[peerId] = peerInfo;
+            if (this.Peers.ContainsKey(peerId))
+            {
+                this.Peers[peerId].UpdatePeer(peerInfo);
+            }
+            else
+            {
+                this.Peers[peerId] = peerInfo;
+            }
         }
 
 
@@ -173,8 +180,8 @@ namespace Network
                     break;
             }
             // GD.Print(what: "Tournement _Process");
-            this.Rpc(nameof(this.RecievedSnapshot),
-                    this.SnapShot.ToJson());
+            // this.Rpc(nameof(this.RecievedSnapshot),
+                    // this.SnapShot.ToJson());
         }
     }
 }
