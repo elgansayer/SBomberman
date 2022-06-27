@@ -25,16 +25,16 @@ namespace Network
         public delegate void OnPeerLeftHandler(int peerId);
         [Signal] public event OnPeerLeftHandler OnPeerLeft;
 
-        public delegate void OnPeerEnteredHandler(int peerId);
+        public delegate void OnPeerEnteredHandler(PeerInfo peerInfo);
         public event OnPeerEnteredHandler OnPeerEntered;
 #pragma warning restore CS0067
 
-        private GameState gameState;
+        // private GameState gameState;
 
         public override void _Ready()
         {
             this.Name = "Client";
-            this.gameState = GetTree().Root.GetNode<GameState>("GameState");
+            // this.gameState = GetTree().Root.GetNode<GameState>("GameState");
         }
 
         private PeerInfo clientPlayerInfo;
@@ -111,9 +111,9 @@ namespace Network
 
             // RPCMode rpcMode, bool callLocal = false, TransferMode transferMode = TransferMode.Reliable, int channel = 0);
 
-            this.gameState.AddPeer(peerInfo);
+            // this.gameState.AddPeer(peerInfo);
             // this.gameState.RegisterPeer(peerInfoJson);
-            this.gameState.Rpc(nameof(this.gameState.RegisterPeer), peerInfoJson);
+            // this.gameState.Rpc(nameof(this.gameState.RegisterPeer), peerInfoJson);
             this.server.RpcId(1, nameof(this.server.RegisterPeer), peerInfoJson);
             // }
             // catch (System.Exception ex)
@@ -150,30 +150,30 @@ namespace Network
 
         [Authority]
         [AnyPeer]
-        public void RegisterPeerCompleted(String serverOptionsJson, string battleSnapshotJson, string gameStateSnapshot)
+        public void RegisterPeerCompleted(string serverOptionsJson, string tournementSnapshotJson, string battleSnapshotJson)
         {
-            GD.Print("Game Server serverOptionsJson0: " + serverOptionsJson);
-
-            // GD.Print("CLIENT AddTournement");
-            // // GD.Print("serverOptions ", serverOptionsJson);
-            // GD.Print("battleSnapShot ", battleSnapshotJson);
-
-            GameState gameState = GetTree().Root.GetNode<GameState>("GameState") as GameState;
-            gameState.SnapShot = gameStateSnapshot;
+            GD.Print("Game Client serverOptionsJson0: " + serverOptionsJson);
 
             ServerOptions serverOptions = JsonConvert.DeserializeObject<ServerOptions>(serverOptionsJson);
+            // GD.Print("serverOptions ", serverOptions);
+
+            TournementSnapshot tournementSnapshot = JsonConvert.DeserializeObject<TournementSnapshot>(tournementSnapshotJson);
             // GD.Print("serverOptions ", serverOptions);
 
             BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapshotJson);
             // GD.Print("battleSnapShot ", battleSnapShot);
 
-            this.CreateTournement(serverOptions, battleSnapShot);
+            this.CreateTournement(serverOptions, tournementSnapshot, battleSnapShot);
+
+            // Send the peer data to be registered on the server
+            PeerInfo peerInfo = this.GetPlayerInfo();
+            String peerInfoJson = peerInfo.ToJson();
 
             // Notifcy the server we are ready to start the game
-            this.server.RpcId(1, nameof(this.server.RegisterPeerReady));
+            this.server.RpcId(1, nameof(this.server.RegisterPeerReady), peerInfoJson);
         }
 
-        private void CreateTournement(ServerOptions serverOptions, BattleSnapShot battleSnapShot)
+        private void CreateTournement(ServerOptions serverOptions, TournementSnapshot tournementSnapshot, BattleSnapShot battleSnapShot)
         {
             // GD.Print("CLIENT AddTournement");
             // GD.Print("serverOptions ", serverOptions);
@@ -184,11 +184,12 @@ namespace Network
             Tournement tournementNode = tournementScene.Instantiate() as Tournement;
             GetTree().Root.AddChild(tournementNode);
             tournementNode.ServerOptions = serverOptions;
-            tournementNode.StageIndex = battleSnapShot.StageIndex;
+            tournementNode.BattleIndex = battleSnapShot.StageIndex;
             tournementNode.Init();
 
+            tournementNode.SnapShot = tournementSnapshot;
             tournementNode.Battle.SnapShot = battleSnapShot;
-            tournementNode.Battle.SpawnPeers();
+            // tournementNode.Battle.SpawnPeers();
         }
     }
 }
