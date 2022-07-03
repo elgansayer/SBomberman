@@ -31,8 +31,6 @@ namespace Network
         [JsonIgnore]
         public Node2D SpawnedActor { get; internal set; }
 
-        // public readonly Dictionary<int, BattlePeerInfo> Battles = new Dictionary<int, BattlePeerInfo>();
-
         public void UpdatePeer(PeerInfo peerInfo)
         {
             this.NakamaId = peerInfo.NakamaId ?? this.NakamaId;
@@ -40,11 +38,6 @@ namespace Network
             this.UserName = peerInfo.UserName ?? this.UserName;
             this.AvatarId = peerInfo.AvatarId ?? this.AvatarId;
             this.SpawnPoint = peerInfo.SpawnPoint;
-
-            // foreach (KeyValuePair<int, BattlePeerInfo> item in peerInfo.Battles)
-            // {
-            //     this.Battles[item.Key] = item.Value;
-            // }
         }
 
         // public void AddBattle(BattlePeerInfo BattleInfo)

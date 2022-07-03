@@ -29,14 +29,37 @@ public partial class Stage : Node2D
         GD.Print("Stage Ready");
     }
 
-    internal void SyncExplodableRocks(List<Vector2i> explodableRocks)
+    public long GetExplodableRockFlags()
     {
-        foreach (ExplodableRock item in this.ExplodableRocks.ToList())
+        long explodableRockFlags = 0;
+        for (int i = 0; i < this.ExplodableRocks.Count; i++)
         {
-            item.Remove();
+            ExplodableRock rock = this.ExplodableRocks[i];
+            Vector2i gridPosition = this.TileMap.WorldToMap(rock.GlobalPosition);
+            int cellPos = this.TileMap.GridToCell(gridPosition);
+            long flag = this.TileMap.CellToBitFlag(cellPos);
+            explodableRockFlags = explodableRockFlags | flag;
         }
 
-        this.ExplodableRocks.Clear();
-        this.ExplodableRocks = TileMap.SpawnExplodableRocks(explodableRocks);
+        return explodableRockFlags;
+    }
+
+    public void SyncExplodableRocks(long explodableRockFlags)
+    {
+        if (explodableRockFlags < 0)
+        {
+            return;
+        }
+
+        // foreach (ExplodableRock item in this.ExplodableRocks.ToList())
+        // {
+        //     item.Remove();
+        // }
+
+        // this.ExplodableRocks.Clear();
+
+        this.ExplodableRocks = TileMap.SpawnExplodableRocksFromFlags(explodableRockFlags);
+
+        // this.ExplodableRocks = TileMap.SpawnExplodableRocks(explodableRocks);
     }
 }

@@ -7,6 +7,8 @@ public partial class TileMap : Godot.TileMap
 {
     [Export] public PackedScene ExplodableRockNode;
     [Export] public NodePath WorldNode;
+    [Export] public int Width;
+    [Export] public int Height;
 
     public enum TileMapLayers
     {
@@ -51,15 +53,58 @@ public partial class TileMap : Godot.TileMap
         return this.SpawnExplodableRocks(this.GenerateRockPositions());
     }
 
-    public ExplodableRockList SpawnExplodableRocks(List<Vector2i> rockPositions)
+    public ExplodableRockList SpawnExplodableRocks(List<Vector2i> gridPositions)
     {
         this.ClearLayer((int)TileMapLayers.ExplodableBlocks);
-        List<ExplodableRock> rocks = rockPositions.ConvertAll<ExplodableRock>((Vector2i gridPos) =>
+        List<ExplodableRock> rocks = gridPositions.ConvertAll<ExplodableRock>((Vector2i gridPos) =>
         {
             return this.SpawnRock(gridPos);
         });
 
         return new ExplodableRockList(rocks);
+    }
+
+    internal ExplodableRockList SpawnExplodableRocksFromFlags(long explodableRockFlags)
+    {
+        GD.Print("Spawning Explodable Rocks from flags: " + explodableRockFlags);
+        if (explodableRockFlags < 0)
+        {
+            return new ExplodableRockList();
+        }
+
+        List<Vector2i> explodableRockList = new List<Vector2i>();
+        for (int x = 0; x < this.Width; x++)
+        {
+            for (int y = 0; y < this.Height; y++)
+            {
+                Vector2i gridPos = new Vector2i(x, y);
+                int cellPos = this.GridToCell(gridPos);
+                long flag = this.CellToBitFlag(cellPos);
+                if ((explodableRockFlags & flag) != 0)
+                {
+                    explodableRockList.Add(gridPos);
+                }
+            }
+        }
+
+        return this.SpawnExplodableRocks(explodableRockList);
+    }
+
+    public int GridToCell(Vector2i gridPosition)
+    {
+        return gridPosition.x + gridPosition.y * this.Width;
+    }
+
+    public long CellToBitFlag(int x)
+    {
+        return ((long)Math.Pow(2, Math.Round(Math.Log(x) / Math.Log(2))));
+    }
+
+    public Vector2i CellToGrid(int cell)
+    {
+        int x = (cell - 1) % this.Width;
+        int y = (cell - 1) / this.Width;
+        return new Vector2i(x, y);
     }
 
     /**

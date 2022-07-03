@@ -80,176 +80,176 @@ void fragment(){
     COLOR.rgb = interpolate_vec3(origin.rgb, flash_colour, flash_progress);
     COLOR.a = origin.a;
 }"
-script = SubResource( "28" )
+script = SubResource("28")
 
 [sub_resource type="ShaderMaterial" id="27"]
-shader = SubResource( "26" )
+shader = SubResource("26")
 shader_param/flash_colour = null
 shader_param/flash_progress = 0.0
 
 [sub_resource type="SpriteFrames" id="9"]
 animations = [{
-"frames": [ExtResource( "2_hipvy" ), ExtResource( "3_3wegb" ), ExtResource( "4_x8kwp" ), ExtResource( "5_32a3o" )],
+"frames": [ExtResource("2_hipvy"), ExtResource("3_3wegb"), ExtResource("4_x8kwp"), ExtResource("5_32a3o")],
 "loop": true,
 "name": &"dizzy",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "6_rb076" ), ExtResource( "7_klqri" ), ExtResource( "8_6qtm5" ), ExtResource( "9_xlbn1" ), ExtResource( "10_7m14f" ), ExtResource( "11_r6d1w" ), ExtResource( "12_0vxk2" ), ExtResource( "13_u4xta" ), ExtResource( "14_ixhjt" )],
+"frames": [ExtResource("6_rb076"), ExtResource("7_klqri"), ExtResource("8_6qtm5"), ExtResource("9_xlbn1"), ExtResource("10_7m14f"), ExtResource("11_r6d1w"), ExtResource("12_0vxk2"), ExtResource("13_u4xta"), ExtResource("14_ixhjt")],
 "loop": false,
 "name": &"explode",
 "speed": 24.0
 }, {
-"frames": [ExtResource( "15_17tup" )],
+"frames": [ExtResource("15_17tup")],
 "loop": true,
 "name": &"standing_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "16_87hf0" ), ExtResource( "17_l1rcp" ), ExtResource( "18_qvwvt" )],
+"frames": [ExtResource("16_87hf0"), ExtResource("17_l1rcp"), ExtResource("18_qvwvt")],
 "loop": false,
 "name": &"pglove_pickup_up",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "19_u615g" )],
+"frames": [ExtResource("19_u615g")],
 "loop": true,
 "name": &"ride_left",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "20_bie1i" )],
+"frames": [ExtResource("20_bie1i")],
 "loop": false,
 "name": &"pglove_standing_left",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "21_yusro" ), ExtResource( "22_e6ogs" ), ExtResource( "23_nmrun" )],
+"frames": [ExtResource("21_yusro"), ExtResource("22_e6ogs"), ExtResource("23_nmrun")],
 "loop": true,
 "name": &"trapped",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "24_t0jpv" )],
+"frames": [ExtResource("24_t0jpv")],
 "loop": false,
 "name": &"ride_up",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "25_ga85o" )],
+"frames": [ExtResource("25_ga85o")],
 "loop": false,
 "name": &"pglove_standing_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "26_5f31b" )],
+"frames": [ExtResource("26_5f31b")],
 "loop": true,
 "name": &"ride_sad",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "27_gen5s" ), ExtResource( "28_dp0gc" )],
+"frames": [ExtResource("27_gen5s"), ExtResource("28_dp0gc")],
 "loop": true,
 "name": &"pglove_walk_up",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "29_rqbsb" )],
+"frames": [ExtResource("29_rqbsb")],
 "loop": false,
 "name": &"pglove_standing_down",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "30_2uq6k" ), ExtResource( "31_etojv" )],
+"frames": [ExtResource("30_2uq6k"), ExtResource("31_etojv")],
 "loop": true,
 "name": &"pglove_walk_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "32_1bi08" )],
+"frames": [ExtResource("32_1bi08")],
 "loop": false,
 "name": &"ride_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "33_qoeae" ), ExtResource( "34_714ap" )],
+"frames": [ExtResource("33_qoeae"), ExtResource("34_714ap")],
 "loop": true,
 "name": &"walk_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "35_3pist" ), ExtResource( "36_i57h1" )],
+"frames": [ExtResource("35_3pist"), ExtResource("36_i57h1")],
 "loop": true,
 "name": &"walk_up",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "37_ia42f" ), ExtResource( "38_rexnp" ), ExtResource( "29_rqbsb" )],
+"frames": [ExtResource("37_ia42f"), ExtResource("38_rexnp"), ExtResource("29_rqbsb")],
 "loop": false,
 "name": &"pglove_pickup_down",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "39_nm640" )],
+"frames": [ExtResource("39_nm640")],
 "loop": false,
 "name": &"flying_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "40_8x2kx" )],
+"frames": [ExtResource("40_8x2kx")],
 "loop": false,
 "name": &"flying_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "41_hjkr0" ), ExtResource( "42_dvla4" ), ExtResource( "43_805sh" )],
+"frames": [ExtResource("41_hjkr0"), ExtResource("42_dvla4"), ExtResource("43_805sh")],
 "loop": false,
 "name": &"pglove_pickup_right",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "44_ugqnv" ), ExtResource( "45_r3c4g" )],
+"frames": [ExtResource("44_ugqnv"), ExtResource("45_r3c4g")],
 "loop": true,
 "name": &"pglove_walk_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "46_bwjay" )],
+"frames": [ExtResource("46_bwjay")],
 "loop": false,
 "name": &"ride_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "47_h1r3v" )],
+"frames": [ExtResource("47_h1r3v")],
 "loop": false,
 "name": &"standing_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "48_prgtb" )],
+"frames": [ExtResource("48_prgtb")],
 "loop": true,
 "name": &"standing_up",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "49_8mv7d" ), ExtResource( "50_1xk8u" ), ExtResource( "51_mt40o" )],
+"frames": [ExtResource("49_8mv7d"), ExtResource("50_1xk8u"), ExtResource("51_mt40o")],
 "loop": false,
 "name": &"pglove_pickup_left",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "52_l2gny" )],
+"frames": [ExtResource("52_l2gny")],
 "loop": false,
 "name": &"flying_left",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "53_v4im7" ), ExtResource( "54_76plu" )],
+"frames": [ExtResource("53_v4im7"), ExtResource("54_76plu")],
 "loop": true,
 "name": &"walk_left",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "55_xdwyk" )],
+"frames": [ExtResource("55_xdwyk")],
 "loop": false,
 "name": &"flying_up",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "56_i8vw5" )],
+"frames": [ExtResource("56_i8vw5")],
 "loop": false,
 "name": &"pglove_standing_up",
 "speed": 2.0
 }, {
-"frames": [ExtResource( "57_yy0mk" )],
+"frames": [ExtResource("57_yy0mk")],
 "loop": true,
 "name": &"standing_left",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "58_7xgda" ), ExtResource( "59_dr3ak" )],
+"frames": [ExtResource("58_7xgda"), ExtResource("59_dr3ak")],
 "loop": true,
 "name": &"walk_right",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "60_hjbe6" )],
+"frames": [ExtResource("60_hjbe6")],
 "loop": true,
 "name": &"ride_win",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "61_bpta4" ), ExtResource( "62_c2s1k" )],
+"frames": [ExtResource("61_bpta4"), ExtResource("62_c2s1k")],
 "loop": true,
 "name": &"pglove_walk_left",
 "speed": 5.0
@@ -944,27 +944,27 @@ resource_name = "walk_down"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sq3h4"]
 _data = {
-"dizzy": SubResource( "25" ),
-"flying_down": SubResource( "38" ),
-"flying_left": SubResource( "39" ),
-"flying_right": SubResource( "40" ),
-"flying_up": SubResource( "37" ),
-"idle": SubResource( "17" ),
-"load": SubResource( "29" ),
-"pglove_pickup_down": SubResource( "13" ),
-"pglove_pickup_left": SubResource( "31" ),
-"pglove_pickup_right": SubResource( "32" ),
-"pglove_pickup_up": SubResource( "30" ),
-"pglove_throw_down": SubResource( "33" ),
-"pglove_throw_left": SubResource( "35" ),
-"pglove_throw_right": SubResource( "36" ),
-"pglove_throw_up": SubResource( "34" ),
-"ride_down": SubResource( "41" ),
-"ride_left": SubResource( "43" ),
-"ride_right": SubResource( "44" ),
-"ride_up": SubResource( "42" ),
-"standing_down": SubResource( "22" ),
-"walk_down": SubResource( "19" )
+"dizzy": SubResource("25"),
+"flying_down": SubResource("38"),
+"flying_left": SubResource("39"),
+"flying_right": SubResource("40"),
+"flying_up": SubResource("37"),
+"idle": SubResource("17"),
+"load": SubResource("29"),
+"pglove_pickup_down": SubResource("13"),
+"pglove_pickup_left": SubResource("31"),
+"pglove_pickup_right": SubResource("32"),
+"pglove_pickup_up": SubResource("30"),
+"pglove_throw_down": SubResource("33"),
+"pglove_throw_left": SubResource("35"),
+"pglove_throw_right": SubResource("36"),
+"pglove_throw_up": SubResource("34"),
+"ride_down": SubResource("41"),
+"ride_left": SubResource("43"),
+"ride_right": SubResource("44"),
+"ride_up": SubResource("42"),
+"standing_down": SubResource("22"),
+"walk_down": SubResource("19")
 }
 
 [sub_resource type="CircleShape2D" id="12"]
@@ -974,25 +974,25 @@ radius = 15.5
 position = Vector2(0, 2)
 collision_layer = 32
 collision_mask = 31
-script = ExtResource( "1_0utwd" )
+script = ExtResource("1_0utwd")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-material = SubResource( "27" )
+material = SubResource("27")
 position = Vector2(0, -16)
 scale = Vector2(2, 2)
-frames = SubResource( "9" )
+frames = SubResource("9")
 animation = &"standing_down"
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "standing_down"
 libraries = {
-"": SubResource( "AnimationLibrary_sq3h4" )
+"": SubResource("AnimationLibrary_sq3h4")
 }
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-shape = SubResource( "12" )
+shape = SubResource("12")
 
 [node name="Namelabel" type="Label" parent="."]
 size_flags_horizontal = 2

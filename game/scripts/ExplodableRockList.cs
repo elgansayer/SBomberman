@@ -39,10 +39,30 @@ public class ExplodableRockList : List<ExplodableRock>
         }
     }
 
+    // public int ToFlags()
+    // {
+    //     Node2D node = this.ElementAt(0);
+    //     Network.Battle battle = node.GetTree().Root.GetNode<Network.Battle>("Tournement/Battle") as Network.Battle;
+    //     if (battle == null)
+    //     {
+    //         GD.PushError("Could not find Battle node in the scene.");
+    //         GD.Print("Battle is null");
+    //         return 0;
+    //     }
+
+    //     return this.ConvertAll<Vector2i>((rock) => battle.Stage.TileMap.WorldToMap(rock.GlobalPosition));
+    // }
+
     public List<Vector2i> Positions()
     {
         Node2D node = this.ElementAt(0);
         Network.Battle battle = node.GetTree().Root.GetNode<Network.Battle>("Tournement/Battle") as Network.Battle;
+        if (battle == null)
+        {
+            GD.PushError("Could not find Battle node in the scene.");
+            GD.Print("Battle is null");
+            return new List<Vector2i>();
+        }
 
         return this.ConvertAll<Vector2i>((rock) => battle.Stage.TileMap.WorldToMap(rock.GlobalPosition));
     }
@@ -51,6 +71,13 @@ public class ExplodableRockList : List<ExplodableRock>
     {
         Node2D node = this.ElementAt(0);
         Network.Battle battle = node.GetTree().Root.GetNode<Network.Battle>("Tournement/Battle") as Network.Battle;
+        if (battle == null)
+        {
+            GD.PushError("Could not find Battle node in the scene.");
+            GD.Print("Battle is null");
+            return;
+        }
+
         TileMap tileMap = battle?.Stage.TileMap;
 
         if (tileMap == null)

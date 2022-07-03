@@ -14,20 +14,23 @@ namespace Network
         public int StageIndex { get; private set; }
 
         [JsonProperty("ExplodableRocks")]
-        public List<Vector2i> ExplodableRocks { get; private set; }
+        public long ExplodableRockFlags { get; private set; }
+
+        public Dictionary<int, ActorState> ActorStates { get; private set; }
 
         public BattleSnapShot()
-        {
-            this.ExplodableRocks = new List<Vector2i>();
+        {        
+            this.ActorStates = new Dictionary<int, ActorState>();
         }
 
         public BattleSnapShot(BattleState state, int time, int stageIndex,
-            List<Vector2i> explodableRockPositions)
+            long explodableRockPositions, Dictionary<int, ActorState> actorStates)
         {
             this.State = state;
             this.Time = time;
             this.StageIndex = stageIndex;
-            this.ExplodableRocks = explodableRockPositions;
+            this.ExplodableRockFlags = explodableRockPositions;
+            this.ActorStates = actorStates;
         }
 
         public string ToJson()
