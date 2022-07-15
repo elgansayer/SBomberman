@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 public partial class Stage : Node2D
 {
@@ -29,34 +30,36 @@ public partial class Stage : Node2D
         GD.Print("Stage Ready");
     }
 
-    public long GetExplodableRockFlags()
-    {
-        long explodableRockFlags = 0;
+    public BigInteger GetExplodableRockFlags()
+    {        
+        BigInteger explodableRockFlags = 0;
         for (int i = 0; i < this.ExplodableRocks.Count; i++)
         {
             ExplodableRock rock = this.ExplodableRocks[i];
             Vector2i gridPosition = this.TileMap.WorldToMap(rock.GlobalPosition);
             int cellPos = this.TileMap.GridToCell(gridPosition);
-            long flag = this.TileMap.CellToBitFlag(cellPos);
-            explodableRockFlags = explodableRockFlags | flag;
+            BigInteger flag = this.TileMap.CellToBitFlag(cellPos);
+            explodableRockFlags |= flag;
+
+            GD.Print("gridPosition " + gridPosition.ToString() + " cellPos " + cellPos + "flag " + flag);            
         }
 
         return explodableRockFlags;
     }
 
-    public void SyncExplodableRocks(long explodableRockFlags)
+    public void SyncExplodableRocks(BigInteger explodableRockFlags)
     {
         if (explodableRockFlags < 0)
         {
             return;
         }
 
-        // foreach (ExplodableRock item in this.ExplodableRocks.ToList())
-        // {
-        //     item.Remove();
-        // }
+        foreach (ExplodableRock item in this.ExplodableRocks.ToList())
+        {
+            item.Remove();
+        }
 
-        // this.ExplodableRocks.Clear();
+        this.ExplodableRocks.Clear();
 
         this.ExplodableRocks = TileMap.SpawnExplodableRocksFromFlags(explodableRockFlags);
 

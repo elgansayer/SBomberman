@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 public partial class TileMap : Godot.TileMap
 {
@@ -64,8 +65,11 @@ public partial class TileMap : Godot.TileMap
         return new ExplodableRockList(rocks);
     }
 
-    internal ExplodableRockList SpawnExplodableRocksFromFlags(long explodableRockFlags)
+    internal ExplodableRockList SpawnExplodableRocksFromFlags(BigInteger explodableRockFlags)
     {
+        // explodableRockFlags = 0;
+        // explodableRockFlags |= this.CellToBitFlag(2);
+        
         GD.Print("Spawning Explodable Rocks from flags: " + explodableRockFlags);
         if (explodableRockFlags < 0)
         {
@@ -73,14 +77,17 @@ public partial class TileMap : Godot.TileMap
         }
 
         List<Vector2i> explodableRockList = new List<Vector2i>();
-        for (int x = 0; x < this.Width; x++)
+        for (int x = 0; x < 8; x++)
         {
-            for (int y = 0; y < this.Height; y++)
+            for (int y = 0; y < 4; y++)
             {
                 Vector2i gridPos = new Vector2i(x, y);
                 int cellPos = this.GridToCell(gridPos);
-                long flag = this.CellToBitFlag(cellPos);
-                if ((explodableRockFlags & flag) != 0)
+
+                BigInteger flag = this.CellToBitFlag(cellPos);
+                bool spawned = (explodableRockFlags & flag) != 0;
+                GD.Print("gridPos " + gridPos.ToString() + " CellPos: " + cellPos + " flag: " + flag + " spawned: " + spawned);
+                if (spawned)
                 {
                     explodableRockList.Add(gridPos);
                 }
@@ -92,12 +99,14 @@ public partial class TileMap : Godot.TileMap
 
     public int GridToCell(Vector2i gridPosition)
     {
-        return gridPosition.x + gridPosition.y * this.Width;
+        return this.Width * gridPosition.x + gridPosition.y;
     }
 
-    public long CellToBitFlag(int x)
-    {
-        return ((long)Math.Pow(2, Math.Round(Math.Log(x) / Math.Log(2))));
+    public BigInteger CellToBitFlag(int x)
+    {        
+        return (BigInteger)(1 << x);
+        // return (int)Math.Pow((double)x, 2.0); 
+        // return ((int)Math.Pow(2, Math.Round(Math.Log(x) / Math.Log(2))));
     }
 
     public Vector2i CellToGrid(int cell)
@@ -110,12 +119,12 @@ public partial class TileMap : Godot.TileMap
     /**
     * Spawns a rock at the given tile position
     */
-    public ExplodableRock SpawnRock(Vector2 gridPos)
+    public ExplodableRock SpawnRock(Godot.Vector2 gridPos)
     {
         Node2D stage = GetNode<Node2D>(this.WorldNode);
         Node node = this.ExplodableRockNode.Instantiate();
         ExplodableRock rock = (ExplodableRock)node as ExplodableRock;
-        Vector2 rockPos = this.MapToWorld((Vector2i)gridPos);
+        Godot.Vector2 rockPos = this.MapToWorld((Vector2i)gridPos);
         stage.AddChild(node: rock);
         rock.Position = rockPos;
         rock.Name = "ExplodableRock" + gridPos.ToString();

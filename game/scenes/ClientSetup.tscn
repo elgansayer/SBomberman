@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbpkbnirtc7ph"]
+[gd_scene load_steps=4 format=3 uid="uid://bbpkbnirtc7ph"]
 
 [ext_resource type="Script" path="res://game/scripts/network/ClientSetup.cs" id="1_rwnge"]
 [ext_resource type="PackedScene" uid="uid://c2qc7r8ntghvb" path="res://game/scenes/LoadingScreen.tscn" id="2_ifqvu"]
-[ext_resource type="PackedScene" uid="uid://b6uf68wcnembs" path="res://game/scenes/Client.tscn" id="3_1ekap"]
 [ext_resource type="PackedScene" uid="uid://c11vtid7cyehc" path="res://game/scenes/main_menu/MainMenuScreen.tscn" id="3_jw7x4"]
 
 [node name="ClientSetupScreen" type="Node2D"]
-script = ExtResource( "1_rwnge" )
-MainMenuScene = ExtResource( "3_jw7x4" )
-NetworkClientScene = ExtResource( "3_1ekap" )
-LoadingScene = ExtResource( "2_ifqvu" )
+script = ExtResource("1_rwnge")
+MainMenuScene = ExtResource("3_jw7x4")
+LoadingScene = ExtResource("2_ifqvu")
 metadata/_edit_vertical_guides_ = [-111.0]

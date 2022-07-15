@@ -148,8 +148,7 @@ namespace Network
             return this.clientPlayerInfo;
         }
 
-        [Authority]
-        [AnyPeer]
+        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RegisterPeerCompleted(string serverOptionsJson, string tournementSnapshotJson, string battleSnapshotJson)
         {
             GD.Print("Game Client serverOptionsJson0: " + serverOptionsJson);

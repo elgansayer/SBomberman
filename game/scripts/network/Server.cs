@@ -136,8 +136,7 @@ namespace Network
             handler?.Invoke(id);
         }
 
-        [Authority]
-        [AnyPeer]
+        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RegisterPeer(string peerData)
         {
             GD.Print("Game Server RegisterPlayer");
@@ -159,8 +158,7 @@ namespace Network
             this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournementJson, snapShotJson);
         }
 
-        [Authority]
-        [AnyPeer]
+        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RegisterPeerReady(string peerData)
         {
             // Godot.AnyPeerAttribute

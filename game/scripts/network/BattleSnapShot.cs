@@ -3,6 +3,7 @@ using Network;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace Network
 {
@@ -14,7 +15,7 @@ namespace Network
         public int StageIndex { get; private set; }
 
         [JsonProperty("ExplodableRocks")]
-        public long ExplodableRockFlags { get; private set; }
+        public BigInteger ExplodableRockFlags { get; private set; }
 
         public Dictionary<int, ActorState> ActorStates { get; private set; }
 
@@ -24,7 +25,7 @@ namespace Network
         }
 
         public BattleSnapShot(BattleState state, int time, int stageIndex,
-            long explodableRockPositions, Dictionary<int, ActorState> actorStates)
+            BigInteger explodableRockPositions, Dictionary<int, ActorState> actorStates)
         {
             this.State = state;
             this.Time = time;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://c11vtid7cyehc"]
+[gd_scene load_steps=73 format=3 uid="uid://c11vtid7cyehc"]
 
 [ext_resource type="Script" path="res://game/scenes/main_menu/MainMenuScreen.cs" id="1_gu8bu"]
 [ext_resource type="PackedScene" uid="uid://oatndu3e711m" path="res://game/scenes/account/LoginScreen.tscn" id="3_0fqxu"]
@@ -24,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://b0wwk8qaoekcp" path="res://game/scenes/main_menu/assets/front_page/fire/top.png" id="21_juoan"]
 [ext_resource type="Script" path="res://game/scenes/main_menu/MainMenunAnimations.cs" id="22_sahmy"]
 [ext_resource type="Material" uid="uid://dm4rmmlu2dgk3" path="res://ui/fonts/material/gradient.tres" id="23_wxohk"]
-[ext_resource type="FontData" uid="uid://cc85eusvhx70l" path="res://ui/fonts/bmp/equipment-pro.fnt" id="24_b2uee"]
 [ext_resource type="ButtonGroup" path="res://game/scenes/main_menu/btn_groups/button_group.tres" id="25_7jsaq"]
 [ext_resource type="Texture2D" uid="uid://bhaneoowkv7g" path="res://ui/fonts/gradient.png" id="26_v87ng"]
 [ext_resource type="Texture2D" uid="uid://cr3sa7lhdv85y" path="res://game/tirra/assets/pink/small/down/standing_down.png" id="27_yb4au"]
@@ -110,12 +109,12 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4dcb"]
 _data = {
-"load": SubResource( "3" )
+"load": SubResource("3")
 }
 
 [sub_resource type="SpriteFrames" id="1"]
 animations = [{
-"frames": [ExtResource( "4_upgvh" ), ExtResource( "5_w1u1b" ), ExtResource( "6_qy4dk" ), ExtResource( "5_w1u1b" )],
+"frames": [ExtResource("4_upgvh"), ExtResource("5_w1u1b"), ExtResource("6_qy4dk"), ExtResource("5_w1u1b")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -123,7 +122,7 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="2"]
 animations = [{
-"frames": [ExtResource( "7_k5o6e" ), ExtResource( "8_diu7f" ), ExtResource( "9_cajij" ), ExtResource( "8_diu7f" )],
+"frames": [ExtResource("7_k5o6e"), ExtResource("8_diu7f"), ExtResource("9_cajij"), ExtResource("8_diu7f")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -131,7 +130,7 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="4"]
 animations = [{
-"frames": [ExtResource( "10_2e1ww" ), ExtResource( "11_6xbsb" ), ExtResource( "12_ktypr" ), ExtResource( "11_6xbsb" )],
+"frames": [ExtResource("10_2e1ww"), ExtResource("11_6xbsb"), ExtResource("12_ktypr"), ExtResource("11_6xbsb")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -139,7 +138,7 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="5"]
 animations = [{
-"frames": [ExtResource( "13_e023j" ), ExtResource( "14_tux3b" )],
+"frames": [ExtResource("13_e023j"), ExtResource("14_tux3b")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
@@ -147,14 +146,11 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="6"]
 animations = [{
-"frames": [ExtResource( "16_cwt1j" ), ExtResource( "17_u3ft2" ), ExtResource( "18_b47j7" )],
+"frames": [ExtResource("16_cwt1j"), ExtResource("17_u3ft2"), ExtResource("18_b47j7")],
 "loop": true,
 "name": &"default",
 "speed": 10.0
 }]
-
-[sub_resource type="Font" id="Font_ifcni"]
-data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uimc7"]
 
@@ -189,12 +185,9 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_me7pb"]
-shader = SubResource( "Shader_itm1j" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_itm1j")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
-
-[sub_resource type="Font" id="Font_x0wj7"]
-data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_km8cs"]
 
@@ -207,8 +200,8 @@ data/0 = ExtResource( "24_b2uee" )
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_graxf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iw77x"]
-shader = SubResource( "Shader_itm1j" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_itm1j")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
 
 [sub_resource type="Shader" id="Shader_yfdu7"]
@@ -234,12 +227,9 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gy8rg"]
-shader = SubResource( "Shader_yfdu7" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_yfdu7")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
-
-[sub_resource type="Font" id="Font_toqbx"]
-data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gnhs"]
 
@@ -252,12 +242,9 @@ data/0 = ExtResource( "24_b2uee" )
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsabs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ui43v"]
-shader = SubResource( "Shader_yfdu7" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_yfdu7")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
-
-[sub_resource type="Font" id="Font_4i4dl"]
-data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6aivo"]
 
@@ -270,12 +257,9 @@ data/0 = ExtResource( "24_b2uee" )
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tp3eb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcuyr"]
-shader = SubResource( "Shader_yfdu7" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_yfdu7")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
-
-[sub_resource type="Font" id="Font_a58jk"]
-data/0 = ExtResource( "24_b2uee" )
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atat1"]
 
@@ -288,59 +272,62 @@ data/0 = ExtResource( "24_b2uee" )
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cpchj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0phsy"]
-shader = SubResource( "Shader_yfdu7" )
-shader_param/gradient = ExtResource( "26_v87ng" )
+shader = SubResource("Shader_yfdu7")
+shader_param/gradient = ExtResource("26_v87ng")
 shader_param/white_value = 0.0
 
 [sub_resource type="SpriteFrames" id="7"]
 animations = [{
-"frames": [ExtResource( "27_yb4au" )],
+"frames": [ExtResource("27_yb4au")],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "28_uqn4c" ), ExtResource( "29_yx7er" )],
+"frames": [ExtResource("28_uqn4c"), ExtResource("29_yx7er")],
 "loop": true,
 "name": &"walk_down",
 "speed": 5.0
 }, {
-"frames": [ExtResource( "30_gqmuh" ), ExtResource( "31_rgwhl" )],
+"frames": [ExtResource("30_gqmuh"), ExtResource("31_rgwhl")],
 "loop": true,
 "name": &"walk_up",
 "speed": 5.0
 }]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource( "1_gu8bu" )
-LoginScene = ExtResource( "3_0fqxu" )
-BattleOptionsScreen = ExtResource( "3_k0ego" )
+script = ExtResource("1_gu8bu")
+LoginScene = ExtResource("3_0fqxu")
+BattleOptionsScreen = ExtResource("3_k0ego")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
-texture = ExtResource( "3_vsk13" )
+texture = ExtResource("3_vsk13")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundSprite"]
 autoplay = "load"
 libraries = {
-"": SubResource( "AnimationLibrary_t4dcb" )
+"": SubResource("AnimationLibrary_t4dcb")
 }
 
 [node name="TirrraManAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(544, 350.933)
 scale = Vector2(2, 2)
-frames = SubResource( "1" )
+frames = SubResource("1")
+frame = 2
 playing = true
 
 [node name="WhopperAnim" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(496, 388.266)
 scale = Vector2(2, 2)
-frames = SubResource( "2" )
+frames = SubResource("2")
+frame = 2
 playing = true
 
 [node name="DancingBomberman" type="AnimatedSprite2D" parent="BackgroundSprite"]
 position = Vector2(72, 388.266)
 scale = Vector2(2, 2)
-frames = SubResource( "4" )
+frames = SubResource("4")
+frame = 2
 playing = true
 
 [node name="Title" type="Node2D" parent="BackgroundSprite"]
@@ -348,38 +335,37 @@ playing = true
 [node name="TitleSprite" type="AnimatedSprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(264, 160)
 scale = Vector2(2, 2)
-frames = SubResource( "5" )
+frames = SubResource("5")
 playing = true
 
 [node name="SaturnSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(216, 56)
 scale = Vector2(2, 2)
-texture = ExtResource( "15_qtsls" )
+texture = ExtResource("15_qtsls")
 
 [node name="BombSparks" type="AnimatedSprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
-frames = SubResource( "6" )
-frame = 2
+frames = SubResource("6")
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(208, 128)
 scale = Vector2(2, 2)
-texture = ExtResource( "19_fc5k4" )
+texture = ExtResource("19_fc5k4")
 
 [node name="BottomFireSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(472, 208)
 scale = Vector2(2, 2)
-texture = ExtResource( "20_4n6vc" )
+texture = ExtResource("20_4n6vc")
 
 [node name="TopFireSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
 position = Vector2(544, 80)
 scale = Vector2(2, 2)
-texture = ExtResource( "21_juoan" )
+texture = ExtResource("21_juoan")
 
 [node name="UILayer" type="Node2D" parent="."]
-script = ExtResource( "22_sahmy" )
+script = ExtResource("22_sahmy")
 ButtonNodes = [NodePath("MainMenu/GridContainer/BtnBattle"), NodePath("MainMenu/GridContainer/BtnOptionsGame"), NodePath("MainMenu/GridContainer/BtnAccount"), NodePath("BattleMenu/GridContainer/BtnHostGame"), NodePath("BattleMenu/GridContainer/BtnJoinGame"), NodePath("BattleMenu/GridContainer/BtnQucikMatch"), NodePath("BattleMenu/GridContainer/BtnBack")]
 TirraSpriteNode = NodePath("TirraSprite")
 FlashTimer = NodePath("FlashTimer")
@@ -393,9 +379,9 @@ offset_right = 419.0
 offset_bottom = 377.0
 
 [node name="BtnBattle" type="Button" parent="UILayer/MainMenu/GridContainer"]
-material = ExtResource( "23_wxohk" )
-offset_right = 152.0
-offset_bottom = 32.0
+material = ExtResource("23_wxohk")
+offset_right = 110.0
+offset_bottom = 23.0
 hint_tooltip = "Game Mode"
 focus_neighbor_left = NodePath("../BtnOptionsGame")
 focus_neighbor_top = NodePath("../BtnOptionsGame")
@@ -403,13 +389,12 @@ focus_neighbor_right = NodePath("../BtnOptionsGame")
 focus_neighbor_bottom = NodePath("../BtnOptionsGame")
 focus_next = NodePath("../BtnOptionsGame")
 focus_previous = NodePath("../BtnOptionsGame")
-theme_override_fonts/font = SubResource( "Font_ifcni" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_uimc7" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_gpynw" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_d1toe" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_q8udb" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_kt77v" )
-button_group = ExtResource( "25_7jsaq" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uimc7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gpynw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d1toe")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_q8udb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kt77v")
+button_group = ExtResource("25_7jsaq")
 text = "BATTLE MODE"
 flat = true
 alignment = 0
@@ -418,10 +403,10 @@ alignment = 0
 position = Vector2(-24, 13)
 
 [node name="BtnOptionsGame" type="Button" parent="UILayer/MainMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_me7pb" )
-offset_top = 36.0
-offset_right = 152.0
-offset_bottom = 68.0
+material = SubResource("ShaderMaterial_me7pb")
+offset_top = 27.0
+offset_right = 110.0
+offset_bottom = 50.0
 hint_tooltip = "Options"
 focus_neighbor_left = NodePath("../BtnBattle")
 focus_neighbor_top = NodePath("../BtnBattle")
@@ -429,13 +414,12 @@ focus_neighbor_right = NodePath("../BtnBattle")
 focus_neighbor_bottom = NodePath("../BtnBattle")
 focus_next = NodePath("../BtnBattle")
 focus_previous = NodePath("../BtnBattle")
-theme_override_fonts/font = SubResource( "Font_x0wj7" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_km8cs" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_1r0ht" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_tfnw0" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_u11ir" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_graxf" )
-button_group = ExtResource( "25_7jsaq" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_km8cs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1r0ht")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tfnw0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u11ir")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_graxf")
+button_group = ExtResource("25_7jsaq")
 text = "OPTIONS"
 flat = true
 alignment = 0
@@ -444,10 +428,10 @@ alignment = 0
 position = Vector2(-24, 13)
 
 [node name="BtnAccount" type="Button" parent="UILayer/MainMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_iw77x" )
-offset_top = 72.0
-offset_right = 152.0
-offset_bottom = 104.0
+material = SubResource("ShaderMaterial_iw77x")
+offset_top = 54.0
+offset_right = 110.0
+offset_bottom = 77.0
 hint_tooltip = "Options"
 focus_neighbor_left = NodePath("../BtnBattle")
 focus_neighbor_top = NodePath("../BtnBattle")
@@ -455,13 +439,12 @@ focus_neighbor_right = NodePath("../BtnBattle")
 focus_neighbor_bottom = NodePath("../BtnBattle")
 focus_next = NodePath("../BtnBattle")
 focus_previous = NodePath("../BtnBattle")
-theme_override_fonts/font = SubResource( "Font_x0wj7" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_km8cs" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_1r0ht" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_tfnw0" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_u11ir" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_graxf" )
-button_group = ExtResource( "25_7jsaq" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_km8cs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1r0ht")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tfnw0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_u11ir")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_graxf")
+button_group = ExtResource("25_7jsaq")
 text = "ACCOUNT"
 flat = true
 alignment = 0
@@ -479,17 +462,16 @@ offset_right = 419.0
 offset_bottom = 377.0
 
 [node name="BtnHostGame" type="Button" parent="UILayer/BattleMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_gy8rg" )
+material = SubResource("ShaderMaterial_gy8rg")
 offset_right = 132.0
 offset_bottom = 32.0
 focus_next = NodePath("../BtnJoinGame")
 focus_previous = NodePath("../BtnQucikMatch")
-theme_override_fonts/font = SubResource( "Font_toqbx" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_2gnhs" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_2evui" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_nhrjj" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_kk772" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_lsabs" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2gnhs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2evui")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nhrjj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kk772")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lsabs")
 text = "HOST GAME"
 flat = true
 alignment = 0
@@ -498,18 +480,17 @@ alignment = 0
 position = Vector2(-24, 13)
 
 [node name="BtnJoinGame" type="Button" parent="UILayer/BattleMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_ui43v" )
+material = SubResource("ShaderMaterial_ui43v")
 offset_top = 36.0
 offset_right = 132.0
 offset_bottom = 68.0
 focus_next = NodePath("../BtnQucikMatch")
 focus_previous = NodePath("../BtnHostGame")
-theme_override_fonts/font = SubResource( "Font_4i4dl" )
-theme_override_styles/normal = SubResource( "StyleBoxFlat_6aivo" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_ovsqs" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_3d32q" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_w4227" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_tp3eb" )
+theme_override_styles/normal = SubResource("StyleBoxFlat_6aivo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ovsqs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3d32q")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_w4227")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tp3eb")
 text = "JOIN GAME"
 flat = true
 alignment = 0
@@ -518,18 +499,17 @@ alignment = 0
 position = Vector2(-24, 13)
 
 [node name="BtnQucikMatch" type="Button" parent="UILayer/BattleMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_xcuyr" )
+material = SubResource("ShaderMaterial_xcuyr")
 offset_top = 72.0
 offset_right = 132.0
 offset_bottom = 104.0
 focus_next = NodePath("../BtnHostGame")
 focus_previous = NodePath("../BtnJoinGame")
-theme_override_fonts/font = SubResource( "Font_a58jk" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_atat1" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_iir63" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_qfbo6" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_c8553" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_cpchj" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_atat1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_iir63")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qfbo6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c8553")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cpchj")
 text = "FIND MATCH"
 flat = true
 alignment = 0
@@ -538,18 +518,17 @@ alignment = 0
 position = Vector2(-24, 8)
 
 [node name="BtnBack" type="Button" parent="UILayer/BattleMenu/GridContainer"]
-material = SubResource( "ShaderMaterial_0phsy" )
+material = SubResource("ShaderMaterial_0phsy")
 offset_top = 108.0
 offset_right = 132.0
 offset_bottom = 140.0
 focus_next = NodePath("../BtnHostGame")
 focus_previous = NodePath("../BtnJoinGame")
-theme_override_fonts/font = SubResource( "Font_a58jk" )
-theme_override_styles/normal = SubResource( "StyleBoxEmpty_atat1" )
-theme_override_styles/hover = SubResource( "StyleBoxEmpty_iir63" )
-theme_override_styles/pressed = SubResource( "StyleBoxEmpty_qfbo6" )
-theme_override_styles/disabled = SubResource( "StyleBoxEmpty_c8553" )
-theme_override_styles/focus = SubResource( "StyleBoxEmpty_cpchj" )
+theme_override_styles/normal = SubResource("StyleBoxEmpty_atat1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_iir63")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qfbo6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_c8553")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cpchj")
 text = "BACK"
 flat = true
 alignment = 0
@@ -563,7 +542,7 @@ autostart = true
 [node name="TirraSprite" type="AnimatedSprite2D" parent="UILayer"]
 position = Vector2(243, 286)
 scale = Vector2(1.5, 1.5)
-frames = SubResource( "7" )
+frames = SubResource("7")
 playing = true
 
 [connection signal="pressed" from="UILayer/MainMenu/GridContainer/BtnBattle" to="." method="_on_btn_battle_pressed"]

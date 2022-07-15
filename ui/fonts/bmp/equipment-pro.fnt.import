@@ -1,7 +1,7 @@
 [remap]
 
 importer="font_data_bmfont"
-type="FontData"
+type="FontFile"
 uid="uid://cc85eusvhx70l"
 path="res://.godot/imported/equipment-pro.fnt-07f8582478201bbedd3ae9d469fff970.fontdata"
 
@@ -12,4 +12,5 @@ dest_files=["res://.godot/imported/equipment-pro.fnt-07f8582478201bbedd3ae9d469f
 
 [params]
 
+fallbacks=[]
 compress=true

@@ -69,8 +69,7 @@ namespace Network
             return snapShot;
         }
 
-        [Authority]
-        [AnyPeer]
+        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RecievedSnapshot(string TournementSnapshotJson)
         {
             TournementSnapshot tournementSnapshot = JsonConvert.DeserializeObject<TournementSnapshot>(TournementSnapshotJson);

@@ -176,7 +176,11 @@ namespace Network
             return snapShot;
         }
 
-        [Authority]
+        // makes the RPC callable by anyone, "call_local", use "unreliable" transfer, channel 1
+        // [RPC(RPCMode.AnyPeer, CallLocal = true, TransferMode = TransferMode.Unreliable, TransferChannel = 1)]
+
+        // Defaults are authority, no call_local, reliable, "default channel" (i.e. 0).
+        [RPC]
         public void PeerRecievedSnapshot(string battleSnapShotJson)
         {
             lock (_locker)
@@ -240,8 +244,8 @@ namespace Network
             // }
         }
 
-        [Authority]
-        [AnyPeer]
+        // Defaults are authority, no call_local, reliable, "default channel" (i.e. 0).
+        [RPC(RPCMode.AnyPeer, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void SpawnPeer(PeerInfo peerInfo)
         {
             // this.battleId = battleId;

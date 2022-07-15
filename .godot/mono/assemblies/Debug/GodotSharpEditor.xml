@@ -382,10 +382,11 @@
             <para>Removes all filters except for "All Files (*)".</para>
             </summary>
         </member>
-        <member name="M:Godot.EditorFileDialog.AddFilter(System.String)">
+        <member name="M:Godot.EditorFileDialog.AddFilter(System.String,System.String)">
             <summary>
-            <para>Adds a comma-delimited file extension filter option to the <see cref="T:Godot.EditorFileDialog"/> with an optional semi-colon-delimited label.</para>
-            <para>For example, <c>"*.tscn, *.scn; Scenes"</c> results in filter text "Scenes (*.tscn, *.scn)".</para>
+            <para>Adds a comma-delimited file name <c>filter</c> option to the <see cref="T:Godot.EditorFileDialog"/> with an optional <c>description</c>, which restricts what files can be picked.</para>
+            <para>A <c>filter</c> should be of the form <c>"filename.extension"</c>, where filename and extension can be <c>*</c> to match any string. Filters starting with <c>.</c> (i.e. empty filenames) are not allowed.</para>
+            <para>For example, a <c>filter</c> of <c>"*.tscn, *.scn"</c> and a <c>description</c> of <c>"Scenes"</c> results in filter text "Scenes (*.tscn, *.scn)".</para>
             </summary>
         </member>
         <member name="M:Godot.EditorFileDialog.GetVbox">

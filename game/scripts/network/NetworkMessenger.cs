@@ -101,8 +101,7 @@ namespace Network
             this.rpcHandlers.Add(methodName, rpc);
         }
 
-        [AnyPeer]
-        [Authority]
+        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RecievedRpc()
         {
             GD.Print("Game Client RecievedRpc");
@@ -116,7 +115,7 @@ namespace Network
             // }
         }
 
-        [AnyPeer]
+        [RPC(RPCMode.AnyPeer, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void clientGotBattleOptions(ServerOptions battleOptions)
         {
             GD.Print("Game Client clientGotBattleOptions");
