@@ -138,7 +138,7 @@ public partial class Actor : CharacterBody2D
         return inputFlagsValue;
     }
 
-    private async void sendPlayerState(ActorInputSnapshot snapShot)
+    private void sendPlayerState(ActorInputSnapshot snapShot)
     {
         // await _semaphoreSlim.WaitAsync();
 

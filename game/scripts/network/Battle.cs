@@ -29,7 +29,7 @@ namespace Network
         public override void _Ready()
         {
             // this.RpcConfig(nameof(this.SpawnPeer), RPCMode.AnyPeer, true, TransferMode.Reliable);
-            this.RpcConfig(nameof(this.PeerRecievedSnapshot), RPCMode.Authority, false, TransferMode.Reliable);
+            // this.RpcConfig(nameof(this.PeerRecievedSnapshot), RPCMode.Authority, false, TransferMode.Reliable);
 
             GD.Print("Battle Ready");
             // this.gameState = GetTree().Root.GetNode<GameState>("GameState");
@@ -65,7 +65,7 @@ namespace Network
         {
             if (Multiplayer.IsServer())
             {
-                this.updatePeers();
+                // this.updatePeers();
             }
         }
 
@@ -91,7 +91,7 @@ namespace Network
             // Update Rocks
             this.updatePeers();
         }
-        
+
         private static readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1, 1);
 
         async void updatePeers()
@@ -101,9 +101,14 @@ namespace Network
             // GD.Print(what: "sendPlayerState: " + snapShot.ToJson());
             await Task.Run(() =>
             {
+                Dictionary<Vector2i, List<Vector2i>> rocks = this.Stage.GetExplodableRockFlags();
+                var rocksJson = JsonConvert.SerializeObject(rocks);
+
                 GD.Print(what: "updatePeers");
                 // Send the snapshot to all clients
                 this.Rpc(nameof(this.PeerRecievedSnapshot), this.SnapShot.ToJson());
+                this.Rpc(nameof(this.PeerRecievedRocks), rocksJson);
+
             });
 
             _semaphoreSlim.Release();
@@ -161,15 +166,14 @@ namespace Network
             {
                 GD.Print("Battle.GetSnapshot: stage is null");
                 return null;
-            }   
+            }
 
-           
+            // this.Stage.GetExplodableRockFlags()
 
             BattleSnapShot snapShot = new BattleSnapShot(
             this.state,
             this.time,
             this.stageIndex,
-            this.Stage.GetExplodableRockFlags(),
             this.actorStates
             );
 
@@ -180,20 +184,33 @@ namespace Network
         // [RPC(RPCMode.AnyPeer, CallLocal = true, TransferMode = TransferMode.Unreliable, TransferChannel = 1)]
 
         // Defaults are authority, no call_local, reliable, "default channel" (i.e. 0).
-        [RPC]
+        [RPC(RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Reliable, TransferChannel = 0)]
         public void PeerRecievedSnapshot(string battleSnapShotJson)
         {
+            GD.Print("PeerRecievedSnapshot");
             lock (_locker)
             {
                 //   await Task.Run(() =>
                 //    {
                 GD.Print("PeerRecievedSnapshot: " + battleSnapShotJson);
-                BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapShotJson);
+
+                // BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapShotJson);
+                BattleSnapShot battleSnapShot = BattleSnapShot.Deserialize(battleSnapShotJson);
                 // this.SnapShot = battleSnapShot;
                 this.SetSnapshot(battleSnapShot);
                 //   });
             }
         }
+
+        [RPC(RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Reliable, TransferChannel = 0)]
+        public void PeerRecievedRocks(string rocksJson)
+        {
+            GD.Print("PeerRecievedRocks: " + rocksJson);
+
+            Dictionary<Vector2i, List<Vector2i>> rocks = JsonConvert.DeserializeObject<Dictionary<Vector2i, List<Vector2i>>>(rocksJson);
+            this.Stage.SyncExplodableRocks(rocks);
+        }
+
 
         public void SetSnapshot(BattleSnapShot battleSnapShot)
         {
@@ -224,7 +241,8 @@ namespace Network
             }
             // this.actorStates = battleSnapShot.ActorStates;
 
-            this.Stage.SyncExplodableRocks(battleSnapShot.ExplodableRockFlags);
+            //TODO 
+            // this.Stage.SyncExplodableRocks(battleSnapShot.ExplodableRockFlags);
         }
 
         internal void SpawnPeers(Dictionary<int, PeerInfo> peers)

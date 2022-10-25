@@ -136,7 +136,7 @@ namespace Network
             handler?.Invoke(id);
         }
 
-        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        [RPC(RPCMode.AnyPeer , CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RegisterPeer(string peerData)
         {
             GD.Print("Game Server RegisterPlayer");
@@ -149,16 +149,20 @@ namespace Network
             Tournement tournement = GetTree().Root.GetNode<Tournement>("Tournement") as Tournement;
             string tournementJson = tournement.SnapShot.ToJson();
             string snapShotJson = tournement.Battle.SnapShot.ToJson();
+            Dictionary<Vector2i, List<Vector2i>> rocks = tournement.Battle.Stage.GetExplodableRockFlags();
 
             // Tell the player the battle options and ask if they are ready
             ServerOptions serverOptions = GetServerOptions();
             string serverOptionsJson = serverOptions.ToJson();
 
+            // Dictionary<Vector2i, List<Vector2i>> rocks = this.Stage.GetExplodableRockFlags();
+            var rocksJson = JsonConvert.SerializeObject(rocks);
+
             // Send the battle options and ask if the player is ready   
-            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournementJson, snapShotJson);
+            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournementJson, snapShotJson, rocksJson);
         }
 
-        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        [RPC(RPCMode.AnyPeer, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RegisterPeerReady(string peerData)
         {
             // Godot.AnyPeerAttribute

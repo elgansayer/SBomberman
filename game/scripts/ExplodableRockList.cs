@@ -29,9 +29,11 @@ public class ExplodableRockList : List<ExplodableRock>
 
     public void RemoveRandomTiles(int maxRemove = 40)
     {
+        string seed = "lemon";
+        Random rand = new Random(seed.GetHashCode());
+
         for (int i = 0; i < maxRemove; i++)
         {
-            Random rand = new Random();
             int randomInt = (int)rand.Next(0, this.Count);
             ExplodableRock node = this.ElementAt(randomInt);
             node.Remove();

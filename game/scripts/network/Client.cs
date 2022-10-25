@@ -148,8 +148,8 @@ namespace Network
             return this.clientPlayerInfo;
         }
 
-        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
-        public void RegisterPeerCompleted(string serverOptionsJson, string tournementSnapshotJson, string battleSnapshotJson)
+        [RPC(RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        public void RegisterPeerCompleted(string serverOptionsJson, string tournementSnapshotJson, string battleSnapshotJson, string battleBLocksJson)
         {
             GD.Print("Game Client serverOptionsJson0: " + serverOptionsJson);
 
@@ -159,7 +159,14 @@ namespace Network
             TournementSnapshot tournementSnapshot = JsonConvert.DeserializeObject<TournementSnapshot>(tournementSnapshotJson);
             // GD.Print("serverOptions ", serverOptions);
 
-            BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapshotJson);
+            // BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapShotJson);
+            BattleSnapShot battleSnapShot = BattleSnapShot.Deserialize(battleSnapshotJson);
+           // BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapShotJson);
+            var battleBlocksShot = JsonConvert.DeserializeObject<Dictionary<Vector2i, List<Vector2i>>>(battleBLocksJson);
+
+
+
+            // BattleSnapShot battleSnapShot = JsonConvert.DeserializeObject<BattleSnapShot>(battleSnapshotJson);
             // GD.Print("battleSnapShot ", battleSnapShot);
 
             this.CreateTournement(serverOptions, tournementSnapshot, battleSnapShot);

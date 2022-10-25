@@ -65,11 +65,11 @@ public partial class TileMap : Godot.TileMap
         return new ExplodableRockList(rocks);
     }
 
-    internal ExplodableRockList SpawnExplodableRocksFromFlags(BigInteger explodableRockFlags)
+    internal ExplodableRockList SpawnExplodableRocksFromFlags(int explodableRockFlags)
     {
         // explodableRockFlags = 0;
         // explodableRockFlags |= this.CellToBitFlag(2);
-        
+
         GD.Print("Spawning Explodable Rocks from flags: " + explodableRockFlags);
         if (explodableRockFlags < 0)
         {
@@ -82,9 +82,9 @@ public partial class TileMap : Godot.TileMap
             for (int y = 0; y < 4; y++)
             {
                 Vector2i gridPos = new Vector2i(x, y);
-                int cellPos = this.GridToCell(gridPos);
+                int cellPos = this.GridToCellId(gridPos);
 
-                BigInteger flag = this.CellToBitFlag(cellPos);
+                int flag = this.CellIdToBitFlag(cellPos);
                 bool spawned = (explodableRockFlags & flag) != 0;
                 GD.Print("gridPos " + gridPos.ToString() + " CellPos: " + cellPos + " flag: " + flag + " spawned: " + spawned);
                 if (spawned)
@@ -97,20 +97,28 @@ public partial class TileMap : Godot.TileMap
         return this.SpawnExplodableRocks(explodableRockList);
     }
 
-    public int GridToCell(Vector2i gridPosition)
+    public int GridToCellId(Vector2i gridPosition)
     {
+        // int cellx = gridPosition.x / 16;
+        // int celly = gridPosition.y / 16;
+        // int cell = 16 * cellx + celly;
+
+        // int newX = gridPosition.x - ( cellx * 16 );
+        // int newY = gridPosition.y - ( celly * 16 );
+
+        // int cellId = 16 * newX + newY;
+        // return cellId;
         return this.Width * gridPosition.x + gridPosition.y;
     }
 
-    public BigInteger CellToBitFlag(int x)
-    {        
-        return (BigInteger)(1 << x);
-        // return (int)Math.Pow((double)x, 2.0); 
-        // return ((int)Math.Pow(2, Math.Round(Math.Log(x) / Math.Log(2))));
+    public int CellIdToBitFlag(int x)
+    {
+        return (int)(1 << x);
     }
 
-    public Vector2i CellToGrid(int cell)
+    public Vector2i CellIdToGrid(int cell)
     {
+        
         int x = (cell - 1) % this.Width;
         int y = (cell - 1) / this.Width;
         return new Vector2i(x, y);

@@ -69,7 +69,7 @@ namespace Network
             return snapShot;
         }
 
-        [RPC(RPCMode.AnyPeer | RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        [RPC(RPCMode.Authority, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
         public void RecievedSnapshot(string TournementSnapshotJson)
         {
             TournementSnapshot tournementSnapshot = JsonConvert.DeserializeObject<TournementSnapshot>(TournementSnapshotJson);
@@ -87,7 +87,7 @@ namespace Network
                 this.Battle.SpawnPeer(peerInfo);
             }
         }
- 
+
         public override void _Ready()
         {
             this.Name = "Tournement";
@@ -138,7 +138,7 @@ namespace Network
             {
                 this.Peers[peerId] = peerInfo;
             }
-            
+
             return this.Peers[peerId];
         }
 

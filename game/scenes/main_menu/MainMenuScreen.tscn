@@ -347,6 +347,7 @@ texture = ExtResource("15_qtsls")
 position = Vector2(224, 72)
 scale = Vector2(2, 2)
 frames = SubResource("6")
+frame = 2
 playing = true
 
 [node name="BombSprite" type="Sprite2D" parent="BackgroundSprite/Title"]
