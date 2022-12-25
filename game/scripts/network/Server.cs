@@ -9,7 +9,8 @@ namespace Network
     public partial class Server : Node2D
     {
         // [Export] private PackedScene MainMenuScene;
-        [Export] public PackedScene TournementScene;
+        [Export]
+        public PackedScene TournementScene;
 
         public ENetMultiplayerPeer eNet { get; private set; }
         public Client client { get; private set; }
@@ -17,11 +18,14 @@ namespace Network
         protected int playerCount = 0;
         protected int port = 4333;
         protected int maxPlayers = 10;
+
         // public readonly Dictionary<int, PeerInfo> PeerList = new Dictionary<int, PeerInfo>();
         protected string host = "localhost";
 
         public delegate void OnPeerLeftHandler(int peerId);
-        [Signal] public event OnPeerLeftHandler OnPeerLeft;
+
+        [Signal]
+        public event OnPeerLeftHandler OnPeerLeft;
         public delegate void OnPeerEnteredHandler(PeerInfo peerInfo);
         public event OnPeerEnteredHandler OnPeerEntered;
 
@@ -35,7 +39,7 @@ namespace Network
 
         private ServerOptions GetServerOptions()
         {
-            //Todo: Get battle options from nakama        
+            //Todo: Get battle options from nakama
             ServerOptions serverOptions = new ServerOptions(
                 battleName: "TestBattle",
                 gameType: GameType.NormalMostWins,
@@ -124,7 +128,7 @@ namespace Network
                 throw new System.Exception("Invalid peer id");
             }
 
-            GD.Print("Game Server OnPeerConnected " + id);  
+            GD.Print("Game Server OnPeerConnected " + id);
         }
 
         public void UnregisterPeer(int id)
@@ -136,7 +140,12 @@ namespace Network
             handler?.Invoke(id);
         }
 
-        [RPC(RPCMode.AnyPeer , CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        [RPC(
+            RPCMode.AnyPeer,
+            CallLocal = false,
+            TransferMode = TransferMode.Unreliable,
+            TransferChannel = 0
+        )]
         public void RegisterPeer(string peerData)
         {
             GD.Print("Game Server RegisterPlayer");
@@ -149,7 +158,8 @@ namespace Network
             Tournement tournement = GetTree().Root.GetNode<Tournement>("Tournement") as Tournement;
             string tournementJson = tournement.SnapShot.ToJson();
             string snapShotJson = tournement.Battle.SnapShot.ToJson();
-            Dictionary<Vector2i, List<Vector2i>> rocks = tournement.Battle.Stage.GetExplodableRockFlags();
+            Dictionary<Vector2i, List<Vector2i>> rocks =
+                tournement.Battle.Stage.GetExplodableRockFlags();
 
             // Tell the player the battle options and ask if they are ready
             ServerOptions serverOptions = GetServerOptions();
@@ -158,11 +168,23 @@ namespace Network
             // Dictionary<Vector2i, List<Vector2i>> rocks = this.Stage.GetExplodableRockFlags();
             var rocksJson = JsonConvert.SerializeObject(rocks);
 
-            // Send the battle options and ask if the player is ready   
-            this.client.RpcId(id, nameof(this.client.RegisterPeerCompleted), serverOptionsJson, tournementJson, snapShotJson, rocksJson);
+            // Send the battle options and ask if the player is ready
+            this.client.RpcId(
+                id,
+                nameof(this.client.RegisterPeerCompleted),
+                serverOptionsJson,
+                tournementJson,
+                snapShotJson,
+                rocksJson
+            );
         }
 
-        [RPC(RPCMode.AnyPeer, CallLocal = false, TransferMode = TransferMode.Unreliable, TransferChannel = 0)]
+        [RPC(
+            RPCMode.AnyPeer,
+            CallLocal = false,
+            TransferMode = TransferMode.Unreliable,
+            TransferChannel = 0
+        )]
         public void RegisterPeerReady(string peerData)
         {
             // Godot.AnyPeerAttribute
